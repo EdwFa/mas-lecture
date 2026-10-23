@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 8. Восьмиголовое внимание</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .shot {
+      margin-top: 8px;
+      background: #fff;
+      border: 1px solid #d9d3c7;
+      height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .shot img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .src {
+      margin-top: 12px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+    .src a { color: #1d5c96; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>08</span></div>
+    <h1>Восьмиголовое внимание</h1>
+    <p class="lead">Оригинал статьи. Энкодер, слой 5 из 6. Показано внимание только слова making. Разные цвета — разные головы.</p>
+    <div class="shot">
+      <img src="img/attention-viz.png" alt="Головы внимания слова making к фразе more difficult" />
+    </div>
+    <p class="src">Многие головы держат дальнюю связь: making … more difficult. <a href="https://arxiv.org/abs/1706.03762">arxiv.org/abs/1706.03762</a>, рисунок 3.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

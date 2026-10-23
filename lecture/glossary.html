@@ -90,12 +90,13 @@
   <div class="layout">
     <nav>
       <p class="brand">Глоссарий</p>
-      <p class="brand-note">Лекция 1. Вводная</p>
+      <p class="brand-note">Лекции 1–2</p>
       <label class="seek" for="q">Найти слово</label>
       <input id="q" type="search" placeholder="Слово со слайда" autocomplete="off" />
       <ol>
         <li><a href="#agent">Агент и цикл</a></li>
         <li><a href="#model">Модель</a></li>
+        <li><a href="#block">Лекция 2. Блок</a></li>
         <li><a href="#run">Как ведут работу</a></li>
         <li><a href="#talk">Как части говорят</a></li>
         <li><a href="#clinic">Клинический контур</a></li>
@@ -106,8 +107,8 @@
       <div class="sheet">
         <header>
           <h1>Глоссарий</h1>
-          <p class="lead">Слова вводной лекции в том смысле, в каком они стоят на слайдах. Английское имя рядом — так термин называют в статьях и библиотеках осени 2026 года.</p>
-          <p class="same">Одинаковые слова разобраны отдельными строками: состояние, снимок, схема, журнал, контракт.</p>
+          <p class="lead">Слова лекций 1 и 2 в том смысле, в каком они стоят на слайдах. Английское имя рядом — так термин называют в статьях и библиотеках осени 2026 года.</p>
+          <p class="same">Одинаковые слова разобраны отдельными строками: состояние, снимок, схема, журнал, контракт, роутер.</p>
         </header>
 
         <section class="group" id="agent">
@@ -270,7 +271,7 @@
           </article>
 
           <article class="term">
-            <h3>Внимание</h3>
+            <h3>Внимание <span class="aka">attention</span></h3>
             <p>Сравнение токенов. Слово забирает сведения у тех, на кого ему можно смотреть. Стрелки на слайдах идут к слову, которое сейчас считается. Цена полного внимания растёт как квадрат длины фразы: контекст вдвое длиннее — работы и памяти примерно вчетверо больше.</p>
             <p class="where">Слайды 8, 9, 14, 16</p>
           </article>
@@ -312,25 +313,25 @@
           </article>
 
           <article class="term">
-            <h3>Мультиголовое внимание</h3>
+            <h3>Мультиголовое внимание <span class="aka">MHA, multi-head attention</span></h3>
             <p>Несколько голов смотрят параллельно и видят разные связи одной фразы. Ответы склеивают и перемешивают общей матрицей, так что токен получает все эти связи сразу. Тройка «кто / орган / чей» на фразе «врач видит снимок лёгких пациента» — иллюстрация, не результат обучения.</p>
             <p class="where">Слайд 10</p>
           </article>
 
           <article class="term">
-            <h3>GQA</h3>
+            <h3>GQA <span class="aka">grouped-query attention</span></h3>
             <p>Несколько голов запросов делят одну голову ключей. Кэш ключей из-за этого меньше. У Qwen3-235B на 64 запроса приходится 4 головы ключей. У Qwen несколько голов запросов делят голову ключей. У DeepSeek и Kimi этот приём не используют: там ключи сжаты.</p>
             <p class="where">Слайды 11, 15</p>
           </article>
 
           <article class="term">
-            <h3>MLA</h3>
+            <h3>MLA <span class="aka">multi-head latent attention</span></h3>
             <p>Ключи и значения сжаты в один вектор. У DeepSeek-V3 и Kimi K2 ранг этого вектора 512. Отдельные головы ключей не хранят. Kimi K2.5 публикует те же 64 головы и тот же ранг. Число голов ключей из поля конфигурации, которое повторяет схему DeepSeek, за число голов GQA не принимают.</p>
             <p class="where">Слайды 11, 15</p>
           </article>
 
           <article class="term">
-            <h3>Кэш ключей</h3>
+            <h3>Кэш ключей <span class="aka">KV-cache</span></h3>
             <p>Память уже посчитанных ключей и значений. Она растёт вместе с длиной контекста, поэтому ключей хранят меньше, чем запросов: делят головы, как Qwen, или сжимают ключ и значение в один вектор, как DeepSeek и Kimi.</p>
             <p class="where">Слайд 15</p>
           </article>
@@ -366,45 +367,182 @@
           </article>
 
           <article class="term">
-            <h3>Норма слоя</h3>
-            <p>Приведение вектора на пути через блок. В 2017 году норма стоит после сложения: LN(x + подслой(x)). Сначала остаток, потом норма. В рабочем блоке норма стоит до подслоя: x + подслой(RMSNorm(x)). По остатку путь остаётся чистым.</p>
+            <h3>Норма слоя <span class="aka">LayerNorm</span></h3>
+            <p>Приведение вектора на пути через блок. В 2017 году LayerNorm стоит после сложения: LN(x + подслой(x)). Сначала residual, потом LayerNorm. В рабочем блоке норма стоит до подслоя: x + подслой(RMSNorm(x)). Это Pre-Norm. Residual path через норму не проходит.</p>
             <p class="where">Слайд 15</p>
           </article>
 
           <article class="term">
-            <h3>Остаток</h3>
-            <p>Сложение входа блока с тем, что вернул подслой. По этой связи сигнал проходит через стопку блоков, а подслой добавляет поправку.</p>
+            <h3>Остаток <span class="aka">residual connection</span></h3>
+            <p>Устоявшееся имя — residual connection. В слой входит вектор x. Подслой считает поправку. На выход идёт x + подслой(x): исходный вектор складывают с поправкой. В Pre-Norm формула x + подслой(RMSNorm(x)). Слагаемое x через норму не проходит.</p>
             <p class="where">Слайд 15</p>
           </article>
 
           <article class="term">
-            <h3>Сеть токена</h3>
+            <h3>Сеть токена <span class="aka">FFN, feed-forward network</span></h3>
             <p>Слой, который поправляет один токен отдельно от соседей. В 2017 году это ReLU и расширение 512 → 2048 → 512, затем возврат к ширине модели. В рабочем блоке на этом месте стоит SwiGLU. Дешевле эту сеть делает смесь экспертов: считают не все ветви, а выбранные.</p>
             <p class="where">Слайды 8, 15, 16</p>
           </article>
 
           <article class="term">
-            <h3>SwiGLU</h3>
-            <p>Сеть токена с двумя путями в широком слое. Один путь проходит через ворота. Пути перемножают и сжимают обратно к ширине модели.</p>
+            <h3>SwiGLU <span class="aka">gated FFN</span></h3>
+            <p>FFN с двумя путями в широком слое. Один путь — gate. Пути перемножают и сжимают обратно к ширине модели. Этот gate не output gate слоя attention.</p>
             <p class="where">Слайд 15</p>
           </article>
 
           <article class="term">
-            <h3>Смесь экспертов</h3>
+            <h3>Смесь экспертов <span class="aka">MoE, mixture of experts</span></h3>
             <p>Несколько сетей токена на одном месте. Маршрут смотрит на токен и включает часть из них. На рисунке слайда 16 выбран один эксперт, остальные молчат. Qwen считает несколько: Qwen3-235B — 8 из 128, 235 млрд весов всего и 22 млрд на токен; Qwen3-Next — 10 из 512 и один общий, 80 млрд всего и около 3 млрд на токен. Внимание при этом идёт по всему контексту. Эксперт — сеть чисел, не врачебная специальность.</p>
             <p class="where">Слайд 16</p>
           </article>
 
           <article class="term">
-            <h3>Слой состояния</h3>
+            <h3>Слой состояния <span class="aka">recurrent state</span></h3>
             <p>Слой гибридного декодера, который идёт по фразе слева направо и несёт след предыдущих слов. Цена растёт как длина фразы. Это состояние рекуррентного слоя. Состояние агента и снимок графа — другие строки глоссария.</p>
             <p class="where">Слайд 16</p>
           </article>
 
           <article class="term">
-            <h3>Гибрид</h3>
+            <h3>Гибрид <span class="aka">hybrid decoder</span></h3>
             <p>Декодер, в котором чередуются слои состояния и слои внимания. У Qwen3-Next 48 слоёв: три слоя состояния, затем слой внимания, и так двенадцать раз. Слой внимания снова видит всю фразу, и его цена растёт как квадрат длины. Обе ветви, смесь экспертов и гибрид, стоят в декодере и выбирают продолжение.</p>
             <p class="where">Слайд 16</p>
+          </article>
+        </section>
+
+        <section class="group" id="block">
+          <h2>Лекция 2. Блок</h2>
+          <p class="range">Лекция 2</p>
+
+          <article class="term">
+            <h3>Canonical decoder <span class="aka">decoder-only</span></h3>
+            <p>Плотный decoder-only Transformer, от которого считают замены к 2026 году. Каждый токен проходит одну и ту же стопку слоёв. В слое self-attention и FFN, Pre-RMSNorm и residual. KV-cache только дописывают. Скрытое состояние учит next-token prediction, и выбранный токен сразу входит в последовательность.</p>
+            <p class="where">Лекция 2, слайды 23, 31, 41</p>
+          </article>
+
+          <article class="term">
+            <h3>Токенизация <span class="aka">tokenization</span></h3>
+            <p>Разбиение текста на токены до эмбеддинга. Единица токена задаёт длину последовательности. От неё зависят размер KV-cache и горизонт multi-token prediction.</p>
+            <p class="where">Лекция 2, слайд 31</p>
+          </article>
+
+          <article class="term">
+            <h3>Self-attention <span class="aka">самовнимание</span></h3>
+            <p>Attention внутри одной последовательности: query, key и value считают из неё же. В декодере это causal self-attention. В энкодере токен видит всю входную последовательность.</p>
+            <p class="where">Лекция 2, слайды 3, 6, 31</p>
+          </article>
+
+          <article class="term">
+            <h3>Causal mask <span class="aka">causal self-attention</span></h3>
+            <p>Маска будущего в decoder self-attention. До softmax веса позиций правее текущей заменяют на −∞. Токен видит себя и прошлые позиции. Оставшиеся веса строки снова суммируются к единице.</p>
+            <p class="where">Лекция 2, слайд 7</p>
+          </article>
+
+          <article class="term">
+            <h3>Cross-attention</h3>
+            <p>Верхний multi-head блок декодера в архитектуре encoder–decoder. Query берётся из декодера, key и value — из энкодера. У GPT и Llama отдельной башни энкодера нет: остаётся causal self-attention.</p>
+            <p class="where">Лекция 2, слайд 3</p>
+          </article>
+
+          <article class="term">
+            <h3>Контекстный вектор <span class="aka">context vector</span></h3>
+            <p>Выход одной головы attention: взвешенная сумма values. Веса — softmax от масштабированных скалярных произведений query и keys.</p>
+            <p class="where">Лекция 2, слайды 5, 31</p>
+          </article>
+
+          <article class="term">
+            <h3>Pre-Norm <span class="aka">Pre-LN, Pre-RMSNorm</span></h3>
+            <p>Норма стоит до подслоя, residual прибавляют после: x + SubLayer(Norm(x)). В каноническом декодере 2023–2024 годов это Pre-RMSNorm. Post-LN статьи 2017 года — LN(x + SubLayer(x)).</p>
+            <p class="where">Лекция 2, слайды 25, 31</p>
+          </article>
+
+          <article class="term">
+            <h3>RMSNorm</h3>
+            <p>Нормализация без вычитания среднего. Вектор делят на корень из среднего квадрата его координат и умножают на обучаемый масштаб. В рабочем блоке стоит на месте LayerNorm.</p>
+            <p class="where">Лекция 2, слайд 25</p>
+          </article>
+
+          <article class="term">
+            <h3>Output gate <span class="aka">gating, gated attention</span></h3>
+            <p>Множитель на выходе attention, до output projection и до сложения с residual. Это gated attention, добавка к полному scaled dot-product, не отдельное семейство слоёв. Gate в SwiGLU — другой: он перемножает два пути FFN.</p>
+            <p class="where">Лекция 2, слайд 13</p>
+          </article>
+
+          <article class="term">
+            <h3>QK-Norm</h3>
+            <p>Норма query и key перед их произведением. В gated attention это zero-centered QK-Norm: перед нормировкой вычитают среднее.</p>
+            <p class="where">Лекция 2, слайд 13</p>
+          </article>
+
+          <article class="term">
+            <h3>MQA <span class="aka">multi-query attention</span></h3>
+            <p>Все головы query делят одну голову key и одну голову value. GQA стоит между MHA и MQA: групп key–value больше одной, но меньше, чем голов query.</p>
+            <p class="where">Лекция 2, слайды 9–10</p>
+          </article>
+
+          <article class="term">
+            <h3>SWA <span class="aka">sliding-window attention</span></h3>
+            <p>Локальный слой attention видит фиксированное окно последних токенов. Gemma 2: окно 4096 и чередование local:global 1:1. Gemma 3 основных размеров: окно 1024 и 5 local на 1 global. Окно 1024 не переносят на все размеры Gemma 3.</p>
+            <p class="where">Лекция 2, слайд 11</p>
+          </article>
+
+          <article class="term">
+            <h3>DSA <span class="aka">DeepSeek Sparse Attention</span></h3>
+            <p>Sparse attention, в котором подмножество прошлых токенов выбирают по ходу счёта, а не фиксированным окном. Lightning indexer считает релевантность по сжатым представлениям MLA. DeepSeek-V3.2 и GLM-5 ставят DSA рядом с MLA.</p>
+            <p class="where">Лекция 2, слайд 12</p>
+          </article>
+
+          <article class="term">
+            <h3>p-RoPE</h3>
+            <p>Вариант RoPE в Gemma 4: позицию несут 25% пар частот. Это не partial RoPE DeepSeek и Kimi: там вращают отдельный короткий набор rope-каналов, у V3 и K2 их 64.</p>
+            <p class="where">Лекция 2, слайд 16</p>
+          </article>
+
+          <article class="term">
+            <h3>Маршрутизатор экспертов <span class="aka">MoE router</span></h3>
+            <p>Модуль MoE. Ставит токену оценки по экспертам и отправляет токен в top-k. Это не роутер мультиагентного графа: тот выбирает следующий узел работы, а не матрицы FFN.</p>
+            <p class="where">Лекция 2, слайд 34</p>
+          </article>
+
+          <article class="term">
+            <h3>Эксперт <span class="aka">expert</span></h3>
+            <p>Одна FFN внутри MoE. На токене считают экспертов, которых выбрал router, а не все. Эксперт — веса сети, не роль врача и не агент.</p>
+            <p class="where">Лекция 2, слайд 34</p>
+          </article>
+
+          <article class="term">
+            <h3>MTP <span class="aka">multi-token prediction</span></h3>
+            <p>Обучение, в котором скрытое состояние предсказывает несколько будущих токенов, а не только следующий. Parallel heads читают одно состояние и предсказывают эти токены независимо. Sequential MTP, как в DeepSeek-V3, на каждом следующем шаге видит предыдущий будущий токен.</p>
+            <p class="where">Лекция 2, слайд 35</p>
+          </article>
+
+          <article class="term">
+            <h3>Speculative decoding <span class="aka">draft-then-verify</span></h3>
+            <p>Декодирование, в котором draft-токены проверяет target model одним проходом. Принятые токены дописывают, остальные отбрасывают. При точном правиле приёмки распределение target model сохраняется. MTP на обучении само по себе draft-состояний не создаёт. Draft здесь — токены декодирования, не черновик клинического пакета.</p>
+            <p class="where">Лекция 2, слайд 35</p>
+          </article>
+
+          <article class="term">
+            <h3>Gated DeltaNet</h3>
+            <p>Recurrent-слой в гибриде Qwen3-Next. Обновляет recurrent state фиксированного размера. В Qwen3-Next-80B-A3B 48 слоёв: 12 раз по 3 Gated DeltaNet и 1 слой gated attention. Output gate полного attention и Gated DeltaNet — разные слои.</p>
+            <p class="where">Лекция 2, слайд 13</p>
+          </article>
+
+          <article class="term">
+            <h3>Early exit</h3>
+            <p>Остановка токена до конца стопки, когда промежуточное представление уже достаточно. Остальные слои для этого токена не считают. Это ось adaptive depth, не способ хранить KV-cache.</p>
+            <p class="where">Лекция 2, слайд 36</p>
+          </article>
+
+          <article class="term">
+            <h3>Mixture-of-Depths</h3>
+            <p>В выбранные блоки пускают только часть токенов. Остальные идут по residual мимо блока. На обучении отбор по всей последовательности не причинный. Для декодирования учат причинное приближение.</p>
+            <p class="where">Лекция 2, слайд 36</p>
+          </article>
+
+          <article class="term">
+            <h3>Looped transformer <span class="aka">depth recurrence</span></h3>
+            <p>Один общий блок применяют R раз. Новых весов нет, исполненная глубина растёт. Huginn делит сеть на prelude, recurrent core и coda. Это повтор по глубине. Recurrent state Mamba и DeltaNet — повтор по последовательности. Это разные оси.</p>
+            <p class="where">Лекция 2, слайд 36</p>
           </article>
         </section>
 

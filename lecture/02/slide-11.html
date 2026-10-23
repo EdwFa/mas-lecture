@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 11. Внимание со скользящим окном</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1720px; font-size: 22px; }
+    .patterns {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 28px;
+    }
+    .pat { border-top: 1px solid #1c1915; padding-top: 10px; }
+    .who {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .chips { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px 16px; }
+    .period { display: flex; gap: 8px; flex-wrap: nowrap; }
+    .chip {
+      min-width: 64px;
+      padding: 7px 8px;
+      border: 1.5px solid #1c1915;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #1c1915;
+    }
+    .chip.glob { background: #1c1915; color: #f7f4ee; }
+    .cap {
+      margin: 10px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    table { margin-top: 16px; }
+    td { padding: 10px 24px 10px 0; font-size: 22px; }
+    td strong { font-size: 22px; }
+    .note {
+      margin-top: 14px;
+      max-width: 1720px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { margin-top: 12px; font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>11</span></div>
+    <h1>Внимание со скользящим окном</h1>
+    <p class="lead">Каждый токен видит только фиксированное окно последних позиций. Чем уже это окно, тем меньше памяти и вычислений уходит на длинный контекст. Локальные слои чередуют с глобальными, чтобы дальний сигнал всё же проходил по последовательности.</p>
+    <div class="patterns">
+      <div class="pat">
+        <div class="who">Gemma 2 · окно 4096 · 1 : 1</div>
+        <div class="chips">
+          <span class="period"><span class="chip">лок</span><span class="chip glob">глоб</span></span>
+          <span class="period"><span class="chip">лок</span><span class="chip glob">глоб</span></span>
+          <span class="period"><span class="chip">лок</span><span class="chip glob">глоб</span></span>
+        </div>
+        <p class="cap">Белая клетка — локальный слой, чёрная — глобальный. Здесь они чередуются один к одному.</p>
+      </div>
+      <div class="pat">
+        <div class="who">Gemma 3 · окно 1024 · 5 : 1</div>
+        <div class="chips">
+          <span class="period"><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip glob">глоб</span></span>
+          <span class="period"><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip glob">глоб</span></span>
+        </div>
+        <p class="cap">Пять локальных слоёв подряд, затем один глобальный. Окно локального слоя сузили до 1024 токенов.</p>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Модель</th>
+          <th>Окно</th>
+          <th>Локальные : глобальные</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gemma 3 27B</td>
+          <td>1024</td>
+          <td><strong>5 : 1</strong></td>
+        </tr>
+        <tr>
+          <td>Xiaomi MiMo-V2-Flash</td>
+          <td>128</td>
+          <td><strong>5 : 1</strong></td>
+        </tr>
+        <tr>
+          <td>OLMo 3 32B, Arcee Trinity</td>
+          <td>—</td>
+          <td><strong>3 : 1</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">У OLMo 3 и Arcee Trinity опубликовано соотношение 3 : 1. Ширину их окна этот обзор не называет. Step 3.5 Flash и Tiny Aya тоже держат скользящее окно, со своим периодом и своей шириной. Уже окно и выше доля локальных слоёв дают более сильную экономию. Скользящее окно ограничивает, сколько прошлых токенов видит локальный слой. Групповое внимание уменьшает, сколько ключей и значений токен кладёт в кэш. В Gemma 3 работают оба механизма.</p>
+    <p class="coda">У Gemma 3 локальных слоёв больше, чем у Gemma 2, а окно уже. Качество моделирования от этой перестройки падает лишь немного.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

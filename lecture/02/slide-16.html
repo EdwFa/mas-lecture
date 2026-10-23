@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 16. Gemma 4</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .pat { margin-top: 22px; border-top: 1px solid #1c1915; padding-top: 12px; }
+    .who {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .chips { margin-top: 14px; display: flex; gap: 8px; flex-wrap: nowrap; }
+    .chip {
+      min-width: 86px;
+      padding: 8px 10px;
+      border: 1.5px solid #1c1915;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #1c1915;
+    }
+    .chip.full { background: #1c1915; color: #f7f4ee; min-width: 148px; }
+    .steps {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .step .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .step h2 {
+      margin: 8px 0 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .step p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { margin-top: 22px; max-width: 1720px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>16</span></div>
+    <h1>Gemma 4</h1>
+    <p class="lead">Текстовая часть Gemma 4 31B почти совпадает с Gemma 3 27B. Гибрид 5:1, групповое внимание и норма и до подслоя, и после него. Кодировщик изображения на этом слайде не разбираем.</p>
+    <div class="pat">
+      <div class="who">Тот же период, что у Gemma 3</div>
+      <div class="chips">
+        <span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span><span class="chip">лок</span>
+        <span class="chip full">глоб · V = K</span>
+      </div>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="n">01 · глобальный слой</div>
+        <h2>Значение = ключ</h2>
+        <p>В полном слое значение берут из ключа. В кэш уходит один тензор вместо пары, и он короче.</p>
+      </article>
+      <article class="step">
+        <div class="n">02 · позиция</div>
+        <h2>p-RoPE</h2>
+        <p>Позицию несут 25% частотных пар. На длинном контексте меньше позиционного шума.</p>
+      </article>
+      <article class="step">
+        <div class="n">03 · смесь экспертов</div>
+        <h2>26B-A4B</h2>
+        <p>Полных весов меньше, чем у плотной 31B. Та же норма до и после слоя. По тестам лишь немного слабее.</p>
+      </article>
+    </div>
+    <p class="coda">Блок почти тот же, а скачок тестов относительно Gemma 3 большой: 31B выходит вровень с Qwen3.5 27B. Место на арене рядом с Qwen3.5-397B-A17B измеряет стиль ответа и на архитектуру не переносится.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 38. Что ослабляют</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { margin-top: 12px; max-width: 1720px; font-size: 22px; }
+    table { margin-top: 16px; }
+    td { padding: 12px 22px 12px 0; font-size: 22px; line-height: 1.3; }
+    td:first-child { width: 280px; white-space: nowrap; }
+    td strong { font-size: 26px; }
+    .coda { margin-top: 14px; font-size: 24px; line-height: 1.32; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>38</span></div>
+    <h1>Что ослабляют</h1>
+    <p class="lead">Все замены сходятся к четырём вопросам. Опорная схема на каждый из них отвечает одинаково для всех слов.</p>
+    <table>
+      <tr><th>Вопрос</th><th>Что меняют</th></tr>
+      <tr>
+        <td><strong>Путь слова</strong></td>
+        <td>В опорной схеме он один. Дальше появляются разные способы смотреть на текст по слоям, выбор сетей и разная глубина.</td>
+      </tr>
+      <tr>
+        <td><strong>Внутри шага</strong></td>
+        <td>Путь тот же. Меняются гейт в сети токена, место нормы и остаток.</td>
+      </tr>
+      <tr>
+        <td><strong>Память прошлого</strong></td>
+        <td>Список, который только дописывают. Общие ключи. Короткая свёртка. Окно. Выбранные позиции. Одна запись фиксированного размера. Временная ветка, которую потом принимают или выбрасывают.</td>
+      </tr>
+      <tr>
+        <td><strong>Момент записи</strong></td>
+        <td>Слово становится частью текста сразу после предсказания. Либо после проверки черновика.</td>
+      </tr>
+    </table>
+    <p class="coda">Чем меньше одинаковости, тем дороже маршруты, пачки и неровный счёт. Плотный декодер держится во многом потому, что путь у него один, его проще учить, запускать и сравнивать.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

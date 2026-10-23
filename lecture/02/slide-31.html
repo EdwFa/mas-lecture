@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 31. Опорная схема</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; }
+    .lead { margin-top: 8px; max-width: 1720px; font-size: 22px; }
+    .steps {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 32px;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .who {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .row { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+    .word,     .box {
+      min-height: 42px;
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #1c1915;
+      background: #f7f4ee;
+      font-family: Georgia, "Iowan Old Style", serif;
+      font-size: 22px;
+      color: #1c1915;
+    }
+    .box.look { border-color: #1d5c96; color: #1d5c96; }
+    .box.net { border-color: #1d7a43; color: #1d7a43; }
+    .box small {
+      display: block;
+      margin-top: 2px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .arr {
+      font-family: Georgia, serif;
+      font-size: 26px;
+      color: #1c1915;
+    }
+    .step p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .coda { margin-top: 12px; max-width: 1720px; font-size: 22px; line-height: 1.32; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>31</span></div>
+    <h1>Опорная схема</h1>
+    <p class="lead">Берём фразу «врач смотрит снимок» и проводим её через один слой. Так устроен canonical decoder, на котором сошлись открытые модели к 2023–2024 году.</p>
+    <div class="steps">
+      <article class="step">
+        <div class="who">1 · Токенизация</div>
+        <div class="row">
+          <span class="word">врач</span>
+          <span class="word">смотрит</span>
+          <span class="word">снимок</span>
+        </div>
+        <p>Модель не читает фразу одним вектором. Она режет её на токены. Каждый токен получает свой вектор. Дальше считают эти векторы.</p>
+      </article>
+      <article class="step">
+        <div class="who">2 · RoPE</div>
+        <div class="row">
+          <span class="box">врач<small>первый поворот</small></span>
+          <span class="box">смотрит<small>второй поворот</small></span>
+          <span class="box">снимок<small>третий поворот</small></span>
+        </div>
+        <p>По вектору не видно, кто стоял раньше. Место записывают поворотом вектора: у первого токена один угол, у второго другой. Номер позиции к вектору не прибавляют.</p>
+      </article>
+      <article class="step">
+        <div class="who">3 · Self-attention</div>
+        <div class="row">
+          <span class="box look">смотрит</span>
+          <span class="arr">→</span>
+          <span class="word">врач</span>
+          <span class="word">снимок</span>
+          <span class="arr">→</span>
+          <span class="box look">контекст</span>
+        </div>
+        <p>В слое токен сначала считает внимание по остальным. «Смотрит» сравнивает свой запрос с ключами «врач» и «снимок» и собирает из их значений контекстный вектор.</p>
+      </article>
+      <article class="step">
+        <div class="who">4 · FFN</div>
+        <div class="row">
+          <span class="box">контекст</span>
+          <span class="arr">→</span>
+          <span class="box net">FFN</span>
+          <span class="arr">→</span>
+          <span class="box">новый вектор</span>
+        </div>
+        <p>Потом контекстный вектор проходит FFN. FFN меняет вектор внутри одного токена и к другим токенам уже не обращается. Перед self-attention и перед FFN стоит RMSNorm: это Pre-Norm. Этот слой повторяют много раз.</p>
+      </article>
+    </div>
+    <p class="coda">Так устроена Llama. Дальше меняли размер модели, словарь и длину текста. Путь токена оставался тем же. То, что схема часто повторяется, ещё не делает её лучшей.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 12. Разреженное внимание DeepSeek</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1720px; font-size: 22px; }
+    .patterns {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .pat { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .who {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .seq { margin-top: 14px; display: flex; align-items: center; gap: 8px; }
+    .sq {
+      width: 26px;
+      height: 34px;
+      border: 1.5px solid #1c1915;
+      background: transparent;
+    }
+    .sq.on { background: #1c1915; }
+    .now {
+      margin-left: 8px;
+      padding: 8px 12px;
+      background: #1c1915;
+      color: #f7f4ee;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .cap {
+      margin: 12px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .steps {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .step .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .step h2 {
+      margin: 8px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .step p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { margin-top: 18px; font-size: 24px; max-width: 1720px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>12</span></div>
+    <h1>Разреженное внимание DeepSeek</h1>
+    <p class="lead">DeepSeek-V3.2 и GLM-5 ставят разреженное внимание рядом со скрытым, MLA. Скрытое внимание сжимает запись в кэше ключей и значений. Разреженное внимание выбирает, какие прошлые позиции на этом шаге читать. Вместе они снижают стоимость длинного контекста.</p>
+    <div class="patterns">
+      <div class="pat">
+        <div class="who">Скользящее окно · окрестность задана заранее</div>
+        <div class="seq">
+          <span class="sq"></span><span class="sq"></span><span class="sq"></span><span class="sq"></span>
+          <span class="sq"></span><span class="sq"></span><span class="sq"></span><span class="sq"></span>
+          <span class="sq on"></span><span class="sq on"></span><span class="sq on"></span><span class="sq on"></span>
+          <span class="now">токен</span>
+        </div>
+        <p class="cap">Чёрные клетки — последние позиции внутри окна. Всё, что левее окна, текущий токен не видит.</p>
+      </div>
+      <div class="pat">
+        <div class="who">DSA · позиции выбирает модель</div>
+        <div class="seq">
+          <span class="sq"></span><span class="sq on"></span><span class="sq"></span><span class="sq"></span>
+          <span class="sq on"></span><span class="sq"></span><span class="sq on"></span><span class="sq"></span>
+          <span class="sq"></span><span class="sq on"></span><span class="sq"></span><span class="sq on"></span>
+          <span class="now">токен</span>
+        </div>
+        <p class="cap">Чёрных клеток мало и здесь. Они стоят на релевантных прошлых токенах, а не обязательно рядом с текущим.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="n">01 · индексатор</div>
+        <h2>Оценка прошлых</h2>
+        <p>Быстрый индексатор считает сходство нового токена с каждой прошлой позицией. Счёт идёт по сжатым представлениям, которые уже хранит MLA.</p>
+      </article>
+      <article class="step">
+        <div class="n">02 · селектор</div>
+        <h2>Маска внимания</h2>
+        <p>Селектор оставляет небольшое подмножество позиций с высоким показателем. Основное внимание на этом шаге идёт только по ним.</p>
+      </article>
+      <article class="step">
+        <div class="n">03 · пара с MLA</div>
+        <h2>Две экономии</h2>
+        <p>MLA уменьшает размер каждой записи в кэше. Разреженное внимание уменьшает число записей, которые слой читает.</p>
+      </article>
+    </div>
+    <p class="coda">Набор позиций модель выбирает при счёте. Готового окна фиксированной ширины здесь нет. Приём новее и сложнее группового внимания, поэтому пока его держат DeepSeek-V3.2 и GLM-5.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 28. Малая и большая</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .pair { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .col { border: 1px solid #d9d3c7; padding: 22px 24px 20px; }
+    .wide { border-width: 3px; border-color: #1c1915; }
+    .tag {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px; letter-spacing: 0.14em; text-transform: uppercase; color: #5e6872;
+    }
+    .col h2 { margin: 12px 0 0; font-size: 36px; font-weight: 400; }
+    .chip {
+      display: inline-block; margin-top: 22px; padding: 12px 16px;
+      background: #1c1915; color: #f7f4ee; font-size: 28px;
+    }
+    .draft { margin-top: 22px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>28</span></div>
+    <h1>Один вход. Разная ширина весов.</h1>
+    <p class="lead">Обе колонки получают одну пару фактов: снимок готов, дата не назначена. Порога в числе параметров нет.</p>
+    <div class="pair">
+      <article class="col">
+        <div class="tag">Мало весов</div>
+        <h2>Короткий выбор</h2>
+        <div class="chip">ждать</div>
+      </article>
+      <article class="col wide">
+        <div class="tag">Много весов</div>
+        <h2>Текст для врача</h2>
+        <p class="draft">Снимок готов. Дата не назначена.</p>
+      </article>
+    </div>
+    <p class="coda">Малая не выдумывает дату. Записать «ждать» в журнал шага должен рантайм.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

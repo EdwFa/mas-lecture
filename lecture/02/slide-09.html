@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 9. Групповое внимание</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .shot { flex: 1; min-height: 0; margin-top: 4px; display: flex; align-items: center; justify-content: center; }
+    .shot img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .note { margin: 8px 0 0; max-width: 1680px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 21px; line-height: 1.32; color: #243038; }
+    .note + .note { margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>09</span></div>
+    <h1>Групповое внимание</h1>
+    <div class="shot">
+      <img src="img/fig-09.png?v=2" alt="Сравнение многоголового внимания и группового внимания к запросу" />
+    </div>
+    <p class="note">Слева обычное многоголовое внимание: у каждой головы запроса свои ключ и значение. Справа групповое внимание устроено по той же схеме, но несколько голов запроса делят одну пару ключ–значение. Стрелка на рисунке как раз показывает это общее использование.</p>
+    <p class="note">При порождении кэш хранит ключи и значения на каждый токен. В групповом внимании их меньше во столько раз, сколько запросов приходится на один ключ, а качество остаётся близким к полному вниманию. Поэтому с 2023 года так устроены открытые декодеры с длинным контекстом. У Qwen3-235B на 64 запроса приходится 4 головы ключей.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

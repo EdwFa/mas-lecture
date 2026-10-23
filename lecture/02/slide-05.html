@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 5. Контекст текущего токена</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .shot { flex: 1; min-height: 0; margin-top: 8px; display: flex; align-items: center; justify-content: center; }
+    .shot img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .note { margin-top: 8px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 22px; line-height: 1.35; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>05</span></div>
+    <h1>Контекст текущего токена</h1>
+    <div class="shot">
+      <img src="img/fig-05.png" alt="Сборка контекста второго токена из весов внимания" />
+    </div>
+    <p class="note">Веса α относятся к выбранному входу x⁽²⁾. Контекст z⁽²⁾ — сумма значений v с этими весами.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

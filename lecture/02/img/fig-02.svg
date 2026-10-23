@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 560" width="3360" height="1120">
+  <rect width="1680" height="560" fill="#f7f4ee"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1.2 L 8 5 L 0 8.8 Z" fill="#1c1915"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; fill: #1c1915; }
+    .box { fill: #ffffff; stroke: #1c1915; stroke-width: 2.4; }
+    .dash { fill: #e3f0e2; stroke: #1c1915; stroke-width: 2.6; stroke-dasharray: 8 6; }
+    .line { fill: none; stroke: #1c1915; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .s { font-size: 22px; font-weight: 500; }
+    .m { font-size: 28px; font-weight: 650; }
+    .cap { font-size: 22px; font-weight: 500; }
+  </style>
+
+  <!-- 1 -->
+  <rect class="box" x="36" y="28" width="250" height="96" rx="18"/>
+  <text class="s" x="161" y="66" text-anchor="middle">1) Data preparation</text>
+  <text class="s" x="161" y="94" text-anchor="middle">&amp; sampling</text>
+  <path class="line" marker-end="url(#arrow)" d="M161 124 V188"/>
+
+  <!-- 2 attention -->
+  <rect class="dash" x="312" y="28" width="250" height="96" rx="18"/>
+  <text class="s" x="437" y="66" text-anchor="middle">2) Attention</text>
+  <text class="s" x="437" y="94" text-anchor="middle">mechanism</text>
+  <path class="line" marker-end="url(#arrow)" d="M437 124 V188"/>
+
+  <!-- Building an LLM -->
+  <rect class="box" x="36" y="196" width="470" height="92" rx="22"/>
+  <text class="m" x="271" y="250" text-anchor="middle">Building an LLM</text>
+
+  <!-- 3 pretraining -->
+  <path class="line" marker-end="url(#arrow)" d="M506 242 H748"/>
+  <rect class="box" x="548" y="206" width="168" height="48" rx="14"/>
+  <text class="cap" x="632" y="236" text-anchor="middle">3) Pretraining</text>
+
+  <!-- Foundation model -->
+  <rect class="box" x="756" y="188" width="400" height="108" rx="24"/>
+  <text class="m" x="956" y="250" text-anchor="middle">Foundation model</text>
+
+  <!-- 4 5 6 -->
+  <rect class="box" x="708" y="28" width="150" height="86" rx="16"/>
+  <text class="s" x="783" y="64" text-anchor="middle">4) Training</text>
+  <text class="s" x="783" y="90" text-anchor="middle">loop</text>
+  <path class="line" marker-end="url(#arrow)" d="M783 114 V188"/>
+
+  <rect class="box" x="874" y="28" width="150" height="86" rx="16"/>
+  <text class="s" x="949" y="64" text-anchor="middle">5) Model</text>
+  <text class="s" x="949" y="90" text-anchor="middle">evaluation</text>
+  <path class="line" marker-end="url(#arrow)" d="M949 114 V188"/>
+
+  <rect class="box" x="1040" y="28" width="118" height="100" rx="16"/>
+  <text class="s" x="1099" y="58" text-anchor="middle">6) Load</text>
+  <text class="s" x="1099" y="84" text-anchor="middle">pretrained</text>
+  <text class="s" x="1099" y="110" text-anchor="middle">weights</text>
+  <path class="line" marker-end="url(#arrow)" d="M1099 128 V188"/>
+
+  <!-- branches from foundation model -->
+  <path class="line" d="M1156 214 C1280 214 1320 118 1408 118"/>
+  <path class="line" marker-end="url(#arrow)" d="M1408 118 H1462"/>
+  <path class="line" d="M1156 270 C1280 270 1320 392 1408 392"/>
+  <path class="line" marker-end="url(#arrow)" d="M1408 392 H1462"/>
+
+  <!-- 7 -->
+  <rect class="box" x="1268" y="78" width="168" height="64" rx="16"/>
+  <text class="s" x="1352" y="116" text-anchor="middle">7) Finetuning</text>
+
+  <!-- Classifier -->
+  <rect class="box" x="1462" y="72" width="186" height="92" rx="18"/>
+  <text class="m" x="1555" y="126" text-anchor="middle">Classifier</text>
+  <text class="cap" x="1555" y="52" text-anchor="middle">Dataset with class labels</text>
+  <path class="line" marker-end="url(#arrow)" d="M1555 58 V72"/>
+
+  <!-- 8 -->
+  <rect class="box" x="1268" y="360" width="168" height="64" rx="16"/>
+  <text class="s" x="1352" y="398" text-anchor="middle">8) Finetuning</text>
+
+  <!-- Personal assistant -->
+  <rect class="box" x="1462" y="346" width="186" height="92" rx="18"/>
+  <text class="m" x="1555" y="386" text-anchor="middle">Personal</text>
+  <text class="m" x="1555" y="418" text-anchor="middle">assistant</text>
+  <text class="cap" x="1555" y="500" text-anchor="middle">Instruction dataset</text>
+  <path class="line" marker-end="url(#arrow)" d="M1555 478 V438"/>
+</svg>

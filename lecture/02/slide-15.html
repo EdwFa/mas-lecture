@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 15. Экономия на кэше в MLA</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .shot { flex: 1; min-height: 0; margin-top: 4px; display: flex; align-items: center; justify-content: center; }
+    .shot img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .note { margin-top: 8px; max-width: 1680px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 21px; line-height: 1.32; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>15</span></div>
+    <h1>Экономия на кэше в MLA</h1>
+    <div class="shot">
+      <img src="img/fig-12.png" alt="Кэш ключей и значений против длины контекста для MHA и MLA" />
+    </div>
+    <p class="note">Тот же пример: 24 головы, ширина 2048, 48 слоёв, bf16. Около 10⁵ токенов кэш MHA около 52 ГБ. Ранг 512 сжимает его в 8 раз, до примерно 7 ГБ: в кэше один вектор длины 512 вместо ключа и значения, каждый ширины 2048. Ранг 64 на рисунке даёт 64×. У DeepSeek-V3 ранг тоже 512, но ширина 7168, поэтому множитель с этого графика туда не переносят.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

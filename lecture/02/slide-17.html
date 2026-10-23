@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 17. Оценка LLM</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .groups {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .group { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .who {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .group h2 {
+      margin: 10px 0 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .group p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .example {
+      margin-top: 28px;
+      border-top: 1px solid #1c1915;
+      padding-top: 14px;
+    }
+    .example .who {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .example h2 {
+      margin: 8px 0 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .example p {
+      margin: 8px 0 0;
+      max-width: 1720px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { margin-top: 22px; max-width: 1720px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>17</span></div>
+    <h1>Оценка LLM</h1>
+    <p class="lead">Четыре способа. В статье, отчёте и карточке модели обычно смешивают два или больше. Потери при обучении, перплексия и награды остаются внутри разработки.</p>
+    <div class="groups">
+      <article class="group">
+        <div class="who">Бенчмарк · ответ известен заранее</div>
+        <h2>Выбор и верификатор</h2>
+        <p>Множественный выбор сравнивает букву с ключом. Верификатор проверяет ответ программой: сошёлся ли счёт, прошёл ли тест.</p>
+      </article>
+      <article class="group">
+        <div class="who">Суждение · ключа нет</div>
+        <h2>Рейтинг и судья</h2>
+        <p>Рейтинг ставит ответы в порядок по предпочтению людей. Судья — другая модель, которой дали критерий и два текста.</p>
+      </article>
+    </div>
+    <div class="example">
+      <div class="who">Метод 1 · точность выбора</div>
+      <h2>MMLU</h2>
+      <p>57 предметов, около 16 тысяч вопросов с вариантами. Точность — доля совпавших букв. 14 000 верных из 16 000 дают 87,5%. Это пример арифметики, не чей-то результат. Рядом с прямым сравнением буквы живут подсчёты по логарифму вероятности варианта.</p>
+    </div>
+    <p class="coda">Такой тест проверяет, вспомнила ли модель факт. Скачок Gemma 4 читают по нескольким таким таблицам, а не по одному месту на арене.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

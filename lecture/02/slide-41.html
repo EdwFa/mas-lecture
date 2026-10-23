@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 41. Современные архитектуры LLM</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .shot { flex: 1; min-height: 0; margin-top: 8px; display: flex; align-items: center; justify-content: center; }
+    .shot img { width: 72%; height: auto; max-height: 100%; object-fit: contain; }
+    .note {
+      margin: 10px 0 0;
+      max-width: 1720px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>41</span></div>
+    <h1>Современные архитектуры LLM</h1>
+    <div class="shot">
+      <img src="img/fig-41.png?v=3" alt="Слева canonical decoder и растущий KV-cache. Справа четыре замены: путь токена, память, внутренний шаг и момент записи токена." />
+    </div>
+    <p class="note">Слева опорный декодер: каждый токен проходит один и тот же слой, а KV-кэш только растёт. Справа четыре замены. Синий прямоугольник меняет путь токена. Зелёный меняет память прошлого. Жёлтый меняет норму, гейт и остаток внутри шага. Розовый отодвигает момент, когда токен становится частью текста. Одна модель может нести несколько замен сразу. Рисунок не говорит, какая из них лучшая.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

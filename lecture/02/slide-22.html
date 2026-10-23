@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 22. Одна фраза через блок</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .flow { margin-top: 48px; display: grid; grid-template-columns: 1fr 80px 1fr; gap: 12px; align-items: center; }
+    .words { display: flex; gap: 16px; flex-wrap: wrap; }
+    .w, .mix {
+      font-size: 36px; letter-spacing: -0.03em;
+      border: 1px solid #d9d3c7; padding: 16px 18px;
+    }
+    .mix { border-color: #1c1915; }
+    .arrow { text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 28px; color: #5e6872; }
+    .cap {
+      margin-top: 10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px; letter-spacing: 0.14em; text-transform: uppercase; color: #5e6872;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>22</span></div>
+    <h1>До внимания «смотрит» пустое</h1>
+    <p class="lead">Фраза та же, что на вводной: врач смотрит снимок. Блок не читает больницу. Он смешивает уже поданные токены и выбирает продолжение.</p>
+    <div class="flow">
+      <div>
+        <div class="cap">До</div>
+        <div class="words"><span class="w">врач</span><span class="w">смотрит</span><span class="w">снимок</span></div>
+      </div>
+      <div class="arrow">→</div>
+      <div>
+        <div class="cap">После внимания</div>
+        <div class="words"><span class="mix">смотрит + врач + снимок</span></div>
+      </div>
+    </div>
+    <p class="coda">Дальше сеть уточняет уже смешанный токен. Стопка таких шагов и есть блок.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>
