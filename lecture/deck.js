@@ -1,5 +1,5 @@
 (function () {
-  const TOTAL = 30;
+  const TOTAL = 31;
   const match = location.pathname.match(/slide-(\d+)\.html$/);
   const n = match ? Number(match[1]) : 1;
 
@@ -54,7 +54,7 @@
   const pop = document.querySelector("#deck-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=3";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=4";
   }
 
   count.textContent = n + " / " + TOTAL;
