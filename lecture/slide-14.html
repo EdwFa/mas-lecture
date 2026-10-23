@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 14. Три топологии</title>
+  <title>Слайд 14. Три способа смотреть</title>
   <style>
     html, body {
       margin: 0;
@@ -123,7 +123,7 @@
       <span>Лекция 1. Вводная</span>
       <span>14</span>
     </div>
-    <h1>Три топологии</h1>
+    <h1>Три способа смотреть</h1>
     <p class="lead">Стрелки идут к слову, которое считается. По рисунку видно, откуда слову можно смотреть.</p>
 
     <section class="cols">
@@ -149,7 +149,7 @@
           <text x="260" y="224" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#f7f4ee">смотрит</text>
           <text x="260" y="278" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" letter-spacing="1.5" fill="#5e6872">ВИДИТ ВСЮ ФРАЗУ</text>
         </svg>
-        <p class="cap">Токен видит всю входную последовательность, в том числе слово справа. Строится представление.</p>
+        <p class="cap">Слово видит всю фразу, в том числе слово справа. Так фразу читают целиком.</p>
       </div>
 
       <div>
@@ -173,7 +173,7 @@
           <text x="340" y="224" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#f7f4ee">снимок</text>
           <text x="260" y="278" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" letter-spacing="1.5" fill="#5e6872">СЛЕВА НАПРАВО, БУДУЩЕГО НЕТ</text>
         </svg>
-        <p class="cap">Токен видит только себя и предыдущие. Текст порождается слева направо: сейчас пишется «снимок».</p>
+        <p class="cap">Слово видит только себя и предыдущие. Текст пишется слева направо: сейчас пишется «снимок».</p>
       </div>
 
       <div>
@@ -199,13 +199,13 @@
           <text x="450" y="234" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#f7f4ee">scan</text>
           <text x="300" y="272" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" letter-spacing="1.2" fill="#5e6872">ВИДИТ ВХОД И УЖЕ НАПИСАННОЕ</text>
         </svg>
-        <p class="cap">Отдельное представление входа и отдельное порождение выхода. «scan» видит всю русскую фразу и уже написанные «doctor views».</p>
+        <p class="cap">Вход читают отдельно, выход пишут отдельно. «scan» видит всю русскую фразу и уже написанные «doctor views».</p>
       </div>
     </section>
 
     <section class="coda">
-      <strong>В агентном цикле стоит декодер.</strong>
-      <p>С 2018 года развилка такая: BERT — энкодер, GPT — декодер, позже T5 — обе части. Выбор следующего действия — это порождение продолжения, поэтому рабочая линия агентов идёт от GPT.</p>
+      <strong>В цикле агента стоит декодер.</strong>
+      <p>С 2018 года развилка такая: BERT читает, GPT пишет, позже T5 делает обе части. Выбор следующего действия — это продолжение текста, поэтому агент пишет так же, как GPT: слева направо.</p>
     </section>
 
     <footer>

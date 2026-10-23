@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 26. Кто держит ответ</title>
+  <title>Слайд 26. Кто формирует ответ</title>
   <style>
     html, body { margin: 0; width: 1920px; height: 1080px; background: #f3efe6; }
     .slide {
@@ -60,20 +60,20 @@
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 1. Вводная</span><span>26</span></div>
-    <h1>Кто держит ответ</h1>
-    <p class="lead">Участников несколько. Итог либо собирает один, либо ход уходит другому, либо все пишут в общее место.</p>
+    <h1>Кто формирует ответ</h1>
+    <p class="lead">Участников несколько. Ответ формирует один, ход переходит к другому, или все пишут в общее место.</p>
     <div class="schemes">
       <figure>
-        <svg viewBox="0 0 300 128" role="img" aria-label="Воркеры возвращают результат менеджеру">
+        <svg viewBox="0 0 300 128" role="img" aria-label="Помощники возвращают свою часть оркестратору">
           <defs><marker id="o1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
           <rect x="70" y="6" width="160" height="40" rx="8" fill="#1c1915"/>
-          <text x="150" y="31" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" letter-spacing="1" fill="#f7f4ee">МЕНЕДЖЕР</text>
+          <text x="150" y="31" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" letter-spacing="0.6" fill="#f7f4ee">ОРКЕСТРАТОР</text>
           <line x1="70" y1="84" x2="110" y2="46" stroke="#1c1915" stroke-width="1.6" marker-end="url(#o1)"/>
           <line x1="230" y1="84" x2="190" y2="46" stroke="#1c1915" stroke-width="1.6" marker-end="url(#o1)"/>
           <rect x="16" y="84" width="108" height="36" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-          <text x="70" y="107" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">воркер</text>
+          <text x="70" y="107" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">помощник</text>
           <rect x="176" y="84" width="108" height="36" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-          <text x="230" y="107" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">воркер</text>
+          <text x="230" y="107" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">помощник</text>
         </svg>
         <figcaption>Оркестратор</figcaption>
       </figure>
@@ -89,7 +89,7 @@
           <rect x="164" y="80" width="120" height="40" rx="8" fill="#f7f4ee" stroke="#d9d3c7"/>
           <text x="224" y="105" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5e6872">молчит</text>
         </svg>
-        <figcaption>Contract net</figcaption>
+        <figcaption>Выбор по заявке</figcaption>
       </figure>
       <figure>
         <svg viewBox="0 0 300 128" role="img" aria-label="Ход переходит специалисту">
@@ -131,38 +131,38 @@
     </div>
     <table>
       <thead>
-        <tr><th>Паттерн</th><th>Как называют сейчас</th><th>Что делает</th></tr>
+        <tr><th>Приём</th><th>Как называют сейчас</th><th>Что делает</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>Orchestrator–worker</td>
-          <td>Supervisor, agents as tools, вложенный граф</td>
-          <td>Менеджер оставляет себе итог. Воркер видит только свой срез</td>
+          <td>Оркестратор и помощники</td>
+          <td>Supervisor, agents as tools</td>
+          <td>Ответ формирует оркестратор. Помощник видит только свою часть</td>
         </tr>
         <tr>
+          <td>Выбор по заявке</td>
           <td>Contract net</td>
-          <td>Выбор исполнителя по заявке</td>
-          <td>Задачу отдают тому, кто её берёт</td>
+          <td>Задачу отдают тому, кто её берёт. Дальше ответ формирует он</td>
         </tr>
         <tr>
-          <td>Handoffs</td>
+          <td>Передача</td>
           <td>Handoff, swarm</td>
-          <td>Специалист забирает ход. В swarm разговор продолжает последний</td>
+          <td>Ход переходит к специалисту. Дальше ответ формирует он</td>
         </tr>
         <tr>
           <td>Групповой чат</td>
           <td>Group chat, дебаты</td>
-          <td>Общая лента. Менеджер раздаёт ходы</td>
+          <td>Все пишут в общую ленту. Кто говорит следующим, решает ведущий</td>
         </tr>
         <tr>
+          <td>Доска</td>
           <td>Blackboard</td>
-          <td>Доска с правами записи</td>
-          <td>На доске факты, источники и разногласия</td>
+          <td>На доске лежат факты, источники и спор</td>
         </tr>
       </tbody>
     </table>
     <div class="coda">
-      <strong>На консилиуме итог собирает оркестратор. Разногласие остаётся на доске.</strong>
+      <strong>На консилиуме ответ формирует оркестратор. Спор остаётся на доске.</strong>
     </div>
     <div class="spacer"></div>
     <footer>
