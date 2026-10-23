@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 16. Две ветви блока</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      background: #f3efe6;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      box-sizing: border-box;
+      padding: 40px 64px 26px;
+      display: flex;
+      flex-direction: column;
+      background: #f7f4ee;
+      color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    h1 {
+      margin: 10px 0 0;
+      font-size: 52px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .lead {
+      margin: 12px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #243038;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .model {
+      margin: 4px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    svg { width: 100%; height: 300px; display: block; margin-top: 8px; }
+
+    .shot {
+      margin: 8px 0 0;
+      height: 268px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid #e4dfd4;
+    }
+
+    .shot img {
+      max-width: 100%;
+      max-height: 268px;
+      display: block;
+    }
+
+    .src {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: #5e6872;
+    }
+
+    .cap {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #243038;
+    }
+
+    .coda {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #d9d3c7;
+    }
+
+    .spacer { flex: 1; }
+
+    .coda strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .coda p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #243038;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker">
+      <span>Лекция 1. Вводная</span>
+      <span>16</span>
+    </div>
+    <h1>Две ветви блока</h1>
+    <p class="lead">Декодер тот же. Дешевле становится либо сеть токена, либо часть слоёв, которые смешивают фразу.</p>
+
+    <section class="cols">
+      <div>
+        <h2>Смесь экспертов</h2>
+        <p class="model">Сеть токена</p>
+        <figure class="shot">
+          <img src="img/moe-router.png" alt="Маршрутизатор выбирает одного эксперта, остальные бледные">
+        </figure>
+        <p class="src">Maarten Grootendorst, A Visual Guide to Mixture of Experts, 2024</p>
+        <p class="cap">Маршрут смотрит на токен и включает часть сетей. На рисунке выбран один, остальные молчат. Qwen3-235B считает 8 из 128: 235 млрд весов всего, 22 млрд на токен. Qwen3-Next считает 10 из 512 и один общий: 80 млрд всего, около 3 млрд на токен. Внимание по-прежнему идёт по всему контексту.</p>
+      </div>
+      <div>
+        <h2>Гибрид</h2>
+        <p class="model">Смешение фразы</p>
+        <svg viewBox="0 0 820 300" role="img" aria-label="Три слоя состояния и один слой внимания">
+          <defs>
+            <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/>
+            </marker>
+          </defs>
+          <g font-family="Georgia, serif" font-size="22" text-anchor="middle">
+            <rect x="36" y="16" width="130" height="46" rx="8" fill="#f7f4ee" stroke="#d9d3c7"/>
+            <text x="101" y="46" fill="#1c1915">врач</text>
+            <rect x="196" y="16" width="150" height="46" rx="8" fill="#f7f4ee" stroke="#d9d3c7"/>
+            <text x="271" y="46" fill="#1c1915">смотрит</text>
+            <rect x="376" y="16" width="150" height="46" rx="8" fill="#f7f4ee" stroke="#d9d3c7"/>
+            <text x="451" y="46" fill="#1c1915">снимок</text>
+          </g>
+          <path d="M101 62 C 101 118, 420 132, 668 174" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#arr2)"/>
+          <path d="M271 62 C 271 108, 520 128, 711 174" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#arr2)"/>
+          <path d="M451 62 C 451 100, 620 118, 754 174" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#arr2)"/>
+          <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="middle">
+            <rect x="36" y="176" width="150" height="64" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+            <text x="111" y="214" fill="#1c1915">СОСТОЯНИЕ</text>
+            <line x1="186" y1="208" x2="228" y2="208" stroke="#1c1915" stroke-width="2" marker-end="url(#arr2)"/>
+            <rect x="236" y="176" width="150" height="64" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+            <text x="311" y="214" fill="#1c1915">СОСТОЯНИЕ</text>
+            <line x1="386" y1="208" x2="428" y2="208" stroke="#1c1915" stroke-width="2" marker-end="url(#arr2)"/>
+            <rect x="436" y="176" width="150" height="64" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+            <text x="511" y="214" fill="#1c1915">СОСТОЯНИЕ</text>
+            <line x1="586" y1="208" x2="628" y2="208" stroke="#1c1915" stroke-width="2" marker-end="url(#arr2)"/>
+            <rect x="636" y="176" width="150" height="64" rx="8" fill="#1c1915"/>
+            <text x="711" y="206" fill="#f7f4ee">ВНИМАНИЕ</text>
+            <text x="711" y="226" fill="#f7f4ee" font-size="13">ВСЯ ФРАЗА</text>
+          </g>
+          <text x="311" y="278" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1.2" fill="#5e6872">ОДИН ШАГ НЕСЁТ СЛЕД ПРЕДЫДУЩИХ СЛОВ</text>
+        </svg>
+        <p class="cap">Слой состояния идёт слева направо: цена растёт как длина. Слой внимания снова видит всю фразу, и его цена растёт как квадрат длины. У Qwen3-Next 48 слоёв: три слоя состояния, затем слой внимания, и так двенадцать раз.</p>
+      </div>
+    </section>
+
+    <div class="coda">
+      <strong>Обе ветви стоят в декодере и выбирают продолжение.</strong>
+      <p>Исполнение вызова остаётся у рантайма.</p>
+    </div>
+
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

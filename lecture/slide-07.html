@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 7. Что такое LLM</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      background: #f3efe6;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      box-sizing: border-box;
+      padding: 64px 88px 48px;
+      display: flex;
+      flex-direction: column;
+      background: #f7f4ee;
+      color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    h1 {
+      margin: 28px 0 0;
+      font-size: 64px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1.45fr 48px 0.7fr 48px 1.05fr;
+      align-items: stretch;
+      gap: 8px;
+      margin-top: 36px;
+    }
+
+    .label {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .panel .body {
+      flex: 1;
+      margin-top: 16px;
+      padding: 28px 28px 24px;
+      border: 1px solid #d9d3c7;
+    }
+
+    .piece + .piece {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #e4dfd4;
+    }
+
+    .piece h3 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .piece p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #3e4650;
+    }
+
+    .panel .glue {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #1c1915;
+    }
+
+    .panel p,
+    .model p,
+    .outcomes p {
+      margin: 18px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 28px;
+    }
+
+    .model .body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 2px solid #1c1915;
+    }
+
+    .model .word {
+      font-size: 64px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+    }
+
+    .model .sub {
+      margin-top: 14px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.3;
+      color: #243038;
+    }
+
+    .bars {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      gap: 14px;
+      align-items: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      color: #5e6872;
+    }
+
+    .bar i {
+      display: block;
+      height: 14px;
+      background: #d9d3c7;
+    }
+
+    .bar.hot {
+      color: #1c1915;
+      font-weight: 500;
+    }
+
+    .bar.hot i {
+      width: 100%;
+      background: #1c1915;
+    }
+
+    .bar:nth-child(2) i { width: 58%; }
+    .bar:nth-child(3) i { width: 34%; }
+    .bar:nth-child(4) i { width: 16%; }
+
+    .agent {
+      margin-top: 36px;
+    }
+
+    .outcomes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 16px;
+    }
+
+    .outcome {
+      padding: 22px 28px 24px;
+      border-top: 2px solid #1c1915;
+    }
+
+    .outcome h2 {
+      margin: 10px 0 0;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .note {
+      margin-top: 28px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+
+    .spacer {
+      flex: 1;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: 1px solid #d9d3c7;
+      padding-top: 20px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker">
+      <span>Лекция 1. Вводная</span>
+      <span>07</span>
+    </div>
+    <h1>Что такое LLM</h1>
+    <p class="lead">Большая языковая модель продолжает последовательность токенов.</p>
+
+    <div class="flow">
+      <section class="panel">
+        <div class="label">01 · Вход</div>
+        <div class="body">
+          <div class="piece">
+            <h3>Цель и правила</h3>
+            <p>Каким должен быть результат и что допустимо сделать.</p>
+          </div>
+          <div class="piece">
+            <h3>Контекст</h3>
+            <p>Сообщения, состояние и результаты уже сделанных вызовов.</p>
+          </div>
+          <div class="piece">
+            <h3>Инструменты</h3>
+            <p>Имя, назначение и схема аргументов каждого действия.</p>
+          </div>
+          <p class="glue">Рантайм склеивает это в одну последовательность токенов.</p>
+        </div>
+      </section>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
+          <path d="M0 12h28" stroke="#1c1915" stroke-width="2"/>
+          <path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <section class="panel model">
+        <div class="label">Модель</div>
+        <div class="body">
+          <div class="word">LLM</div>
+          <div class="sub">Веса. Один шаг — следующее продолжение.</div>
+        </div>
+      </section>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
+          <path d="M0 12h28" stroke="#1c1915" stroke-width="2"/>
+          <path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <section class="panel">
+        <div class="label">02 · Выход</div>
+        <div class="body">
+          <div class="bars" aria-label="Схема распределения следующего токена. Длины полос условные.">
+            <div class="bar hot"><span>вероятнее</span><i></i></div>
+            <div class="bar"><span>реже</span><i></i></div>
+            <div class="bar"><span>реже</span><i></i></div>
+            <div class="bar"><span>реже</span><i></i></div>
+          </div>
+          <p>Распределение следующего токена. Длины полос условные.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="agent">
+      <div class="label">03 · Для агента это продолжение читается так</div>
+      <div class="outcomes">
+        <section class="outcome">
+          <h2>Текст ответа</h2>
+          <p>Фраза остаётся в контексте.</p>
+        </section>
+        <section class="outcome">
+          <h2>Вызов инструмента</h2>
+          <p>Рантайм исполняет действие.</p>
+        </section>
+      </div>
+    </div>
+
+    <p class="note">«Большая» — масштаб обучения и объём знаний в весах.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

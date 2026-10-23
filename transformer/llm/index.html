@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Большие языковые модели</title>
+  <link rel="stylesheet" href="css/chapter.css" />
+</head>
+<body class="core">
+  <header class="top">
+    <div class="brand">Большие языковые модели</div>
+    <div class="modes" role="group" aria-label="Режим чтения">
+      <button type="button" id="mode-core" aria-pressed="true">Коротко · 11 мин</button>
+      <button type="button" id="mode-full" aria-pressed="false">Полностью · 30 мин</button>
+      <button type="button" id="mode-research" aria-pressed="false">Статьи у разделов</button>
+      <button type="button" class="solid" id="done-chapter" aria-pressed="false">Глава прочитана</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Содержание">
+      <p>Сейчас читается</p>
+      <a href="#lead">Одной фразой</a>
+      <a href="#task">Одна модель</a>
+      <a href="#tokens">Токены</a>
+      <a href="#predict">Следующий токен</a>
+      <a href="#line">От GPT-1 к GPT-3</a>
+      <a href="#prompt">Подсказка</a>
+      <a href="#why">Почему это работает</a>
+      <a href="#scaling">Масштаб</a>
+      <a href="#decode">Выбор слова</a>
+      <a href="#assist">От модели к помощнику</a>
+      <a href="#course">В цикле агента</a>
+      <a href="#remember">Что запомнить</a>
+      <a href="#concepts">Понятия</a>
+      <a href="#papers">Статьи</a>
+      <a href="#watch">Смотреть</a>
+    </nav>
+
+    <main>
+      <p class="eyebrow">Что дало предсказание следующего токена на большом тексте</p>
+      <h1>Большие языковые модели</h1>
+      <p class="deck">Короткий режим — линия от предобучения до выбора следующего слова и две лаборатории. Полный — масштаб, всплывающие умения и путь к помощнику. Числа в лабораториях считаются.</p>
+
+      <section id="lead">
+        <p>В одном предложении. Декодер трансформера учили продолжать текст на огромном корпусе. Одна и та же модель стала выполнять много задач, если нужный ответ является естественным продолжением подсказки.</p>
+      </section>
+
+      <section id="task">
+        <h2>Одна модель на много задач <a href="#task" data-copy>#</a></h2>
+        <p>К 2018 году трансформер уже был, а языковые системы оставались узкими: классификатор тональности, ответ на вопрос и перевод обучали отдельно. В том же году несколько групп взяли приём из зрения: сначала общая подготовка на сырье, потом короткая донастройка на размеченной задаче. Для текста сырьё даёт задачу само. ELMo, ULMFiT, GPT и BERT вышли в один год.</p>
+        <p>BERT — энкодер. Он заполняет скрытые слова, глядя в обе стороны, и тогда лидировал на наборах понимания. GPT — декодер. Он предсказывает следующий токен и выглядел более слабым родственником. Дальше масштабировали именно его. Архитектура почти не менялась. Выросли данные, число параметров и то, как моделью пользуются.</p>
+        <div class="research-only">
+          <p class="eyebrow">Статьи раздела</p>
+          <p><a href="https://arxiv.org/abs/1802.05365">ELMo, Peters et al., 2018.</a> Состояния предобученной языковой модели как признаки.</p>
+          <p><a href="https://arxiv.org/abs/1801.06146">ULMFiT, Howard, Ruder, 2018.</a> Сначала общий язык, потом область, потом задача.</p>
+          <p><a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf">GPT, Radford et al., 2018.</a> Декодер на длинном тексте, затем дообучение с малой правкой архитектуры. В статье — прирост на 9 из 12 задач.</p>
+          <p><a href="https://arxiv.org/abs/1810.04805">BERT, Devlin et al., 2018.</a> Энкодер заполняет случайно скрытые токены.</p>
+        </div>
+      </section>
+
+      <section id="tokens">
+        <h2>Текст становится токенами <a href="#tokens" data-copy>#</a></h2>
+        <p>Модель читает номера, не буквы. Слова целиком дают открытый словарь: новое имя и опечатка неизвестны. Одни буквы делают последовательность слишком длинной. Компромисс — части слов. Частое слово остаётся одним токеном, редкое собирается из кусков. Номер токена выбирает строку таблицы эмбеддингов.</p>
+        <p>Куски получают кодированием пар байтов, BPE (Sennrich, Haddow, Birch, 2015). Начинают с символов. Считают соседние пары. Самую частую сливают в новый символ. И так дальше. В GPT-1 словарь собран 40 тысячами таких слияний.</p>
+        <div class="panel" id="bpe">
+          <p class="eyebrow">Лаборатория · учебный корпус · около 7 минут</p>
+          <h3>Собрать словарь</h3>
+          <p id="bpe-lead">Корпус короткий и повторяет одни и те же слова, чтобы пары были видны. Знак _ отмечает конец слова. Незнакомые слова внизу режутся уже выученными кусками.</p>
+          <div id="bpe-corpus"></div>
+          <p class="eyebrow" id="bpe-pair">Пара ещё не выбрана.</p>
+          <div class="navrow">
+            <button type="button" class="solid" id="bpe-step">Слить самую частую пару</button>
+            <button type="button" class="ghost" id="bpe-reset">Сначала</button>
+          </div>
+          <h3>Незнакомые слова</h3>
+          <div id="bpe-unseen"></div>
+          <label class="eyebrow">Разрезать свою строку
+            <input id="bpe-input" type="text" value="снимка врача" style="display:block;width:100%;margin-top:6px;padding:8px;border:1px solid var(--line);background:#fff;border-radius:8px;" />
+          </label>
+          <div id="bpe-custom"></div>
+        </div>
+        <div class="research-only">
+          <p class="eyebrow">Статья раздела</p>
+          <p><a href="https://arxiv.org/abs/1508.07909">Neural Machine Translation of Rare Words with Subword Units, 2015.</a></p>
+        </div>
+      </section>
+
+      <section id="predict">
+        <h2>Предсказание следующего токена <a href="#predict" data-copy>#</a></h2>
+        <p>Модель в духе GPT — это декодер из предыдущей главы с одной работой. Прочитать токены слева и выдать вероятность каждого токена словаря как следующего. Вероятность текста — произведение этих шагов:</p>
+        <div class="eq"><span>P(x)</span><span>=</span><span>∏ P(x<sub>t</sub> | x<sub>&lt;t</sub>)</span><span class="gloss">На каждом месте условие — только уже прочитанное.</span></div>
+        <p>Один проход по документу из 2 000 токенов даёт 2 000 предсказаний. Разметку человек не ставит: ответ уже лежит в тексте справа. Поэтому корпус может быть размером с доступный веб. Генерация — тот же шаг в цикле: распределение, выбор токена, дописать, снова. Ответ в чате появляется по кускам по этой причине.</p>
+        <p>Предобучение гоняет этот критерий по книгам, страницам и коду. На выходе базовая модель: она умеет продолжать текст и несёт в весах то, что было в данных, включая пробелы и перекосы этих данных. Отчёт Stanford 2021 назвал такие широко обученные модели базовыми, foundation models.</p>
+        <div class="only-full">
+          <p>В статье GPT-2 контекст увеличен с 512 до 1 024 токенов, словарь — до 50 257. Норму слоя перенесли на вход подслоя. Это уже знакомая по трансформеру правка, не новая задача.</p>
+        </div>
+      </section>
+
+      <section id="line">
+        <h2>От GPT-1 к GPT-3 <a href="#line" data-copy>#</a></h2>
+        <p>Рецепт один: декодер, следующий токен. Меняется масштаб и способ применения.</p>
+        <table class="plain">
+          <tr><th>Модель</th><th>Год</th><th class="num">Параметры</th><th>Как пользуются</th></tr>
+          <tr><td>GPT-1</td><td>2018</td><td class="num">12 слоёв, ширина 768</td><td>Дообучение на каждую задачу. Около 117 млн параметров у этой ширины в таблице GPT-2.</td></tr>
+          <tr><td>GPT-2</td><td>2019</td><td class="num">1,5 млрд</td><td>Без дообучения. На 7 из 8 наборов языкового моделирования — лучший опубликованный результат. После статьи ставили «TL;DR:» и читали продолжение как сжатие. По ROUGE оно было слабым.</td></tr>
+          <tr><td>GPT-3</td><td>2020</td><td class="num">175 млрд</td><td>Примерно в сто раз больше GPT-2. Задачу задают несколькими примерами в подсказке.</td></tr>
+        </table>
+        <p class="only-full">Три разных числа легко смешать. Параметры — размер весов. Токены обучения — сколько текста прочитано. Контекст — сколько токенов модель видит за один запрос. Запас одного не заменяет нехватку другого. LLaMA, 2023: модели от 7 до 65 млрд на открытых данных. В статье модель на 13 млрд обходит GPT-3 на 175 млрд на большинстве приведённых сравнений. Chinchilla, Hoffmann et al., 2022: при том же бюджете вычислений выгоднее меньше параметров и больше токенов. Их модель на 70 млрд обошла более крупные, обученные на более коротком корпусе.</p>
+        <div class="research-only">
+          <p class="eyebrow">Статьи раздела</p>
+          <p><a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">GPT-2, Radford et al., 2019.</a> WebText, байтовый BPE, нулевая подсказка.</p>
+          <p><a href="https://arxiv.org/abs/2005.14165">GPT-3, Brown et al., 2020.</a> Обучение в контексте: ноль, один и несколько примеров. Разделы 1–2 и рисунок 1.2 держат главную мысль. Раздел 6 — про последствия.</p>
+          <p><a href="https://arxiv.org/abs/2302.13971">LLaMA, Touvron et al., 2023.</a></p>
+          <p><a href="https://arxiv.org/abs/2203.15556">Chinchilla, Hoffmann et al., 2022.</a></p>
+        </div>
+      </section>
+
+      <section id="prompt">
+        <h2>Задача внутри подсказки <a href="#prompt" data-copy>#</a></h2>
+        <p>Вместо дообучения пишут текст, у которого естественное продолжение и есть ответ. Веса не меняются. Примеры читает внимание за один проход. Это обучение в контексте: программирование модели стало письмом.</p>
+        <div class="panel">
+          <p class="eyebrow">Форма подсказки, не ответ модели</p>
+          <pre class="matrix" id="prompt-text"></pre>
+          <div class="navrow">
+            <button type="button" class="ghost" id="prompt-swap" aria-pressed="false">Перепутать ответы в примерах</button>
+          </div>
+          <p id="prompt-note">Примеры показывают формат: слева ситуация, справа что сделать дальше. Продолжение третьей строки здесь дописано как иллюстрация формата.</p>
+        </div>
+        <p class="only-full">Min и соавторы, 2022, на двенадцати моделях меняли отдельно метки, входы и формат. Замена правильных ответов на случайные часто почти не снижала точность. Примеры в основном сообщают вид задачи. Связаны ли с этим головы индукции, которые копируют то, что уже следовало за таким же токеном, до сих пор проверяют отдельно.</p>
+        <div class="research-only">
+          <p class="eyebrow">Статья раздела</p>
+          <p><a href="https://arxiv.org/abs/2202.12837">Rethinking the Role of Demonstrations, Min et al., 2022.</a></p>
+        </div>
+      </section>
+
+      <section id="why">
+        <h2>Почему предсказание заходит так далеко <a href="#why" data-copy>#</a></h2>
+        <p>Чтобы хорошо угадывать следующий кусок разнообразного человеческого текста, модели приходится ловить закономерности, которые этот текст породили. Каждая пойманная закономерность снижает потерю. Масштаб и пёстрые данные толкают ловить их много. Отсюда перевод, код и пошаговые объяснения у цели, в которой нет ни одного из этих слов.</p>
+        <p>Та же цель показывает границу. Легче предсказать то, что пишут часто. Редкий факт держится слабее. Популярное заблуждение тоже легко продолжить. Вопрос, считается ли такое предсказание пониманием, статья не закрывает.</p>
+        <div class="only-full">
+          <p>Есть и взгляд через сжатие. Хорошая модель следующего токена — это хороший код. Работы, где языковую модель ставят в арифметическое кодирование, сравнивают её с обычными архиваторами на тексте, картинках и звуке. Шеннон, 1948, в первой части вводит энтропию и ряд приближений к английскому тексту. Это ранний языковой моделью в том же смысле: чем длиннее учтённый контекст, тем меньше неожиданность следующего символа.</p>
+        </div>
+      </section>
+
+      <section id="scaling">
+        <h2>Потеря падает по степенному закону <a href="#scaling" data-copy>#</a></h2>
+        <p>Kaplan и соавторы, 2020, увидели, что потеря языковой модели ложится на прямую в двойном логарифме, если растить параметры, данные или вычисления. По их формуле для случая, когда данных хватает:</p>
+        <div class="eq"><span>L(N)</span><span>=</span><span>(N<sub>c</sub> / N)<sup>α</sup></span><span class="gloss">α ≈ 0,076, N<sub>c</sub> ≈ 8,8×10<sup>13</sup>. N — параметры без эмбеддингов. Константа зависит от словаря и корпуса.</span></div>
+        <div class="panel">
+          <p class="eyebrow">Подсчёт по формуле 2020 года, не замер конкретной модели</p>
+          <div class="dial">
+            <label>Параметры N <span id="scale-label"></span></label>
+            <input id="scale-n" type="range" min="8" max="12" step="0.01" value="9.18" />
+          </div>
+          <p id="scale-loss"></p>
+          <svg id="scale-chart" class="chart" viewBox="0 0 640 240" role="img" aria-label="Потеря против числа параметров"></svg>
+          <p>Точки на кривой — опубликованные размеры, не измеренные потери этих моделей. Удвоение N умножает потерю на 2<sup>−0,076</sup> ≈ 0,95. Chinchilla позже сдвинула баланс в сторону большего числа токенов на параметр. Формула выше этого сдвига не описывает.</p>
+        </div>
+        <div class="only-full">
+          <h3>Скачок на графике и скачок умения</h3>
+          <p>Wei и соавторы, 2022, назвали всплывающим умение, которого нет у меньших моделей и которое появляется у больших. Schaeffer и соавторы, 2023, показали, что резкая метрика сама изготавливает скачок. Ниже гладкая доля растёт всё время. Точное совпадение долго остаётся нулём и включается одним порогом.</p>
+          <div class="panel">
+            <div class="dial">
+              <label>Размер на той же оси <span id="emerge-label"></span></label>
+              <input id="emerge-n" type="range" min="8" max="12" step="0.01" value="9.5" />
+            </div>
+            <div class="attn" id="emerge-bars"></div>
+            <p id="emerge-note"></p>
+          </div>
+        </div>
+        <div class="research-only">
+          <p class="eyebrow">Статьи раздела</p>
+          <p><a href="https://arxiv.org/abs/2001.08361">Kaplan et al., 2020.</a> Формулы (1.1)–(1.3).</p>
+          <p><a href="https://arxiv.org/abs/2206.07682">Wei et al., 2022.</a> Определение всплывающих умений.</p>
+          <p><a href="https://arxiv.org/abs/2304.15004">Schaeffer et al., 2023.</a> Нелинейная метрика рисует мираж скачка.</p>
+          <p><a href="https://arxiv.org/abs/2303.08774">GPT-4 Technical Report, 2023.</a> Потерю предсказывали по меньшим запускам. Архитектура, число параметров, данные и вычисления в отчёте не опубликованы.</p>
+        </div>
+      </section>
+
+      <section id="decode">
+        <h2>Как выбирают следующий токен <a href="#decode" data-copy>#</a></h2>
+        <p>После softmax есть распределение. Жадный выбор всегда берёт самый вероятный токен и быстро зацикливается. Температура делит оценки до softmax: ниже единицы — распределение острее, выше — площе. Top-k оставляет k крупнейших. Top-p, ядро Holtzman et al., 2019, оставляет наименьший набор, чьи вероятности суммируются хотя бы в p. Набор сам сужается, когда модель уверена.</p>
+        <div class="panel" id="decode-lab">
+          <p class="eyebrow">Лаборатория · учебные переходы · около 9 минут</p>
+          <p>Это не языковая модель. У каждого слова заранее заданы оценки следующего. Температура, top-k и top-p применяются к ним по-настоящему, затем слово выбирается случайно.</p>
+          <p class="sentence-out" id="decode-sentence"></p>
+          <div class="row2">
+            <div class="dial">
+              <label>Температура <span id="temp-label"></span></label>
+              <input id="temp" type="range" min="0.2" max="2" step="0.05" value="0.8" />
+            </div>
+            <div class="dial">
+              <label>Top-k <span id="topk-label"></span></label>
+              <input id="topk" type="range" min="1" max="9" step="1" value="9" />
+            </div>
+          </div>
+          <div class="dial">
+            <label>Top-p <span id="topp-label"></span></label>
+            <input id="topp" type="range" min="0.1" max="1" step="0.05" value="0.9" />
+          </div>
+          <div class="attn" id="decode-bars"></div>
+          <div class="navrow">
+            <button type="button" class="solid" id="decode-add">Добавить слово</button>
+            <button type="button" class="ghost" id="decode-reset">Сначала</button>
+            <button type="button" class="ghost" id="decode-compare">Два прохода</button>
+          </div>
+          <div class="compare" id="decode-compare-out"></div>
+        </div>
+        <div class="research-only">
+          <p class="eyebrow">Статья раздела</p>
+          <p><a href="https://arxiv.org/abs/1904.09751">The Curious Case of Neural Text Degeneration, Holtzman et al., 2019.</a></p>
+        </div>
+      </section>
+
+      <section id="assist">
+        <h2>От базовой модели к помощнику <a href="#assist" data-copy>#</a></h2>
+        <p>Базовая модель продолжает текст. Помощник следует просьбе. Wei et al., 2021, дообучили предобученную модель на десятках наборов, переписанных как словесные инструкции, и проверяли на видах задач, которых в обучении не было. Ouyang et al., 2022, добавили человеческую обратную связь в три шага.</p>
+        <div class="panel">
+          <div class="steps" id="rlhf-steps"></div>
+          <h3 id="rlhf-title"></h3>
+          <p id="rlhf-body"></p>
+          <div class="navrow">
+            <button type="button" class="ghost" id="rlhf-prev">Назад</button>
+            <button type="button" class="ghost" id="rlhf-next">Дальше</button>
+          </div>
+        </div>
+        <div class="research-only">
+          <p class="eyebrow">Статьи раздела</p>
+          <p><a href="https://arxiv.org/abs/2109.01652">FLAN, Wei et al., 2021.</a></p>
+          <p><a href="https://arxiv.org/abs/2203.02155">InstructGPT, Ouyang et al., 2022.</a> Рисунок 2 — три шага. В курсе они встретятся снова.</p>
+        </div>
+      </section>
+
+      <section id="course">
+        <h2>В цикле агента <a href="#course" data-copy>#</a></h2>
+        <p>В агентном цикле стоит такая модель. Рантайм склеивает цель, контекст и схемы инструментов в одну последовательность. Модель выбирает продолжение: текст ответа или вызов инструмента. Рантайм проверяет вызов и решает, исполнять ли его. Модель не ставит диагноз и не назначает лечение. Она готовит черновик, который читает врач.</p>
+      </section>
+
+      <section id="remember">
+        <h2>Что запомнить <a href="#remember" data-copy>#</a></h2>
+        <div id="quiz"></div>
+        <ul class="only-full">
+          <li>BPE сливает частые пары. Редкое слово собирается из кусков.</li>
+          <li>Потеря текста — сумма потерь следующего токена.</li>
+          <li>От GPT-1 к GPT-3 рецепт тот же, масштаб другой, применение сдвинулось от дообучения к подсказке.</li>
+          <li>Температура, top-k и top-p меняют выбор, не веса.</li>
+          <li>Помощник — это базовая модель плюс инструкции и человеческие сравнения.</li>
+        </ul>
+      </section>
+
+      <section id="concepts">
+        <h2>Понятия этой главы</h2>
+        <div id="concept-list"></div>
+      </section>
+
+      <section id="papers">
+        <h2>Статьи</h2>
+        <div id="paper-list"></div>
+      </section>
+
+      <section id="watch">
+        <h2>Смотреть</h2>
+        <div id="video-list"></div>
+      </section>
+
+      <footer class="note">
+        Учебный проект курса «Программная инженерия мультиагентных систем в клинической медицине», осень 2026.
+      </footer>
+    </main>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

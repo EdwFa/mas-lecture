@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 27. Откуда берётся план</title>
+  <style>
+    html, body { margin: 0; width: 1920px; height: 1080px; background: #f3efe6; }
+    .slide {
+      width: 1920px; height: 1080px; box-sizing: border-box;
+      padding: 40px 64px 26px; display: flex; flex-direction: column;
+      background: #f7f4ee; color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+    .kicker {
+      display: flex; justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    h1 { margin: 10px 0 0; font-size: 52px; font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
+    .lead {
+      margin: 12px 0 0; max-width: 1700px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px; line-height: 1.35; color: #243038;
+    }
+    .schemes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 16px; }
+    figure { margin: 0; }
+    figure svg { width: 100%; height: 150px; display: block; }
+    figcaption { margin-top: 2px; text-align: center; font-family: Georgia, serif; font-size: 20px; }
+    table {
+      width: 100%; margin-top: 16px; border-collapse: collapse;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    th {
+      padding: 0 28px 14px 0; border-bottom: 2px solid #1c1915;
+      font-size: 16px; font-weight: 500; letter-spacing: 0.14em;
+      text-align: left; text-transform: uppercase; color: #5e6872;
+    }
+    th:nth-child(1) { width: 28%; }
+    th:nth-child(2) { width: 32%; }
+    td {
+      padding: 14px 22px 14px 0; border-bottom: 1px solid #e4dfd4;
+      font-size: 22px; line-height: 1.3; color: #243038; vertical-align: top;
+    }
+    td:first-child {
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 28px; letter-spacing: -0.02em; color: #1c1915;
+    }
+    .coda { margin-top: 26px; padding-top: 16px; border-top: 1px solid #d9d3c7; }
+    .spacer { flex: 1; }
+    .coda strong { display: block; font-size: 28px; font-weight: 400; letter-spacing: -0.02em; }
+    footer {
+      display: flex; justify-content: space-between;
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px; color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 1. Вводная</span><span>27</span></div>
+    <h1>Откуда берётся план</h1>
+    <p class="lead">План либо переписывает модель, либо она пишет его один раз, либо перед необратимым шагом стоит врач.</p>
+    <div class="schemes">
+      <figure>
+        <svg viewBox="0 0 360 150" role="img" aria-label="Журнал задач переписывается по кругу">
+          <defs><marker id="p1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="90" y="28" width="180" height="52" rx="8" fill="#1c1915"/>
+          <text x="180" y="60" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#f7f4ee">ЖУРНАЛ</text>
+          <path d="M270 54 C 320 54, 320 120, 180 120 C 40 120, 40 54, 90 54" fill="none" stroke="#1c1915" stroke-width="1.7" marker-end="url(#p1)"/>
+          <text x="180" y="112" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" letter-spacing="1" fill="#5e6872">СНОВА</text>
+        </svg>
+        <figcaption>Magentic</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 360 150" role="img" aria-label="План один раз, затем два шага">
+          <defs><marker id="p2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="8" y="48" width="100" height="48" rx="8" fill="#1c1915"/>
+          <text x="58" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f7f4ee">план</text>
+          <line x1="108" y1="72" x2="132" y2="72" stroke="#1c1915" stroke-width="2" marker-end="url(#p2)"/>
+          <rect x="140" y="48" width="90" height="48" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="185" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1915">шаг</text>
+          <line x1="230" y1="72" x2="254" y2="72" stroke="#1c1915" stroke-width="2" marker-end="url(#p2)"/>
+          <rect x="262" y="48" width="90" height="48" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="307" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1915">шаг</text>
+        </svg>
+        <figcaption>План и исполнение</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 360 150" role="img" aria-label="Модель пишет скрипт, рантайм запускает субагентов">
+          <defs><marker id="p3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="8" y="48" width="100" height="48" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="58" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1915">модель</text>
+          <line x1="108" y1="72" x2="128" y2="72" stroke="#1c1915" stroke-width="2" marker-end="url(#p3)"/>
+          <rect x="136" y="48" width="100" height="48" rx="8" fill="#1c1915"/>
+          <text x="186" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f7f4ee">скрипт</text>
+          <line x1="236" y1="72" x2="252" y2="72" stroke="#1c1915" stroke-width="2" marker-end="url(#p3)"/>
+          <rect x="260" y="36" width="92" height="72" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="306" y="66" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#5e6872">СУБАГЕНТЫ</text>
+          <text x="306" y="88" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1c1915">× n</text>
+        </svg>
+        <figcaption>Динамический workflow</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 360 150" role="img" aria-label="Пауза врача между шагами">
+          <defs><marker id="p4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="8" y="48" width="90" height="48" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="53" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1915">черновик</text>
+          <line x1="98" y1="72" x2="122" y2="72" stroke="#1c1915" stroke-width="2" marker-end="url(#p4)"/>
+          <rect x="130" y="48" width="110" height="48" rx="8" fill="#1c1915"/>
+          <text x="185" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#f7f4ee">пауза</text>
+          <line x1="240" y1="72" x2="264" y2="72" stroke="#1c1915" stroke-width="2" marker-end="url(#p4)"/>
+          <rect x="272" y="48" width="80" height="48" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="312" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1915">дальше</text>
+        </svg>
+        <figcaption>Граф с паузой</figcaption>
+      </figure>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Паттерн</th><th>Как называют сейчас</th><th>Что делает</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Magentic</td>
+          <td>Task ledger, перепланирование</td>
+          <td>Журнал задач переписывается, пока работа не застряла</td>
+        </tr>
+        <tr>
+          <td>План и исполнение</td>
+          <td>Plan-and-execute, ReWOO</td>
+          <td>План пишут один раз, затем исполняют</td>
+        </tr>
+        <tr>
+          <td>Динамический workflow</td>
+          <td>Скрипт оркестрации</td>
+          <td>Модель пишет скрипт. Рантайм запускает субагентов</td>
+        </tr>
+        <tr>
+          <td>Граф с паузой</td>
+          <td>Human-in-the-loop</td>
+          <td>Врач подтверждает, правит, отклоняет или отвечает. Ход продолжается с того же места</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="coda">
+      <strong>Путь консилиума задаёт кафедра. Журнал задач модель под этот путь не пишет.</strong>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>
