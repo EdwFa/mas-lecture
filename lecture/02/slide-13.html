@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 13. Управляемое внимание</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1720px; font-size: 22px; }
+    .patterns {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.45fr 0.85fr;
+      gap: 32px;
+    }
+    .pat { border-top: 1px solid #1c1915; padding-top: 10px; }
+    .who {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .chips { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 14px; }
+    .period { display: flex; gap: 8px; flex-wrap: nowrap; }
+    .chip {
+      min-width: 72px;
+      padding: 7px 8px;
+      border: 1.5px solid #1c1915;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #1c1915;
+    }
+    .chip.full { background: #1c1915; color: #f7f4ee; }
+    .cap {
+      margin: 10px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .steps {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 10px; }
+    .step .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .step h2 {
+      margin: 6px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .step p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { margin-top: 16px; font-size: 24px; max-width: 1720px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>13</span></div>
+    <h1>Управляемое внимание</h1>
+    <p class="lead">Это тот же полный блок со скалярным произведением, с добавками для устойчивости. Gate стоит после результата внимания и до выходной проекции: он масштабирует результат, и уже затем вектор прибавляется к residual. В гибридном стеке таких полных слоёв мало.</p>
+    <div class="patterns">
+      <div class="pat">
+        <div class="who">Qwen3-Next и Qwen3.5 · 3 : 1</div>
+        <div class="chips">
+          <span class="period"><span class="chip">дельта</span><span class="chip">дельта</span><span class="chip">дельта</span><span class="chip full">gate</span></span>
+          <span class="period"><span class="chip">дельта</span><span class="chip">дельта</span><span class="chip">дельта</span><span class="chip full">gate</span></span>
+        </div>
+        <p class="cap">Белая клетка — Gated DeltaNet, более дешёвый смеситель. Чёрная — полный слой с вентилем. Полное внимание растёт как квадрат длины, поэтому на контекстах 128K, 256K и 1M его оставляют каждым четвёртым слоем.</p>
+      </div>
+      <div class="pat">
+        <div class="who">Trinity · обычный стек</div>
+        <div class="chips">
+          <span class="period"><span class="chip full">gate</span><span class="chip full">gate</span><span class="chip full">gate</span><span class="chip full">gate</span></span>
+        </div>
+        <p class="cap">В Trinity gate стоит в каждом слое обычного внимания. Соседние слои на дешёвый смеситель не заменяют.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="n">01 · выход</div>
+        <h2>Выходной gate</h2>
+        <p>Gate умножает результат внимания на свой коэффициент. В остаток попадает уже отмасштабированный вектор.</p>
+      </article>
+      <article class="step">
+        <div class="n">02 · запрос и ключ</div>
+        <h2>QK-Norm</h2>
+        <p>Запрос и ключ перед произведением нормируют с вычитанием среднего. Это QK-Norm с нулевым центром.</p>
+      </article>
+      <article class="step">
+        <div class="n">03 · позиция</div>
+        <h2>Частичный RoPE</h2>
+        <p>Поворот несёт позицию только на части координат головы. Остальные координаты в этот поворот не входят.</p>
+      </article>
+    </div>
+    <p class="coda">Три добавки делают полный слой предсказуемее. Экономия на длине получается от того, что таких слоёв мало. Ту же долю дешёвых слоёв позже набирают Kimi Delta Attention, Lightning Attention и Mamba-2. Качество при этом немного ниже, чем у стека, где каждый слой — полное внимание.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 14. Мультиголовое скрытое внимание</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .shot { flex: 1; min-height: 0; margin-top: 4px; display: flex; align-items: center; justify-content: center; }
+    .shot img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .note { margin: 8px 0 0; max-width: 1680px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 21px; line-height: 1.32; color: #243038; }
+    .note + .note { margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>14</span></div>
+    <h1>Мультиголовое скрытое внимание MLA</h1>
+    <div class="shot">
+      <img src="img/fig-11.png" alt="Блок DeepSeek V3 и сравнение скрытого внимания с обычным многоголовым" />
+    </div>
+    <p class="note">Слева блок DeepSeek-V3, повторённый 61 раз. В центре один шаг MLA: из входа x<sub>t</sub> матрица W<sub>q</sub> даёт запрос, а W<sub>dkv</sub> — сжатые ключ и значение, синий блок. В кэш кладут его. W<sub>uk</sub> и W<sub>uv</sub> разворачивают этот вектор в ключ и значение. Справа обычное MHA: ключ и значение хранятся целиком. Стрелка RoPE входит в тот же блок.</p>
+    <p class="note">GQA делит готовые головы ключа. MLA хранит на токен один короткий латентный вектор и собирает из него головы. У DeepSeek-V3 ранг этого вектора 512 при 128 головах внимания. Сжатие есть и у запроса, на рисунке его опустили.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

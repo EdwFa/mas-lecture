@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 4. Нормированные веса внимания</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .shot { flex: 1; min-height: 0; margin-top: 8px; display: flex; align-items: center; justify-content: center; }
+    .shot img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .note { margin-top: 8px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 22px; line-height: 1.35; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>04</span></div>
+    <h1>Нормированные веса внимания</h1>
+    <div class="shot">
+      <img src="img/fig-04.png" alt="Вычисление нормированных весов внимания для второго токена" />
+    </div>
+    <p class="note">Пример второго токена. Запрос q⁽²⁾ сравнивают с ключом каждой позиции. Деление на √d<sub>k</sub> стоит внутри softmax.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

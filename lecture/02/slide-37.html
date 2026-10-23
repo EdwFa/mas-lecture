@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 37. Четыре рисунка</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .cards { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 36px; }
+    .card h2 { font-size: 28px; }
+    .card p { font-size: 21px; line-height: 1.32; color: #243038; }
+    .coda { max-width: 1720px; font-size: 24px; line-height: 1.32; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>37</span></div>
+    <h1>Четыре рисунка</h1>
+    <p class="lead">Открытые модели последних лет собираются в четыре рисунка. Одна модель может нести несколько сразу.</p>
+    <div class="cards">
+      <article class="card">
+        <h2>Плотный путь</h2>
+        <p>Каждое слово идёт через одну и ту же сеть и одно и то же внимание. Так устроены Llama и плотные Qwen. Окно и общие ключи этот путь не ломают.</p>
+      </article>
+      <article class="card">
+        <h2>Большая сеть и сжатое прошлое</h2>
+        <p>Весов много, на слове работают немногие, а память текста хранится коротко или читается выборочно. Так устроен DeepSeek-V3. Следующая версия ещё и выбирает, какие прошлые слова перечитывать.</p>
+      </article>
+      <article class="card">
+        <h2>Список рядом с короткой записью</h2>
+        <p>В большинстве слоёв прошлое сжато в запись фиксированного размера. В немногих слоях остаётся полный список, чтобы можно было вернуться к точному слову.</p>
+      </article>
+      <article class="card">
+        <h2>Взгляд дальше одного слова</h2>
+        <p>Модуль нескольких будущих слов вешают на любой из трёх рисунков выше. Он не заменяет ни выбор сетей, ни способ хранить прошлое.</p>
+      </article>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

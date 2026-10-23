@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Блок 2017 года</title>
+  <link rel="stylesheet" href="slide.css" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>23</span></div>
+    <h1>База, от которой считают замены</h1>
+    <p class="lead">Статья 2017 года. Две стопки по шесть блоков: читающая и пишущая. В агентном цикле стоит пишущая, декодер.</p>
+    <table>
+      <tr><th>Величина</th><th>Число</th><th>Что это</th></tr>
+      <tr><td><strong>Ширина</strong></td><td>512</td><td>Длина вектора токена, d_model. Между блоками она не меняется.</td></tr>
+      <tr><td><strong>Головы</strong></td><td>8 × 64</td><td>Восемь сравнений. Ключ длины 64. Восемь на 64 снова 512.</td></tr>
+      <tr><td><strong>Сеть токена</strong></td><td>2048</td><td>Внутри токена вектор расширяют и возвращают к 512.</td></tr>
+      <tr><td><strong>Внимание</strong></td><td>QKᵀ / √d_k</td><td>При d_k = 64 без корня softmax схлопывается в одного соседа.</td></tr>
+    </table>
+    <p class="coda">Голова видит все доступные токены. Число голов и длина фразы друг от друга не зависят.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

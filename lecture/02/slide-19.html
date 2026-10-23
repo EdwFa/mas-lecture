@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 19. Рейтинговые таблицы</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .steps {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .step .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .step h2 {
+      margin: 8px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .step p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .note {
+      margin-top: 28px;
+      max-width: 1720px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { margin-top: 18px; max-width: 1720px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>19</span></div>
+    <h1>Рейтинговые таблицы</h1>
+    <p class="lead">Выбор буквы и верификатор дают точность. Стиль ответа в этих числах не виден. Рейтинг собирают из предпочтений: человек или другая модель смотрит два ответа и отмечает тот, который ближе.</p>
+    <div class="steps">
+      <article class="step">
+        <div class="n">01 · пара</div>
+        <h2>Два ответа</h2>
+        <p>Один и тот же запрос уходит двум моделям. Зритель выбирает модели сам или видит их без имён.</p>
+      </article>
+      <article class="step">
+        <div class="n">02 · голос</div>
+        <h2>Что ближе</h2>
+        <p>Голос отдаётся ответу, который больше нравится. В выборе сидит и содержание, и стиль.</p>
+      </article>
+      <article class="step">
+        <div class="n">03 · таблица</div>
+        <h2>Порядок моделей</h2>
+        <p>Место в таблице держат накопленные голоса. Ключа с правильной буквой здесь нет.</p>
+      </article>
+    </div>
+    <p class="note">Так устроена LM Arena, раньше Chatbot Arena. Человек сравнивает два ответа и голосует за тот, который ему больше нравится.</p>
+    <p class="coda">Поэтому место в такой таблице говорит о предпочтении. На устройство блока его не переносят.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

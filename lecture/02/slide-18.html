@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Верификаторы</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .steps {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .step .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .step h2 {
+      margin: 8px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .step p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .note {
+      margin-top: 28px;
+      max-width: 1720px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { margin-top: 18px; max-width: 1720px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>18</span></div>
+    <h1>Верификаторы</h1>
+    <p class="lead">Модель пишет свободный ответ. Из него достают нужный фрагмент и сверяют с ключом набора. Точность считается так же, как доля верных ответов. Сверку делает внешний инструмент: калькулятор или интерпретатор кода.</p>
+    <div class="steps">
+      <article class="step">
+        <div class="n">01 · ответ</div>
+        <h2>Свободная форма</h2>
+        <p>Буквы варианта нет. Модель пишет решение целиком, включая шаги.</p>
+      </article>
+      <article class="step">
+        <div class="n">02 · фрагмент</div>
+        <h2>Что сверять</h2>
+        <p>Из текста достают итоговый кусок: число, выражение или кусок программы.</p>
+      </article>
+      <article class="step">
+        <div class="n">03 · проверка</div>
+        <h2>Верификатор</h2>
+        <p>Инструмент сравнивает фрагмент с ключом. Сошёлся счёт или прошёл тест — ответ верный.</p>
+      </article>
+    </div>
+    <p class="note">Метод живёт там, где проверка короткая и однозначная: математика и программирование. Вместе с ним появляются зависимость от инструмента и часть работы оценки, которая уехала из самой модели.</p>
+    <p class="coda">Задачи при этом можно порождать программно и без конца. Поэтому верификатор стал опорой и оценки, и обучения моделей рассуждения.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

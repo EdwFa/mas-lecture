@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 20. Таблица Arena</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { margin-top: 8px; max-width: 1720px; font-size: 22px; }
+    .split {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 640px;
+      gap: 32px;
+      align-items: start;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 8px; margin-top: 12px; }
+    .step .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .step h2 {
+      margin: 4px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .step p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .shot {
+      display: block;
+      border: 1px solid #d9d3c7;
+      background: #fff;
+      line-height: 0;
+      text-decoration: none;
+    }
+    .shot img { width: 100%; height: auto; display: block; }
+    .shot:hover { border-color: #1d5c96; }
+    .shot figcaption {
+      padding: 10px 12px 12px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #1d5c96;
+      text-align: center;
+    }
+    .coda { margin-top: 12px; max-width: 1720px; font-size: 22px; line-height: 1.32; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</span><span>20</span></div>
+    <h1>Таблица Arena</h1>
+    <p class="lead">На этой странице модели выстроены по человеческим предпочтениям. Человек видит два ответа без имён и выбирает тот, который ближе. Щелчок по снимку открывает живую таблицу.</p>
+    <div class="split">
+      <div>
+        <article class="step">
+          <div class="n">01 · голос</div>
+          <h2>Пара без имён</h2>
+          <p>Один запрос, два ответа. Выбор одного из них и есть единица таблицы. Голос после того, как имена уже видны, в рейтинг не идёт.</p>
+        </article>
+        <article class="step">
+          <div class="n">02 · счёт</div>
+          <h2>Bradley-Terry</h2>
+          <p>Голоса складывают моделью парных сравнений, родственницей рейтинга Эло. У балла есть доверительный интервал. Разброс мест показывает лучшее и худшее место, ещё совместимое с этими интервалами.</p>
+        </article>
+        <article class="step">
+          <div class="n">03 · колонки</div>
+          <h2>Что читать</h2>
+          <p>Место, балл с интервалом, число голосов и цена за миллион токенов. Таблиц несколько: текст, изображение и другие арены. Стиль ответа учитывают отдельным признаком.</p>
+        </article>
+      </div>
+      <a class="shot" href="https://arena.ai/leaderboard" target="_blank" rel="noopener">
+        <img src="img/arena-top10.png" alt="Первая десятка текстовой таблицы Arena. Ссылка открывает arena.ai/leaderboard" />
+        <figcaption>arena.ai/leaderboard</figcaption>
+      </a>
+    </div>
+    <p class="coda">Снимок — первая десятка на день, когда его сняли. Место в таблице — предпочтение людей на день просмотра. На устройство блока его не переносят.</p>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>
