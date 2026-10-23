@@ -89,7 +89,7 @@
           <rect x="158" y="80" width="130" height="40" rx="8" fill="#f7f4ee" stroke="#d9d3c7"/>
           <text x="223" y="105" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5e6872">пакет</text>
         </svg>
-        <figcaption>Роутер</figcaption>
+        <figcaption>Развилка</figcaption>
       </figure>
       <figure>
         <svg viewBox="0 0 300 128" role="img" aria-label="Три источника сходятся в сводку">
@@ -106,7 +106,7 @@
           <rect x="78" y="90" width="144" height="32" rx="8" fill="#1c1915"/>
           <text x="150" y="111" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" letter-spacing="1" fill="#f7f4ee">СВОДКА</text>
         </svg>
-        <figcaption>Sectioning</figcaption>
+        <figcaption>Разбор по частям</figcaption>
       </figure>
       <figure>
         <svg viewBox="0 0 300 128" role="img" aria-label="Один вопрос прогоняют три раза">
@@ -138,21 +138,21 @@
     </div>
     <table>
       <thead>
-        <tr><th>Паттерн</th><th>Как называют сейчас</th><th>Что делает</th></tr>
+        <tr><th>Приём</th><th>Как называют сейчас</th><th>Что делает</th></tr>
       </thead>
       <tbody>
         <tr>
           <td>Цепочка</td>
           <td>Sequential, prompt chaining</td>
-          <td>Шаг получает узкий вход и отдаёт схему. Между шагами стоит проверка</td>
+          <td>Шаг получает только нужные сведения и отдаёт заполненные поля. Между шагами стоит проверка</td>
         </tr>
         <tr>
-          <td>Роутер</td>
+          <td>Развилка</td>
           <td>Routing, dispatcher</td>
           <td>Вход относят к одной ветке</td>
         </tr>
         <tr>
-          <td>Sectioning</td>
+          <td>Разбор по частям</td>
           <td>Fan-out разных частей, map-reduce</td>
           <td>Независимые источники читают параллельно и сводят со ссылкой</td>
         </tr>
@@ -162,14 +162,14 @@
           <td>Один вопрос прогоняют несколько раз и сводят ответы</td>
         </tr>
         <tr>
-          <td>Evaluator–optimizer</td>
+          <td>Проверка черновика</td>
           <td>Generate-and-review, Loop</td>
-          <td>Критик идёт по рубрикатору. Число кругов ограничено</td>
+          <td>Проверка идёт по перечню кафедры. Число кругов ограничено</td>
         </tr>
       </tbody>
     </table>
     <div class="coda">
-      <strong>Голосование сводит ответы моделей. Sectioning сводит источники и хранит ссылку.</strong>
+      <strong>Голосование сводит ответы моделей. Разбор по частям сводит источники и хранит ссылку.</strong>
     </div>
     <div class="spacer"></div>
     <footer>

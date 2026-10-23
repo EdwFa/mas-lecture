@@ -127,12 +127,12 @@
       <span>17</span>
     </div>
     <h1>Большая и малая</h1>
-    <p class="lead">На вход подают одно и то же. Декодер один и тот же. У малой меньше весов, шаг дешёвый, наружу выходит выбор ветки. У большой весов больше, шаг дорогой, наружу выходит текст.</p>
+    <p class="lead">На вход подают одно и то же. Декодер один и тот же. У малой меньше выученного, шаг дешёвый, наружу выходит выбор ветки. У большой выученного больше, шаг дорогой, наружу выходит текст.</p>
 
     <section class="cols">
       <div>
         <h2>Малая</h2>
-        <p class="model">SLM</p>
+        <p class="model">малая модель</p>
         <svg viewBox="0 0 820 430" role="img" aria-label="Узкий декодер выбирает одну ветку">
           <defs>
             <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -148,7 +148,7 @@
           <line x1="410" y1="60" x2="410" y2="128" stroke="#1c1915" stroke-width="2" marker-end="url(#a)"/>
           <rect x="300" y="136" width="220" height="92" rx="8" fill="#1c1915"/>
           <text x="410" y="178" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" letter-spacing="1.4" fill="#f7f4ee">ДЕКОДЕР</text>
-          <text x="410" y="204" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1.2" fill="#f7f4ee">МАЛО ВЕСОВ</text>
+          <text x="410" y="204" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1.2" fill="#f7f4ee">МАЛО ВЫУЧЕННОГО</text>
           <line x1="410" y1="228" x2="410" y2="292" stroke="#1c1915" stroke-width="2" marker-end="url(#a)"/>
           <g font-family="Georgia, serif" font-size="26" text-anchor="middle">
             <rect x="78" y="300" width="250" height="64" rx="8" fill="#1c1915"/>
@@ -162,7 +162,7 @@
       </div>
       <div>
         <h2>Большая</h2>
-        <p class="model">LLM</p>
+        <p class="model">большая модель</p>
         <svg viewBox="0 0 820 430" role="img" aria-label="Широкий декодер пишет черновик">
           <defs>
             <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -178,19 +178,19 @@
           <line x1="410" y1="60" x2="410" y2="108" stroke="#1c1915" stroke-width="2" marker-end="url(#b)"/>
           <rect x="70" y="116" width="680" height="120" rx="8" fill="#1c1915"/>
           <text x="410" y="168" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" letter-spacing="1.4" fill="#f7f4ee">ДЕКОДЕР</text>
-          <text x="410" y="198" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1.2" fill="#f7f4ee">МНОГО ВЕСОВ</text>
+          <text x="410" y="198" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1.2" fill="#f7f4ee">МНОГО ВЫУЧЕННОГО</text>
           <line x1="410" y1="236" x2="410" y2="286" stroke="#1c1915" stroke-width="2" marker-end="url(#b)"/>
           <rect x="70" y="294" width="680" height="100" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
           <text x="94" y="326" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="1.4" fill="#5e6872">ЧЕРНОВИК ДЛЯ ВРАЧА</text>
           <text x="94" y="360" font-family="Georgia, serif" font-size="26" fill="#1c1915">Снимок готов. Дата не назначена.</text>
         </svg>
-        <p class="cap">Шаг дорогой, это отдельный вызов. В весах больше выученного, поэтому ей отдают сборку текста, который прочитает врач.</p>
+        <p class="cap">Шаг дорогой, это отдельный вызов. Выученного больше, поэтому ей отдают сборку текста, который прочитает врач.</p>
       </div>
     </section>
 
     <div class="coda">
       <strong>Малой отдают короткий выбор. Большой — текст для врача.</strong>
-      <p>Порога в числе параметров нет: граница сдвигается от года к году. Исполнение вызова остаётся у рантайма.</p>
+      <p>Порога в числе выученных чисел нет: граница сдвигается от года к году. Вызов исполняет программа цикла, не модель.</p>
     </div>
 
     <div class="spacer"></div>

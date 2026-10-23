@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 13. Позиционное кодирование</title>
+  <title>Слайд 13. Место слова</title>
   <style>
     html, body {
       margin: 0;
@@ -308,7 +308,7 @@
           <div class="chip on">снимок</div>
         </div>
       </div>
-      <div class="same">те же<br>эмбеддинги</div>
+      <div class="same">те же<br>векторы слов</div>
       <div>
         <p class="label">Порядок Б</p>
         <div class="chips">
@@ -320,7 +320,7 @@
     </section>
 
     <section class="how">
-      <p class="label">Порядок А. К эмбеддингу прибавляют вектор места той же длины, 512</p>
+      <p class="label">Порядок А. К вектору слова прибавляют вектор места той же длины, 512</p>
       <div class="cols">
         <div class="col">
           <div class="place">
@@ -330,7 +330,7 @@
             <b>место 1</b>
           </div>
           <div class="op">+</div>
-          <div class="word"><b>врач</b><span class="meta">эмбеддинг</span></div>
+          <div class="word"><b>врач</b><span class="meta">вектор слова</span></div>
           <div class="op">↓</div>
           <div class="sum"><b>врач на месте 1</b></div>
         </div>
@@ -342,7 +342,7 @@
             <b>место 2</b>
           </div>
           <div class="op">+</div>
-          <div class="word"><b>видит</b><span class="meta">эмбеддинг</span></div>
+          <div class="word"><b>видит</b><span class="meta">вектор слова</span></div>
           <div class="op">↓</div>
           <div class="sum"><b>видит на месте 2</b></div>
         </div>
@@ -354,7 +354,7 @@
             <b>место 3</b>
           </div>
           <div class="op">+</div>
-          <div class="word"><b>снимок</b><span class="meta">эмбеддинг</span></div>
+          <div class="word"><b>снимок</b><span class="meta">вектор слова</span></div>
           <div class="op">↓</div>
           <div class="sum"><b>снимок на месте 3</b></div>
         </div>
@@ -369,16 +369,16 @@
     </section>
 
     <section class="contrast">
-      <p class="label">Один эмбеддинг «снимка». Другое место — другая сумма</p>
+      <p class="label">Один и тот же вектор слова «снимок». Другое место — другая сумма</p>
       <div class="eqline">
-        <div class="word"><b>снимок</b><span class="meta">эмбеддинг</span></div>
+        <div class="word"><b>снимок</b><span class="meta">вектор слова</span></div>
         <div class="op">+</div>
         <div class="place"><b>место 3</b></div>
         <div class="op">=</div>
         <div class="sum"><b>снимок на месте 3</b></div>
       </div>
       <div class="eqline">
-        <div class="word"><b>снимок</b><span class="meta">эмбеддинг</span></div>
+        <div class="word"><b>снимок</b><span class="meta">вектор слова</span></div>
         <div class="op">+</div>
         <div class="place"><b>место 1</b></div>
         <div class="op">=</div>
@@ -389,15 +389,15 @@
     <section class="explain">
       <div>
         <h2>Сумма остаётся ширины 512</h2>
-        <p>Эмбеддинг и вектор места одной длины, поэтому их можно сложить. Внимание получает уже сумму и по ней отличает слово на первом месте от слова на третьем.</p>
+        <p>Вектор слова и вектор места одной длины, поэтому их можно сложить. Внимание получает уже сумму и по ней отличает слово на первом месте от слова на третьем.</p>
       </div>
       <div>
-        <h2>Добавок зависит от номера места</h2>
-        <p>На одном и том же месте любое слово получило бы один и тот же вектор места. Слово меняет только эмбеддинг, место меняет только добавок.</p>
+        <h2>Прибавка зависит от номера места</h2>
+        <p>На одном и том же месте любое слово получило бы один и тот же вектор места. Слово меняет только свой вектор, место меняет только прибавку.</p>
       </div>
       <div>
         <h2>В моделях со слайда 11 — поворот</h2>
-        <p>У Qwen, DeepSeek и Kimi вектор места к эмбеддингу не прибавляют. Позиция входит поворотом запроса и ключа, и сходство зависит от расстояния между токенами.</p>
+        <p>У Qwen, DeepSeek и Kimi вектор места к вектору слова не прибавляют. Место входит поворотом запроса и ключа, и сходство зависит от расстояния между словами.</p>
       </div>
     </section>
 

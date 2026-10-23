@@ -79,7 +79,7 @@
         <figcaption>Агент</figcaption>
       </figure>
       <figure>
-        <svg viewBox="0 0 300 128" role="img" aria-label="Один навык входит в агента">
+        <svg viewBox="0 0 300 128" role="img" aria-label="Одна инструкция входит в агента">
           <defs><marker id="m2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
           <rect x="8" y="8" width="86" height="36" rx="6" fill="#f7f4ee" stroke="#d9d3c7"/>
           <text x="51" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5e6872">карта</text>
@@ -91,7 +91,7 @@
           <rect x="70" y="78" width="160" height="40" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
           <text x="150" y="104" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="1" fill="#1c1915">АГЕНТ</text>
         </svg>
-        <figcaption>Навык</figcaption>
+        <figcaption>Инструкция по имени</figcaption>
       </figure>
       <figure>
         <svg viewBox="0 0 300 128" role="img" aria-label="Три роли в одном процессе">
@@ -116,7 +116,7 @@
           <rect x="220" y="42" width="72" height="44" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
           <text x="256" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1c1915">вызов</text>
         </svg>
-        <figcaption>Стражи</figcaption>
+        <figcaption>Проверки</figcaption>
       </figure>
       <figure>
         <svg viewBox="0 0 300 128" role="img" aria-label="Знает, хочет, намерен">
@@ -125,12 +125,12 @@
           <text x="150" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1915">хочет</text>
           <text x="150" y="98" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1915">намерен</text>
         </svg>
-        <figcaption>BDI</figcaption>
+        <figcaption>Три списка</figcaption>
       </figure>
     </div>
     <table>
       <thead>
-        <tr><th>Паттерн</th><th>Как называют сейчас</th><th>Что делает</th></tr>
+        <tr><th>Приём</th><th>Как называют сейчас</th><th>Что делает</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -139,9 +139,9 @@
           <td>Сам вызывает инструмент и смотрит результат</td>
         </tr>
         <tr>
+          <td>Инструкция по имени</td>
           <td>Skills</td>
-          <td>Подгрузка инструкции по имени</td>
-          <td>Полный текст навыка входит, только когда он нужен</td>
+          <td>Полный текст входит, только когда инструкция понадобилась по имени</td>
         </tr>
         <tr>
           <td>Роли</td>
@@ -149,19 +149,19 @@
           <td>Имена обязанностей внутри того же процесса</td>
         </tr>
         <tr>
-          <td>Стражи</td>
+          <td>Проверки</td>
           <td>Guardrails</td>
-          <td>Проверка входа, выхода и аргументов вызова</td>
+          <td>Проверяют, что пришло, что уходит и с какими аргументами вызван инструмент</td>
         </tr>
         <tr>
+          <td>Три списка</td>
           <td>BDI</td>
-          <td>Убеждения, желания, намерения</td>
           <td>Что агент знает, чего хочет и что намерен сделать</td>
         </tr>
       </tbody>
     </table>
     <div class="coda">
-      <strong>Навык и роль границу прав не проводят. Где права разные, это другой агент.</strong>
+      <strong>Инструкция по имени и роль права не делят. Где права разные, это другой агент.</strong>
     </div>
     <div class="spacer"></div>
     <footer>
