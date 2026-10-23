@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Семестр</title>
+  <style>
+    html, body { margin: 0; width: 1920px; height: 1080px; background: #f3efe6; }
+    .slide {
+      width: 1920px; height: 1080px; box-sizing: border-box;
+      padding: 40px 64px 26px; display: flex; flex-direction: column;
+      background: #f7f4ee; color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+    .kicker {
+      display: flex; justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    h1 { margin: 10px 0 0; font-size: 52px; font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
+    .lead {
+      margin: 12px 0 0; max-width: 1680px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px; line-height: 1.35; color: #243038;
+    }
+    .body {
+      display: grid; grid-template-columns: 1.35fr 0.75fr; gap: 56px;
+      margin-top: 28px;
+    }
+    ol { list-style: none; margin: 0; padding: 0; }
+    li {
+      display: grid; grid-template-columns: 72px 1fr;
+      gap: 8px; align-items: baseline;
+      padding: 18px 0; border-bottom: 1px solid #e4dfd4;
+    }
+    li:first-child { border-top: 2px solid #1c1915; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px; letter-spacing: 0.14em; color: #5e6872;
+    }
+    li p { margin: 0; font-size: 30px; line-height: 1.25; letter-spacing: -0.02em; }
+    .read {
+      padding: 22px 26px 8px;
+      border: 1.5px solid #1c1915; border-radius: 8px;
+    }
+    .read h2 {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    .read ol { margin-top: 8px; }
+    .read li { grid-template-columns: 36px 1fr; padding: 16px 0; border-top: 0; }
+    .read li p { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 22px; line-height: 1.35; color: #243038; letter-spacing: 0; }
+    .coda { margin-top: 26px; padding-top: 16px; border-top: 1px solid #d9d3c7; }
+    .spacer { flex: 1; }
+    .coda strong { display: block; font-size: 28px; font-weight: 400; letter-spacing: -0.02em; }
+    footer {
+      display: flex; justify-content: space-between;
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px; color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 1. Вводная</span><span>23</span></div>
+    <h1>Семестр</h1>
+    <p class="lead">Один случай на все недели: подготовка и передача онкологического консилиума. Данные синтетические. Маршрут и рубрикатор даёт кафедра.</p>
+    <div class="body">
+      <ol>
+        <li><span class="n">01</span><p>Назначение системы и перечень опасностей</p></li>
+        <li><span class="n">02</span><p>Граф, схемы состояния и матрица прав</p></li>
+        <li><span class="n">03</span><p>Трасса одного случая</p></li>
+        <li><span class="n">04</span><p>Тест, который падает, если обязательное поле потеряно</p></li>
+      </ol>
+      <aside class="read">
+        <h2>К следующему занятию</h2>
+        <ol>
+          <li><span class="n">1</span><p>Anthropic, Building effective agents</p></li>
+          <li><span class="n">2</span><p>MCP и A2A: кто стороны протокола</p></li>
+          <li><span class="n">3</span><p>Linux Foundation, 9 апреля и 27 августа 2026, про A2A</p></li>
+        </ol>
+      </aside>
+    </div>
+    <div class="coda">
+      <strong>Семестр идёт слоями этой лекции, не по названиям библиотек.</strong>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

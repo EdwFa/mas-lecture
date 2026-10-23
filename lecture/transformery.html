@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Трансформеры — глава курса</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --ink: #1c1915;
+      --muted: #5e6872;
+      --body: #243038;
+      --line: #d9d3c7;
+      --soft: #e4dfd4;
+      --paper: #fffdf8;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #f3efe6;
+      color: var(--ink);
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(880px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .kicker {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 14px 0 0;
+      font-size: 64px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+
+    .deck {
+      margin: 18px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.45;
+      color: var(--body);
+    }
+
+    .one {
+      margin: 28px 0 0;
+      padding: 18px 22px;
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    nav.toc {
+      margin: 28px 0 0;
+      padding: 0;
+    }
+
+    nav.toc ol {
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      columns: 2;
+      column-gap: 32px;
+    }
+
+    nav.toc a {
+      display: block;
+      padding: 6px 0;
+      border-top: 1px solid var(--soft);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.35;
+      text-decoration: none;
+      color: var(--body);
+    }
+
+    nav.toc a:hover { color: var(--ink); }
+
+    section {
+      margin-top: 56px;
+      padding-top: 8px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    p, li {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--body);
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul, ol.steps { margin: 0 0 16px; padding-left: 1.2em; }
+
+    li { margin: 0 0 8px; }
+
+    .label {
+      margin: 0 0 10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    figure {
+      margin: 22px 0;
+      padding: 18px 18px 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .tok, .focus {
+      min-width: 92px;
+      height: 46px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--ink);
+      font-size: 20px;
+    }
+
+    .focus {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .ghost {
+      border-style: dashed;
+      border-color: #c4beb4;
+      color: #8a847a;
+    }
+
+    .arrow {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--ink);
+    }
+
+    .bars { display: grid; gap: 8px; margin-top: 8px; }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 110px 1fr 48px;
+      gap: 10px;
+      align-items: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      color: var(--body);
+    }
+
+    .track { height: 14px; background: var(--soft); }
+    .fill { height: 14px; background: var(--ink); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .card {
+      padding: 14px 14px 12px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .card b {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .card span {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .card p { margin: 8px 0 0; font-size: 16px; }
+
+    .eqs {
+      margin: 18px 0;
+      padding: 8px 0;
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eq {
+      display: grid;
+      grid-template-columns: 150px 18px 1fr;
+      gap: 8px 10px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--soft);
+      font-size: 20px;
+    }
+
+    .eq:last-child { border-bottom: 0; }
+
+    .eq .gloss {
+      grid-column: 3;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .aside {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 2px solid var(--ink);
+    }
+
+    .aside h3 { margin-top: 0; }
+
+    .papers { list-style: none; padding: 0; }
+
+    .papers li {
+      margin: 0;
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .papers a { text-decoration: none; }
+
+    .papers strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .meta {
+      display: block;
+      margin: 4px 0 6px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .remember li { margin-bottom: 10px; }
+
+    footer.course {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      h1 { font-size: 42px; }
+      nav.toc ol, .cards, .eq { columns: 1; grid-template-columns: 1fr; }
+      .eq .gloss { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="kicker">Программная инженерия мультиагентных систем · глава</p>
+    <h1>Трансформеры</h1>
+    <p class="deck">Архитектура, на которой собраны современные языковые модели. Ниже — тот же ход объяснения, что в учебной главе про трансформеры: задача, механизм, блок, три семейства, формулы и статьи.</p>
+    <p class="one">В одном предложении. Трансформер даёт каждому токену прямое сравнение с остальными токенами. Такие блоки ставят друг на друга, и всю последовательность считают параллельно.</p>
+
+    <nav class="toc" aria-label="Содержание">
+      <p class="label">Содержание</p>
+      <ol>
+        <li><a href="#rnn">Одно слово за раз</a></li>
+        <li><a href="#idea">Каждое слово смотрит на каждое</a></li>
+        <li><a href="#steps">Внимание с нуля</a></li>
+        <li><a href="#qkv">Запрос, ключ и значение</a></li>
+        <li><a href="#heads">Несколько голов</a></li>
+        <li><a href="#pos">Откуда берётся место</a></li>
+        <li><a href="#block">Блок трансформера</a></li>
+        <li><a href="#families">Три семейства</a></li>
+        <li><a href="#math">Формулы на одной странице</a></li>
+        <li><a href="#why">Почему это важно</a></li>
+        <li><a href="#paper">Статья 2017 года</a></li>
+        <li><a href="#remember">Что запомнить</a></li>
+        <li><a href="#papers">Статьи</a></li>
+      </ol>
+    </nav>
+
+    <section id="rnn">
+      <h2>Одно слово за раз</h2>
+      <p>К 2016 году сильные системы перевода читали фразу рекуррентной сетью. Сеть берёт одно слово, обновляет единственный скрытый вектор и передаёт его следующему слову. Внимание уже умели прикреплять к декодеру, чтобы тот оглядывался на вход. Внутри самого чтения информация всё равно ползла от слова к слову.</p>
+      <p>Отсюда две трудности, которые росли вместе с длиной текста.</p>
+      <ul>
+        <li><b>Расстояние.</b> Чтобы «он» сослался на «пациента», след этого слова проходит несколько обновлений скрытого состояния. На длинной истории болезни таких шагов сотни, и след затухает.</li>
+        <li><b>Скорость.</b> Шаг 10 нельзя посчитать раньше шага 9. Длина последовательности не раскладывается на параллельные ядра видеокарты.</li>
+      </ul>
+      <figure>
+        <p class="label">Рекуррентное чтение</p>
+        <div class="row">
+          <span class="tok">Пациент</span><span class="arrow">→</span>
+          <span class="tok">устал</span><span class="arrow">→</span>
+          <span class="tok">поэтому</span><span class="arrow">→</span>
+          <span class="focus">он</span>
+        </div>
+        <figcaption>Единственная дорога от «пациента» к «он» — скрытое состояние. Три обновления подряд. Следующий шаг ждёт предыдущий.</figcaption>
+      </figure>
+      <figure>
+        <p class="label">Самовнимание</p>
+        <div class="row">
+          <span class="tok">Пациент</span>
+          <span class="tok">устал</span>
+          <span class="tok">поэтому</span>
+          <span class="focus">он</span>
+        </div>
+        <figcaption>«Он» сравнивает себя с каждым уже известным словом за один шаг и забирает «пациента» напрямую. Все позиции этой фразы считаются вместе. Плата: сравниваются все пары, и работа растёт как квадрат длины.</figcaption>
+      </figure>
+    </section>
+
+    <section id="idea">
+      <h2>Каждое слово смотрит на каждое</h2>
+      <p>Авторы трансформера взяли внимание, которое до того было приставкой к рекуррентной сети, и сделали его самой архитектурой. Токен прямо сравнивает себя с другими токенами и собирает нужное за один шаг. Рекуррентность убирают. Оставляют внимание, небольшую сеть на каждый токен и приёмы, благодаря которым глубокую стопку можно обучить.</p>
+      <p class="one">Внимание переносит сведения между токенами. Сеть прямого распространения обрабатывает сведения внутри одного токена. Эту пару повторяют много раз.</p>
+    </section>
+
+    <section id="steps">
+      <h2>Внимание с нуля</h2>
+      <p>Начало — вопрос, а не матрица. Есть фраза. Для каждого слова: на какие другие слова ему смотреть?</p>
+      <p>Инструменты уже есть. Слово — вектор, эмбеддинг. Скалярное произведение измеряет, насколько два вектора сонаправлены. Softmax превращает оценки в веса с суммой 1. Взвешенная сумма смешивает векторы этими весами.</p>
+      <ol class="steps">
+        <li><b>Оценка.</b> Для слова, которое задаёт вопрос, посчитать сходство с каждым словом.</li>
+        <li><b>Нормировка.</b> Softmax переводит оценки в веса внимания.</li>
+        <li><b>Смешение.</b> Новый вектор слова — взвешенное среднее векторов всех слов.</li>
+      </ol>
+      <figure>
+        <p class="label">Шаг 1 на слове «он». Длины полос условные</p>
+        <div class="bars">
+          <div class="bar"><span>пациент</span><div class="track"><div class="fill" style="width:100%"></div></div><span>выше</span></div>
+          <div class="bar"><span>устал</span><div class="track"><div class="fill" style="width:38%"></div></div><span>ниже</span></div>
+          <div class="bar"><span>поэтому</span><div class="track"><div class="fill" style="width:22%"></div></div><span>ниже</span></div>
+          <div class="bar"><span>он</span><div class="track"><div class="fill" style="width:55%"></div></div><span>само</span></div>
+        </div>
+        <figcaption>Сырое сходство спрашивает «кто на меня похож?». «Он» спрашивает другое: «на кого я ссылаюсь?». Поэтому одного эмбеддинга мало: искать и быть найденным — разные роли.</figcaption>
+      </figure>
+    </section>
+
+    <section id="qkv">
+      <h2>Запрос, ключ и значение</h2>
+      <p>Каждый токен порождает три вектора тремя обучаемыми матрицами.</p>
+      <ul>
+        <li><b>Запрос</b> — что я ищу.</li>
+        <li><b>Ключ</b> — по чему меня находят.</li>
+        <li><b>Значение</b> — что я отдаю, если меня выбрали.</li>
+      </ul>
+      <p>Оценка — произведение запроса и ключа. Смешивают значения. На обучении модель подбирает матрицы W<sub>Q</sub>, W<sub>K</sub> и W<sub>V</sub>: она учится, что искать. Перед softmax оценки делят на корень из длины ключа. В модели семейства GPT маска закрывает все будущие токены.</p>
+      <figure>
+        <p class="label">Фраза курса. Считается слово «снимок»</p>
+        <div class="row">
+          <span class="tok">врач</span>
+          <span class="tok">смотрит</span>
+          <span class="focus">снимок</span>
+        </div>
+        <figcaption>Запрос «снимка» сравнивается с ключами всех трёх слов. В ответ собираются их значения. В энкодере стрелка приходит и справа. В декодере будущего слова на входе нет.</figcaption>
+      </figure>
+      <div class="aside">
+        <h3>Зачем делить на √d<sub>k</sub></h3>
+        <p>Если координаты запроса и ключа независимы, со средним 0 и дисперсией 1, дисперсия их скалярного произведения равна длине ключа d<sub>k</sub>. При d<sub>k</sub> = 64 типичные оценки разъезжаются, и softmax кладёт почти весь вес на один токен. Градиенты по остальным словам становятся крошечными. Деление на √d<sub>k</sub> возвращает разброс оценок к порядку единицы. Так аргумент сформулирован в статье 2017 года.</p>
+      </div>
+      <div class="aside">
+        <h3>Причинная маска</h3>
+        <p>Маска запрещает позиции смотреть на более поздние позиции. Модель, которую учат предсказывать следующее слово, не может просто прочитать это слово во входе. На обучении все позиции всё равно считают параллельно: будущие клетки матрицы оценок заполняют значением −∞, и после softmax их вес равен нулю.</p>
+      </div>
+    </section>
+
+    <section id="heads">
+      <h2>Несколько голов</h2>
+      <p>Один проход внимания даёт токену одно взвешенное среднее и одну связь. Языку нужно несколько сразу: кто действует, на что смотрит, что было только что. Трансформер запускает h голов параллельно. У каждой свои матрицы запроса, ключа и значения и своё меньшее пространство. Ответы склеивают и смешивают одной матрицей W<sub>O</sub>.</p>
+      <p>В базовой модели 2017 года ширина 512 и 8 голов по 64 числа. Восемь на 64 снова даёт 512, поэтому стоимость близка к одному вниманию полной ширины. Голова — это отрезок вектора, а не окно из токенов: каждая голова по-прежнему смотрит на всю доступную фразу.</p>
+      <p>У современных моделей две разные величины. Запрос нужен только текущему токену. Ключи и значения хранят для всех уже прочитанных токенов: это KV-кэш. Поэтому голов запросов оставляют много, а комплектов ключей — мало. У Qwen3-235B это 64 и 4. У DeepSeek-V3 и Kimi K2 ключи не режут на отдельные головы, а сжимают в вектор ранга 512.</p>
+    </section>
+
+    <section id="pos">
+      <h2>Откуда берётся место</h2>
+      <p>Внимание сравнивает токены скалярными произведениями. В этом сравнении нет номера места. Перестановка слов оставляет каждому токену те же оценки, только в другом порядке. «Врач смотрит снимок» и «снимок смотрит врач» без позиции — один набор эмбеддингов.</p>
+      <p>Место вносят в вектор до сравнения. В статье 2017 года к эмбеддингу прибавляют 512 чисел из синусов и косинусов номера позиции. Длины совпадают, сумма остаётся ширины 512. Позже GPT-2 и BERT выучили отдельный вектор на каждую позицию. У Qwen, DeepSeek и Kimi позицию вносят поворотом запроса и ключа, RoPE: сходство начинает зависеть от расстояния между токенами.</p>
+      <div class="eqs">
+        <div class="eq">
+          <span>PE<sub>(pos, 2i)</sub></span>
+          <span>=</span>
+          <span>sin( pos / 10000<sup>2i / d<sub>model</sub></sup> )</span>
+          <span class="gloss">i = 0 … d<sub>model</sub>/2 − 1. Координата 2i — синус.</span>
+        </div>
+        <div class="eq">
+          <span>PE<sub>(pos, 2i+1)</sub></span>
+          <span>=</span>
+          <span>cos( pos / 10000<sup>2i / d<sub>model</sub></sup> )</span>
+          <span class="gloss">Следующая координата — косинус того же аргумента. Для базовой модели d<sub>model</sub> = 512.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="block">
+      <h2>Блок трансформера</h2>
+      <p>Внимание только усредняет. Рядом с ним в каждом блоке стоит сеть на каждый токен отдельно: вектор расширяют, применяют нелинейность и сжимают обратно. В базовой модели ширина 512 на время становится 2048. Вокруг обеих частей — два инженерных приёма. Нормализация слоя держит числа в устойчивом диапазоне. Остаточная связь прибавляет поправку к входу, а не заменяет вход целиком.</p>
+      <div class="eqs">
+        <div class="eq">
+          <span>x</span>
+          <span>←</span>
+          <span>x + Attention(LN(x))</span>
+          <span class="gloss">Сначала норма, потом внимание, результат прибавляют к входу.</span>
+        </div>
+        <div class="eq">
+          <span>x</span>
+          <span>←</span>
+          <span>x + FFN(LN(x))</span>
+          <span class="gloss">Та же схема для сети внутри токена. Форма вектора не меняется, поэтому блоки ставят стопкой.</span>
+        </div>
+      </div>
+      <p>Выход той же формы, что вход. В статье 2017 года стопок две, по 6 блоков. В малом GPT-2 блоков 12. У крупнейших моделей сегодня их порядка сотни.</p>
+      <div class="aside">
+        <h3>Куда ставили нормализацию</h3>
+        <p>В статье 2017 года норма стояла после сложения: LN(x + подслой(x)). Это post-LN. GPT-2 перенёс норму на вход подслоя: x + подслой(LN(x)). Это pre-LN, и от входа блока до выхода остаётся чистая остаточная дорога. Работа Xiong и соавторов 2020 года показывает, почему pre-LN устойчивее в начале обучения. У современных моделей обычно pre-LN, часто в варианте RMSNorm.</p>
+      </div>
+    </section>
+
+    <section id="families">
+      <h2>Три семейства</h2>
+      <p>Исходный трансформер — энкодер и декодер для перевода. Энкодер читает исходную фразу и видит её целиком. Декодер пишет перевод слева направо и дополнительно смотрит на представление входа. За два года половины стали использовать по отдельности.</p>
+      <div class="cards">
+        <article class="card">
+          <span>Энкодер</span>
+          <b>BERT, 2018</b>
+          <p>Токен видит всю входную фразу, включая слова справа. Строится представление. Учат заполнять скрытые слова.</p>
+        </article>
+        <article class="card">
+          <span>Декодер</span>
+          <b>GPT, с 2018</b>
+          <p>Токен видит себя и предыдущие. Каждая позиция предсказывает следующее слово. Так устроены почти все большие языковые модели.</p>
+        </article>
+        <article class="card">
+          <span>Энкодер–декодер</span>
+          <b>статья 2017, T5, 2019</b>
+          <p>Отдельное чтение входа и отдельное порождение выхода. Выход смотрит на весь вход и на уже написанные слова.</p>
+        </article>
+      </div>
+      <figure>
+        <p class="label">Один и тот же вопрос: откуда приходят стрелки</p>
+        <div class="row">
+          <span class="tok">врач</span>
+          <span class="tok">смотрит</span>
+          <span class="tok">снимок</span>
+          <span class="arrow">энкодер, все три видны</span>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <span class="tok">врач</span>
+          <span class="tok">смотрит</span>
+          <span class="ghost">пусто</span>
+          <span class="arrow">→</span>
+          <span class="focus">снимок</span>
+        </div>
+        <figcaption>В декодере «снимок» ещё пишется и смотрит только на «врач» и «смотрит». В агентном цикле стоит именно декодер: выбор следующего действия — порождение продолжения.</figcaption>
+      </figure>
+    </section>
+
+    <section id="math">
+      <h2>Формулы на одной странице</h2>
+      <p>Если глава сложилась, каждая строка читается как предложение.</p>
+      <div class="eqs">
+        <div class="eq">
+          <span>X</span><span>=</span>
+          <span>Embed(токены) + P</span>
+          <span class="gloss">Векторы слов плюс позиции. Форма n × d: n токенов, ширина d.</span>
+        </div>
+        <div class="eq">
+          <span>Q, K, V</span><span>=</span>
+          <span>X W<sub>Q</sub>,&nbsp; X W<sub>K</sub>,&nbsp; X W<sub>V</sub></span>
+          <span class="gloss">Три обученных взгляда на каждый токен.</span>
+        </div>
+        <div class="eq">
+          <span>A</span><span>=</span>
+          <span>softmax( QK<sup>T</sup> / √d<sub>k</sub> + M )</span>
+          <span class="gloss">Веса. M равно −∞ там, куда смотреть нельзя: у декодера это будущие позиции.</span>
+        </div>
+        <div class="eq">
+          <span>голова</span><span>=</span>
+          <span>A V</span>
+          <span class="gloss">Взвешенная сумма значений.</span>
+        </div>
+        <div class="eq">
+          <span>MHA(X)</span><span>=</span>
+          <span>[голова<sub>1</sub>; …; голова<sub>h</sub>] W<sub>O</sub></span>
+          <span class="gloss">Головы склеивают и смешивают одной матрицей.</span>
+        </div>
+        <div class="eq">
+          <span>FFN(x)</span><span>=</span>
+          <span>W<sub>2</sub> φ(W<sub>1</sub> x)</span>
+          <span class="gloss">Сеть внутри одного токена. φ — нелинейность.</span>
+        </div>
+      </div>
+      <p>Softmax встречается у GPT дважды. Внутри каждой головы он превращает оценки в веса. На самом верху — логиты в вероятности следующего токена.</p>
+      <p>Матрица QK<sup>T</sup> имеет размер n × n: каждый токен против каждого. Удвоение контекста учетверяет работу и память внимания. KV-кэш, FlashAttention и сокращение числа голов ключей появились, чтобы жить с этой квадратичной ценой.</p>
+    </section>
+
+    <section id="why">
+      <h2>Почему это важно</h2>
+      <p>Архитектура закрывает обе исходные трудности. Любой токен достаёт любой другой за один шаг. Вся последовательность обрабатывается параллельно, и это ложится на видеокарту.</p>
+      <p>Один и тот же блок можно делать шире и ставить глубже, учить на больших данных, и качество продолжает расти. Поэтому почти каждая крупная модель после 2017 года — потомок этой схемы.</p>
+      <p>Блок ничего не предполагает про текст как таковой. Картинки, нарезанные на фрагменты, кадры звука и смеси модальностей проходят через ту же конструкцию.</p>
+      <p>Для этого курса следствие прямое. Контекст, память KV-кэша, цена длинной истории и форма размеров модели следуют из механики главы. Модель в агентном цикле — декодер: она продолжает последовательность. Рантайм решает, будет ли выбранный вызов исполнен.</p>
+    </section>
+
+    <section id="paper">
+      <h2>Статья 2017 года</h2>
+      <p>В июне 2017 года восемь исследователей, в основном из Google, выложили Attention Is All You Need. Трансформер для машинного перевода дал 28,4 BLEU на WMT 2014 с английского на немецкий, выше прежних лучших результатов, и 41,8 на паре английский–французский. Обучение заняло 3,5 дня на восьми GPU, то есть заметно меньше, чем у тогдашних лидеров.</p>
+      <p>Внимание 2014 года, остаточные связи 2015 года и нормализация слоя 2016 года уже существовали. Решающим оказался отказ от рекуррентности и простой способ собрать эти части. За полтора года BERT, энкодер, и GPT, декодер, показали: предобучение трансформера на неразмеченном тексте, а затем адаптация, обходит отдельные модели под каждую задачу.</p>
+      <div class="aside">
+        <h3>Что стоит уметь после главы</h3>
+        <p>Нарисовать блок по памяти. Сказать, зачем запрос, ключ и значение. Сказать, зачем маска. Отнести BERT и GPT к своим семействам. Формулы выше — справочник, а не текст для заучивания.</p>
+      </div>
+    </section>
+
+    <section id="remember">
+      <h2>Что запомнить</h2>
+      <ul class="remember">
+        <li>Трансформер убирает рекуррентность: токен обращается к другим напрямую, позиции считают параллельно.</li>
+        <li>Самовнимание: запросы на ключи, деление на √d<sub>k</sub>, softmax, взвешенная сумма значений.</li>
+        <li>Запрос, ключ и значение — три проекции: что ищу, чем найден, что отдаю.</li>
+        <li>Несколько голов следят за разными связями. Число голов — не число видимых токенов.</li>
+        <li>Порядок сам по себе не виден, поэтому место добавляют: синусы, выученный вектор или поворот RoPE.</li>
+        <li>Блок: x + Attention(LN(x)), затем x + FFN(LN(x)). Форма сохраняется, блоки складываются.</li>
+        <li>Внимание связывает токены. Сеть считает внутри одного токена.</li>
+        <li>Причинная маска позволяет учить все позиции сразу и закрывает будущее.</li>
+        <li>Энкодер понимает всю фразу. Декодер порождает продолжение. Энкодер–декодер переводит одну последовательность в другую.</li>
+        <li>Цена внимания растёт как квадрат длины. Отсюда большая часть последующей инженерии.</li>
+      </ul>
+    </section>
+
+    <section id="papers">
+      <h2>Статьи</h2>
+      <ul class="papers">
+        <li>
+          <a href="https://arxiv.org/abs/1706.03762"><strong>Attention Is All You Need</strong></a>
+          <span class="meta">Vaswani et al. · 2017 · обязательная</span>
+          Сама архитектура: стопки многоголового внимания и сетей на токен, позиции, остатки, норма слоя. Читать раздел 3 с рисунком 1. Формула внимания — в 3.2.1–3.2.2. Детали обучения на первом проходе можно пропустить.
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/1409.0473"><strong>Neural Machine Translation by Jointly Learning to Align and Translate</strong></a>
+          <span class="meta">Bahdanau, Cho, Bengio · 2014 · обязательная</span>
+          Внимание в переводе: на каждом шаге выхода модель оценивает состояния энкодера, нормирует их softmax и берёт взвешенное среднее как контекст. Сначала смотреть тепловые карты выравнивания.
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/1409.3215"><strong>Sequence to Sequence Learning with Neural Networks</strong></a>
+          <span class="meta">Sutskever, Vinyals, Le · 2014</span>
+          Энкодер–декодер на рекуррентных сетях: вся фраза сжимается в один вектор. На длинных фразах качество падает. Внимание Бахданау отвечает именно на это.
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/1512.03385"><strong>Deep Residual Learning for Image Recognition</strong></a>
+          <span class="meta">He et al. · 2015 · обязательная</span>
+          Блок учит поправку к своему входу, x + F(x). Градиенту есть прямая дорога. Каждый блок трансформера держится на этом приёме.
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/1607.06450"><strong>Layer Normalization</strong></a>
+          <span class="meta">Ba, Kiros, Hinton · 2016</span>
+          Нормируют признаки одного примера, а не статистики батча. Поэтому приём подходит языковым моделям с переменной длиной.
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/1810.04805"><strong>BERT</strong></a>
+          <span class="meta">Devlin et al. · 2018 · обязательная</span>
+          Энкодер читает контекст в обе стороны. Часть токенов скрывают, модель восстанавливает их по всей фразе. Отсюда схема «предобучил один раз, дообучил под задачу».
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/1910.10683"><strong>T5. Exploring the Limits of Transfer Learning</strong></a>
+          <span class="meta">Raffel et al. · 2019</span>
+          Любая задача — текст на входе и текст на выходе, энкодер–декодер. Длинная статья: введение и сравнение архитектур в разделе 3.2, остальное как справочник.
+        </li>
+        <li>
+          <a href="https://arxiv.org/abs/2002.04745"><strong>On Layer Normalization in the Transformer Architecture</strong></a>
+          <span class="meta">Xiong et al. · 2020</span>
+          Почему норму ставят до подслоя. У post-LN нужен осторожный прогрев шага обучения. У pre-LN градиенты в начале ведут себя спокойнее.
+        </li>
+      </ul>
+      <h3>Короткие видео к этой главе</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=wjZofJX0v4M">3Blue1Brown. Трансформеры, техника внутри больших языковых моделей.</a> Общий проход от текста к вероятности следующего токена.</li>
+        <li><a href="https://www.youtube.com/watch?v=eMlx5fFNoYc">3Blue1Brown. Внимание в трансформерах, шаг за шагом.</a> Запрос, ключ, значение и softmax.</li>
+        <li><a href="https://www.youtube.com/watch?v=kCc8FmEb1nY">Andrej Karpathy. Собираем GPT с нуля в коде.</a> Тот же блок, уже как программа.</li>
+      </ul>
+    </section>
+
+    <footer class="course">
+      <span>Программная инженерия мультиагентных систем в клинической медицине. Ход главы совпадает с учебным планом главы Transformers на roadtointelligence.com. Текст написан для курса.</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+</body>
+</html>

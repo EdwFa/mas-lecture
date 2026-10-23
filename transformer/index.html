@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Трансформеры</title>
+  <link rel="stylesheet" href="css/chapter.css?v=paper" />
+</head>
+<body class="core">
+  <header class="top">
+    <div class="brand">Трансформеры</div>
+    <div class="modes" role="group" aria-label="Режим чтения">
+      <button type="button" id="mode-core" aria-pressed="true">Коротко · 14 мин</button>
+      <button type="button" id="mode-full" aria-pressed="false">Полностью · 31 мин</button>
+      <button type="button" id="mode-research" aria-pressed="false">Статьи у разделов</button>
+      <span class="sizes" role="group" aria-label="Размер текста">
+        <button type="button" data-size="s" aria-pressed="false">А</button>
+        <button type="button" data-size="m" aria-pressed="true">А</button>
+        <button type="button" data-size="l" aria-pressed="false">А</button>
+      </span>
+      <button type="button" class="solid" id="done-chapter" aria-pressed="false">Глава прочитана</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Содержание">
+      <p>Сейчас читается</p>
+      <a href="#hero">Фраза</a>
+      <a href="#rnn">Одно слово за раз</a>
+      <a href="#idea">Каждое слово смотрит на каждое</a>
+      <a href="#steps">Внимание с нуля</a>
+      <a href="#qkv">Запрос, ключ и значение</a>
+      <a href="#heads">Несколько голов</a>
+      <a href="#pos">Где место</a>
+      <a href="#block">Блок</a>
+      <a href="#families">Три семейства</a>
+      <a href="#math">Формулы</a>
+      <a href="#why">Зачем это</a>
+      <a href="#paper">Статья 2017</a>
+      <a href="#remember">Что запомнить</a>
+      <a href="#concepts">Понятия</a>
+      <a href="#papers">Статьи</a>
+      <a href="#watch">Смотреть</a>
+      <a href="#next">Что дальше</a>
+    </nav>
+
+    <main>
+      <p class="eyebrow">Архитектура, которая собрала современные модели</p>
+      <h1>Трансформеры</h1>
+      <p class="deck">Короткий режим — основные идеи и одна лаборатория. Полный — все разделы, разборы и прямой проход блока. Числа в лабораториях считаются, это не нарисованные проценты.</p>
+
+      <section id="hero">
+        <div class="sentence" id="hero-stage">
+          <p class="eyebrow" id="hero-caption">Наведите или выберите слово.</p>
+          <div class="arc-stage">
+            <svg id="hero-arcs" aria-hidden="true"></svg>
+            <div class="words" id="hero-words" role="group" aria-label="Слова фразы"></div>
+          </div>
+          <div class="attn" id="hero-bars"></div>
+        </div>
+        <p>В одном предложении. Трансформер даёт каждому токену прямое сравнение с остальными. Блоки ставят друг на друга, и позиции считают параллельно.</p>
+      </section>
+
+      <section id="rnn">
+        <h2>Одно слово за раз <a href="#rnn" data-copy>#</a></h2>
+        <p>К 2016 году перевод читали рекуррентной сетью: одно слово, одно обновление скрытого вектора, передача следующему слову. Внимание уже прикрепляли к декодеру, но внутри чтения информация ползла по цепочке.</p>
+        <ul>
+          <li><button type="button" class="inline-link" data-rnn="2">Расстояние.</button> До слова «он» надо донести и врача, и снимок. На длинном тексте оба следа затухают.</li>
+          <li><button type="button" class="inline-link" data-rnn="3">Скорость.</button> Следующий шаг ждёт предыдущий. Длину нельзя разложить по ядрам.</li>
+          <li><button type="button" class="inline-link" data-rnn="4">Один шаг.</button> «Он» сразу видит и врача, и снимок. Вес делится между ними.</li>
+        </ul>
+        <div class="panel" id="rnn-panel">
+          <p class="eyebrow">К кому относится «он»: к врачу или к снимку</p>
+          <div class="steps" id="rnn-dots"></div>
+          <h3 id="rnn-title"></h3>
+          <p id="rnn-body"></p>
+          <div id="rnn-svg"></div>
+          <div class="navrow">
+            <button type="button" class="ghost" id="rnn-prev">Назад</button>
+            <button type="button" class="ghost" id="rnn-next">Дальше</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="idea">
+        <h2>Каждое слово смотрит на каждое <a href="#idea" data-copy>#</a></h2>
+        <p>Внимание перестаёт быть приставкой и становится архитектурой. Токен сравнивает себя с другими и собирает нужное за один шаг. Рекуррентность убирают. Остаются внимание, сеть на каждый токен и приёмы, с которыми глубокую стопку можно обучить.</p>
+        <p>Внимание переносит сведения между токенами. Сеть прямого распространения обрабатывает сведения внутри токена. Эту пару повторяют.</p>
+        <div class="research-only">
+          <p class="eyebrow">Статьи раздела</p>
+          <p><a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need, 2017.</a> Читать раздел 3 с рисунком 1.</p>
+        </div>
+      </section>
+
+      <section id="steps">
+        <h2>Внимание с нуля <a href="#steps" data-copy>#</a></h2>
+        <p>Начало — вопрос. Для каждого слова: на какие другие слова смотреть? Слово уже вектор. Скалярное произведение меряет сходство. Softmax делает из оценок веса с суммой 1. Взвешенная сумма смешивает векторы.</p>
+        <div class="panel" id="lab">
+          <p class="eyebrow">Лаборатория · учебная модель · около 10 минут</p>
+          <div class="steps" id="lab-steps"></div>
+          <h3 id="lab-title"></h3>
+          <p id="lab-lead"></p>
+          <div class="words" id="lab-words"></div>
+          <div id="lab-out"></div>
+          <div class="navrow">
+            <button type="button" class="ghost" id="lab-prev">Назад</button>
+            <button type="button" class="ghost" id="lab-next">Дальше</button>
+            <button type="button" class="solid" id="lab-done" aria-pressed="false">Шаги пройдены</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="qkv">
+        <h2>Запрос, ключ и значение <a href="#qkv" data-copy>#</a></h2>
+        <p>Сырое сходство спрашивает «кто на меня похож?». У слова «он» два ответа: врач и снимок. Поэтому каждый токен порождает три вектора: запрос — что ищу, ключ — по чему меня находят, значение — что отдаю. Оценки — произведения запросов и ключей. Смешивают значения. Перед softmax делят на √d<sub>k</sub>. В декодере маска закрывает будущее.</p>
+        <div class="only-full panel">
+          <h3>Зачем делить на √d<sub>k</sub></h3>
+          <p>Если координаты запроса и ключа независимы, со средним 0 и дисперсией 1, дисперсия произведения равна длине ключа. При d<sub>k</sub> = 64 оценки разъезжаются, softmax кладёт почти весь вес на один токен, и обучение остальных связей замирает. Деление возвращает разброс к порядку единицы. Так это сказано в статье 2017 года.</p>
+        </div>
+        <p class="tease"><button type="button" class="ghost more-toggle" data-open="qkv" aria-expanded="false">Ещё в полном · √d<sub>k</sub> и маска</button></p>
+        <div class="only-full">
+          <h3>Причинная маска</h3>
+          <p>Позиция не смотрит на более поздние. Будущие клетки заполняют −∞, после softmax их вес нулевой. Все позиции при этом считают параллельно. Отметить понятие:</p>
+          <button type="button" class="ghost mark loose" data-mark="mask">Маска изучена</button>
+        </div>
+      </section>
+
+      <section id="heads">
+        <h2>Несколько голов сразу <a href="#heads" data-copy>#</a></h2>
+        <p>Один проход даёт одно взвешенное среднее. Языку нужны сразу несколько связей: кто, на что, что было только что. h голов идут параллельно, у каждой свои матрицы, ответы склеивают и смешивают матрицей W<sub>O</sub>.</p>
+        <p>В базовой модели ширина 512 и 8 голов по 64. 8 × 64 = 512. Голова — отрезок вектора, не окно из токенов. У Qwen3-235B голов запросов 64, а голов ключей 4: ключи хранят в кэше на всю длину, запрос нужен только текущему токену.</p>
+        <p class="tease"><button type="button" class="ghost more-toggle" data-open="heads" aria-expanded="false">Ещё в полном · сжатие ключей</button></p>
+        <div class="only-full">
+          <p>У DeepSeek-V3 и Kimi K2 ключи не режут на отдельные головы, а сжимают в вектор ранга 512. Это тот же мотив: уменьшить то, что растёт вместе с контекстом.</p>
+        </div>
+      </section>
+
+      <section id="pos">
+        <h2>Где место <a href="#pos" data-copy>#</a></h2>
+        <p>В сравнении запросов и ключей нет номера позиции. «Врач принёс снимок» и «снимок принёс врач» без позиции — один набор векторов. Место вносят отдельно. В 2017 году к эмбеддингу прибавляют синусы и косинусы номера. Позже позицию поворачивают в запросе и ключе, RoPE.</p>
+        <p>PE<sub>(pos, 2i)</sub> = sin(pos / 10000<sup>2i/d</sup>), следующая координата — косинус того же аргумента. i нумерует пары координат, не сам номер координаты. d = 512 в базовой модели.</p>
+        <button type="button" class="ghost mark loose" data-mark="pos">Позиции изучены</button>
+      </section>
+
+      <section id="block">
+        <h2>Блок трансформера <a href="#block" data-copy>#</a></h2>
+        <p>Внимание усредняет. Рядом сеть на каждый токен: расширить, нелинейность, сжать обратно. Вокруг обеих частей нормализация слоя и остаток: подслой прибавляет поправку, а не заменяет вход. Форма сохраняется, блоки складываются. В статье их 6 в каждой стопке, в малом GPT-2 — 12, у крупных моделей порядка сотни.</p>
+        <div class="eq"><span>x</span><span>←</span><span>x + Attention(LN(x))</span><span class="gloss">Сначала норма, потом внимание, результат прибавляют.</span></div>
+        <div class="eq"><span>x</span><span>←</span><span>x + FFN(LN(x))</span><span class="gloss">Та же схема для сети внутри токена.</span></div>
+        <div class="panel" id="explorer">
+          <p class="eyebrow">Лаборатория · прямой проход · около 15 минут</p>
+          <p>Один блок на фразе «врач смотрит снимок». Размерность 4, веса случайные и зафиксированы. Каждое число посчитано.</p>
+          <label class="eyebrow"><input type="checkbox" id="ex-causal" /> причинная маска</label>
+          <div class="steps" id="ex-steps"></div>
+          <h3 id="ex-title"></h3>
+          <p id="ex-shape"></p>
+          <pre class="matrix" id="ex-mat"></pre>
+          <div class="navrow">
+            <button type="button" class="ghost" id="ex-prev">Назад</button>
+            <button type="button" class="ghost" id="ex-next">Дальше</button>
+          </div>
+        </div>
+        <p class="tease"><button type="button" class="ghost more-toggle" data-open="block" aria-expanded="false">Ещё в полном · куда ставили норму</button></p>
+        <div class="only-full">
+          <h3>Куда ставили норму</h3>
+          <p>В 2017 году норма стояла после сложения: LN(x + подслой(x)). GPT-2 перенёс её на вход подслоя: x + подслой(LN(x)). Так от низа стопки до верха остаётся чистый остаток. Xiong и соавторы, 2020, показывают, почему этот вариант устойчивее в начале обучения.</p>
+        </div>
+      </section>
+
+      <section id="families">
+        <h2>Три семейства <a href="#families" data-copy>#</a></h2>
+        <p>Исходная модель — энкодер и декодер для перевода. Через два года половины используют отдельно. Клетки показывают, кого строка имеет право видеть.</p>
+        <div class="cards" id="family-tabs"></div>
+        <div class="panel">
+          <p id="family-lead"></p>
+          <div id="family-grid"></div>
+          <p id="family-note"></p>
+        </div>
+        <button type="button" class="ghost mark loose" data-mark="families">Семейства изучены</button>
+      </section>
+
+      <section id="math">
+        <h2>Формулы на одной странице <a href="#math" data-copy>#</a></h2>
+        <div class="eq"><span>X</span><span>=</span><span>Embed(токены) + P</span><span class="gloss">Векторы слов и позиции, форма n × d.</span></div>
+        <div class="eq"><span>Q, K, V</span><span>=</span><span>X W<sub>Q</sub>, X W<sub>K</sub>, X W<sub>V</sub></span><span class="gloss">Три взгляда на каждый токен.</span></div>
+        <div class="eq"><span>A</span><span>=</span><span>softmax(QK<sup>T</sup> / √d<sub>k</sub> + M)</span><span class="gloss">M = −∞ там, куда смотреть нельзя.</span></div>
+        <div class="eq"><span>голова</span><span>=</span><span>A V</span><span class="gloss">Взвешенная сумма значений.</span></div>
+        <div class="eq"><span>MHA</span><span>=</span><span>[головы] W<sub>O</sub></span><span class="gloss">Склейка и одна общая матрица.</span></div>
+        <div class="eq"><span>FFN</span><span>=</span><span>W<sub>2</sub> φ(W<sub>1</sub> x)</span><span class="gloss">Сеть внутри токена.</span></div>
+        <p>Softmax у декодера дважды: внутри головы и наверху, когда логиты становятся вероятностями следующего токена. Матрица оценок n × n. Удвоение контекста учетверяет работу внимания.</p>
+      </section>
+
+      <section id="why">
+        <h2>Зачем это <a href="#why" data-copy>#</a></h2>
+        <p>Любой токен достаёт любой другой за один шаг, и последовательность считают параллельно. Один и тот же блок делают шире и глубже, и качество растёт вместе с данными. Блок не привязан к тексту: те же слои идут по фрагментам изображения и по звуку.</p>
+        <p>В агентном цикле этого курса стоит декодер. Модель продолжает последовательность. Рантайм решает, исполнять ли выбранный вызов.</p>
+      </section>
+
+      <section id="paper">
+        <h2>Статья 2017 года <a href="#paper" data-copy>#</a></h2>
+        <p>В июне 2017 года восемь исследователей, в основном из Google, выложили Attention Is All You Need. На переводе WMT 2014 модель получила 28,4 BLEU с английского на немецкий и 41,8 на пару английский–французский, после 3,5 дня на восьми GPU.</p>
+        <p>Внимание, остатки и норма слоя уже были. Решающим оказался отказ от рекуррентности и простой способ собрать части. За полтора года энкодер BERT и декодер GPT показали предобучение на неразмеченном тексте.</p>
+        <div class="only-full">
+          <p>После главы стоит уметь нарисовать блок, объяснить запрос, ключ и значение, сказать, зачем маска, и отнести BERT и GPT к семействам. Формулы — справочник.</p>
+        </div>
+      </section>
+
+      <section id="remember">
+        <h2>Что запомнить <a href="#remember" data-copy>#</a></h2>
+        <div id="quiz"></div>
+        <ul>
+          <li>Токен обращается к другим напрямую, позиции считают параллельно.</li>
+          <li>Запросы на ключи, деление на √d<sub>k</sub>, softmax, сумма значений.</li>
+          <li>Три проекции: что ищу, чем найден, что отдаю.</li>
+          <li>Несколько голов следят за разными связями.</li>
+          <li>Порядок добавляют отдельно.</li>
+          <li>Блок сохраняет форму и складывается в стопку.</li>
+          <li>Маска закрывает будущее и оставляет параллельное обучение.</li>
+          <li>Энкодер читает, декодер пишет, энкодер–декодер переводит.</li>
+          <li class="only-full">Цена внимания растёт как квадрат длины.</li>
+          <li class="only-full">Современные модели уменьшают хранение ключей: GQA или сжатие.</li>
+          <li class="only-full">Норму чаще ставят до подслоя.</li>
+        </ul>
+      </section>
+
+      <section id="concepts">
+        <h2>Понятия этой главы</h2>
+        <div id="concept-list"></div>
+      </section>
+
+      <section id="papers">
+        <h2>Статьи</h2>
+        <div id="paper-list"></div>
+      </section>
+
+      <section id="watch">
+        <h2>Смотреть</h2>
+        <div id="video-list"></div>
+      </section>
+
+      <section id="next" class="only-full">
+        <h2>Что дальше <a href="#next" data-copy>#</a></h2>
+        <p>Дальше тот же блок меняют по частям: поворот позиции RoPE, норма до подслоя и RMSNorm, другие активации в сети токена, кэш ключей и значений, группировка голов ключей и сжатие ключей у DeepSeek и Kimi. Линия агентов идёт от декодера: модель выбирает продолжение, рантайм исполняет.</p>
+      </section>
+
+      <footer class="note">
+        Учебный проект курса «Программная инженерия мультиагентных систем в клинической медицине», осень 2026.
+      </footer>
+    </main>
+  </div>
+  <script src="js/math.js"></script>
+  <script src="js/app.js"></script>
+  <div id="hl-pop" hidden>
+    <button type="button" data-c="1" aria-label="Синий"></button>
+    <button type="button" data-c="2" aria-label="Зелёный"></button>
+    <button type="button" data-c="3" aria-label="Глина"></button>
+    <button type="button" data-c="4" aria-label="Янтарь"></button>
+    <button type="button" data-c="5" aria-label="Слива"></button>
+    <button type="button" data-c="0">Снять</button>
+  </div>
+</body>
+</html>

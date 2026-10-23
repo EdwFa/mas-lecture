@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 3. Один оборот цикла</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      background: #f3efe6;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      box-sizing: border-box;
+      padding: 72px 96px 56px;
+      display: flex;
+      flex-direction: column;
+      background: #f7f4ee;
+      color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    h1 {
+      margin: 36px 0 0;
+      font-size: 72px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 520px 72px 300px 72px 1fr;
+      align-items: center;
+      margin-top: 72px;
+    }
+
+    .label {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .frame {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 8px 18px;
+      align-items: baseline;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #e4dfd4;
+    }
+
+    .num {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: #5e6872;
+    }
+
+    .frame h2 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .frame p {
+      grid-column: 2;
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .model {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .model .word {
+      margin-top: 18px;
+      font-size: 76px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+
+    .model .hint {
+      margin: 22px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+
+    .outcomes {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      padding-left: 8px;
+    }
+
+    .outcome {
+      padding: 8px 0 8px 28px;
+      border-left: 2px solid #1c1915;
+    }
+
+    .outcome h2 {
+      margin: 10px 0 0;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .outcome p {
+      margin: 10px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #243038;
+    }
+
+    .loop {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-top: 56px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+
+    .spacer {
+      flex: 1;
+    }
+
+    .loop svg {
+      flex: 0 0 auto;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 28px;
+      border-top: 1px solid #d9d3c7;
+      padding-top: 22px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker">
+      <span>Лекция 1. Вводная</span>
+      <span>03</span>
+    </div>
+    <h1>Один оборот цикла</h1>
+    <div class="flow">
+      <section class="stack">
+        <div class="label">Рантайм собирает</div>
+        <div class="frame">
+          <span class="num">01</span>
+          <h2>Цель и правила</h2>
+          <p>Что считать готовым результатом.</p>
+        </div>
+        <div class="frame">
+          <span class="num">02</span>
+          <h2>Контекст</h2>
+          <p>Всё, что программа положила в окно.</p>
+        </div>
+        <div class="frame">
+          <span class="num">03</span>
+          <h2>Инструменты</h2>
+          <p>Имя, назначение и схема аргументов.</p>
+        </div>
+      </section>
+      <div class="arrow" aria-hidden="true">
+        <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
+          <path d="M0 12h28" stroke="#1c1915" stroke-width="2"/>
+          <path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/>
+        </svg>
+      </div>
+      <section class="model">
+        <div class="label">04</div>
+        <div class="word">Модель</div>
+        <p class="hint">Возвращает ответ или вызов инструмента.</p>
+      </section>
+      <div class="arrow" aria-hidden="true">
+        <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
+          <path d="M0 12h28" stroke="#1c1915" stroke-width="2"/>
+          <path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/>
+        </svg>
+      </div>
+      <section class="outcomes">
+        <div class="outcome">
+          <div class="label">Ответ</div>
+          <h2>Стоп</h2>
+          <p>Итог готов, исчерпан лимит или ждём человека.</p>
+        </div>
+        <div class="outcome">
+          <div class="label">05 · Вызов</div>
+          <h2>Рантайм</h2>
+          <p>Проверяет аргументы и исполняет действие в среде.</p>
+        </div>
+      </section>
+    </div>
+    <div class="loop">
+      <svg width="188" height="24" viewBox="0 0 188 24" fill="none" aria-hidden="true">
+        <path d="M188 12H16" stroke="#1c1915" stroke-width="2"/>
+        <path d="M22 4L12 12l10 8" fill="none" stroke="#1c1915" stroke-width="2"/>
+      </svg>
+      <span>Результат инструмента возвращается в контекст, и цикл начинается снова.</span>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

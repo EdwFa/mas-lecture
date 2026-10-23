@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 25. Путь записан заранее</title>
+  <style>
+    html, body { margin: 0; width: 1920px; height: 1080px; background: #f3efe6; }
+    .slide {
+      width: 1920px; height: 1080px; box-sizing: border-box;
+      padding: 40px 64px 26px; display: flex; flex-direction: column;
+      background: #f7f4ee; color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+    .kicker {
+      display: flex; justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    h1 { margin: 10px 0 0; font-size: 52px; font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
+    .lead {
+      margin: 12px 0 0; max-width: 1680px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px; line-height: 1.35; color: #243038;
+    }
+    .schemes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 16px; }
+    figure { margin: 0; }
+    figure svg { width: 100%; height: 128px; display: block; }
+    figcaption { margin-top: 2px; text-align: center; font-family: Georgia, serif; font-size: 18px; }
+    table {
+      width: 100%; margin-top: 14px; border-collapse: collapse;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    th {
+      padding: 0 28px 14px 0; border-bottom: 2px solid #1c1915;
+      font-size: 16px; font-weight: 500; letter-spacing: 0.14em;
+      text-align: left; text-transform: uppercase; color: #5e6872;
+    }
+    th:nth-child(1) { width: 28%; }
+    th:nth-child(2) { width: 34%; }
+    td {
+      padding: 12px 22px 12px 0; border-bottom: 1px solid #e4dfd4;
+      font-size: 22px; line-height: 1.3; color: #243038; vertical-align: top;
+    }
+    td:first-child {
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 28px; letter-spacing: -0.02em; color: #1c1915;
+    }
+    .coda { margin-top: 22px; padding-top: 14px; border-top: 1px solid #d9d3c7; }
+    .spacer { flex: 1; }
+    .coda strong { display: block; font-size: 28px; font-weight: 400; letter-spacing: -0.02em; }
+    footer {
+      display: flex; justify-content: space-between;
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px; color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 1. Вводная</span><span>25</span></div>
+    <h1>Путь записан заранее</h1>
+    <p class="lead">Порядок шагов задаёт код. Модель заполняет шаг, а не выбирает устройство пути.</p>
+    <div class="schemes">
+      <figure>
+        <svg viewBox="0 0 300 128" role="img" aria-label="Шаг, проверка, следующий шаг">
+          <defs><marker id="c1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="6" y="42" width="78" height="44" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="45" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1c1915">шаг</text>
+          <line x1="84" y1="64" x2="108" y2="64" stroke="#1c1915" stroke-width="2" marker-end="url(#c1)"/>
+          <rect x="114" y="42" width="78" height="44" rx="8" fill="#1c1915"/>
+          <text x="153" y="69" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#f7f4ee">проверка</text>
+          <line x1="192" y1="64" x2="214" y2="64" stroke="#1c1915" stroke-width="2" marker-end="url(#c1)"/>
+          <rect x="220" y="42" width="74" height="44" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="257" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1c1915">шаг</text>
+        </svg>
+        <figcaption>Цепочка</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 300 128" role="img" aria-label="Вход уходит в одну из двух веток">
+          <defs><marker id="c2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="8" y="42" width="90" height="44" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="53" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1c1915">вход</text>
+          <line x1="98" y1="56" x2="150" y2="28" stroke="#1c1915" stroke-width="2" marker-end="url(#c2)"/>
+          <line x1="98" y1="72" x2="150" y2="100" stroke="#1c1915" stroke-width="2" marker-end="url(#c2)"/>
+          <rect x="158" y="8" width="130" height="40" rx="8" fill="#1c1915"/>
+          <text x="223" y="33" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f7f4ee">ждать</text>
+          <rect x="158" y="80" width="130" height="40" rx="8" fill="#f7f4ee" stroke="#d9d3c7"/>
+          <text x="223" y="105" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5e6872">пакет</text>
+        </svg>
+        <figcaption>Роутер</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 300 128" role="img" aria-label="Три источника сходятся в сводку">
+          <defs><marker id="c3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="8" y="8" width="84" height="36" rx="6" fill="#f7f4ee" stroke="#d9d3c7"/>
+          <text x="50" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#1c1915">проблемы</text>
+          <rect x="108" y="8" width="84" height="36" rx="6" fill="#f7f4ee" stroke="#d9d3c7"/>
+          <text x="150" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#1c1915">лаборатория</text>
+          <rect x="208" y="8" width="84" height="36" rx="6" fill="#f7f4ee" stroke="#d9d3c7"/>
+          <text x="250" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#1c1915">снимок</text>
+          <path d="M50 44 C 50 70, 150 70, 150 86" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#c3)"/>
+          <path d="M150 44 L 150 86" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#c3)"/>
+          <path d="M250 44 C 250 70, 150 70, 150 86" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#c3)"/>
+          <rect x="78" y="90" width="144" height="32" rx="8" fill="#1c1915"/>
+          <text x="150" y="111" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" letter-spacing="1" fill="#f7f4ee">СВОДКА</text>
+        </svg>
+        <figcaption>Sectioning</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 300 128" role="img" aria-label="Один вопрос прогоняют три раза">
+          <defs><marker id="c4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="8" y="40" width="96" height="48" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="56" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1c1915">вопрос</text>
+          <line x1="104" y1="64" x2="138" y2="64" stroke="#1c1915" stroke-width="2" marker-end="url(#c4)"/>
+          <text x="168" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#1c1915">×3</text>
+          <line x1="196" y1="64" x2="208" y2="64" stroke="#1c1915" stroke-width="2" marker-end="url(#c4)"/>
+          <rect x="214" y="40" width="78" height="48" rx="8" fill="#1c1915"/>
+          <text x="253" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f7f4ee">ответ</text>
+        </svg>
+        <figcaption>Голосование</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 300 128" role="img" aria-label="Черновик и критик, число кругов ограничено">
+          <defs><marker id="c5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1c1915"/></marker></defs>
+          <rect x="8" y="28" width="120" height="44" rx="8" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+          <text x="68" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#1c1915">черновик</text>
+          <rect x="172" y="28" width="112" height="44" rx="8" fill="#1c1915"/>
+          <text x="228" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#f7f4ee">критик</text>
+          <line x1="128" y1="44" x2="164" y2="44" stroke="#1c1915" stroke-width="2" marker-end="url(#c5)"/>
+          <path d="M228 72 C 228 116, 68 116, 68 72" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#c5)"/>
+          <rect x="112" y="90" width="76" height="18" rx="3" fill="#f7f4ee"/>
+          <text x="150" y="103" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" letter-spacing="1" fill="#5e6872">ПРЕДЕЛ</text>
+        </svg>
+        <figcaption>Критик</figcaption>
+      </figure>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Паттерн</th><th>Как называют сейчас</th><th>Что делает</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Цепочка</td>
+          <td>Sequential, prompt chaining</td>
+          <td>Шаг получает узкий вход и отдаёт схему. Между шагами стоит проверка</td>
+        </tr>
+        <tr>
+          <td>Роутер</td>
+          <td>Routing, dispatcher</td>
+          <td>Вход относят к одной ветке</td>
+        </tr>
+        <tr>
+          <td>Sectioning</td>
+          <td>Fan-out разных частей, map-reduce</td>
+          <td>Независимые источники читают параллельно и сводят со ссылкой</td>
+        </tr>
+        <tr>
+          <td>Голосование</td>
+          <td>Voting, best-of-n, mixture of agents</td>
+          <td>Один вопрос прогоняют несколько раз и сводят ответы</td>
+        </tr>
+        <tr>
+          <td>Evaluator–optimizer</td>
+          <td>Generate-and-review, Loop</td>
+          <td>Критик идёт по рубрикатору. Число кругов ограничено</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="coda">
+      <strong>Голосование сводит ответы моделей. Sectioning сводит источники и хранит ссылку.</strong>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

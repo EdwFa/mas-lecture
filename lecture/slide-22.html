@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 22. Клинический фильтр</title>
+  <style>
+    html, body { margin: 0; width: 1920px; height: 1080px; background: #f3efe6; }
+    .slide {
+      width: 1920px; height: 1080px; box-sizing: border-box;
+      padding: 40px 64px 26px; display: flex; flex-direction: column;
+      background: #f7f4ee; color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+    .kicker {
+      display: flex; justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    h1 { margin: 10px 0 0; font-size: 52px; font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
+    .lead {
+      margin: 12px 0 0; max-width: 1600px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px; line-height: 1.35; color: #243038;
+    }
+    .path {
+      display: grid;
+      grid-template-columns: 1fr 36px 1fr 36px 1fr 36px 1fr;
+      gap: 8px; align-items: stretch;
+      margin-top: 36px;
+    }
+    .node {
+      box-sizing: border-box; min-height: 250px;
+      padding: 28px 26px 24px;
+      border: 1.5px solid #1c1915; border-radius: 8px; background: #f7f4ee;
+    }
+    .node.pause { background: #1c1915; color: #f7f4ee; }
+    .eye {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    .node.pause .eye { color: #d9d3c7; }
+    h2 { margin: 12px 0 0; font-size: 36px; font-weight: 400; letter-spacing: -0.02em; }
+    .node p {
+      margin: 14px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px; line-height: 1.35; color: #243038;
+    }
+    .node.pause p { color: #f7f4ee; }
+    .arr {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; color: #1c1915;
+    }
+    .coda { margin-top: 32px; padding-top: 16px; border-top: 1px solid #d9d3c7; }
+    .spacer { flex: 1; }
+    .coda strong { display: block; font-size: 28px; font-weight: 400; letter-spacing: -0.02em; }
+    .coda p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px; line-height: 1.35; color: #243038;
+    }
+    footer {
+      display: flex; justify-content: space-between;
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px; color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 1. Вводная</span><span>22</span></div>
+    <h1>Клинический фильтр</h1>
+    <p class="lead">Система готовит пакет для врача. Диагноз не ставится, лечение не назначается. Из этого сразу следует путь.</p>
+    <div class="path">
+      <article class="node">
+        <p class="eye">Минимум данных</p>
+        <h2>Чтение</h2>
+        <p>Воркеру отдают задачу и идентификаторы, не весь разговор координатора.</p>
+      </article>
+      <div class="arr">→</div>
+      <article class="node">
+        <p class="eye">Ссылка на источник</p>
+        <h2>Черновик</h2>
+        <p>Каждая фраза пакета указывает на ресурс, из которого она взята.</p>
+      </article>
+      <div class="arr">→</div>
+      <article class="node pause">
+        <p class="eye">Перед записью</p>
+        <h2>Пауза</h2>
+        <p>Пока врач не подтвердил, перехода к записи нет.</p>
+      </article>
+      <div class="arr">→</div>
+      <article class="node">
+        <p class="eye">Разные права</p>
+        <h2>Запись</h2>
+        <p>Узел, которому можно писать, отделён от узла, которому можно только читать.</p>
+      </article>
+    </div>
+    <div class="coda">
+      <strong>Если даты или формулировки спорят, пакет показывает спор.</strong>
+      <p>Гладкий итог, в котором спор исчез, для консилиума хуже пропущенного абзаца. Навык внутри одного процесса границу прав не проводит.</p>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>
