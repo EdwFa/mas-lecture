@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 8. Маршрутизация</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1680px; }
+    .scheme {
+      width: 100%;
+      height: auto;
+      margin-top: 12px;
+    }
+    .scheme text {
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      fill: #1c1915;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>08</span></div>
+    <h1>Маршрутизация</h1>
+    <p class="lead">Промпт идёт в маршрутизатор. Он направляет запрос одному из агентов. Выход возвращается пользователю.</p>
+    <svg class="scheme" viewBox="0 0 1776 640" role="img" aria-label="User даёт Prompt. Router с LLM направляет его агенту. Output возвращается пользователю.">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c1915"/>
+        </marker>
+      </defs>
+
+      <rect x="36" y="24" width="300" height="112" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="186" y="80" text-anchor="middle" dominant-baseline="middle" font-size="36">Prompt</text>
+      <path d="M 186 248 V 144" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+
+      <rect x="36" y="248" width="300" height="112" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="186" y="304" text-anchor="middle" dominant-baseline="middle" font-size="36">User</text>
+
+      <path d="M 336 80 H 430 V 250 H 500" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+
+      <rect x="500" y="160" width="340" height="180" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="670" y="228" text-anchor="middle" dominant-baseline="middle" font-size="28">LLM</text>
+      <text x="670" y="278" text-anchor="middle" dominant-baseline="middle" font-size="36">Router</text>
+
+      <path d="M 840 210 H 900 V 80 H 980" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M 840 250 H 980" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M 840 290 H 900 V 470 H 980" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+
+      <rect x="980" y="24" width="280" height="112" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="1120" y="80" text-anchor="middle" dominant-baseline="middle" font-size="36">Agent</text>
+      <path d="M 1260 80 H 1340" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <rect x="1340" y="24" width="280" height="112" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="1480" y="80" text-anchor="middle" dominant-baseline="middle" font-size="36">Output</text>
+
+      <rect x="980" y="194" width="280" height="112" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="1120" y="250" text-anchor="middle" dominant-baseline="middle" font-size="48">…</text>
+
+      <rect x="980" y="414" width="280" height="112" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="1120" y="470" text-anchor="middle" dominant-baseline="middle" font-size="36">Agent</text>
+      <path d="M 1260 470 H 1340" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <rect x="1340" y="414" width="280" height="112" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="1480" y="470" text-anchor="middle" dominant-baseline="middle" font-size="36">Output</text>
+
+      <path d="M 1620 136 V 600 H 186 V 368" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M 1620 526 V 600" fill="none" stroke="#1c1915" stroke-width="2"/>
+    </svg>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

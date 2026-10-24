@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 14. 04. Рефлексия агентов</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1680px; }
+    .scheme {
+      width: 100%;
+      height: auto;
+      margin-top: 18px;
+    }
+    .scheme text {
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      fill: #1c1915;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>14</span></div>
+    <h1>04. Рефлексия агентов</h1>
+    <p class="lead">Продюсер готовит выход. Критик оценивает его и возвращает оценку продюсеру. Выход идёт пользователю.</p>
+    <svg class="scheme" viewBox="0 0 1776 560" role="img" aria-label="Prompt идёт продюсеру, затем критику. Критик возвращает рефлексию продюсеру. Output идёт пользователю, пользователь даёт Prompt.">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c1915"/>
+        </marker>
+      </defs>
+
+      <rect x="36" y="24" width="440" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="256" y="84" text-anchor="middle" dominant-baseline="middle" font-size="36">Prompt</text>
+      <path d="M 256 280 V 152" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+
+      <rect x="36" y="280" width="440" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="256" y="340" text-anchor="middle" dominant-baseline="middle" font-size="36">User</text>
+
+      <path d="M 476 84 H 560" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <rect x="568" y="24" width="480" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="808" y="84" text-anchor="middle" dominant-baseline="middle" font-size="34">Agent: Producer</text>
+
+      <path d="M 1048 84 H 1140" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <rect x="1148" y="24" width="480" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="1388" y="84" text-anchor="middle" dominant-baseline="middle" font-size="34">Agent: Critique</text>
+
+      <path d="M 808 144 V 272" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <rect x="568" y="280" width="480" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="2"/>
+      <text x="808" y="340" text-anchor="middle" dominant-baseline="middle" font-size="36">Output</text>
+      <path d="M 568 340 H 484" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+
+      <path d="M 1388 144 V 220 H 960 V 152" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="1174" y="208" text-anchor="middle" font-size="28">Reflection</text>
+    </svg>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

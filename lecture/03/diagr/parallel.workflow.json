@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Параллелизация",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "source_a", "label": "Источник A" },
+    { "id": "topic", "label": "Тема" },
+    { "id": "source_b", "label": "Источник B" }
+  ],
+  "mainPath": ["topic", "search_a", "sum_a", "synth"],
+  "nodes": [
+    {
+      "id": "topic",
+      "lane": "topic",
+      "col": 0,
+      "type": "external",
+      "label": "Тема",
+      "sublabel": "запрос",
+      "width": 140
+    },
+    {
+      "id": "search_a",
+      "lane": "source_a",
+      "col": 1,
+      "type": "external",
+      "label": "Искать A",
+      "sublabel": "источник A",
+      "width": 140
+    },
+    {
+      "id": "search_b",
+      "lane": "source_b",
+      "col": 1,
+      "type": "external",
+      "label": "Искать B",
+      "sublabel": "источник B",
+      "width": 140
+    },
+    {
+      "id": "sum_a",
+      "lane": "source_a",
+      "col": 2,
+      "type": "backend",
+      "label": "Суммировать A",
+      "sublabel": "источник A",
+      "width": 150
+    },
+    {
+      "id": "sum_b",
+      "lane": "source_b",
+      "col": 2,
+      "type": "backend",
+      "label": "Суммировать B",
+      "sublabel": "источник B",
+      "width": 150
+    },
+    {
+      "id": "synth",
+      "lane": "topic",
+      "col": 3,
+      "type": "backend",
+      "label": "Синтез",
+      "sublabel": "финальный ответ",
+      "width": 150
+    }
+  ],
+  "edges": [
+    { "id": "to-a", "from": "topic", "to": "search_a", "label": "одновременно", "role": "branch" },
+    { "id": "to-b", "from": "topic", "to": "search_b", "label": "одновременно", "role": "branch" },
+    { "id": "found-a", "from": "search_a", "to": "sum_a", "label": "источник A" },
+    { "id": "found-b", "from": "search_b", "to": "sum_b", "label": "источник B" },
+    { "id": "sum-a", "from": "sum_a", "to": "synth", "label": "суммаризация A" },
+    { "id": "sum-b", "from": "sum_b", "to": "synth", "label": "суммаризация B", "role": "branch" }
+  ]
+}

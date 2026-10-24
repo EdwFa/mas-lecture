@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 14. Инжиниринг контекста</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    html, body { overflow: hidden; }
+    .frame {
+      position: fixed;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      border: 0;
+      background: #f7f4ee;
+    }
+    .figure {
+      position: fixed;
+      z-index: 5;
+      top: 148px;
+      right: 220px;
+      width: 360px;
+      height: auto;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <iframe class="frame" src="diagr/context.html" title="Инжиниринг контекста"></iframe>
+  <img class="figure" src="img/reflection.png" alt="User, Prompt, Agent, Output. Reflection возвращается агенту, Output — пользователю.">
+<script src="deck.js"></script>
+</body>
+</html>

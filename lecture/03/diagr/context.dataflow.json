@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Инжиниринг контекста",
+    "quality_profile": "showcase",
+    "viewBox": [1080, 640]
+  },
+  "stages": [
+    { "label": "Среда" },
+    { "label": "Агент" },
+    { "label": "Ответ" }
+  ],
+  "nodes": [
+    {
+      "id": "system",
+      "type": "backend",
+      "label": "Системный промпт",
+      "sublabel": "базовые инструкции",
+      "stage": 0,
+      "row": 0,
+      "width": 140
+    },
+    {
+      "id": "tool",
+      "type": "external",
+      "label": "Выход инструмента",
+      "sublabel": "доступность из календаря",
+      "stage": 0,
+      "row": 1,
+      "width": 140
+    },
+    {
+      "id": "implicit",
+      "type": "backend",
+      "label": "Неявные данные",
+      "sublabel": "отношения с адресатом",
+      "stage": 0,
+      "row": 2,
+      "width": 140
+    },
+    {
+      "id": "retrieval",
+      "type": "database",
+      "label": "Retrieval",
+      "sublabel": "заметки прошлых встреч",
+      "stage": 0,
+      "row": 3,
+      "width": 140
+    },
+    {
+      "id": "agent",
+      "type": "backend",
+      "label": "Агент",
+      "sublabel": "операционная картина",
+      "stage": 1,
+      "row": 2,
+      "width": 140
+    },
+    {
+      "id": "answer",
+      "type": "frontend",
+      "label": "Ответ",
+      "sublabel": "по контексту",
+      "stage": 2,
+      "row": 2,
+      "width": 140
+    }
+  ],
+  "flows": [
+    { "id": "instructions", "from": "system", "to": "agent", "label": "инструкции", "classification": "системный промпт", "labelAt": [100, 210] },
+    { "id": "calendar", "from": "tool", "to": "agent", "label": "доступность", "classification": "выход инструмента", "variant": "emphasis", "labelAt": [100, 324] },
+    { "id": "relation", "from": "implicit", "to": "agent", "label": "адресат", "classification": "неявные данные", "route": "straight", "labelAt": [100, 438] },
+    { "id": "notes", "from": "retrieval", "to": "agent", "label": "заметки", "classification": "retrieval", "labelAt": [100, 560] },
+    { "id": "picture", "from": "agent", "to": "answer", "label": "картина", "classification": "операционная картина", "variant": "emphasis", "labelAt": [423, 430] }
+  ]
+}
