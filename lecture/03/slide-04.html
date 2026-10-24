@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 3. Линейная цепочка</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .scheme { margin-top: 28px; width: 100%; height: 620px; }
+    .scheme text { font-family: Georgia, "Iowan Old Style", serif; }
+    .lbl {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      fill: #5e6872;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>03</span></div>
+    <h1>Линейная цепочка</h1>
+    <p class="lead">Выход шага становится входом следующего.</p>
+    <svg class="scheme" viewBox="0 0 1776 620" role="img" aria-label="Линейная цепочка: промпт, агент, выход, проверка, внешняя система, следующий промпт">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c1915"/>
+        </marker>
+      </defs>
+      <rect x="8" y="16" width="340" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+      <text x="178" y="86" text-anchor="middle" font-size="34">Промпт</text>
+      <path d="M 348 76 H 400" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
+
+      <rect x="408" y="16" width="340" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+      <text x="578" y="86" text-anchor="middle" font-size="34">Агент</text>
+      <path d="M 748 76 H 800" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
+
+      <rect x="808" y="16" width="340" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+      <text x="978" y="86" text-anchor="middle" font-size="34">Выход</text>
+      <path d="M 1148 76 H 1200" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
+
+      <rect x="1208" y="16" width="520" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+      <text x="1468" y="86" text-anchor="middle" font-size="34">Проверка</text>
+
+      <path d="M 1468 136 V 196 H 578 V 136" fill="none" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
+      <text class="lbl" x="1023" y="186" text-anchor="middle">отвергает выход и просит снова выполнить работу</text>
+
+      <path d="M 1468 196 V 292 H 458 V 360" fill="none" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
+      <text class="lbl" x="960" y="278" text-anchor="middle">валидированный выход</text>
+
+      <rect x="48" y="360" width="820" height="140" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+      <text x="458" y="422" text-anchor="middle" font-size="32">Агент считает</text>
+      <text x="458" y="464" text-anchor="middle" font-size="32">или ходит во внешнюю систему</text>
+
+      <path d="M 868 430 H 940" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
+
+      <rect x="948" y="360" width="780" height="140" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
+      <text x="1338" y="444" text-anchor="middle" font-size="34">Следующий промпт</text>
+    </svg>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

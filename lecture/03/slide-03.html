@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 3. 01. Цепочки агентов</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1720px; }
+    .pts {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 40px;
+    }
+    .pt { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .pt h2 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .pt p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { max-width: 1720px; font-size: 26px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>03</span></div>
+    <h1>01. Цепочки агентов</h1>
+    <p class="lead">Второе имя паттерна — конвейер, pipeline. Стратегия «разделяй и властвуй»: сложная задача делится на подзадачи.</p>
+    <div class="pts">
+      <article class="pt">
+        <h2>Шаг</h2>
+        <p>У каждой подзадачи свой промпт. Выход шага подаётся на вход следующего. Это цепь зависимостей.</p>
+      </article>
+      <article class="pt">
+        <h2>Структурированный выход</h2>
+        <p>Между шагами задают JSON или XML. Свободный текст следующий промпт читает заново и может сломать цепочку.</p>
+      </article>
+      <article class="pt">
+        <h2>Роль и инструмент</h2>
+        <p>В промпт шага можно записать роль. На шаге модель может обратиться к внешней системе, API или базе.</p>
+      </article>
+      <article class="pt">
+        <h2>Один промпт</h2>
+        <p>Пропуск инструкций, дрейф контекста, накопление ошибок, галлюцинация из‑за когнитивной нагрузки.</p>
+      </article>
+    </div>
+    <p class="coda">Паттерн применяют, когда стадий несколько, между ними нужны схема или инструмент, или ход состоит из многих шагов.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

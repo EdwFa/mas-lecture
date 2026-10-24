@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Маршрутизация",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "book", "label": "Бронирование" },
+    { "id": "route", "label": "Маршрутизатор" },
+    { "id": "unclear", "label": "Неясно", "variant": "exception" }
+  ],
+  "mainPath": ["request", "router", "info_agent"],
+  "nodes": [
+    {
+      "id": "request",
+      "lane": "route",
+      "col": 0,
+      "type": "external",
+      "label": "Запрос",
+      "sublabel": "вход",
+      "width": 140
+    },
+    {
+      "id": "router",
+      "lane": "route",
+      "col": 1,
+      "type": "backend",
+      "label": "Маршрутизатор",
+      "sublabel": "LLM, одно слово",
+      "width": 160
+    },
+    {
+      "id": "booker",
+      "lane": "book",
+      "col": 2,
+      "type": "backend",
+      "label": "booker",
+      "sublabel": "бронирование",
+      "width": 140
+    },
+    {
+      "id": "info_agent",
+      "lane": "route",
+      "col": 2,
+      "type": "backend",
+      "label": "info",
+      "sublabel": "информация",
+      "width": 140
+    },
+    {
+      "id": "unclear_agent",
+      "lane": "unclear",
+      "col": 2,
+      "type": "backend",
+      "label": "unclear",
+      "sublabel": "уточнение",
+      "width": 140
+    }
+  ],
+  "edges": [
+    { "id": "to-router", "from": "request", "to": "router", "label": "намерение" },
+    { "id": "to-booker", "from": "router", "to": "booker", "label": "booker", "role": "branch" },
+    { "id": "to-info", "from": "router", "to": "info_agent", "label": "info" },
+    { "id": "to-unclear", "from": "router", "to": "unclear_agent", "label": "unclear", "role": "branch" }
+  ]
+}

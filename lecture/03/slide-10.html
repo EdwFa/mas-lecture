@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 10. 03. Параллельное выполнение</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1680px; }
+    .cols {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .col { border-top: 1px solid #1c1915; padding-top: 14px; }
+    .col h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    ol {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      padding: 11px 0;
+      border-top: 1px solid #e4dfd4;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    li:last-child { border-bottom: 1px solid #e4dfd4; }
+    .n {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: #5e6872;
+      padding-top: 4px;
+    }
+    .coda { max-width: 1600px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>10</span></div>
+    <h1>03. Параллельное выполнение</h1>
+    <p class="lead">Одновременное выполнение независимых шагов: вызовы LLM, инструменты или подагенты.</p>
+    <div class="cols">
+      <article class="col">
+        <h2>Последовательный подход</h2>
+        <ol>
+          <li><span class="n">01</span><span>Найти источник A.</span></li>
+          <li><span class="n">02</span><span>Суммировать источник A.</span></li>
+          <li><span class="n">03</span><span>Найти источник B.</span></li>
+          <li><span class="n">04</span><span>Суммировать источник B.</span></li>
+          <li><span class="n">05</span><span>Синтезировать финальный ответ.</span></li>
+        </ol>
+      </article>
+      <article class="col">
+        <h2>Параллельный подход</h2>
+        <ol>
+          <li><span class="n">01</span><span>Искать источник A и источник B одновременно.</span></li>
+          <li><span class="n">02</span><span>Суммировать A и B одновременно, когда оба поиска завершены.</span></li>
+          <li><span class="n">03</span><span>Синтез ждёт завершения параллельных шагов.</span></li>
+        </ol>
+      </article>
+    </div>
+    <p class="coda">Параллельно идут части, которые не зависят от результатов друг друга.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>

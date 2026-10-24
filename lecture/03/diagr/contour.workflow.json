@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Контур обработки информации",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "chain", "label": "Цепочка промптов" }
+  ],
+  "mainPath": ["extract", "summarize", "entities", "lookup", "report"],
+  "nodes": [
+    {
+      "id": "extract",
+      "lane": "chain",
+      "col": 0,
+      "type": "backend",
+      "label": "Промпт 1",
+      "sublabel": "извлечь текст",
+      "width": 140
+    },
+    {
+      "id": "summarize",
+      "lane": "chain",
+      "col": 1,
+      "type": "backend",
+      "label": "Промпт 2",
+      "sublabel": "суммировать",
+      "width": 140
+    },
+    {
+      "id": "entities",
+      "lane": "chain",
+      "col": 2,
+      "type": "backend",
+      "label": "Промпт 3",
+      "sublabel": "сущности",
+      "width": 140
+    },
+    {
+      "id": "lookup",
+      "lane": "chain",
+      "col": 3,
+      "type": "external",
+      "label": "Промпт 4",
+      "sublabel": "МИС или база",
+      "width": 140
+    },
+    {
+      "id": "report",
+      "lane": "chain",
+      "col": 4,
+      "type": "backend",
+      "label": "Промпт 5",
+      "sublabel": "итоговый отчёт",
+      "width": 140
+    }
+  ],
+  "edges": [
+    { "id": "text", "from": "extract", "to": "summarize", "label": "очищенный текст" },
+    { "id": "summary", "from": "summarize", "to": "entities", "label": "суммаризация" },
+    { "id": "names", "from": "entities", "to": "lookup", "label": "сущности" },
+    { "id": "found", "from": "lookup", "to": "report", "label": "результаты поиска" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Один промпт",
+      "items": [
+        "Пропуск инструкций, дрейф контекста, накопление ошибок, галлюцинация",
+        "Цепочка промптов делит просьбу на эти пять шагов"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Что передаётся",
+      "items": [
+        "Промпт 3 извлекает сущности: анализы, даты, процедуры",
+        "Промпт 4 ищет их в МИС или во внутренней базе знаний"
+      ]
+    }
+  ]
+}

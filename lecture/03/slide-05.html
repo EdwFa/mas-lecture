@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 5. Агент</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1720px; }
+    .cycle {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+    }
+    .step { border-top: 1px solid #1c1915; padding-top: 14px; }
+    .step .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+    .step h2 {
+      margin: 10px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .step p {
+      margin: 12px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { max-width: 1720px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>05</span></div>
+    <h1>Агент</h1>
+    <p class="lead">AI-агент воспринимает среду и действует, чтобы достичь цели. Это LLM, усиленная планом, инструментами и взаимодействием со средой. Цикл из пяти шагов.</p>
+    <div class="cycle">
+      <article class="step">
+        <div class="n">01</div>
+        <h2>Получить миссию</h2>
+        <p>Цель. В примере книги — организовать расписание.</p>
+      </article>
+      <article class="step">
+        <div class="n">02</div>
+        <h2>Сканировать сцену</h2>
+        <p>Собрать информацию: почта, календарь, контакты.</p>
+      </article>
+      <article class="step">
+        <div class="n">03</div>
+        <h2>Продумать</h2>
+        <p>План действий и подход к цели.</p>
+      </article>
+      <article class="step">
+        <div class="n">04</div>
+        <h2>Действовать</h2>
+        <p>Отправить приглашения, поставить встречи, обновить календарь.</p>
+      </article>
+      <article class="step">
+        <div class="n">05</div>
+        <h2>Учиться и становиться лучше</h2>
+        <p>Наблюдать результат и адаптироваться. Встречу перенесли — следующий раз это учтено.</p>
+      </article>
+    </div>
+    <p class="coda">Это цикл. Агент наблюдает результат и адаптируется к следующей задаче.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>
