@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 2. Использование инструментов</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1720px; }
+    .items { margin-top: 22px; }
+    .item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 4px 28px;
+      padding: 12px 0 14px;
+      border-top: 1px solid #1c1915;
+    }
+    .item:last-child { border-bottom: 1px solid #1c1915; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: #5e6872;
+      padding-top: 8px;
+    }
+    .item h2 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .item p {
+      margin: 4px 0 0;
+      max-width: 1560px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>02</span></div>
+    <h1>Использование инструментов</h1>
+    <p class="lead">Агент обращается к API, базам, сервисам и коду. Механизм называют Function Calling: модель решает, когда и какую функцию вызвать.</p>
+    <div class="items">
+      <article class="item">
+        <div class="n">01</div>
+        <div>
+          <h2>Определение инструментов</h2>
+          <p>Модели сообщают назначение, имя и параметры функции: типы и описания.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="n">02</div>
+        <div>
+          <h2>Решение модели</h2>
+          <p>По запросу и списку инструментов модель решает, нужен ли вызов одной или нескольких функций.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="n">03</div>
+        <div>
+          <h2>Генерация вызова</h2>
+          <p>Модель возвращает структурированный вывод, обычно JSON: имя инструмента и аргументы из запроса.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="n">04</div>
+        <div>
+          <h2>Выполнение инструмента</h2>
+          <p>Оркестратор перехватывает вывод и вызывает внешнюю функцию с этими аргументами.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="n">05</div>
+        <div>
+          <h2>Наблюдение</h2>
+          <p>Результат выполнения возвращается агенту.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="n">06</div>
+        <div>
+          <h2>Обработка</h2>
+          <p>Модель получает результат как контекст и формулирует ответ или выбирает следующий шаг.</p>
+        </div>
+      </article>
+    </div>
+    <p class="coda">Следующий шаг может быть другим инструментом, рефлексией или окончательным ответом.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js"></script>
+</body>
+</html>
