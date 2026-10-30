@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 26. Таблица отличий</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    table { margin-top: 18px; }
+    th { padding: 0 20px 10px 0; font-size: 14px; }
+    th:first-child, td:first-child { width: 280px; }
+    td {
+      padding: 12px 22px 12px 0;
+      font-size: 20px;
+      line-height: 1.28;
+    }
+    td strong { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>26</span></div>
+    <h1>Таблица отличий</h1>
+    <p class="lead">Вызов функции и MCP оба выводят модель за текст. Отличаются тем, насколько общий это способ.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Чем отличается</th>
+          <th>Вызов функции</th>
+          <th>MCP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Стандарт</strong></td>
+          <td>Свой у каждого поставщика. Формат разный.</td>
+          <td>Открытый порядок. Им пользуются разные модели и инструменты.</td>
+        </tr>
+        <tr>
+          <td><strong>Область</strong></td>
+          <td>Модель просит выполнить одну заранее описанную функцию.</td>
+          <td>Более широкий порядок: модель и инструменты находят друг друга и работают вместе.</td>
+        </tr>
+        <tr>
+          <td><strong>Устройство</strong></td>
+          <td>Связь одна к одной: модель и программа, которая выполняет инструмент.</td>
+          <td>Клиент и сервер. Программа с моделью подключается к разным серверам.</td>
+        </tr>
+        <tr>
+          <td><strong>Как узнают</strong></td>
+          <td>Модели прямо говорят, какие инструменты есть в этом разговоре.</td>
+          <td>Клиент спрашивает сервер, какие возможности тот отдаёт.</td>
+        </tr>
+        <tr>
+          <td><strong>Повтор</strong></td>
+          <td>Связь часто привязана к одному приложению и одной модели.</td>
+          <td>Сервер живёт отдельно. К нему подключается любая совместимая программа.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

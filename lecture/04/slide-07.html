@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 7. Вызов</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1720px; }
+    .cols { margin-top: 48px; gap: 64px; }
+    .col { border-top: 1px solid #1c1915; padding-top: 18px; }
+    .col h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .ask {
+      margin: 28px 0 0;
+      font-size: 34px;
+      line-height: 1.35;
+    }
+    .fields {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .fields li {
+      padding: 18px 0;
+      border-top: 1px solid #e4dfd4;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .fields li:last-child { border-bottom: 1px solid #e4dfd4; }
+    .fields strong {
+      display: block;
+      margin-bottom: 4px;
+      font-family: Georgia, "Iowan Old Style", serif;
+      font-weight: 400;
+      font-size: 28px;
+      color: #1c1915;
+    }
+    .coda { max-width: 1680px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>07</span></div>
+    <h1>Вызов</h1>
+    <p class="lead">На вопрос про ОАК модель не подставляет числа из памяти. Она возвращает имя инструмента и аргумент. Чаще это поля JSON.</p>
+    <div class="cols">
+      <article class="col">
+        <h2>Вопрос</h2>
+        <p class="ask">«Общий анализ крови, ОАК?»</p>
+      </article>
+      <article class="col">
+        <h2>Что возвращает модель</h2>
+        <ul class="fields">
+          <li><strong>Имя</strong>справочник исследований</li>
+          <li><strong>Аргумент</strong>исследование: ОАК</li>
+        </ul>
+      </article>
+    </div>
+    <p class="coda">Оркестратор сверяет имя со списком инструментов и только потом вызывает API.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

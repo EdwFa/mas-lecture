@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 25. MCP и вызов функции</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .cols {
+      margin-top: 22px;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .col { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .col h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    ol {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      padding: 11px 0;
+      border-top: 1px solid #e4dfd4;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    li:last-child { border-bottom: 1px solid #e4dfd4; }
+    .n {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: #5e6872;
+      padding-top: 4px;
+    }
+    .coda { max-width: 1680px; margin-top: 18px; font-size: 26px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>25</span></div>
+    <h1>MCP и вызов функции</h1>
+    <p class="lead">Оба способа выводят модель за текст. Вызов функции просит один инструмент. MCP задаёт общий порядок для многих служб и разных моделей.</p>
+    <div class="cols">
+      <article class="col">
+        <h2>Вызов функции</h2>
+        <ol>
+          <li><span class="n">01</span><span>Модель обращается к одному заранее описанному инструменту. Здесь «инструмент» и «функция» — одно и то же.</span></li>
+          <li><span class="n">02</span><span>Связь одна к одной: по намерению пользователя модель оформляет просьбу.</span></li>
+          <li><span class="n">03</span><span>Программа выполняет её и возвращает результат модели.</span></li>
+          <li><span class="n">04</span><span>Порядок свой у каждого поставщика модели.</span></li>
+        </ol>
+      </article>
+      <article class="col">
+        <h2>MCP</h2>
+        <ol>
+          <li><span class="n">01</span><span>Открытый порядок: модель находит внешние возможности и пользуется ими.</span></li>
+          <li><span class="n">02</span><span>Один и тот же инструмент доступен разным совместимым моделям.</span></li>
+          <li><span class="n">03</span><span>Старую службу оборачивают и не переписывают. Она работает как раньше.</span></li>
+          <li><span class="n">04</span><span>Модель собирает из таких служб новое приложение и направляет их совместную работу.</span></li>
+        </ol>
+      </article>
+    </div>
+    <p class="coda">Вызов функции — просьба к одному инструменту. MCP — общий способ связать много служб с разными моделями.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

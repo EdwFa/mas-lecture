@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 15. Агенты инструментов</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1720px; }
+    .cols {
+      margin-top: 22px;
+      grid-template-columns: 1fr 1.12fr 0.96fr;
+      gap: 40px;
+    }
+    .col { border-top: 1px solid #1c1915; padding-top: 14px; }
+    .col h2 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .intro {
+      margin: 12px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    ol {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 10px;
+      padding: 11px 0;
+      border-top: 1px solid #e4dfd4;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    li:last-child { border-bottom: 1px solid #e4dfd4; }
+    .n {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: #5e6872;
+      padding-top: 3px;
+    }
+    .coda { max-width: 1680px; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>15</span></div>
+    <h1>Агенты инструментов</h1>
+    <p class="lead">Инструмент связывает рассуждение модели с API, базами и сервисами.</p>
+    <div class="cols">
+      <article class="col">
+        <h2>Ограничение</h2>
+        <ol>
+          <li><span class="n">01</span><span>Модель сильно пишет текст, но сама не связана с внешним миром.</span></li>
+          <li><span class="n">02</span><span>Знания не обновляются: они ограничены данными обучения.</span></li>
+          <li><span class="n">03</span><span>Сама модель не выполняет действие и не берёт сведения в момент запроса.</span></li>
+          <li><span class="n">04</span><span>Без моста к API, базам и сервисам она не решает задачи, где нужно выйти наружу.</span></li>
+        </ol>
+      </article>
+      <article class="col">
+        <h2>Как устроен паттерн</h2>
+        <ol>
+          <li><span class="n">01</span><span>Инструменты описывают модели: имя, назначение, параметры.</span></li>
+          <li><span class="n">02</span><span>По запросу пользователя модель решает, нужен ли вызов, и возвращает структурированный объект, JSON: какую функцию вызвать и с какими аргументами.</span></li>
+          <li><span class="n">03</span><span>Оркестратор выполняет вызов, получает результат и отдаёт его модели.</span></li>
+          <li><span class="n">04</span><span>Модель включает в ответ свежие сведения или результат действия.</span></li>
+        </ol>
+      </article>
+      <article class="col">
+        <h2>Когда применять</h2>
+        <p class="intro">Паттерн нужен всякий раз, когда агент должен выйти за знания модели.</p>
+        <ol>
+          <li><span class="n">01</span><span>Данные на момент запроса: погода, цены.</span></li>
+          <li><span class="n">02</span><span>Закрытые данные: база организации.</span></li>
+          <li><span class="n">03</span><span>Точный расчёт.</span></li>
+          <li><span class="n">04</span><span>Выполнение кода.</span></li>
+          <li><span class="n">05</span><span>Действие в другой системе: письмо, управление устройством.</span></li>
+        </ol>
+      </article>
+    </div>
+    <p class="coda">Ответ собирает модель, действие выполняет инструмент.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

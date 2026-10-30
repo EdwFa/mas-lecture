@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Обзор паттерна MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .blocks {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 48px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 10px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 4px 0 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 16px; font-size: 26px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>23</span></div>
+    <h1>Обзор паттерна MCP</h1>
+    <p class="lead">MCP — общий переходник. Модель подключается к чужой системе, базе или инструменту одним способом, без отдельной сборки для каждого.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Что это</h2>
+        <p>Открытый стандарт. Через него Gemini, GPT, Mixtral и Claude получают контекст, вызывают действия и говорят с внешними системами.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Как устроено</h2>
+        <p>Сервер отдаёт три вида вещей: данные, заготовки запросов и инструменты. Их берёт клиент — программа с моделью или сам агент.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Что под ним</h2>
+        <p>Старый вход, просто обёрнутый в MCP, агенту не помогает. Если заявки читаются только по одной, сводка срочных будет медленной. Нужны отбор и сортировка, которые агент не угадывает сам.</p>
+      </article>
+      <article class="block">
+        <div class="n">04</div>
+        <h2>Что приходит в ответ</h2>
+        <p>Связи мало, если агент не читает формат. Архив, который отдаёт только PDF, бесполезен, пока агент не разбирает PDF. Лучше отдавать текст, который он читает.</p>
+      </article>
+    </div>
+    <p class="coda">MCP соединяет. Отбор, порядок и понятный текст должны быть в программе под ним.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

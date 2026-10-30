@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 33. Ключевые выводы по MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .rows { margin-top: 14px; }
+    .row {
+      display: grid;
+      grid-template-columns: 56px 300px 1fr;
+      column-gap: 22px;
+      align-items: baseline;
+      border-top: 1px solid #1c1915;
+      padding: 10px 0 9px;
+    }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .row h2 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .row p {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>33</span></div>
+    <h1>Ключевые выводы по MCP</h1>
+    <p class="lead">Открытый порядок, схема клиент–сервер и готовые наборы, которыми модель выходит к внешним системам.</p>
+    <div class="rows">
+      <article class="row">
+        <div class="n">01</div>
+        <h2>Открытый порядок</h2>
+        <p>MCP задаёт общий способ, которым модель говорит с внешними программами, данными и инструментами.</p>
+      </article>
+      <article class="row">
+        <div class="n">02</div>
+        <h2>Клиент и сервер</h2>
+        <p>Сервер отдаёт данные, заготовки запросов и инструменты. Клиент их запрашивает и вызывает.</p>
+      </article>
+      <article class="row">
+        <div class="n">03</div>
+        <h2>ADK</h2>
+        <p>Agent Development Kit пользуется готовым сервером MCP и сам отдаёт свои инструменты через такой сервер.</p>
+      </article>
+      <article class="row">
+        <div class="n">04</div>
+        <h2>FastMCP</h2>
+        <p>FastMCP упрощает сборку и ведение сервера. Удобнее всего отдавать инструменты, написанные на Python.</p>
+      </article>
+      <article class="row">
+        <div class="n">05</div>
+        <h2>Genmedia</h2>
+        <p>MCP Tools для Genmedia подключает агента к Google Cloud: Imagen, Veo, Chirp 3 HD и Lyria.</p>
+      </article>
+      <article class="row">
+        <div class="n">06</div>
+        <h2>За пределом текста</h2>
+        <p>Модель обращается к живым системам, берёт текущие данные и выполняет действие.</p>
+      </article>
+    </div>
+    <p class="coda">Общий порядок, клиент и сервер, готовые наборы. Модель делает шаг за пределом текста.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>
