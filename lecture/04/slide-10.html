@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 10. Несколько шагов</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1720px; }
+    .items { margin-top: 28px; }
+    .item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 6px 28px;
+      padding: 16px 0 18px;
+      border-top: 1px solid #1c1915;
+    }
+    .item:last-child { border-bottom: 1px solid #1c1915; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: #5e6872;
+      padding-top: 8px;
+    }
+    .item h2 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .item p {
+      margin: 6px 0 0;
+      max-width: 1560px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 23px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>10</span></div>
+    <h1>Несколько шагов</h1>
+    <p class="lead">Вопрос «Гемоглобин этого пациента ниже диапазона для взрослых?» одним вызовом не закрывается. Второй шаг видит наблюдение первого.</p>
+    <div class="items">
+      <article class="item">
+        <div class="n">01</div>
+        <div>
+          <h2>Справочник</h2>
+          <p>Аргумент: исследование — ОАК. Наблюдение: диапазон гемоглобина.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="n">02</div>
+        <div>
+          <h2>Результат пациента</h2>
+          <p>Аргумент: случай и показатель — гемоглобин. Наблюдение: число этого человека.</p>
+        </div>
+      </article>
+      <article class="item">
+        <div class="n">03</div>
+        <div>
+          <h2>Ответ</h2>
+          <p>Модель сравнивает число и диапазон. Диагноз по этому сравнению она не ставит.</p>
+        </div>
+      </article>
+    </div>
+    <p class="coda">Порядок на каждом шаге выбирает модель. Оркестратор исполняет вызов и возвращает наблюдение.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

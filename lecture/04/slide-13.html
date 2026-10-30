@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 13. Медицинские калькуляторы и шкалы</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    table { margin-top: 22px; }
+    th { padding: 0 28px 10px 0; }
+    td {
+      padding: 16px 28px 16px 0;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+    td strong { font-size: 26px; }
+    td.names {
+      font-family: Georgia, "Iowan Old Style", serif;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      color: #1c1915;
+    }
+    .gloss {
+      display: block;
+      margin-top: 2px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.3;
+      color: #3e4650;
+    }
+    .coda { max-width: 1680px; margin-top: 18px; font-size: 26px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>13</span></div>
+    <h1>Медицинские калькуляторы и шкалы</h1>
+    <p class="lead">Шкала и калькулятор — внешний инструмент. Модель подставляет показатели из карты и получает балл.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Группа</th>
+          <th>Что возвращает</th>
+          <th>Шкалы</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Тяжесть состояния</strong></td>
+          <td>Балл по жизненным показателям или сознанию</td>
+          <td class="names">NEWS2; шкала комы Глазго, 3–15</td>
+        </tr>
+        <tr>
+          <td><strong>Риск события</strong></td>
+          <td>Балл риска инсульта или тромбоза глубоких вен</td>
+          <td class="names">CHA2DS2-VASc<span class="gloss">инсульт при фибрилляции предсердий</span>шкала Уэллса<span class="gloss">тромбоз глубоких вен</span></td>
+        </tr>
+        <tr>
+          <td><strong>Функция органа</strong></td>
+          <td>Скорость фильтрации почек или балл тяжести печени</td>
+          <td class="names">СКФ по CKD-EPI; MELD<span class="gloss">печень</span></td>
+        </tr>
+        <tr>
+          <td><strong>Онкология, случай курса</strong></td>
+          <td>Балл переносимости лечения</td>
+          <td class="names">ECOG, 0–4; шкала Карновского</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="coda">Следующий шаг выбирают по баллу и порогу шкалы, не по догадке модели.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

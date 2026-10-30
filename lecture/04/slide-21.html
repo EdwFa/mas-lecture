@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 21. Примеры паттерна «ансамбли»</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    table { margin-top: 16px; }
+    th { padding-bottom: 8px; }
+    td { padding: 8px 28px 8px 0; font-size: 20px; line-height: 1.25; }
+    td strong { font-size: 24px; }
+    .coda { max-width: 1680px; margin-top: 14px; font-size: 26px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>21</span></div>
+    <h1>Примеры паттерна «ансамбли»</h1>
+    <p class="lead">Одну цель делят между агентами. Каждый берёт свою часть и передаёт результат следующему.</p>
+    <table>
+      <thead>
+        <tr><th>Область</th><th>Кто в команде</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Исследование</strong></td>
+          <td>Один ищет в научных базах, другой кратко пересказывает, третий замечает тенденции, четвёртый собирает отчёт.</td>
+        </tr>
+        <tr>
+          <td><strong>Программы</strong></td>
+          <td>Требования, код, проверка и описание. Результат шага передают дальше.</td>
+        </tr>
+        <tr>
+          <td><strong>Кампания</strong></td>
+          <td>Рынок, текст, картинка и план публикаций. Картинку рисует отдельный инструмент.</td>
+        </tr>
+        <tr>
+          <td><strong>Финансы</strong></td>
+          <td>Данные о ценах, тон новостей, разбор графика и рекомендация.</td>
+        </tr>
+        <tr>
+          <td><strong>Поддержка</strong></td>
+          <td>Первый агент берёт простой вопрос. Сложный отдаёт специалисту: техника или оплата.</td>
+        </tr>
+        <tr>
+          <td><strong>Поставки</strong></td>
+          <td>Поставщик, завод и доставка вместе держат запасы и маршрут, когда спрос или поставка меняются.</td>
+        </tr>
+        <tr>
+          <td><strong>Сеть</strong></td>
+          <td>Агенты вместе ищут сбой, сортируют его и предлагают, как восстановить работу.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="coda">Связанные агенты берут задачу, которую один агент не потянет.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>

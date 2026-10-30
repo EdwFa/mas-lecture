@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 22. Model Context Protocol</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 48px; }
+    .lead { max-width: 1720px; }
+    .blocks {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr 0.95fr;
+      gap: 40px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 14px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 6px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 12px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.34;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>22</span></div>
+    <h1>Model Context Protocol</h1>
+    <p class="lead">Модели мало писать текст и картинки. Агенту нужны свежие данные, чужие программы и конкретные действия.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Что не хватает</h2>
+        <p>Актуальные данные. Внешние программы. Задачи, которые надо выполнить, а не только описать.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Что даёт MCP</h2>
+        <p>Model Context Protocol задаёт один порядок, по которому модель обращается к внешним ресурсам: к данным, к программам и к действиям.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Зачем один порядок</h2>
+        <p>Связь получается одинаковой от раза к разу. Новый источник подключают тем же способом, а не собирают связь заново.</p>
+      </article>
+    </div>
+    <p class="coda">MCP — общий способ, которым модель берёт данные и вызывает внешние программы.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=22"></script>
+</body>
+</html>
