@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 12. Session, State и Memory</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .rows { margin-top: 12px; }
+    .row {
+      display: grid;
+      grid-template-columns: 56px 180px 1fr;
+      column-gap: 22px;
+      align-items: baseline;
+      border-top: 1px solid #1c1915;
+      padding: 8px 0 7px;
+    }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .row h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .row p {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 10px; font-size: 22px; }
+    figure { margin: 6px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>12</span></div>
+    <h1>Session, State и Memory</h1>
+    <p class="lead">Управление контекстом идёт через эти три понятия. Агенту нужно вспоминать предыдущие обмены, чтобы разговор оставался связным и естественным.</p>
+    <div class="rows">
+      <article class="row">
+        <div class="n">01</div>
+        <h2>Session</h2>
+        <p>Индивидуальная нить чата. Регистрирует сообщения и действия (Events) этого взаимодействия и временные данные (State), нужные этому разговору.</p>
+      </article>
+      <article class="row">
+        <div class="n">02</div>
+        <h2>State</h2>
+        <p>session.state — данные внутри Session. Они относятся только к текущей активной нити чата.</p>
+      </article>
+      <article class="row">
+        <div class="n">03</div>
+        <h2>Memory</h2>
+        <p>Поисковое хранилище сведений из разных прошлых чатов или внешних источников. Оттуда извлекают данные за пределами непосредственного разговора.</p>
+      </article>
+    </div>
+    <p class="coda">Каждое взаимодействие — своя нить. Агенту может понадобиться доступ к данным более ранних взаимодействий.</p>
+    <figure>
+      <img src="img/session-state-memory.png?v=1" alt="Три нити, активная раскрыта: Events и session.state. Справа Memory с прошлыми чатами и внешними источниками, стрелка извлечения.">
+      <figcaption>Слева нить: Events и session.state. Справа Memory — прошлые чаты и внешние источники.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

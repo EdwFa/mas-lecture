@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Хранение воспоминаний</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .cols {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1.22fr 0.78fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .col { border-top: 1px solid #1c1915; padding-top: 8px; min-width: 0; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .col h2 {
+      margin: 2px 0 8px;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    pre {
+      margin: 0;
+      font-family: Consolas, "JetBrains Mono", "Cascadia Mono", "Courier New", monospace;
+      font-size: 15px;
+      line-height: 1.32;
+      color: #1c1915;
+      white-space: pre;
+      background: transparent;
+    }
+    .k { color: #0033b3; font-weight: 700; }
+    .s { color: #067d17; }
+    .num { color: #1750eb; }
+    .c { color: #808080; }
+    .fn { color: #00627a; }
+    .bi { color: #0033b3; }
+    .coda { max-width: 1720px; margin-top: 14px; font-size: 22px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>18</span></div>
+    <h1>Хранение воспоминаний</h1>
+    <p class="lead">Долгосрочные воспоминания хранят как документы JSON в хранилище. Каждое лежит под пользовательским пространством имён (как папка) и отдельным ключом (как имя файла). Эта иерархия позволяет лёгкую организацию и извлечение информации. InMemoryStore размещает, получает и ищет такие воспоминания.</p>
+    <div class="cols">
+      <article class="col">
+        <div class="n">01</div>
+        <h2>Хранилище и пространство имён</h2>
+<pre><span class="k">from</span> langgraph.store.memory <span class="k">import</span> InMemoryStore
+
+<span class="c"># Заполнитель для реальной функции встраивания</span>
+<span class="k">def</span> <span class="fn">embed</span>(texts: <span class="bi">list</span>[<span class="bi">str</span>]) -&gt; <span class="bi">list</span>[<span class="bi">list</span>[<span class="bi">float</span>]]:
+    <span class="c"># В реальном приложении используйте подходящую модель встраивания</span>
+    <span class="k">return</span> [[<span class="num">1.0</span>, <span class="num">2.0</span>] <span class="k">for</span> _ <span class="k">in</span> texts]
+
+<span class="c"># Инициализация хранилища в памяти. Для продакшна используйте хранилище на основе базы данных.</span>
+store = InMemoryStore(index={<span class="s">"embed"</span>: embed, <span class="s">"dims"</span>: <span class="num">2</span>})
+
+<span class="c"># Определение пространства имен для конкретного пользователя и контекста приложения</span>
+user_id = <span class="s">"my-user"</span>
+application_context = <span class="s">"chitchat"</span>
+namespace = (user_id, application_context)</pre>
+      </article>
+      <article class="col">
+        <div class="n">02</div>
+        <h2>Размещение, получение, поиск</h2>
+<pre><span class="c"># 1. Размещение воспоминания в хранилище</span>
+store.put(
+    namespace,
+    <span class="s">"a-memory"</span>,  <span class="c"># Ключ для этого воспоминания</span>
+    {
+        <span class="s">"rules"</span>: [
+            <span class="s">"Пользователь любит короткий, прямой язык"</span>,
+            <span class="s">"Пользователь говорит только на английском и python"</span>,
+        ],
+        <span class="s">"my-key"</span>: <span class="s">"my-value"</span>,
+    },
+)
+
+<span class="c"># 2. Получение воспоминания по его пространству имен и ключу</span>
+item = store.get(namespace, <span class="s">"a-memory"</span>)
+<span class="bi">print</span>(<span class="s">"Retrieved Item:"</span>, item)
+
+<span class="c"># 3. Поиск воспоминаний в пространстве имен, фильтрация по содержанию</span>
+<span class="c"># и сортировка по векторному сходству с запросом.</span>
+items = store.search(
+    namespace,
+    filter={<span class="s">"my-key"</span>: <span class="s">"my-value"</span>},
+    query=<span class="s">"языковые предпочтения"</span>
+)
+<span class="bi">print</span>(<span class="s">"Search Results:"</span>, items)</pre>
+      </article>
+    </div>
+    <p class="coda">Поиск фильтрует по содержанию и сортирует по векторному сходству с запросом.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 2. Model Context Protocol</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .blocks {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr 0.95fr;
+      gap: 32px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 12px; font-size: 22px; }
+    figure { margin: 8px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>02</span></div>
+    <h1>Model Context Protocol</h1>
+    <p class="lead">Модели мало писать текст и картинки. Агенту нужны свежие данные, чужие программы и конкретные действия.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Что не хватает</h2>
+        <p>Актуальные данные. Внешние программы. Задачи, которые надо выполнить, а не только описать.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Что даёт MCP</h2>
+        <p>Model Context Protocol задаёт один порядок, по которому модель обращается к внешним ресурсам: к данным, к программам и к действиям.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Зачем один порядок</h2>
+        <p>Связь получается одинаковой от раза к разу. Новый источник подключают тем же способом, а не собирают связь заново.</p>
+      </article>
+    </div>
+    <p class="coda">MCP — общий способ, которым модель берёт данные и вызывает внешние программы.</p>
+    <figure>
+      <img src="img/mcp-one-order.png?v=1" alt="Модель через MCP одним порядком соединена с данными, программами, действиями и новым источником.">
+      <figcaption>Один порядок на данные, программы и действия. Новый источник подключают тем же способом.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

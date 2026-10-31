@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 10. Мультиголовое внимание</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      background: #f3efe6;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      box-sizing: border-box;
+      padding: 48px 72px 32px;
+      display: flex;
+      flex-direction: column;
+      background: #f7f4ee;
+      color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    h1 {
+      margin: 14px 0 0;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .lead {
+      max-width: 1500px;
+      margin: 14px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 26px;
+      line-height: 1.35;
+      color: #1c1915;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 48px;
+      margin-top: 28px;
+      min-height: 0;
+    }
+
+    .label {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .op {
+      width: 280px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #1c1915;
+      font-size: 26px;
+    }
+
+    .op.wide { width: 340px; }
+
+    .varrow {
+      width: 2px;
+      height: 18px;
+      background: #1c1915;
+      position: relative;
+    }
+
+    .varrow::after {
+      content: "";
+      position: absolute;
+      left: -5px;
+      bottom: -1px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #1c1915;
+    }
+
+    .qk {
+      display: flex;
+      gap: 36px;
+      margin-top: 8px;
+      font-size: 28px;
+    }
+
+    .q { color: #b42318; }
+    .k { color: #1d5c96; }
+    .v { color: #1d7a43; }
+
+    .join {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 6px 0;
+    }
+
+    .join .op { margin: 0; }
+
+    .note {
+      margin-top: 16px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+
+    .multi {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .heads {
+      position: relative;
+      width: 520px;
+      height: 120px;
+      margin: 10px 0 6px;
+    }
+
+    .head {
+      position: absolute;
+      width: 390px;
+      height: 78px;
+      box-sizing: border-box;
+      border: 2px solid #1c1915;
+      background: #f7f4ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .head.b2 { top: 0; left: 64px; color: #8a847a; border-color: #b7b1a6; }
+    .head.b1 { top: 18px; left: 32px; color: #5e6872; }
+    .head.front { top: 40px; left: 0; background: #f7f4ee; }
+
+    .hmark {
+      position: absolute;
+      left: 408px;
+      top: 58px;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 28px;
+      color: #1c1915;
+    }
+
+    .projections {
+      display: flex;
+      gap: 28px;
+      margin-top: 4px;
+    }
+
+    .proj {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 26px;
+    }
+
+    .proj .op {
+      width: 150px;
+      height: 48px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+    }
+
+    .examples {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr;
+      gap: 28px;
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid #d9d3c7;
+    }
+
+    .examples h2 {
+      margin: 8px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .examples p, .ex p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.3;
+      color: #243038;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker">
+      <span>Лекция 1. Вводная</span>
+      <span>10</span>
+    </div>
+    <h1>Мультиголовое внимание</h1>
+    <p class="lead">Суть: одна голова видит одну связь между токенами. Несколько голов смотрят параллельно и видят разные связи. Склейка отдаёт токену все эти связи сразу.</p>
+
+    <div class="main">
+      <section>
+        <div class="label">Одна голова — схема слайда 9</div>
+        <div class="stack">
+          <div class="qk"><span class="q">Q</span><span class="k">K</span></div>
+          <div class="varrow"></div>
+          <div class="op">QK<sup>T</sup></div>
+          <div class="varrow"></div>
+          <div class="op">/ √d<sub>k</sub></div>
+          <div class="varrow"></div>
+          <div class="op">softmax</div>
+          <div class="varrow"></div>
+          <div class="join">
+            <div class="op">× V</div>
+            <span class="v">V</span>
+          </div>
+        </div>
+        <p class="note">Запрос сравнивается с ключами, веса смешивают значения.</p>
+      </section>
+
+      <section class="multi">
+        <div class="label">h таких голов параллельно</div>
+        <div class="projections">
+          <div class="proj"><span class="v">V</span><div class="op">своя матрица</div></div>
+          <div class="proj"><span class="k">K</span><div class="op">своя матрица</div></div>
+          <div class="proj"><span class="q">Q</span><div class="op">своя матрица</div></div>
+        </div>
+        <div class="varrow"></div>
+        <div class="heads">
+          <div class="head b2">голова</div>
+          <div class="head b1">голова</div>
+          <div class="head front">внимание одной головы</div>
+          <div class="hmark">× h</div>
+        </div>
+        <div class="varrow"></div>
+        <div class="op wide">склейка ответов</div>
+        <div class="varrow"></div>
+        <div class="op wide">общая матрица</div>
+        <p class="note">У каждой головы свои матрицы для Q, K и V. Ответы склеивают и перемешивают общей матрицей.</p>
+      </section>
+    </div>
+
+    <div class="examples">
+      <div>
+        <div class="label">Одна фраза, разные связи</div>
+        <h2>Одна фраза, три связи</h2>
+        <p>Иллюстрация на «врач видит снимок лёгких пациента».</p>
+      </div>
+      <div class="ex">
+        <div class="label">Голова</div>
+        <h2>Кто</h2>
+        <p>врач — снимок</p>
+      </div>
+      <div class="ex">
+        <div class="label">Голова</div>
+        <h2>Орган</h2>
+        <p>снимок — лёгких</p>
+      </div>
+      <div class="ex">
+        <div class="label">Голова</div>
+        <h2>Чей</h2>
+        <p>снимок — пациента</p>
+      </div>
+    </div>
+
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=11"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 3. Фильтрация по креатинину</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 36px; }
+    .lead { max-width: 1760px; font-size: 18px; }
+    .blocks {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 0.9fr 0.85fr 1.15fr;
+      gap: 28px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 6px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 4px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .task {
+      margin-top: 8px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .pair {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: 640px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+    }
+    figure { margin: 0; display: flex; flex-direction: column; align-items: flex-start; }
+    figure img { display: block; width: 640px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 640px; text-align: left; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.25; color: #243038; }
+    .kdigo h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .kdigo table { width: 100%; margin-top: 8px; }
+    .kdigo th { padding: 0 16px 6px 0; font-size: 13px; }
+    .kdigo td {
+      padding: 4px 16px 4px 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+    .kdigo p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .limit {
+      margin-top: 6px;
+      max-width: 1760px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      color: #243038;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>03</span></div>
+    <h1>Фильтрация по креатинину</h1>
+    <p class="lead">Расчётная скорость клубочковой фильтрации по креатинину нужна, чтобы по одному анализу крови судить, насколько почки фильтруют кровь. Пациенту её сообщают как стадию функции почек, а не как отдельный диагноз.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Креатинин</h2>
+        <p>Креатинин сам по себе плохо сравнивается между людьми: его уровень зависит от мышц, возраста и пола. Одно и то же число у молодого человека и у пожилой женщины означает разную работу почек.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>CKD-EPI 2021</h2>
+        <p>Есть методика CKD-EPI 2021, которая переводит креатинин, возраст и пол в скорость фильтрации, мл/мин/1,73 м<sup>2</sup>. Расовый коэффициент в этой версии не используется.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Категория KDIGO</h2>
+        <p>По этой величине выбирают категорию от G1 до G5. Так решают, как часто проверять почки, когда направлять к нефрологу и когда функция уже низкая для препаратов, которые выводятся почками. Сниженная фильтрация также указывает на более высокий сердечно-сосудистый риск. В анализе крови для взрослых лаборатория обычно считает её сама, вместе с креатинином.</p>
+      </article>
+    </div>
+    <p class="task">Это типовая задача для MCP-сервера.</p>
+    <p class="limit">Категория описывает только величину расчётной скорости. Это не измеренная фильтрация и не полный диагноз хронической болезни почек: для него смотрят длительность изменений и альбумин в моче. В остром повреждении почек креатинин отстаёт, и одна цифра не заменяет наблюдение. У детей, при беременности и при очень малой или очень большой мышечной массе креатинин обманывает уравнение, и оценку делают иначе.</p>
+    <div class="pair">
+      <figure>
+        <img src="img/creatinine-filtration.png?v=1" alt="Пробирка с кровью, молодой человек и пожилая женщина с одинаковой каплей над головой. Под ними почки: широкий поток и тонкая струя. Справа полосы от тёмной до почти пустой.">
+        <figcaption>Одинаковая капля у молодого человека и у пожилой женщины. Почки фильтруют по-разному: широкий поток и тонкая струя.</figcaption>
+      </figure>
+      <aside class="kdigo">
+        <h2>Категории KDIGO</h2>
+        <table>
+          <thead>
+            <tr><th>СКФ</th><th>Категория</th><th>Смысл</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>≥ 90</td><td>G1</td><td>высокая или нормальная</td></tr>
+            <tr><td>60–89</td><td>G2</td><td>незначительно сниженная</td></tr>
+            <tr><td>45–59</td><td>G3a</td><td>сниженная от незначительно до умеренно</td></tr>
+            <tr><td>30–44</td><td>G3b</td><td>сниженная от умеренно до существенно</td></tr>
+            <tr><td>15–29</td><td>G4</td><td>существенно сниженная</td></tr>
+            <tr><td>&lt; 15</td><td>G5</td><td>диапазон почечной недостаточности</td></tr>
+          </tbody>
+        </table>
+        <p>Категорию выбирают по округлённой скорости, мл/мин/1,73 м<sup>2</sup>. Она описывает только величину расчётной СКФ.</p>
+      </aside>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

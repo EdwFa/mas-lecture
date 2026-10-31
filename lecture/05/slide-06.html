@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 6. Практическое использование</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .blocks {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 12px; font-size: 22px; }
+    figure {
+      margin: 2px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    figure img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 1680px;
+      max-height: 400px;
+      background: #f7f4ee;
+    }
+    figcaption {
+      margin-top: 4px;
+      max-width: 1680px;
+      text-align: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #243038;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>06</span></div>
+    <h1>Практическое использование</h1>
+    <p class="lead">Чат-бот ведёт разговор на обоих видах памяти. По ходу реплик хватает краткосрочной. Между разговорами нужна постоянная.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>По ходу разговора</h2>
+        <p>Краткосрочная память хранит то, что человек уже написал. Следующий ответ продолжает эту нить: бот опирается на предыдущие реплики и говорит связно.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Между разговорами</h2>
+        <p>Долгосрочная память хранит предпочтения человека, прошлые проблемы и прежние обсуждения. Новый разговор продолжает уже знакомое.</p>
+      </article>
+    </div>
+    <p class="coda">В окне — этот разговор. В постоянной памяти — то, что уже известно об этом человеке.</p>
+    <figure>
+      <img src="img/both-memories.png?v=1" alt="Слева полка с тетрадями и карточкой человека. Лист идёт в окно, где на столе лежат страницы текущего разговора.">
+      <figcaption>В окне — реплики этого разговора. Слева то, что уже известно об этом человеке, и оно входит в новый разговор.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

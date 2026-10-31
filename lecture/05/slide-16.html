@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 16. Типы долгосрочной памяти</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1760px; font-size: 20px; line-height: 1.28; }
+    .blocks {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .kind {
+      margin: 4px 0 0;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 18px;
+      color: #1c1915;
+    }
+    .block p {
+      margin: 4px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 10px; font-size: 22px; }
+    figure { margin: 6px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.3; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>16</span></div>
+    <h1>Типы долгосрочной памяти</h1>
+    <p class="lead">Долгосрочная память позволяет системам сохранять информацию через разные разговоры и обеспечивает более глубокий уровень контекста и персонализации. Её можно разбить на три типа, аналогичных человеческой памяти.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Семантическая память</h2>
+        <p class="kind">Запоминание фактов</p>
+        <p>Сюда входит сохранение конкретных фактов и концепций, таких как предпочтения пользователя или знания предметной области. Её используют для обоснования ответов агента, что приводит к более персонализированным и релевантным взаимодействиям. Эти сведения можно вести как постоянно обновляемый пользовательский «профиль» (документ JSON) или как «коллекцию» индивидуальных фактических документов.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Эпизодическая память</h2>
+        <p class="kind">Запоминание опыта</p>
+        <p>Сюда входит вспоминание прошлых событий или действий. Для агентов эпизодическая память часто используется для запоминания того, как выполнить задачу. На практике её часто реализуют через few-shot example prompting: агент учится на прошлых успешных последовательностях взаимодействий, чтобы правильно выполнять задачи.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Процедурная память</h2>
+        <p class="kind">Запоминание правил</p>
+        <p>Это память о том, как выполнять задачи: основные инструкции и поведения агента, часто в его системном промпте. Агенты обычно изменяют собственные промпты, чтобы адаптироваться и улучшаться. Эффективная техника — «Рефлексия»: агент получает промпт со своими текущими инструкциями и недавними взаимодействиями, затем его просят уточнить собственные инструкции.</p>
+      </article>
+    </div>
+    <p class="coda">Факты, прошлый опыт и правила выполнения задач — три типа долгосрочной памяти.</p>
+    <figure>
+      <img src="img/memory-types.png?v=1" alt="Три схемы: профиль или коллекция документов; цепочка шагов few-shot; системный промпт и недавние взаимодействия входят в Рефлексию.">
+      <figcaption>Факты — «профиль» или «коллекция». Опыт — успешные последовательности. «Рефлексия» уточняет инструкции промпта.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

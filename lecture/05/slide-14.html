@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 14. Управление памятью в LangChain и LangGraph</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; }
+    .lead { max-width: 1720px; }
+    .blocks {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 14px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 6px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 12px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 14px; font-size: 24px; }
+    figure {
+      margin: 4px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    figure img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 1680px;
+      max-height: 360px;
+      background: #f7f4ee;
+    }
+    figcaption {
+      margin-top: 6px;
+      max-width: 1680px;
+      text-align: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #243038;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>14</span></div>
+    <h1>Управление памятью в LangChain и LangGraph</h1>
+    <p class="lead">В LangChain и LangGraph память нужна, чтобы разговорное приложение ощущалось естественным: агент помнит прошлые взаимодействия, учится на обратной связи и адаптируется к предпочтениям пользователя.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Как работает</h2>
+        <p>Функция памяти LangChain берёт сохранённую историю, чтобы обогатить текущие промпты, и затем записывает последний обмен для будущего использования.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>На сложных задачах</h2>
+        <p>Чем сложнее задача, тем нужнее эта возможность: и для успешной работы, и для удовлетворения пользователя.</p>
+      </article>
+    </div>
+    <p class="coda">История обогащает текущий промпт. Последний обмен записывается для следующего раза.</p>
+    <figure>
+      <img src="img/langchain-memory.png?v=1" alt="Слева открытая тетрадь, нить идёт к листу на столе врача и пациента, справа закрытая тетрадь принимает страницу обратно.">
+      <figcaption>Слева сохранённая история входит в текущий разговор. Справа последний обмен возвращается в память.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

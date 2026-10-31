@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 13. Клиент и сервер MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .blocks {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 48px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 4px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 10px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.34;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 22px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>13</span></div>
+    <h1>Клиент и сервер MCP</h1>
+    <p class="lead">MCP ведёт обмен по схеме клиент–сервер. От того, кто за что отвечает, зависит, как агент доходит до внешнего действия.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Модель</h2>
+        <p>Принимает запрос человека, намечает шаги и решает, когда нужны внешние данные или действие.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Клиент MCP</h2>
+        <p>Программа вокруг модели. Переводит её намерение в запрос по правилам MCP: находит серверы, подключается и ведёт с ними обмен.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Сервер MCP</h2>
+        <p>Выход наружу. Отдаёт допущенному клиенту инструменты, данные и заготовки запросов. Обычно один сервер ведёт одну область: база организации, почта, открытый API.</p>
+      </article>
+      <article class="block">
+        <div class="n">04</div>
+        <h2>Внешняя служба</h2>
+        <p>То, к чему сервер выходит: закрытая база, чужая программа, открытый API. Запрошенное действие выполняет она.</p>
+      </article>
+    </div>
+    <p class="coda">Модель решает. Клиент оформляет запрос. Сервер открывает свою область. Действие выполняет внешняя служба.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

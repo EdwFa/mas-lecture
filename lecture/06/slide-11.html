@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 11. Дополнительные соображения для MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1720px; font-size: 22px; }
+    .blocks {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr 0.9fr;
+      gap: 36px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 6px 0 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 10px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 16px; font-size: 24px; padding-top: 10px; }
+    figure { margin: 8px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.25; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>11</span></div>
+    <h1>Дополнительные соображения для MCP</h1>
+    <p class="lead">Перед тем как взять MCP в задачу, стоит различить три вещи на сервере и понять, кто к ним допущен.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Данные, инструмент, запрос</h2>
+        <p>Данные лежат как есть: файл PDF, запись в базе. Инструмент делает действие: отправить письмо, спросить API. Заготовка запроса говорит модели, как к ним обращаться.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Как узнают</h2>
+        <p>Клиент спрашивает сервер, какие инструменты и данные тот отдаёт. Агент узнаёт о новой возможности в момент работы и не ждёт новой сборки программы.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Кто допущен</h2>
+        <p>Нужно знать, кто клиент, к какому серверу он входит и какие действия ему разрешены.</p>
+      </article>
+    </div>
+    <p class="coda">Данные, действие и заготовка запроса — разные вещи. Агент узнаёт их у сервера, а доступ ограничивают.</p>
+    <div class="spacer"></div>
+    <figure>
+      <img src="img/mcp-three-kinds.png?v=1" alt="Клиент через допуск спрашивает сервер. На сервере данные, инструмент и заготовка запроса.">
+      <figcaption>Клиент спрашивает сервер. Данные лежат как есть, инструмент делает действие, заготовка запроса говорит, как обращаться. Допуск: кто клиент, какой сервер, какие действия разрешены.</figcaption>
+    </figure>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

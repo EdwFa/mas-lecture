@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 15. Краткосрочная и долгосрочная память</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1720px; }
+    .blocks {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 4px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .tools {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 48px;
+    }
+    .tool { border-top: 1px solid #1c1915; padding-top: 10px; }
+    .tool h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .tool p, .tool li {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .tool ul { margin: 8px 0 0; padding: 0; list-style: none; }
+    .tool li { margin-top: 6px; }
+    .tool code {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .coda { max-width: 1680px; margin-top: 16px; font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>15</span></div>
+    <h1>Краткосрочная и долгосрочная память</h1>
+    <p class="lead">В LangGraph это разные области хранения.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Краткосрочная</h2>
+        <p>Область одного потока: продолжающийся разговор в одной сессии или одном потоке. Даёт немедленный контекст. Полная история может не уложиться в окно контекста модели, и тогда возможны ошибки или слабая работа. LangGraph хранит её в состоянии агента через checkpointer, и поток можно продолжить в любой момент.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Долгосрочная</h2>
+        <p>Данные пользователя или уровня приложения через сессии, общие для разговорных потоков. Они лежат в своих «пространствах имён» и вызываются в любой момент в любом потоке. Хранилища LangGraph сохраняют эти знания сколько угодно долго.</p>
+      </article>
+    </div>
+    <p class="coda">В LangChain историей разговора управляют по-разному: от ручного контроля до автоматического включения в цепочки.</p>
+    <div class="tools">
+      <article class="tool">
+        <h2>ChatMessageHistory</h2>
+        <p>Ручное управление памятью вне формальной цепочки. Для прямого и простого контроля: класс позволяет вручную следить за обменами диалога.</p>
+      </article>
+      <article class="tool">
+        <h2>ConversationBufferMemory</h2>
+        <p>Автоматизированная память для цепочек. Содержит буфер разговора и делает его доступным для промпта. Два параметра:</p>
+        <ul>
+          <li><code>memory_key</code> — имя переменной в промпте, куда попадает история чата. По умолчанию history.</li>
+          <li><code>return_messages</code> — формат истории. False, по умолчанию: одна строка, для стандартной модели. True: список сообщений, для чат-моделей.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

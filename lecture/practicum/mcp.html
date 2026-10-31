@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Реализация MCP</title>
+  <style>
+    body {
+      margin: 0; background: #f3efe6; color: #1c1915;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    main { max-width: 920px; margin: 0 auto; padding: 72px 48px 80px; }
+    .kicker {
+      margin: 0; font-size: 13px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    h1 {
+      margin: 18px 0 0; font-family: Georgia, "Iowan Old Style", serif;
+      font-size: 56px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05;
+    }
+    .lead, p, li {
+      font-size: 20px; line-height: 1.5; color: #243038;
+    }
+    .lead { margin: 28px 0 0; }
+    p { margin: 18px 0 0; }
+    ul { margin: 12px 0 0; padding-left: 1.25em; }
+    li { margin-top: 6px; }
+    .note { color: #3e4650; }
+    .repo { margin-top: 28px; }
+    .repo a {
+      color: #1c1915; font-size: 20px;
+    }
+    footer {
+      margin-top: 64px; padding-top: 16px; border-top: 1px solid #d9d3c7;
+      font-size: 16px; color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="kicker">Практикум</p>
+    <h1>Реализация MCP</h1>
+    <p class="lead">Локальный сервер MCP с семью учебными медицинскими калькуляторами и страница Streamlit, которая обращается к этому серверу по протоколу MCP. Формулы отделены от способа связи: сервер проверяет вход, считает и возвращает число, пояснение порогов, разложение на компоненты и оговорку об учебном статусе результата.</p>
+    <p>К серверу подключается приложение, которое само умеет быть клиентом MCP и запустить локальный процесс. Сообщения идут в формате JSON-RPC. Если калькулятор вызывает модель в чате, арифметику выполняет сервер: модель передаёт вход и читает ответ. Страница Streamlit выбирает калькулятор по форме и вызывает тот же сервер.</p>
+    <ul>
+      <li>индекс массы тела, категории WHO</li>
+      <li>площадь поверхности тела по Mosteller</li>
+      <li>расчётная СКФ CKD-EPI 2021 по креатинину, без расового коэффициента</li>
+      <li>клиренс креатинина Cockcroft–Gault, без нормировки на 1,73 м²</li>
+      <li>сумма баллов CHA₂DS₂-VASc</li>
+      <li>тяжесть внебольничной пневмонии CURB-65</li>
+      <li>QTc по Bazett и Fridericia</li>
+    </ul>
+    <p>Отдельный вызов отдаёт каталог: поля, подписи и методику. Креатинин принимается в мкмоль/л или мг/дл. В уравнение он переводится делением на 88,4.</p>
+    <p class="note">Результат получен по опубликованной формуле и предназначен только для обучения и демонстрации. Он не является диагнозом, медицинской рекомендацией и не заменяет консультацию врача.</p>
+    <p class="repo"><a href="https://github.com/EdwFa/MCP_calc">github.com/EdwFa/MCP_calc</a></p>
+    <footer>Программная инженерия мультиагентных систем в клинической медицине</footer>
+  </main>
+</body>
+</html>

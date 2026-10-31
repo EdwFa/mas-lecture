@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Базовые паттерны МАС</title>
+  <style>
+    body {
+      margin: 0; background: #f3efe6; color: #1c1915;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    main { max-width: 920px; margin: 0 auto; padding: 72px 48px 80px; }
+    .kicker {
+      margin: 0; font-size: 13px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #5e6872;
+    }
+    h1 {
+      margin: 18px 0 0; font-family: Georgia, "Iowan Old Style", serif;
+      font-size: 56px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05;
+    }
+    .lead, p, li {
+      font-size: 20px; line-height: 1.5; color: #243038;
+    }
+    .lead { margin: 28px 0 0; }
+    p { margin: 18px 0 0; }
+    ul { margin: 12px 0 0; padding-left: 1.25em; }
+    li { margin-top: 6px; }
+    .repo { margin-top: 28px; }
+    .repo a { color: #1c1915; font-size: 20px; }
+    footer {
+      margin-top: 64px; padding-top: 16px; border-top: 1px solid #d9d3c7;
+      font-size: 16px; color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="kicker">Практикум</p>
+    <h1>Базовые паттерны МАС</h1>
+    <p class="lead">Мультиагентный трекер ищет свежие публикации по заданным темам, проверяет, что тема действительно есть в тексте, и составляет короткое резюме. Источники — archive.org и arXiv. Результаты смотрят в панели Streamlit. Письма по умолчанию не отправляются.</p>
+    <p>Один цикл обработки: панель передаёт темы, источники и даты оркестратору, скрапер опрашивает агентов-источники, валидатор отвечает «да» или «нет», суммаризатор возвращает резюме, оркестратор отдаёт карточки обратно на панель.</p>
+    <ul>
+      <li>Панель задаёт темы, подключённые источники и диапазон дат.</li>
+      <li>Оркестратор ведёт цикл и возвращает карточки с резюме.</li>
+      <li>Скрапер по очереди вызывает каждый подключённый источник. Число записей — лимит на каждый источник.</li>
+      <li>Агенты archive.org и arXiv возвращают название, ссылку и аннотацию. У arXiv в записи ещё авторы и даты.</li>
+      <li>Валидатор оставляет запись, если в тексте есть все слова хотя бы одной темы.</li>
+      <li>Суммаризатор строит резюме. По умолчанию это алгоритм LSA из библиотеки Sumy. В конфигурации резюме может запрашивать модель через Ollama или адрес, совместимый с OpenAI.</li>
+      <li>Нотификатор отправляет письмо, когда почта включена. Кнопка поиска в панели вызывает цикл без отправки.</li>
+    </ul>
+    <p class="repo"><a href="https://github.com/EdwFa/MAS/tree/main/Лекция_3">github.com/EdwFa/MAS/tree/main/Лекция_3</a></p>
+    <footer>Программная инженерия мультиагентных систем в клинической медицине</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 9. Запрос, ключ, значение</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      background: #f3efe6;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      box-sizing: border-box;
+      padding: 48px 64px 32px;
+      display: flex;
+      flex-direction: column;
+      background: #f7f4ee;
+      color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    h1 {
+      margin: 12px 0 0;
+      font-size: 52px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .legend {
+      display: flex;
+      gap: 36px;
+      margin-top: 16px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      color: #243038;
+    }
+
+    .legend b { font-weight: 500; }
+    .g { color: #1d7a43; }
+    .b { color: #1d5c96; }
+    .r { color: #b42318; }
+
+    .body {
+      display: grid;
+      grid-template-columns: 1.42fr 0.72fr;
+      gap: 28px;
+      align-items: center;
+      min-height: 0;
+      margin-top: 8px;
+    }
+
+    svg {
+      width: 100%;
+      height: 760px;
+    }
+
+    .eq {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 40px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .eq .paren { font-size: 76px; line-height: 0.8; }
+    .eq .vee { margin-left: 6px; }
+
+    .frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 4px;
+    }
+
+    .frac .num {
+      padding: 0 10px 8px;
+      border-bottom: 2px solid #1c1915;
+    }
+
+    .frac .den {
+      padding-top: 8px;
+      font-size: 40px;
+    }
+
+    .frac sub {
+      font-size: 0.55em;
+    }
+
+    dl {
+      margin: 28px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    dl div {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    dt {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    dd {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #243038;
+    }
+
+    .tok {
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 32px;
+      fill: #1c1915;
+    }
+
+    .sub {
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 20px;
+    }
+
+    .sup {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker">
+      <span>Лекция 1. Вводная</span>
+      <span>09</span>
+    </div>
+    <h1>Запрос, ключ и значение</h1>
+    <div class="legend">
+      <span class="g"><b>v</b> — значение, что токен отдаёт</span>
+      <span class="b"><b>k</b> — ключ, по которому его находят</span>
+      <span class="r"><b>q</b> — запрос: что ищет «снимок»</span>
+    </div>
+    <div class="body">
+    <svg viewBox="0 0 1792 760" role="img" aria-label="Фраза «врач видит снимок лёгких пациента». Запрос токена снимок соединяется с ключами всех токенов.">
+      <!-- values -->
+      <text class="sub" x="200" y="70" text-anchor="middle" fill="#1d7a43">v врач</text>
+      <text class="sub" x="520" y="70" text-anchor="middle" fill="#1d7a43">v видит</text>
+      <text class="sub" x="896" y="70" text-anchor="middle" fill="#1d7a43">v снимок</text>
+      <text class="sub" x="1240" y="70" text-anchor="middle" fill="#1d7a43">v лёгких</text>
+      <text class="sub" x="1560" y="70" text-anchor="middle" fill="#1d7a43">v пациента</text>
+
+      <!-- top tokens -->
+      <rect x="90" y="92" width="220" height="78" fill="none" stroke="#1c1915" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="200" y="142" text-anchor="middle">врач</text>
+
+      <rect x="390" y="92" width="260" height="78" fill="none" stroke="#1c1915" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="520" y="142" text-anchor="middle">видит</text>
+
+      <rect x="746" y="92" width="300" height="78" fill="none" stroke="#1c1915" stroke-width="2.5"/>
+      <text class="tok" x="896" y="142" text-anchor="middle">снимок</text>
+
+      <rect x="1110" y="92" width="260" height="78" fill="none" stroke="#1c1915" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="1240" y="142" text-anchor="middle">лёгких</text>
+
+      <rect x="1420" y="92" width="280" height="78" fill="none" stroke="#1c1915" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="1560" y="142" text-anchor="middle">пациента</text>
+
+      <!-- keys -->
+      <text x="200" y="210" text-anchor="middle" fill="#1d5c96" font-family="Georgia, serif" font-size="22">k<tspan font-size="14" dy="-8">T</tspan><tspan font-size="20" dy="8"> врач</tspan></text>
+      <text x="520" y="210" text-anchor="middle" fill="#1d5c96" font-family="Georgia, serif" font-size="22">k<tspan font-size="14" dy="-8">T</tspan><tspan font-size="20" dy="8"> видит</tspan></text>
+      <text x="896" y="210" text-anchor="middle" fill="#1d5c96" font-family="Georgia, serif" font-size="22">k<tspan font-size="14" dy="-8">T</tspan><tspan font-size="20" dy="8"> снимок</tspan></text>
+      <text x="1240" y="210" text-anchor="middle" fill="#1d5c96" font-family="Georgia, serif" font-size="22">k<tspan font-size="14" dy="-8">T</tspan><tspan font-size="20" dy="8"> лёгких</tspan></text>
+      <text x="1560" y="210" text-anchor="middle" fill="#1d5c96" font-family="Georgia, serif" font-size="22">k<tspan font-size="14" dy="-8">T</tspan><tspan font-size="20" dy="8"> пациента</tspan></text>
+
+      <!-- lines to the query -->
+      <path d="M200 230 L896 470" fill="none" stroke="#1c1915" stroke-width="1.6"/>
+      <path d="M520 230 L896 470" fill="none" stroke="#1c1915" stroke-width="1.6"/>
+      <path d="M896 230 L896 470" fill="none" stroke="#1c1915" stroke-width="1.6"/>
+      <path d="M1240 230 L896 470" fill="none" stroke="#1c1915" stroke-width="1.6"/>
+      <path d="M1560 230 L896 470" fill="none" stroke="#1c1915" stroke-width="1.6"/>
+
+      <text x="896" y="508" text-anchor="middle" fill="#b42318" font-family="Georgia, serif" font-size="28">q снимок</text>
+
+      <!-- bottom tokens -->
+      <rect x="90" y="560" width="220" height="72" fill="none" stroke="#c8c2b6" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="200" y="606" text-anchor="middle" fill="#c4beb4">врач</text>
+
+      <rect x="390" y="560" width="260" height="72" fill="none" stroke="#c8c2b6" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="520" y="606" text-anchor="middle" fill="#c4beb4">видит</text>
+
+      <rect x="746" y="548" width="300" height="86" fill="none" stroke="#1c1915" stroke-width="2.5"/>
+      <text class="tok" x="896" y="602" text-anchor="middle">снимок</text>
+
+      <rect x="1110" y="560" width="260" height="72" fill="none" stroke="#c8c2b6" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="1240" y="606" text-anchor="middle" fill="#c4beb4">лёгких</text>
+
+      <rect x="1420" y="560" width="280" height="72" fill="none" stroke="#c8c2b6" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text class="tok" x="1560" y="606" text-anchor="middle" fill="#c4beb4">пациента</text>
+
+      <text x="896" y="700" text-anchor="middle" fill="#3e4650" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22">Запрос сравнивается с ключами. В ответ собираются значения.</text>
+    </svg>
+    <aside class="formula">
+      <div class="eq" aria-label="softmax от Q K транспонированное, делённое на корень из d k, умножить на V">
+        <span>softmax</span>
+        <span class="paren">(</span>
+        <span class="frac">
+          <span class="num">QK<sup>T</sup></span>
+          <span class="den">√d<sub>k</sub></span>
+        </span>
+        <span class="paren">)</span>
+        <span class="vee">V</span>
+      </div>
+      <dl>
+        <div><dt>Q</dt><dd>запросы, по строке на токен. Для «снимка» это его строка</dd></div>
+        <div><dt>K<sup>T</sup></dt><dd>ключи всех токенов, с которыми запрос сравнивается</dd></div>
+        <div><dt>QK<sup>T</sup></dt><dd>сходство запроса с каждым ключом</dd></div>
+        <div><dt>√d<sub>k</sub></dt><dd>корень из длины ключа, на него делят сходства</dd></div>
+        <div><dt>softmax</dt><dd>сходства становятся весами, их сумма равна 1</dd></div>
+        <div><dt>V</dt><dd>значения. Итог — их взвешенная сумма</dd></div>
+      </dl>
+    </aside>
+    </div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=11"></script>
+</body>
+</html>

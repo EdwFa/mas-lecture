@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 17. Практические применения MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .blocks {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px 48px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 12px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 4px 0 0;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 10px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.34;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 22px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>17</span></div>
+    <h1>Практические применения MCP</h1>
+    <p class="lead">Первые четыре случая из девяти. Модель подключается к базе, к программам картинки и звука, к чужим API и к точному месту в тексте.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Базы данных</h2>
+        <p>Агент обращается к базе обычными словами: читает текущие записи, собирает отчёт, обновляет строку. Для Google BigQuery это делает MCP Toolbox.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Картинка, видео, голос</h2>
+        <p>Через MCP Tools для Genmedia агент собирает цепочку: Google Imagen рисует, Google Veo снимает видео, Chirp 3 HD говорит, Google Lyria пишет музыку.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Внешние API</h2>
+        <p>Один порядок для любого внешнего API: погода сейчас, цена акции, письмо, учёт клиентов.</p>
+      </article>
+      <article class="block">
+        <div class="n">04</div>
+        <h2>Точный фрагмент</h2>
+        <p>Агент читает текст и достаёт фрагмент, цифру или утверждение под вопрос. Обычный поиск отдал бы документ целиком.</p>
+      </article>
+    </div>
+    <p class="coda">Подключение одно. Меняется служба: база, картинка и звук, чужой API, нужное место в тексте.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 4. Краткосрочная память</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1760px; font-size: 20px; line-height: 1.3; }
+    .blocks {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 12px; font-size: 22px; }
+    figure {
+      margin: 2px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    figure img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 1680px;
+      max-height: 430px;
+      background: #f7f4ee;
+    }
+    figcaption {
+      margin-top: 4px;
+      max-width: 1680px;
+      text-align: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #243038;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>04</span></div>
+    <h1>Краткосрочная память</h1>
+    <p class="lead">Как рабочая память человека, она хранит то, что обрабатывается сейчас или только что было под рукой. У агента на модели это окно контекста.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Что внутри</h2>
+        <p>Последние сообщения, ответы агента, результаты инструментов и рассуждение в этом разговоре. По ним модель пишет следующий ответ и выбирает действие.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Место ограничено</h2>
+        <p>В окно входит не всё. В нём оставляют то, что ещё нужно: старые части разговора сжимают, главное выписывают отдельно.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Длинное окно</h2>
+        <p>Модель с длинным контекстом увеличивает ту же краткосрочную память. В один разговор помещается больше сведений.</p>
+      </article>
+      <article class="block">
+        <div class="n">04</div>
+        <h2>После разговора</h2>
+        <p>Окно пропадает вместе с разговором. Длинный контекст каждый раз дорого перечитывать. Сведения из прошлых разговоров живут в другой памяти.</p>
+      </article>
+    </div>
+    <p class="coda">Окно контекста — память на один разговор. То, что должно его пережить, хранят отдельно.</p>
+    <figure>
+      <img src="img/short-term-memory.png?v=1" alt="Врач и пациент внутри оконной рамы. Слева за рамой открытая тетрадь, справа отдельно закрытая тетрадь.">
+      <figcaption>В окне — этот разговор. За краем то, что в окно не входит, и то, что хранят отдельно.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

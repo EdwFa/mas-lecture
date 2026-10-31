@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 19. Заключение</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .rows { margin-top: 20px; }
+    .row {
+      display: grid;
+      grid-template-columns: 52px 220px 1fr;
+      column-gap: 22px;
+      align-items: start;
+      border-top: 1px solid #1c1915;
+      padding: 12px 0 11px;
+    }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+      padding-top: 6px;
+    }
+    .row h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .row p {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 16px; font-size: 26px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>19</span></div>
+    <h1>Заключение</h1>
+    <p class="lead">Агентные системы запоминают прошлые взаимодействия, чтобы выполнять сложные задачи и вести связный разговор.</p>
+    <div class="rows">
+      <article class="row">
+        <div class="n">01</div>
+        <h2>Два вида</h2>
+        <p>Краткосрочная память — окно контекста одного разговора. Долгосрочная живёт снаружи: в обычной базе, графе знаний или векторном хранилище, и входит в текущий шаг по запросу, поиском по смыслу.</p>
+      </article>
+      <article class="row">
+        <div class="n">02</div>
+        <h2>В задаче</h2>
+        <p>По ходу разговора и задачи краткосрочная следит за репликами, предыдущими шагами, текущим прогрессом и общими целями. Эти сведения могут быть в контексте задачи или во временном хранилище. Долгосрочная нужна для данных пользователя, которых нет в непосредственном контексте.</p>
+      </article>
+      <article class="row">
+        <div class="n">03</div>
+        <h2>Что остаётся</h2>
+        <p>Агент хранит и извлекает предпочтения, прошлое поведение и личную информацию и по ним адаптирует ответы и предложения. Успешные стратегии, ошибки и новая информация сохраняются и могут улучшать следующие адаптации. Фрагмент базы знаний приходит в ту же беседу.</p>
+      </article>
+      <article class="row">
+        <div class="n">04</div>
+        <h2>Нить и службы</h2>
+        <p>Каждое взаимодействие — своя нить Session: Events и session.state только этой нити. Memory — поиск по прошлым чатам или внешним источникам; агенту может понадобиться доступ к более ранним взаимодействиям. SessionService ведёт начало, запись и завершение. MemoryService хранит и извлекает.</p>
+      </article>
+      <article class="row">
+        <div class="n">05</div>
+        <h2>В цепочках</h2>
+        <p>История обогащает текущий промпт, затем записывается последний обмен. Краткосрочная — область одного потока, LangGraph хранит её через checkpointer. Долгосрочная — данные через сессии, в своих пространствах имён. Факты, опыт и правила. «Рефлексия» уточняет инструкции промпта.</p>
+      </article>
+    </div>
+    <p class="coda">Без механизма памяти агент остаётся без состояния. Окно — этот разговор. Отдельная память — то, что должно его пережить.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>
