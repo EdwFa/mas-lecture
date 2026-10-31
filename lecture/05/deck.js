@@ -35,20 +35,20 @@
     '<div class="deck-side"><div class="deck-menu" id="deck-interactive">',
     '<button type="button" id="deck-btn" aria-expanded="false" aria-haspopup="true">Интерактив</button>',
     '<div class="deck-pop" id="deck-pop" hidden>',
-    '<a href="../chapters/index.html">Трансформеры</a>',
-    '<a href="../chapters/llm/">Языковые модели</a>',
-    '<a href="../chapters/build/">Сборка модели</a>',
-    '<a href="../chapters/assistant.html">Ассистент</a>',
+    '<a href="../../transformer/index.html">Трансформеры</a>',
+    '<a href="../../transformer/llm/">Языковые модели</a>',
+    '<a href="../../transformer/build/">Сборка модели</a>',
+    '<a href="../../transformer/assistant.html">Ассистент</a>',
     "</div></div>",
     '<div class="deck-menu" id="deck-lectures">',
     '<button type="button" id="deck-lectures-btn" aria-expanded="false" aria-haspopup="true">Лекции</button>',
     '<div class="deck-pop wide" id="deck-lectures-pop" hidden>',
-    '<a href="../01/slide-01.html?v=11">Лекция 1. Вводная</a>',
-    '<a href="../02/slide-01.html?v=6">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
-    '<a href="../03/slide-01.html?v=6">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
-    '<a href="../04/slide-01.html?v=44">Лекция 4. Взаимодействие агентов с внешними системами</a>',
-    '<a href="../05/slide-01.html?v=39">Лекция 5. Агенты с памятью, управление памятью</a>',
-    '<a href="../06/slide-01.html?v=6">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
+    '<a href="../01/slide-01.html?v=12">Лекция 1. Вводная</a>',
+    '<a href="../02/slide-01.html?v=7">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
+    '<a href="../03/slide-01.html?v=7">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
+    '<a href="../04/slide-01.html?v=45">Лекция 4. Взаимодействие агентов с внешними системами</a>',
+    '<a href="../05/slide-01.html?v=40">Лекция 5. Агенты с памятью, управление памятью</a>',
+    '<a href="../06/slide-01.html?v=7">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
     "</div></div></div>",
     '<div class="deck-pager">',
     '<button type="button" id="deck-prev">Предыдущий</button>',
@@ -78,7 +78,7 @@
   const practicumPop = document.querySelector("#deck-practicum-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=39";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=40";
   }
 
   count.textContent = n + " / " + TOTAL;
