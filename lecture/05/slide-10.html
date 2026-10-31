@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 10. Поиск информации</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .blocks {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 10px; font-size: 22px; }
+    figure { margin: 2px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: auto; height: auto; max-width: 1680px; max-height: 380px; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>10</span></div>
+    <h1>Поиск информации</h1>
+    <p class="lead">Агенты, предназначенные для ответов на вопросы, получают доступ к базе знаний — своей долгосрочной памяти.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>База знаний</h2>
+        <p>Она может быть реализована как Retrieval Augmented Generation (RAG). Агент извлекает документы или данные по вопросу и по ним строит ответ.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>В клинике</h2>
+        <p>В ходе приёма врач называет жалобы и спрашивает о тактике. Агент по этому разговору извлекает из клинической рекомендации фрагмент под сказанное и отвечает в той же беседе.</p>
+      </article>
+    </div>
+    <p class="coda">Долгосрочная память здесь — база знаний. Ответ опирается на извлечённые документы или данные.</p>
+    <figure>
+      <img src="img/retrieval-memory.png?v=1" alt="В той же комнате врач слушает пациента. Из открытой книги на боковом столе лист идёт на стол беседы.">
+      <figcaption>В ходе приёма врач говорит о жалобах и тактике. Фрагмент рекомендации приходит в ту же беседу.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

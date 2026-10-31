@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 17. Рефлексия процедурной памяти</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .cols {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .col { border-top: 1px solid #1c1915; padding-top: 10px; min-width: 0; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .col h2 {
+      margin: 4px 0 0;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .role {
+      margin: 4px 0 10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    pre {
+      margin: 0;
+      font-family: Consolas, "JetBrains Mono", "Cascadia Mono", "Courier New", monospace;
+      font-size: 16px;
+      line-height: 1.42;
+      color: #1c1915;
+      white-space: pre;
+      background: transparent;
+    }
+    .k { color: #0033b3; font-weight: 700; }
+    .s { color: #067d17; }
+    .num { color: #1750eb; }
+    .c { color: #808080; }
+    .fn { color: #00627a; }
+    .bi { color: #0033b3; }
+    .coda { max-width: 1680px; margin-top: 18px; font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>17</span></div>
+    <h1>Рефлексия процедурной памяти</h1>
+    <p class="lead">Псевдокод: агент рефлексией обновляет процедурную память в LangGraph BaseStore.</p>
+    <div class="cols">
+      <article class="col">
+        <div class="n">01</div>
+        <h2>update_instructions</h2>
+        <p class="role">Узел обновляет инструкции агента.</p>
+<pre><span class="c"># Узел, который обновляет инструкции агента</span>
+<span class="k">def</span> <span class="fn">update_instructions</span>(state: State, store: BaseStore):
+    namespace = (<span class="s">"instructions"</span>,)
+    <span class="c"># Получение текущих инструкций из хранилища</span>
+    current_instructions = store.search(namespace)[<span class="num">0</span>]
+
+    <span class="c"># Создание промпта для запроса LLM рефлексировать над разговором</span>
+    <span class="c"># и генерировать новые, улучшенные инструкции</span>
+    prompt = prompt_template.format(
+        instructions=current_instructions.value[<span class="s">"instructions"</span>],
+        conversation=state[<span class="s">"messages"</span>]
+    )
+
+    <span class="c"># Получение новых инструкций от LLM</span>
+    output = llm.invoke(prompt)
+    new_instructions = output[<span class="s">'new_instructions'</span>]
+
+    <span class="c"># Сохранение обновленных инструкций обратно в хранилище</span>
+    store.put((<span class="s">"agent_instructions"</span>,), <span class="s">"agent_a"</span>, {<span class="s">"instructions"</span>: new_instructions})</pre>
+      </article>
+      <article class="col">
+        <div class="n">02</div>
+        <h2>call_model</h2>
+        <p class="role">Узел использует инструкции для ответа.</p>
+<pre><span class="c"># Узел, который использует инструкции для генерации ответа</span>
+<span class="k">def</span> <span class="fn">call_model</span>(state: State, store: BaseStore):
+    namespace = (<span class="s">"agent_instructions"</span>, )
+    <span class="c"># Извлечение последних инструкций из хранилища</span>
+    instructions = store.get(namespace, key=<span class="s">"agent_a"</span>)[<span class="num">0</span>]
+
+    <span class="c"># Использование извлеченных инструкций для форматирования промпта</span>
+    prompt = prompt_template.format(instructions=instructions.value[<span class="s">"instructions"</span>])
+    <span class="c"># ... логика приложения продолжается</span></pre>
+      </article>
+    </div>
+    <p class="coda">Первый узел записывает новые инструкции в хранилище. Второй читает их и собирает промпт.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

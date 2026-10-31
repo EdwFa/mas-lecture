@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 12. Восемь голов и ширина 512</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      background: #f3efe6;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      box-sizing: border-box;
+      padding: 44px 72px 28px;
+      display: flex;
+      flex-direction: column;
+      background: #f7f4ee;
+      color: #1c1915;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    h1 {
+      margin: 12px 0 0;
+      font-size: 46px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .lead {
+      margin: 12px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.35;
+      color: #1c1915;
+    }
+
+    .label {
+      margin: 0 0 12px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    .phrase { margin-top: 26px; }
+
+    .tokens {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .tok {
+      box-sizing: border-box;
+      height: 92px;
+      border: 1px solid #c9c2b6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .tok b {
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .tok span,
+    .cell span,
+    .q span,
+    .key span {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5e6872;
+    }
+
+    .tok.on {
+      border: 2px solid #1c1915;
+    }
+
+    .cut { margin-top: 28px; }
+
+    .bar {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      border: 2px solid #1c1915;
+    }
+
+    .cell {
+      box-sizing: border-box;
+      height: 96px;
+      border-right: 1px solid #1c1915;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #3e4650;
+    }
+
+    .cell:last-child { border-right: 0; }
+
+    .cell strong {
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #1c1915;
+    }
+
+    .cell.on {
+      background: #1c1915;
+      color: #f7f4ee;
+    }
+
+    .cell.on strong,
+    .cell.on span { color: #f7f4ee; }
+
+    .eq {
+      margin: 10px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      color: #3e4650;
+    }
+
+    .one { margin-top: 26px; }
+
+    .cmp {
+      display: grid;
+      grid-template-columns: 280px 36px 1fr;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .q, .key {
+      box-sizing: border-box;
+      height: 78px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .q {
+      border: 2px solid #b42318;
+      color: #b42318;
+      font-size: 26px;
+    }
+
+    .q span { color: #b42318; }
+
+    .arrow {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      text-align: center;
+      color: #1c1915;
+    }
+
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .key {
+      border: 2px solid #1d5c96;
+      color: #1d5c96;
+      font-size: 24px;
+    }
+
+    .key span { color: #1d5c96; }
+
+    .note {
+      margin: 14px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.35;
+      color: #3e4650;
+    }
+
+    .explain {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 36px;
+      margin-top: auto;
+      padding-top: 22px;
+      border-top: 1px solid #d9d3c7;
+    }
+
+    .explain h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .explain p {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.4;
+      color: #243038;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #d9d3c7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      color: #3e4650;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker">
+      <span>Лекция 1. Вводная</span>
+      <span>12</span>
+    </div>
+    <h1>Восемь голов режут вектор одного токена</h1>
+    <p class="lead">Базовая модель 2017 года: ширина 512, голов 8, ключ длины 64. Восемь — это части вектора, а не число слов во фразе.</p>
+
+    <section class="phrase">
+      <p class="label">Фраза. В примере каждое слово — один токен, у каждого вектор из 512 чисел</p>
+      <div class="tokens">
+        <div class="tok"><b>врач</b><span>512</span></div>
+        <div class="tok"><b>видит</b><span>512</span></div>
+        <div class="tok on"><b>снимок</b><span>512</span></div>
+        <div class="tok"><b>лёгких</b><span>512</span></div>
+        <div class="tok"><b>пациента</b><span>512</span></div>
+      </div>
+    </section>
+
+    <section class="cut">
+      <p class="label">Вектор «снимка» делится на восемь голов</p>
+      <div class="bar">
+        <div class="cell on"><strong>64</strong><span>голова 1</span></div>
+        <div class="cell"><strong>64</strong><span>голова 2</span></div>
+        <div class="cell"><strong>64</strong><span>голова 3</span></div>
+        <div class="cell"><strong>64</strong><span>голова 4</span></div>
+        <div class="cell"><strong>64</strong><span>голова 5</span></div>
+        <div class="cell"><strong>64</strong><span>голова 6</span></div>
+        <div class="cell"><strong>64</strong><span>голова 7</span></div>
+        <div class="cell"><strong>64</strong><span>голова 8</span></div>
+      </div>
+      <p class="eq">8 × 64 = 512. Склейка восьми голов возвращает вектор той же ширины.</p>
+    </section>
+
+    <section class="one">
+      <p class="label">Голова 1 сравнивает свой запрос с ключом каждого токена. Оба вектора длины 64</p>
+      <div class="cmp">
+        <div class="q"><b>снимок</b><span>запрос · 64</span></div>
+        <div class="arrow">→</div>
+        <div class="keys">
+          <div class="key"><b>врач</b><span>ключ · 64</span></div>
+          <div class="key"><b>видит</b><span>ключ · 64</span></div>
+          <div class="key"><b>снимок</b><span>ключ · 64</span></div>
+          <div class="key"><b>лёгких</b><span>ключ · 64</span></div>
+          <div class="key"><b>пациента</b><span>ключ · 64</span></div>
+        </div>
+      </div>
+      <p class="note">Одна голова видит все пять токенов. Головы 2–8 делают то же сравнение со своими отрезками по 64 числа. Значение головы тоже длины 64.</p>
+    </section>
+
+    <section class="explain">
+      <div>
+        <h2>Ширина — это длина вектора слова</h2>
+        <p>«Снимок» хранится как номер в словаре. Вместо номера берут 512 чисел. В статье эта длина называется d<sub>model</sub>.</p>
+      </div>
+      <div>
+        <h2>Между блоками вектор остаётся 512</h2>
+        <p>Внимание возвращает вектор той же ширины. Следующий блок снова получает 512 чисел: длина вектора между блоками и длина вектора слова совпадают.</p>
+      </div>
+      <div>
+        <h2>Внутри блока длина на время другая</h2>
+        <p>Сеть после внимания расширяет вектор до 2048 и сжимает его обратно до 512. На головы вектор делится после умножения на матрицу.</p>
+      </div>
+    </section>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=11"></script>
+</body>
+</html>

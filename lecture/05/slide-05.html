@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 5. Долгосрочная память</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .blocks {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr 0.95fr;
+      gap: 32px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 12px; font-size: 22px; }
+    figure {
+      margin: 2px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    figure img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 1680px;
+      max-height: 390px;
+      background: #f7f4ee;
+    }
+    figcaption {
+      margin-top: 4px;
+      max-width: 1680px;
+      text-align: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #243038;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>05</span></div>
+    <h1>Долгосрочная память</h1>
+    <p class="lead">Постоянная память хранит сведения между разговорами, задачами и длинными сроками. Это база знаний агента.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Где лежит</h2>
+        <p>Сведения лежат вне окна текущего шага: в обычной базе, в графе знаний или в векторной базе. Так они переживают разговор и задачу.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Поиск по смыслу</h2>
+        <p>В векторной базе текст хранят как набор чисел. Поиск находит близкое по смыслу, даже если слова запроса и записи разошлись. Такой поиск называют семантическим.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>В текущий шаг</h2>
+        <p>Агент спрашивает хранилище, забирает подходящие записи и кладёт их в окно контекста. Прежнее знание встречается с тем, что происходит сейчас.</p>
+      </article>
+    </div>
+    <p class="coda">Долгосрочная память живёт снаружи. В краткосрочную она входит по запросу.</p>
+    <figure>
+      <img src="img/long-term-memory.png?v=1" alt="Слева полка, граф и рой точек вне рамы. Лист по линии входит в окно, где врач говорит с пациентом.">
+      <figcaption>Слева хранилище снаружи окна. Лист по запросу входит в текущий разговор.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

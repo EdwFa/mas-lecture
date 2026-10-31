@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 15. Архитектура MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; }
+    .lead { max-width: 1760px; font-size: 18px; }
+    .blocks {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 6px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 4px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .coda { max-width: 1700px; margin-top: 8px; font-size: 18px; padding-top: 8px; }
+    figure { margin: 8px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1680px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1700px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.25; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>15</span></div>
+    <h1>Архитектура MCP</h1>
+    <p class="lead">Одно приложение-хост ведёт несколько клиентов. Обмен идёт по JSON-RPC: каждый запрос самодостаточен и сам несёт версию и возможности. Стороны передают контекст и согласуют sampling — запрос сервера на ответ модели. Обзор версии 2026-07-28 помечает sampling как устаревший.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Приложение-хост</h2>
+        <p>Создаёт клиентов и управляет ими. Выдаёт разрешения на соединения и определяет срок каждого. Проводит правила безопасности и согласие, принимает решения о допуске пользователя. Согласует вызов модели и sampling. Собирает контекст от всех клиентов.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Клиент</h2>
+        <p>Хост создаёт клиента, и тот ведёт отдельное соединение с сервером. У клиента ровно один сервер. К каждому запросу клиент прилагает версию протокола и свои возможности, передаёт сообщения в обе стороны, ведёт подписки и уведомления. Между серверами проводит границу безопасности.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Сервер</h2>
+        <p>Отдаёт данные, инструменты и заготовки запросов. Работает самостоятельно и занят своей задачей. Sampling, уточнение у пользователя и корни — какие каталоги открыты — просит у клиента ответом InputRequiredResult. Обязан соблюдать ограничения безопасности. Это локальный процесс или удалённая служба.</p>
+      </article>
+    </div>
+    <p class="coda">У каждого клиента ровно один сервер. Пользователь подключает возможности модели в разных приложениях, а границы безопасности и зоны ответственности остаются раздельными.</p>
+    <div class="spacer"></div>
+    <figure>
+      <img src="img/mcp-architecture.png?v=1" alt="Приложение-хост содержит модель и двух клиентов. Клиент по STDIO идёт к локальному серверу, клиент по Streamable HTTP — к удалённой службе. У серверов двусторонние связи с ресурсами.">
+      <figcaption>Соединение открывает клиент. Локально это STDIO, удалённо — Streamable HTTP. Ресурс связан с сервером в обе стороны. У клиента один сервер, удалённая служба обычно принимает много клиентов.</figcaption>
+    </figure>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Практические применения MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 46px; }
+    .lead { max-width: 1720px; }
+    .rows { margin-top: 16px; }
+    .row {
+      display: grid;
+      grid-template-columns: 56px 280px 1fr;
+      column-gap: 22px;
+      align-items: baseline;
+      border-top: 1px solid #1c1915;
+      padding: 11px 0 10px;
+    }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .row h2 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .row p {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 21px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>18</span></div>
+    <h1>Практические применения MCP</h1>
+    <p class="lead">Случаи с пятого по девятый. Свой инструмент, общий обмен, цепочка шагов, устройство и финансовая служба.</p>
+    <div class="rows">
+      <article class="row">
+        <div class="n">05</div>
+        <h2>Свой инструмент</h2>
+        <p>Разработчик описывает инструмент и отдаёт его через сервер MCP, например на FastMCP. Своя функция или закрытая система становится доступна модели. Модель при этом остаётся как есть.</p>
+      </article>
+      <article class="row">
+        <div class="n">06</div>
+        <h2>Общий обмен</h2>
+        <p>Модель и программа говорят одним способом. Подключение короче, разные модели понимают одни и те же серверы, сложного агента собирать проще.</p>
+      </article>
+      <article class="row">
+        <div class="n">07</div>
+        <h2>Цепочка шагов</h2>
+        <p>Агент берёт данные клиента из базы, делает картинку под него, пишет письмо и отправляет. Каждый шаг идёт через свой сервер MCP.</p>
+      </article>
+      <article class="row">
+        <div class="n">08</div>
+        <h2>Устройства</h2>
+        <p>Обычными словами агент отдаёт команды приборам дома, датчикам на производстве или роботу.</p>
+      </article>
+      <article class="row">
+        <div class="n">09</div>
+        <h2>Финансы</h2>
+        <p>Агент читает данные рынка, проводит сделку, готовит совет под человека или обязательный отчёт. Обмен общий, доступ проверяют.</p>
+      </article>
+    </div>
+    <p class="coda">Тот же порядок MCP. Меняется служба: свой код, чужая программа, цепочка, прибор, финансовая система.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

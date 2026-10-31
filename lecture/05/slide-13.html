@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 13. SessionService и MemoryService</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .blocks {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.15fr;
+      gap: 28px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 10px; font-size: 22px; }
+    figure { margin: 6px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>13</span></div>
+    <h1>SessionService и MemoryService</h1>
+    <p class="lead">Эти службы управляют частями сложных агентов, которые сохраняют состояние и учитывают контекст.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>SessionService</h2>
+        <p>Управляет нитями чата, объектами Session: начало, запись и завершение.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>MemoryService</h2>
+        <p>Управляет хранением и извлечением долгосрочных знаний, Memory.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Как хранят</h2>
+        <p>Способ хранения выбирают под задачу. Вариант в памяти годится для проверки: при перезапуске данные не сохраняются. Для постоянного хранения и роста нагрузки нужны базы данных и облачные службы.</p>
+      </article>
+    </div>
+    <p class="coda">SessionService ведёт нить. MemoryService хранит и извлекает долгосрочные знания. Способ хранения выбирают под задачу.</p>
+    <figure>
+      <img src="img/session-memory-services.png?v=1" alt="SessionService: начало, запись, завершение. MemoryService: хранение и извлечение. Внизу хранение в памяти, в базе и в облаке.">
+      <figcaption>Службы ведут нить и долгосрочные знания. Внизу три способа хранения.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

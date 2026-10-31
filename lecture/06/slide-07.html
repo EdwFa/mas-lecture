@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 7. Кто подключается к MCP</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 42px; }
+    .lead { max-width: 1760px; font-size: 21px; }
+    .blocks {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 6px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 4px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 8px; font-size: 21px; }
+    figure { margin: 6px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>07</span></div>
+    <h1>Кто подключается к MCP</h1>
+    <p class="lead">По спецификации соединение открывает приложение-хост. На каждый сервер оно создаёт своего клиента.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Приложение-хост</h2>
+        <p>Приложение с моделью: среда разработки, Claude Desktop или программа агента. Создаёт клиентов, собирает контекст и проводит вызов модели.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Клиент</h2>
+        <p>На каждый сервер — один клиент и одно соединение. Клиент приносит приложению данные, заготовки запросов и инструменты.</p>
+      </article>
+      <article class="block">
+        <div class="n">03</div>
+        <h2>Сервер</h2>
+        <p>Отдаёт эти три вида своему клиенту. С моделью напрямую не говорит.</p>
+      </article>
+    </div>
+    <p class="coda">Модель выбирает инструмент. Приложение перехватывает вызов. Клиент относит его на сервер и возвращает результат модели.</p>
+    <figure>
+      <img src="img/mcp-participants.png?v=1" alt="Приложение-хост содержит модель и двух клиентов. От каждого клиента отдельная стрелка к своему серверу.">
+      <figcaption>Модель остаётся внутри приложения. Соединение с сервером ведёт клиент, по одному на сервер.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>

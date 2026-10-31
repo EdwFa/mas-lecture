@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 7. Агенты, ориентированные на задачи</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; }
+    .lead { max-width: 1760px; font-size: 22px; }
+    .blocks {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 14px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .coda { max-width: 1680px; margin-top: 10px; font-size: 22px; }
+    figure { margin: 2px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: auto; height: auto; max-width: 1680px; max-height: 380px; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>07</span></div>
+    <h1>Агенты, ориентированные на задачи</h1>
+    <p class="lead">Они управляют многошаговыми задачами.</p>
+    <div class="blocks">
+      <article class="block">
+        <div class="n">01</div>
+        <h2>Краткосрочная память</h2>
+        <p>Нужна, чтобы следить за предыдущими шагами, текущим прогрессом и общими целями. Эти сведения могут находиться в контексте задачи или во временном хранилище.</p>
+      </article>
+      <article class="block">
+        <div class="n">02</div>
+        <h2>Долгосрочная память</h2>
+        <p>Нужна для доступа к конкретным данным пользователя. Этих данных нет в непосредственном контексте.</p>
+      </article>
+    </div>
+    <p class="coda">Краткосрочная память следит за шагами, прогрессом и целями. Долгосрочная нужна для доступа к данным пользователя вне непосредственного контекста.</p>
+    <figure>
+      <img src="img/task-memory.png?v=1" alt="На столе карточки шагов, круг текущего шага и флажок целей. На отдельной полке папка и карточка пользователя.">
+      <figcaption>На столе предыдущие шаги, текущий прогресс и цели. Данные пользователя лежат отдельно, вне этого контекста.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=39"></script>
+</body>
+</html>

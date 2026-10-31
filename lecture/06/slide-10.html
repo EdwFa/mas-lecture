@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 10. Таблица отличий</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1720px; font-size: 22px; }
+    table { margin-top: 14px; }
+    th { padding: 0 20px 8px 0; font-size: 14px; }
+    th:first-child, td:first-child { width: 260px; }
+    td {
+      padding: 10px 20px 10px 0;
+      font-size: 19px;
+      line-height: 1.28;
+    }
+    td strong { font-size: 22px; }
+    figure { margin: 10px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
+    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.25; color: #243038; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>10</span></div>
+    <h1>Таблица отличий</h1>
+    <p class="lead">Вызов функции и MCP оба выводят модель за текст. Отличаются тем, насколько общий это способ.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Чем отличается</th>
+          <th>Вызов функции</th>
+          <th>MCP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Стандарт</strong></td>
+          <td>Свой у каждого поставщика. Формат разный.</td>
+          <td>Открытый порядок. Им пользуются разные модели и инструменты.</td>
+        </tr>
+        <tr>
+          <td><strong>Область</strong></td>
+          <td>Модель просит выполнить одну заранее описанную функцию.</td>
+          <td>Более широкий порядок: модель и инструменты находят друг друга и работают вместе.</td>
+        </tr>
+        <tr>
+          <td><strong>Устройство</strong></td>
+          <td>Связь одна к одной: модель и программа, которая выполняет инструмент.</td>
+          <td>Клиент и сервер. Программа с моделью подключается к разным серверам.</td>
+        </tr>
+        <tr>
+          <td><strong>Как узнают</strong></td>
+          <td>Модели прямо говорят, какие инструменты есть в этом разговоре.</td>
+          <td>Клиент спрашивает сервер, какие возможности тот отдаёт.</td>
+        </tr>
+        <tr>
+          <td><strong>Повтор</strong></td>
+          <td>Связь часто привязана к одному приложению и одной модели.</td>
+          <td>Сервер живёт отдельно. К нему подключается любая совместимая программа.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="spacer"></div>
+    <figure>
+      <img src="img/mcp-call-vs-shape.png?v=1" alt="Слева модель и программа на одну функцию. Справа два клиента спрашивают один сервер.">
+      <figcaption>Слева инструменты названы в этом разговоре, связь часто привязана к приложению и модели. Справа клиент спрашивает сервер: сервер живёт отдельно, к нему подключается совместимая программа.</figcaption>
+    </figure>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=6"></script>
+</body>
+</html>
