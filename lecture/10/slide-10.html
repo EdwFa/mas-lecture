@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 10. Гипотеза. Параллельный сэмплер</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; } .lead { font-size: 20px; } figure { margin: 8px 0 0; } figure img { width: 1680px; height: auto; display: block; background: #f7f4ee; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>10</span></div>
+    
+    <h1>Гипотеза. Параллельный сэмплер</h1>
+    <p class="lead">Один проход. Скрытое состояние берут у токена SEP или CLS каждого вопроса и пропускают через MLP-голову, которая знает только варианты этого вопроса. Логиты всех вопросов выходят сразу. Время в этой гипотезе зависит от длины входа.</p>
+    <figure>
+      <img src="img/sampler.png?v=2" alt="Вход STATE, SEP, Q1, SEP, Q2. Один проход энкодера. Скрытое состояние SEP или CLS идёт в MLP-голову и даёт логиты всех вопросов." />
+    </figure>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

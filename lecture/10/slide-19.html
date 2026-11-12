@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 19. Куда ставим модуль</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .three { grid-template-columns: 1fr 1fr 1fr; } .card h2 { font-size: 26px; } .card p { font-size: 20px; } .coda { font-size: 22px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>19</span></div>
+    
+    <h1>Куда ставим модуль</h1>
+    <div class="cols three">
+      <article class="card">
+        <h2>Фильтр Qdrant</h2>
+        <p>Топ-5 фрагментов. Вопрос: содержит ли фрагмент прямую клиническую рекомендацию по запросу. Ниже порога фрагмент в генератор не идёт. Старт настройки порога — 0,85, число живёт в коде.</p>
+      </article>
+      <article class="card">
+        <h2>Маршрут к врачу</h2>
+        <p>Поле requires_human_review. При высокой уверенности код помечает документ на проверку врачом и не тратит токены генератора.</p>
+      </article>
+      <article class="card">
+        <h2>Калибровка</h2>
+        <p>Температура или Platt scaling на размеченном наборе. Ориентир: 500–1000 фрагментов ваших PDF. Разметка вручную или сильной моделью. Подбор уменьшает Brier score.</p>
+      </article>
+    </div>
+    <p class="coda">В разборе выдача логитов названа примерно в 100 раз быстрее порождения текста. Это характеристика разбора, не замер нашего набора. Замер cookbook стоит отдельно.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

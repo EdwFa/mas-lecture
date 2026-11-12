@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 16. Температура и порог</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; } .lead { font-size: 20px; margin-top: 8px; } pre { margin: 10px 0 0; padding: 12px 16px; background: #fffdf8; border-top: 1px solid #1c1915; font-family: Consolas, 'Courier New', monospace; font-size: 17px; line-height: 1.32; color: #1c1915; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>16</span></div>
+    
+    <h1>Температура и порог</h1>
+    <p class="lead">Температуру подбирают на размеченном наборе: вероятность должна совпасть с частотой верных ответов. Порог сравнивает уже калиброванную вероятность. Оба числа живут в коде. Ориентир набора для своего модуля: 500–1000 фрагментов.</p>
+    <pre>def brier(pairs, temperature):
+    loss = 0.0
+    for similarity, label in pairs:
+        p = float(softmax([similarity, -similarity], temperature)[0])
+        loss += (p - label) ** 2
+    return loss / len(pairs)
+
+def fit_temperature(pairs):
+    best_t, best = 1.0, 1e9
+    for t in (0.5, 0.7, 1.0, 1.5, 2.0, 3.0):
+        loss = brier(pairs, t)
+        if loss &lt; best:
+            best, best_t = loss, t
+    return best_t
+
+def keep(chunks, question, threshold, temperature):
+    kept = []
+    for chunk in chunks:
+        p = yes_probability(question, chunk, temperature)
+        if p &gt;= threshold:
+            kept.append((chunk, p))
+    return kept</pre>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

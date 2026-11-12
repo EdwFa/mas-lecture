@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 3. Шум после гибридного поиска</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .three { grid-template-columns: 1fr 1fr 1fr; } .card h2 { font-size: 28px; } .card p { font-size: 20px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>03</span></div>
+    
+    <h1>Шум после гибридного поиска</h1>
+    <p class="lead">BM25 и векторный поиск уже стоят рядом. В топ-K всё равно попадают фрагменты, которые не отвечают на вопрос врача. Генератор кладёт их в контекст и собирает из них абзац.</p>
+    <div class="cols three">
+      <article class="card">
+        <h2>Время и цена</h2>
+        <p>Каждый следующий токен зависит от уже выданных. Длинный контекст и длинный ответ удлиняют и удорожают вызов.</p>
+      </article>
+      <article class="card">
+        <h2>Разбор ответа</h2>
+        <p>Коду нужно поле. Если вместо поля пришла оговорка, разбор строки ломается.</p>
+      </article>
+      <article class="card">
+        <h2>Факт</h2>
+        <p>Клиническое утверждение остаётся цитатой из фрагмента. Соседний абзац, попавший в топ-K, эту цитату не заменяет.</p>
+      </article>
+    </div>
+    <p class="coda">Слой решения стоит между поиском и генератором и возвращает вероятность. Порог задаёт код.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

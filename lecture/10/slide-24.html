@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 24. Граница контракта</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .card p { font-size: 22px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>24</span></div>
+    
+    <h1>Граница контракта</h1>
+    <div class="cols">
+      <article class="card">
+        <h2>Граница контракта</h2>
+        <p>Проза, арифметика, даты, фильтр по квартилю, проверка существования PMID, картинки. Один вопрос «оцени статью» набор полей не заменяет. Один score — одна ось. Лишний контекст в state снижает точность. Jev 1.13 плохо считает и плохо сравнивает даты. Инструкции в карточке — на английском.</p>
+      </article>
+      <article class="card">
+        <h2>Локальный запуск</h2>
+        <p>Текст пациента остаётся на машине учреждения: этого требует 152-ФЗ. Фильтр на multilingual-e5-large-instruct считается локально. Модели того же класса, которые называют Laya 421M и Von, запускают через vLLM или Unsloth. Их веса и задержка в этот слайд не входят: здесь нет их замера.</p>
+      </article>
+    </div>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

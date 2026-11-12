@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 20. Полнота данных</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    td { font-size: 22px; } .coda { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>20</span></div>
+    
+    <h1>Кейс. Полнота данных</h1>
+    <p class="lead">Записи о трансплантации лоскута: последовательная и одновременная. В статистику входит строка, у которой код подтвердил полноту полей.</p>
+    <table>
+      <thead><tr><th>Поле</th><th>Значение</th></tr></thead>
+      <tbody>
+        <tr><td>state</td><td>срок, площадь лоскута, исход, тип операции</td></tr>
+        <tr><td>вопрос, noul</td><td>в записи есть срок, площадь лоскута и исход</td></tr>
+        <tr><td>ниже порога</td><td>код ставит is_data_complete: false, строка в расчёт не входит</td></tr>
+        <tr><td>на пороге и выше</td><td>код ставит is_data_complete: true</td></tr>
+      </tbody>
+    </table>
+    <p class="coda">Модель статистику не считает и тип операции не сравнивает. Она возвращает вероятность полноты. Сравнение последовательной и одновременной делает код на оставшихся строках.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>
