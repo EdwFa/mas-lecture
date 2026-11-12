@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 29. Сводка обзора</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; } td { font-size: 18px; padding-top: 12px; padding-bottom: 12px; line-height: 1.28; } th { font-size: 14px; } table { margin-top: 16px; } .coda { font-size: 22px; margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>29</span></div>
+    
+    <h1>Сводка обзора</h1>
+    <table>
+      <thead><tr><th>Модель</th><th>Размер</th><th>Вход</th><th>Скорость в обзоре</th><th>Куда</th></tr></thead>
+      <tbody>
+        <tr><td>Jev, API</td><td>не раскрыт</td><td>текст, изображения экспериментально</td><td>70–500 мс</td><td>старт без своей установки</td></tr>
+        <tr><td>Laya, открытый код</td><td>150–421M</td><td>текст, JSON</td><td>около 33 мс на T4</td><td>локальный RAG, дообучение</td></tr>
+        <tr><td>Liquid d1, открытые веса</td><td>600M–3B+</td><td>текст, изображения, аудио, видео</td><td>короче 50 мс</td><td>снимок и текст, edge</td></tr>
+        <tr><td>Von, открытый код</td><td>около 395M</td><td>текст, JSON</td><td>короче 15 мс</td><td>фильтр фрагментов перед генератором</td></tr>
+      </tbody>
+    </table>
+    <p class="coda">Экспериментальные изображения у Jev не отменяют границу контракта: в клинический конвейер снимок через Jev не ставим. Снимок в этом обзоре отдан d1.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

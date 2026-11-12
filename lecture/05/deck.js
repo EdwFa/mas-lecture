@@ -43,12 +43,19 @@
     '<div class="deck-menu" id="deck-lectures">',
     '<button type="button" id="deck-lectures-btn" aria-expanded="false" aria-haspopup="true">Лекции</button>',
     '<div class="deck-pop wide" id="deck-lectures-pop" hidden>',
-    '<a href="../01/slide-01.html?v=12">Лекция 1. Вводная</a>',
-    '<a href="../02/slide-01.html?v=7">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
-    '<a href="../03/slide-01.html?v=7">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
-    '<a href="../04/slide-01.html?v=45">Лекция 4. Взаимодействие агентов с внешними системами</a>',
-    '<a href="../05/slide-01.html?v=40">Лекция 5. Агенты с памятью, управление памятью</a>',
-    '<a href="../06/slide-01.html?v=7">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
+    '<a href="../01/slide-01.html?v=16">Лекция 1. Вводная</a>',
+    '<a href="../02/slide-01.html?v=11">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
+    '<a href="../03/slide-01.html?v=11">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
+    '<a href="../04/slide-01.html?v=49">Лекция 4. Взаимодействие агентов с внешними системами</a>',
+    '<a href="../05/slide-01.html?v=44">Лекция 5. Агенты с памятью, управление памятью</a>',
+    '<a href="../06/slide-01.html?v=11">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
+    '<a href="../07/slide-01.html?v=18">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
+    '<a href="../08/slide-01.html?v=1">Лекция 8. Компоненты / модули RAG</a>',
+    '<a href="../09/slide-01.html?v=1">Лекция 9. Технологии оркестрации в модульном RAG</a>',
+    '<a href="../10/slide-01.html?v=3">Лекция 10. Архитектура быстрых решений</a>',
+    '<a href="../11/slide-01.html?v=1">Лекция 11. Эмбеддинг чанка</a>',
+    '<a href="../12/slide-01.html?v=1">Лекция 12. Альтернативы чанкингу</a>',
+    
     "</div></div></div>",
     '<div class="deck-pager">',
     '<button type="button" id="deck-prev">Предыдущий</button>',
@@ -78,7 +85,7 @@
   const practicumPop = document.querySelector("#deck-practicum-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=40";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=44";
   }
 
   count.textContent = n + " / " + TOTAL;

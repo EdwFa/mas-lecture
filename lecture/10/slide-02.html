@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 2. Две задачи</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>02</span></div>
+    
+    <h1>Две задачи</h1>
+    <p class="lead">Генератор пишет текст. Decision-модель возвращает поле, которое читает код.</p>
+    <div class="cols">
+      <article class="card">
+        <h2>Текст</h2>
+        <p>Генеративная модель пишет абзац токен за токеном. В разборе Luke текст пишет Qwen. В клиническом конвейере абзац для врача пишет MedGemma или другая модель для ответа.</p>
+      </article>
+      <article class="card">
+        <h2>Суждение</h2>
+        <p>Decision-модель возвращает типизированное поле: метку, балл, вероятность. В материале TypeSafe первая такая модель — Jev. Поле приходит без абзаца.</p>
+      </article>
+    </div>
+    <p class="coda">Код действует по полю. Генератор получает только те фрагменты, которые код оставил.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

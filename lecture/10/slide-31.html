@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 31. Поля из PDF</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; } .lead { font-size: 22px; } pre { margin: 14px 0 0; padding: 14px 18px; background: #fffdf8; border-top: 1px solid #1c1915; font-family: Consolas, 'Courier New', monospace; font-size: 20px; line-height: 1.35; color: #1c1915; } .coda { font-size: 22px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>31</span></div>
+    
+    <h1>Поля из PDF</h1>
+    <p class="lead">Каталог выписок и историй. Текст и, если есть, сканы таблиц идут в d1-omni-600M. Ниже пример формы ответа из обзора, не замер.</p>
+    <pre>{
+  "diagnosis_fabry_confirmed": {"choice": "yes", "confidence": 0.94},
+  "transplant_type": {"choice": "sequential", "confidence": 0.88},
+  "tnm_stage_complete": {"noul": true, "confidence": 0.99}
+}</pre>
+    <p class="coda">В контракте Jev у noul отдельного confidence нет. В этом примере обзора confidence стоит и у noul. Модель возвращает поле и не пишет абзац. Обзор называет это причиной, по которой она не сочиняет диагноз и не переписывает цифры. Неверная метка остаётся неверной меткой: её отсекает порог.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

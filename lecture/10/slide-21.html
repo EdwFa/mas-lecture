@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 21. Болезнь Фабри</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    td { font-size: 22px; padding-top: 10px; padding-bottom: 10px; } .coda { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>21</span></div>
+    
+    <h1>Кейс. Болезнь Фабри</h1>
+    <p class="lead">Неструктурированная выписка. Несколько noul по триггерам и один score по силе подозрения. Это карточка для человека, не диагноз.</p>
+    <table>
+      <thead><tr><th>Вопрос</th><th>Тип</th></tr></thead>
+      <tbody>
+        <tr><td>Акропарестезии</td><td>noul</td></tr>
+        <tr><td>Ангиокератомы</td><td>noul</td></tr>
+        <tr><td>Гипогидроз</td><td>noul</td></tr>
+        <tr><td>Семейный анамнез, альфа-галактозидаза</td><td>noul</td></tr>
+        <tr><td>Насколько прямо текст поддерживает подозрение</td><td>score, одна ось</td></tr>
+      </tbody>
+    </table>
+    <p class="coda">confidence score решает, отдавать ли карточку человеку. Веса осей, если они складываются в один балл, записаны в коде.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

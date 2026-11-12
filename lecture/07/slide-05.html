@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 5. Эмбеддинги и семантическая близость</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; }
+    .lead { max-width: 1760px; font-size: 20px; line-height: 1.3; }
+    .split {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 0.92fr 1.12fr 0.96fr;
+      gap: 28px;
+      align-items: start;
+    }
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; height: auto; background: #f7f4ee; }
+    figcaption {
+      margin-top: 6px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.3;
+      color: #243038;
+    }
+    .block { border-top: 1px solid #1c1915; padding-top: 6px; }
+    .block + .block { margin-top: 12px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .block h2 {
+      margin: 2px 0 0;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .block p {
+      margin: 6px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .cosine { margin-top: 10px; }
+    .cosine h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .formula {
+      margin: 6px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-family: Georgia, "Iowan Old Style", serif;
+      font-size: 28px;
+      line-height: 1;
+    }
+    .formula sub, .formula sup { font-size: 0.62em; }
+    .frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+    .frac .num { padding: 0 10px 3px; }
+    .frac .den { padding: 3px 10px 0; border-top: 1.5px solid #1c1915; }
+    .radin { border-top: 1.5px solid #1c1915; padding: 1px 4px 0; }
+    .proof {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 8px 32px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.28;
+      color: #243038;
+    }
+    .proof p { margin: 0; }
+    .proof .eq {
+      font-family: Georgia, "Iowan Old Style", serif;
+      font-size: 18px;
+      color: #1c1915;
+    }
+    .proof sub, .proof sup { font-size: 0.62em; }
+    .coda { max-width: 1720px; margin-top: 8px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>05</span></div>
+    <h1>Эмбеддинги и семантическая близость</h1>
+    <p class="lead">Эмбеддинг — численное представление текста: слова, фразы или целого документа. Это вектор, список чисел. Тексты со сходным смыслом лежат ближе.</p>
+    <div class="split">
+      <figure>
+        <img src="img/embedding-plane.png?v=2" alt="Учебная плоскость. Креатинин может лежать в точке (2, 3), сывороточный креатинин рядом, в (2,1, 3,1). Пульсоксиметрия далеко, в (8, 1).">
+        <figcaption>Учебная плоскость. «Креатинин» может лежать в (2, 3), «сывороточный креатинин» — рядом, в (2,1, 3,1). «Пульсоксиметрия» — далеко, в (8, 1). На деле измерений сотни или даже тысячи.</figcaption>
+      </figure>
+      <div>
+        <article class="block">
+          <div class="n">01</div>
+          <h2>Текстовое сходство</h2>
+          <p>Мера того, насколько похожи два фрагмента: по пересечению слов или по смыслу. «Какая расчётная СКФ?» и «Какова скорость клубочковой фильтрации по креатинину?» — один вопрос, формулировка разная, общих слов мало. Хорошая модель даёт высокий балл. Его часто считают по эмбеддингам.</p>
+        </article>
+        <article class="block">
+          <div class="n">02</div>
+          <h2>Семантическое сходство</h2>
+          <p>Только смысл, не набор слов. Семантическое расстояние обратно сходству: высокое сходство — низкое расстояние. «Воспаление лёгких» и «пневмония»: общих слов нет, эмбеддинги близки. Поиск по слову «пневмония» вторую формулировку не берёт.</p>
+        </article>
+      </div>
+      <figure>
+        <img src="img/cosine-vectors.png?v=1" alt="Вектор запроса q, документ d1 под меньшим углом альфа и документ d2 под большим углом тета. Пунктир — проекции d1 и d2 на оси.">
+        <figcaption>α меньше θ: d₁ ближе к запросу q, чем d₂.</figcaption>
+      </figure>
+    </div>
+    <div class="cosine">
+      <h2>Косинусная близость</h2>
+      <p class="formula">
+        <span>cos(<i>d</i><sub>j</sub>, <i>q</i>)</span>
+        <span>=</span>
+        <span class="frac"><span class="num"><b>d</b><sub>j</sub> · <b>q</b></span><span class="den">‖<b>d</b><sub>j</sub>‖ ‖<b>q</b>‖</span></span>
+        <span>=</span>
+        <span class="frac"><span class="num">Σ<sub>i=1</sub><sup>N</sup> <i>w</i><sub>i,j</sub> <i>w</i><sub>i,q</sub></span><span class="den"><span class="rad">√<span class="radin">Σ<sub>i=1</sub><sup>N</sup> <i>w</i><sub>i,j</sub><sup>2</sup></span></span> <span class="rad">√<span class="radin">Σ<sub>i=1</sub><sup>N</sup> <i>w</i><sub>i,q</sub><sup>2</sup></span></span></span></span>
+      </p>
+      <div class="proof">
+        <p>Три части согласованы. Скалярное произведение раскрыто по координатам: <span class="eq"><b>d</b><sub>j</sub> · <b>q</b> = Σ<sub>i=1</sub><sup>N</sup> <i>w</i><sub>i,j</sub> <i>w</i><sub>i,q</sub></span>.</p>
+        <p>Индекс <span class="eq"><i>i</i></span> идёт по координате от 1 до <span class="eq"><i>N</i></span>, <span class="eq"><i>j</i></span> — номер документа, <span class="eq"><i>q</i></span> — запрос. Так же подписаны <span class="eq"><i>w</i><sub>i,j</sub></span> и <span class="eq"><i>w</i><sub>i,q</sub></span>.</p>
+        <p>Норма — корень из суммы квадратов тех же координат: <span class="eq">‖<b>d</b><sub>j</sub>‖ = <span class="rad">√<span class="radin">Σ<sub>i=1</sub><sup>N</sup> <i>w</i><sub>i,j</sub><sup>2</sup></span></span></span> и <span class="eq">‖<b>q</b>‖ = <span class="rad">√<span class="radin">Σ<sub>i=1</sub><sup>N</sup> <i>w</i><sub>i,q</sub><sup>2</sup></span></span></span>. В знаменателе стоит произведение этих двух корней, и под корнем — вся сумма вместе с квадратом.</p>
+        <p>На <span class="eq">[0, π]</span> косинус убывает от 1 до −1, поэтому меньший угол даёт косинус ближе к 1. При <span class="eq">α &lt; θ</span> вектор <span class="eq"><i>d</i><sub>1</sub></span> ближе к <span class="eq"><i>q</i></span>, чем <span class="eq"><i>d</i><sub>2</sub></span>.</p>
+      </div>
+    </div>
+    <p class="coda">Семантический поиск берёт документы с наименьшим семантическим расстоянием до запроса, даже когда формулировка не совпадает с текстом базы знаний.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=18"></script>
+</body>
+</html>

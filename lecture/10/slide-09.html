@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 9. Гипотеза. Энкодер</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .three { grid-template-columns: 1fr 1fr 1fr; } h1 { font-size: 44px; } .lead { font-size: 22px; } .card h2 { font-size: 26px; } .card p { font-size: 20px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>09</span></div>
+    
+    <h1>Гипотеза. Энкодер</h1>
+    <p class="lead">Точные слои закрыты. Реконструкция опирается на отсутствие порождения текста, параллельный вывод, задержку 70–500 мс из описания прохода и ускорение, которое презентация называет 40–200 раз.</p>
+    <div class="cols three">
+      <article class="card">
+        <h2>База</h2>
+        <p>С высокой долей вероятности это энкодер современного трансформера. Ориентир размера: 1–3 млрд параметров. Аналоги класса: DeBERTa, RoBERTa, энкодерная часть Qwen2.5. Точное число параметров не опубликовано.</p>
+      </article>
+      <article class="card">
+        <h2>Почему энкодер</h2>
+        <p>Decoder-only, в разборе названы Llama и Qwen, считает следующий токен. State до 32k токенов энкодер читает целиком и отдаёт контекстные эмбеддинги.</p>
+      </article>
+      <article class="card">
+        <h2>Что гипотеза не закрывает</h2>
+        <p>Имена аналогов — ориентир класса, не опознанные веса Jev. Один физический проход на сложном запросе компания не подтверждает отдельно от формулы «все варианты за один проход».</p>
+      </article>
+    </div>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

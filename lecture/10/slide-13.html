@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 13. Слой решения</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    td { font-size: 20px; padding-top: 10px; padding-bottom: 10px; } th { padding-bottom: 8px; } table { margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>13</span></div>
+    
+    <h1>Слой решения</h1>
+    <table>
+      <thead><tr><th></th><th>Шаг</th><th>Что происходит</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Разбор</td><td>PDF протоколов: онкология ЖКТ, болезнь Фабри. Смысловые фрагменты.</td></tr>
+        <tr><td>2</td><td>Индекс</td><td>Qdrant: вектор multilingual-e5-large-instruct и текстовый индекс BM25.</td></tr>
+        <tr><td>3</td><td>Поиск</td><td>Гибридный поиск по запросу врача, топ-K.</td></tr>
+        <tr><td>4</td><td>Решение</td><td>Локальная Decision-модель. Вопрос: есть ли в фрагменте прямая клиническая рекомендация по запросу. Тип noul или score.</td></tr>
+        <tr><td>5</td><td>Порог</td><td>Код оставляет фрагменты выше порога. Старт настройки — 0,85 на валидации.</td></tr>
+        <tr><td>6</td><td>Ответ</td><td>Оставшийся контекст идёт в MedGemma или другую модель, которая пишет текст.</td></tr>
+      </tbody>
+    </table>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

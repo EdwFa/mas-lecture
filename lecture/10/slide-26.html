@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 26. Laya</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    thead { display: none; } td { font-size: 22px; } td:first-child { width: 280px; font-family: Georgia, 'Iowan Old Style', serif; font-size: 26px; color: #1c1915; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>26</span></div>
+    
+    <h1>Laya</h1>
+    <p class="lead">Открытая System One, собранная как ответ на закрытость Jev. В начале обзора она названа мультимодальной. В сравнительной таблице того же обзора у неё указаны текст и JSON.</p>
+    <table>
+      <thead><tr><th></th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Архитектура</td><td>Семейство ModernBERT, 150–421M. Двунаправленный энкодер: читает контекст и не пишет следующий токен.</td></tr>
+        <tr><td>Контракт</td><td>State: текст, JSON, тикет. Вопросы choice, score, noul. На выходе вероятности вариантов.</td></tr>
+        <tr><td>Скорость в обзоре</td><td>Около 33 мс на GPU NVIDIA T4. Больше 100 языков. Может работать целиком локально.</td></tr>
+        <tr><td>Для клиники</td><td>Веса открыты, модель дообучают на своих текстах и клинических рекомендациях.</td></tr>
+      </tbody>
+    </table>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

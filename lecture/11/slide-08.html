@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Слайд 8. Mean pooling</title>
+<link rel="stylesheet" href="../vendor/katex/katex.min.css">
+<style>
+
+html, body {
+  margin: 0;
+  width: 1920px;
+  height: 1080px;
+  background: #f3efe6;
+}
+.slide {
+  width: 1920px;
+  height: 1080px;
+  box-sizing: border-box;
+  padding: 56px 88px 96px;
+  display: flex;
+  flex-direction: column;
+  background: #f7f4ee;
+  color: #1c1915;
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  overflow: hidden;
+}
+.kicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5e6872;
+}
+h1 {
+  margin: 28px 0 0;
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+h1.long { font-size: 52px; }
+.slide.title h1 {
+  margin-top: 180px;
+  font-size: 108px;
+  line-height: 0.98;
+}
+.sub {
+  margin: 28px 0 0;
+  max-width: 1400px;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.line {
+  margin-top: 48px;
+  width: 720px;
+  border-top: 2px solid #1c1915;
+}
+.cite {
+  margin: 36px 0 0;
+  max-width: 1280px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  line-height: 1.45;
+  color: #3e4650;
+}
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+}
+.body > * { flex: 0 0 auto; }
+.body p {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  line-height: 1.38;
+  color: #243038;
+}
+.frames { display: flex; flex-direction: column; gap: 0; }
+.frame {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 4px 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid #e4dfd4;
+}
+.frame .num {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #5e6872;
+}
+.frame p {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  line-height: 1.35;
+  color: #243038;
+}
+.bullets { display: flex; flex-direction: column; gap: 12px; }
+.bullet {
+  margin: 0;
+  padding: 2px 0 2px 24px;
+  border-left: 2px solid #1c1915;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  line-height: 1.35;
+  color: #243038;
+}
+.formula {
+  margin: 4px 0;
+  overflow: visible;
+  font-size: 30px;
+}
+.formula .katex-display { margin: 0.35em 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  line-height: 1.35;
+}
+th {
+  text-align: left;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #5e6872;
+  padding: 8px 18px 10px 0;
+  border-bottom: 1px solid #1c1915;
+}
+td {
+  padding: 8px 18px 8px 0;
+  border-bottom: 1px solid #e4dfd4;
+  color: #243038;
+  vertical-align: baseline;
+}
+figure {
+  margin: 0;
+  flex: 0 0 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+figure img {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+}
+.figure-only figure { flex: 1 1 auto; }
+.figure-only figure img { max-height: 100%; }
+code {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.92em;
+}
+.spacer { flex: 1; }
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 18px;
+  border-top: 1px solid #d9d3c7;
+  padding-top: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 1.35;
+  color: #3e4650;
+}
+.compact .body { gap: 8px; margin-top: 14px; }
+.compact h1 { font-size: 46px; margin-top: 12px; }
+.compact .body p,
+.compact .frame p,
+.compact .bullet { font-size: 22px; line-height: 1.28; }
+.compact .frame { padding: 5px 0; }
+.compact .formula { font-size: 24px; }
+.compact table { font-size: 22px; }
+.compact td, .compact th { padding-top: 5px; padding-bottom: 5px; }
+.compact figure img { max-height: 200px; }
+
+.slide.split .body {
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 28px;
+}
+.slide.split .copy {
+  flex: 1 1 46%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.slide.split .body > figure { flex: 1 1 54%; height: auto; min-height: 0; }
+.slide.split.fitfig .body > figure { height: 100%; min-width: 0; }
+.slide.split.fitfig figure img,
+.slide .body > figure img {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.body > figure { flex: 1 1 0; min-height: 0; overflow: hidden; }
+
+</style>
+</head>
+<body data-total="16" data-lecture="11" data-title="Лекция 11. Эмбеддинг чанка">
+<main data-lecture="11" data-n="8" class="slide">
+<div class="kicker"><span>Лекция 11</span><span>08</span></div>
+<h1>Mean pooling</h1>
+<div class="body">
+<div class="formula">\[v_{pool} = \frac{\sum_{i=1}^{N} m_i \cdot h_i}{\sum_{i=1}^{N} m_i}.\]</div>
+<div class="formula">\[v_{pool}^{(j)} = \frac{\sum_{i=1}^{N} m_i \cdot h_i^{(j)}}{\sum_{i=1}^{N} m_i}.\]</div>
+<p>\(N\) включает паддинг. \(d = 1024\) у e5-large-instruct. \(h_i\) — вектор токена, \(m_i \in \{0, 1\}\): 1 — реальный токен, 0 — паддинг. Знаменатель — число реальных токенов.</p>
+<figure><img src="../../figures/l3-mean.png" alt="В среднее входят токены с маской 1, паддинг с маской 0 не входит"></figure>
+</div>
+<footer><span>Эмбеддинг чанка</span><span>multilingual-e5-large-instruct</span></footer>
+</main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

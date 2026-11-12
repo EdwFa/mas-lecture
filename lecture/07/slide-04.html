@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 4. Fine-Tuning</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 44px; }
+    .lead { max-width: 1760px; font-size: 22px; line-height: 1.32; }
+    figure { margin: 18px 0 0; display: flex; flex-direction: column; align-items: center; }
+    figure img { display: block; width: 1580px; height: auto; background: #f7f4ee; }
+    figcaption {
+      margin-top: 8px;
+      text-align: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.3;
+      color: #243038;
+    }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>04</span></div>
+    <h1>Fine-Tuning</h1>
+    <p class="lead">Full Fine Tuning — полное дообучение. Большой корпус проходит предобучение и даёт базовую LLM. Коллекция предметной области входит в дообучение и даёт дообученную LLM.</p>
+    <figure>
+      <img src="img/full-fine-tuning.png?v=3" alt="Большой корпус через предобучение даёт базовую LLM. Коллекция предметной области входит в дообучение и даёт дообученную LLM. Запрос идёт от пользователя к этой модели, ответ возвращается ему.">
+      <figcaption>Запрос идёт от пользователя к дообученной LLM, ответ возвращается ему.</figcaption>
+    </figure>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=18"></script>
+</body>
+</html>

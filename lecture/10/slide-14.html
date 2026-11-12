@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 14. Четыре шаблона сборки</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    td { font-size: 22px; padding-top: 12px; padding-bottom: 12px; } .coda { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>14</span></div>
+    
+    <h1>Четыре шаблона сборки</h1>
+    <table>
+      <thead><tr><th>Шаблон</th><th>Как собран</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Веер</strong></td><td>Несколько вопросов к одному state в одном вызове. Вопросы изолированы.</td></tr>
+        <tr><td><strong>Маршрут по уверенности</strong></td><td>Высокая — код действует. Средняя — человек или второй проход. Низкая — код останавливается.</td></tr>
+        <tr><td><strong>Составной балл</strong></td><td>Несколько осей. Веса записаны в коде, не в тексте вопроса.</td></tr>
+        <tr><td><strong>Маршрут по намерению</strong></td><td>choice выбирает ветку. Следующий шаг — уже другой набор вопросов или генератор.</td></tr>
+      </tbody>
+    </table>
+    <p class="coda">Fact Search отбрасывает фрагмент при P(нет) ≥ 0,8. Автоприём цитаты — от уверенности 0,8. Для клиники порог свой.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

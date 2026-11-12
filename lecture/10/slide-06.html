@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 6. Уверенность решает код</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .three { grid-template-columns: 1fr 1fr 1fr; } .formula { font-size: 36px; } .card h2 { font-size: 28px; } .card p { font-size: 20px; } .coda { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>06</span></div>
+    
+    <h1>Уверенность решает код</h1>
+    <p class="formula">choice: (p<sub>max</sub> − 1/n) / (1 − 1/n)</p>
+    <div class="cols three">
+      <article class="card">
+        <h2>choice</h2>
+        <p>Формула выше. n — число вариантов. Уверенность растёт, когда один вариант заметно выше остальных.</p>
+      </article>
+      <article class="card">
+        <h2>score</h2>
+        <p>Та же идея, с учётом расстояния от пика по оси. Одна ось — один score.</p>
+      </article>
+      <article class="card">
+        <h2>noul</h2>
+        <p>Отдельного confidence нет. Общий порог с другими типами собирают как |2p − 1|.</p>
+      </article>
+    </div>
+    <p class="coda">Высокая уверенность — код действует. Средняя — проверка. Низкая — код не действует. Среди ответов с вероятностью 0,8 около 80% верны. Один такой ответ этого не гарантирует.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

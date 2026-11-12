@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 5. Состояние и вопросы</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    td { font-size: 22px; } .coda { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>05</span></div>
+    
+    <h1>Состояние и вопросы</h1>
+    <p class="lead">state — строка, JSON или массив. Вопросы — отдельные поля. Ниже схема вызова на фрагменте про эмпаглифлозин. Цифр ответа нет.</p>
+    <table>
+      <thead><tr><th>Вопрос</th><th>Тип</th><th>Что читает код</th></tr></thead>
+      <tbody>
+        <tr><td>Есть ли прямое показание к эмпаглифлозину</td><td>noul</td><td>число от 0 до 1</td></tr>
+        <tr><td>К какой линии относится фрагмент</td><td>choice</td><td>метка и вероятности вариантов</td></tr>
+        <tr><td>Насколько фрагмент прямо отвечает на вопрос</td><td>score</td><td>балл по одной оси</td></tr>
+      </tbody>
+    </table>
+    <p class="coda">Вход одного запроса до 64k токенов. На state и на самый длинный вопрос — до 32k. Стабильный выпуск в карточке — jev-1.13.0, псевдоним jev-latest. Поле model в ответе называет версию, даже если в запросе стоял псевдоним.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

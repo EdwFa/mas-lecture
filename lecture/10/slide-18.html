@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Голова, которую учим</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; } .lead { font-size: 18px; margin-top: 6px; } pre { margin: 8px 0 0; padding: 10px 14px; background: #fffdf8; border-top: 1px solid #1c1915; font-family: Consolas, 'Courier New', monospace; font-size: 15px; line-height: 1.22; color: #1c1915; } .coda { font-size: 20px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>18</span></div>
+    
+    <h1>Голова, которую учим</h1>
+    <p class="lead">Путь с новыми весами. MLP читает вектор CLS. У e5 готовых логитов классов нет: вызов с num_labels создаёт случайную голову, пока её не обучили. Обучение головы можно сузить через LoRA.</p>
+    <pre>import torch
+from torch import nn
+from transformers import AutoModel, AutoTokenizer
+
+name = &quot;intfloat/multilingual-e5-large-instruct&quot;
+tok = AutoTokenizer.from_pretrained(name)
+enc = AutoModel.from_pretrained(name)
+
+class Head(nn.Module):
+    def __init__(self, dim, n):
+        super().__init__()
+        self.mlp = nn.Sequential(
+            nn.Linear(dim, dim), nn.GELU(), nn.Linear(dim, n)
+        )
+    def forward(self, hidden):
+        return self.mlp(hidden)
+
+head = Head(enc.config.hidden_size, 3)
+
+def pack(state, question):
+    return f&quot;[STATE] {state} [SEP] [Q] {question}&quot;
+
+@torch.no_grad()
+def logits(state, question):
+    batch = tok(pack(state, question), return_tensors=&quot;pt&quot;,
+                truncation=True, max_length=512)
+    cls = enc(**batch).last_hidden_state[:, 0]
+    return head(cls)</pre>
+    <p class="coda">Пока голова не обучена, рабочий путь — косинус и softmax на слайдах выше.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 8. Три способа резать текст</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    h1 { font-size: 40px; }
+    .lead { max-width: 1760px; font-size: 20px; line-height: 1.3; }
+    .src {
+      margin-top: 12px;
+      font-size: 28px;
+    }
+    .ways {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .way { border-top: 1px solid #1c1915; padding-top: 8px; }
+    .n {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: #5e6872;
+    }
+    .way h2 {
+      margin: 2px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .tok {
+      padding: 4px 10px;
+      border: 1.5px solid #1c1915;
+      background: #fcfaf6;
+      font-family: Georgia, "Iowan Old Style", serif;
+      font-size: 20px;
+    }
+    .way p {
+      margin: 8px 0 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.32;
+      color: #243038;
+    }
+    .coda { max-width: 1720px; margin-top: 16px; font-size: 22px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>08</span></div>
+    <h1>Три способа резать текст</h1>
+    <p class="lead">Модель читает номера, не буквы. Одна строка из протокола режется по-разному. Ниже схемы способа, не выход какого-то одного словаря.</p>
+    <p class="src">сывороточный креатинин 130 мкмоль/л</p>
+    <div class="ways">
+      <article class="way">
+        <div class="n">01</div>
+        <h2>По словам</h2>
+        <div class="row">
+          <span class="tok">сывороточный</span>
+          <span class="tok">креатинин</span>
+          <span class="tok">130</span>
+          <span class="tok">мкмоль/л</span>
+        </div>
+        <p>Четыре токена: рез по пробелу. Слова целиком дают открытый словарь. Новое МНН и опечатка в названии неизвестны.</p>
+        <p>«130» здесь один токен. Это ещё не правило модели: отдельные правила режут числа по цифрам.</p>
+      </article>
+      <article class="way">
+        <div class="n">02</div>
+        <h2>По символам</h2>
+        <div class="row">
+          <span class="tok">к</span><span class="tok">р</span><span class="tok">е</span><span class="tok">а</span><span class="tok">т</span><span class="tok">и</span><span class="tok">н</span><span class="tok">и</span><span class="tok">н</span>
+        </div>
+        <p>«Креатинин» — девять символов и девять токенов. Одни буквы делают последовательность слишком длинной.</p>
+        <p>У байтового BPE алфавит начинается с байтов. Неизвестный символ сваливают в байт. У GPT-2 такой словарь — 50&nbsp;257.</p>
+      </article>
+      <article class="way">
+        <div class="n">03</div>
+        <h2>По подсловам</h2>
+        <p>Компромисс. Частое слово остаётся одним токеном, редкое собирается из нескольких. Новое МНН не обязано быть в словаре целиком.</p>
+        <p>Номер токена выбирает строку таблицы эмбеддингов. В примерах курса слово часто один токен.</p>
+      </article>
+    </div>
+    <p class="coda">Словарь подслов собирают алгоритмом. Дальше BPE, WordPiece и Unigram.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=18"></script>
+</body>
+</html>

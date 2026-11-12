@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 11. Три ветки обучения</title>
+  <link rel="stylesheet" href="slide.css" />
+  <style>
+    .three { grid-template-columns: 1fr 1fr 1fr; } .card p { font-size: 20px; } .coda { font-size: 22px; }
+  </style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>11</span></div>
+    
+    <h1>Три ветки обучения</h1>
+    <div class="cols three">
+      <article class="card">
+        <h2>RLHF</h2>
+        <p>Ветка диалога. Модель учат ответам, которые людям нравятся как текст.</p>
+      </article>
+      <article class="card">
+        <h2>RLVR</h2>
+        <p>Ветка задач с проверяемым ответом. Обучение дольше и дороже.</p>
+      </article>
+      <article class="card">
+        <h2>RLCD</h2>
+        <p>Штраф за несоответствие заявленной уверенности и фактической точности. Так RLCD описан в заявлении. Jev обучена на этой ветке.</p>
+      </article>
+    </div>
+    <p class="lead" style="margin-top:22px">Калибровку проверяют на группе. Вероятность 0,8 означает: в этой группе около 80% ответов верны.</p>
+    <p class="coda">Brier score — средний квадрат разности вероятности и метки. ECE смотрит то же по корзинам уверенности. Этими величинами сверяют заявленную уверенность с частотой. Имя функции потерь компания не называет. Реконструкция, со словом «скорее всего»: дистилляция с медленной модели, в разборе названы GPT-4o или o1, затем cross-entropy и Brier score или ECE. Была ли дистилляция на самом деле, компания не сообщает.</p>
+    
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=3"></script>
+</body>
+</html>
