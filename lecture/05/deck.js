@@ -24,7 +24,7 @@
     ".deck-pop a{display:block;padding:12px 18px;color:#1c1915;text-decoration:none;",
     "font-family:Georgia,'Iowan Old Style',serif;font-size:20px;}",
     ".deck-pop a:hover{background:#f3efe6;}",
-    ".deck-pop.wide{min-width:640px;}",
+    ".deck-pop.wide{min-width:640px;max-height:min(720px, calc(100vh - 96px));overflow-y:auto;}",
     ".deck-pop.end{left:auto;right:0;min-width:420px;}"
   ].join("");
   document.head.appendChild(style);
@@ -43,18 +43,18 @@
     '<div class="deck-menu" id="deck-lectures">',
     '<button type="button" id="deck-lectures-btn" aria-expanded="false" aria-haspopup="true">Лекции</button>',
     '<div class="deck-pop wide" id="deck-lectures-pop" hidden>',
-    '<a href="../01/slide-01.html?v=16">Лекция 1. Вводная</a>',
-    '<a href="../02/slide-01.html?v=11">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
-    '<a href="../03/slide-01.html?v=11">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
-    '<a href="../04/slide-01.html?v=49">Лекция 4. Взаимодействие агентов с внешними системами</a>',
-    '<a href="../05/slide-01.html?v=44">Лекция 5. Агенты с памятью, управление памятью</a>',
-    '<a href="../06/slide-01.html?v=11">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
-    '<a href="../07/slide-01.html?v=18">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
-    '<a href="../08/slide-01.html?v=1">Лекция 8. Компоненты / модули RAG</a>',
-    '<a href="../09/slide-01.html?v=1">Лекция 9. Технологии оркестрации в модульном RAG</a>',
-    '<a href="../10/slide-01.html?v=3">Лекция 10. Архитектура быстрых решений</a>',
-    '<a href="../11/slide-01.html?v=1">Лекция 11. Эмбеддинг чанка</a>',
-    '<a href="../12/slide-01.html?v=1">Лекция 12. Альтернативы чанкингу</a>',
+    '<a href="../01/slide-01.html?v=17">Лекция 1. Вводная</a>',
+    '<a href="../02/slide-01.html?v=12">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
+    '<a href="../03/slide-01.html?v=12">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
+    '<a href="../04/slide-01.html?v=50">Лекция 4. Взаимодействие агентов с внешними системами</a>',
+    '<a href="../05/slide-01.html?v=45">Лекция 5. Агенты с памятью, управление памятью</a>',
+    '<a href="../06/slide-01.html?v=12">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
+    '<a href="../07/slide-01.html?v=19">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
+    '<a href="../08/slide-01.html?v=2">Лекция 8. Компоненты / модули RAG</a>',
+    '<a href="../09/slide-01.html?v=2">Лекция 9. Технологии оркестрации в модульном RAG</a>',
+    '<a href="../10/slide-01.html?v=4">Лекция 10. Архитектура быстрых решений</a>',
+    '<a href="../11/slide-01.html?v=2">Лекция 11. Эмбеддинг чанка</a>',
+    '<a href="../12/slide-01.html?v=2">Лекция 12. Альтернативы чанкингу</a>',
     
     "</div></div></div>",
     '<div class="deck-pager">',
@@ -85,7 +85,7 @@
   const practicumPop = document.querySelector("#deck-practicum-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=44";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=45";
   }
 
   count.textContent = n + " / " + TOTAL;
