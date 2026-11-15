@@ -17,7 +17,7 @@ REQUIRED = [&quot;case_id&quot;, &quot;diagnosis_ref&quot;, &quot;imaging_ref&qu
 
 def check(pkg):
     problems = [f&quot;нет поля {f}&quot; for f in REQUIRED
-                if not pkg.get(f)]
+                if pkg.get(f) in (None, "")]
     for f in (&quot;diagnosis_ref&quot;, &quot;imaging_ref&quot;, &quot;histology_ref&quot;):
         ref = pkg.get(f, &quot;&quot;)
         if ref and &quot;/&quot; not in ref:
