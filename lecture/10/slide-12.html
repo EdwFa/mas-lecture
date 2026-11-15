@@ -2,27 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 12. Конвейер</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; } figure { margin: 18px 0 0; } figure img { width: 1680px; height: auto; display: block; background: #f7f4ee; }
-  </style>
+  <title>Слайд 12. RLHF, RLVR, RLCD</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>12</span></div>
-    
-    <h1>Конвейер гибридного RAG</h1>
-    <figure>
-      <img src="img/pipeline.png" alt="Разбор PDF, индекс Qdrant, гибридный поиск, слой решения, генерация MedGemma" />
-    </figure>
-    
+    <h1>RLHF, RLVR, RLCD</h1>
+    <div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">RLHF</div><h2>Нравится человеку</h2><p>Модель учат ответам, которые люди оценивают выше. Это поощряет уверенный тон.</p></article><article class="card "><div class="label">RLVR</div><h2>Проверяемый ответ</h2><p>Награда за верный ответ в задачах с проверкой. Известно, что делает модели самоуверенными.</p></article><article class="card "><div class="label">RLCD</div><h2>Честная вероятность</h2><p>Награда за совпадение вероятности с частотой: строго корректное правило оценки, например Brier.</p></article></div><div class="frames " style="--n:1;margin-top:40px"><div class="frame"><span class="num">01</span><h2>Совпадение имён</h2><p>RLCD раньше называли другой метод: Reinforcement Learning from Contrastive Distillation, ICLR 2024. Поиск их смешивает.</p></div><div class="frame"><span class="num">02</span><h2>Открытые воспроизведения</h2><p>Обычно проще: обучение с cross-entropy, потом температура или Platt на валидации.</p></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

@@ -2,39 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 19. Куда ставим модуль</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .three { grid-template-columns: 1fr 1fr 1fr; } .card h2 { font-size: 26px; } .card p { font-size: 20px; } .coda { font-size: 22px; }
-  </style>
+  <title>Слайд 19. Цена ошибки фильтра</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>19</span></div>
-    
-    <h1>Куда ставим модуль</h1>
-    <div class="cols three">
-      <article class="card">
-        <h2>Фильтр Qdrant</h2>
-        <p>Топ-5 фрагментов. Вопрос: содержит ли фрагмент прямую клиническую рекомендацию по запросу. Ниже порога фрагмент в генератор не идёт. Старт настройки порога — 0,85, число живёт в коде.</p>
-      </article>
-      <article class="card">
-        <h2>Маршрут к врачу</h2>
-        <p>Поле requires_human_review. При высокой уверенности код помечает документ на проверку врачом и не тратит токены генератора.</p>
-      </article>
-      <article class="card">
-        <h2>Калибровка</h2>
-        <p>Температура или Platt scaling на размеченном наборе. Ориентир: 500–1000 фрагментов ваших PDF. Разметка вручную или сильной моделью. Подбор уменьшает Brier score.</p>
-      </article>
-    </div>
-    <p class="coda">В разборе выдача логитов названа примерно в 100 раз быстрее порождения текста. Это характеристика разбора, не замер нашего набора. Замер cookbook стоит отдельно.</p>
-    
+    <h1>Цена ошибки фильтра</h1>
+    <p class="lead">Фильтр ошибается двумя способами. В клинике они стоят по-разному.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 230" width="1744" height="230" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="400.0" y="22" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">Фильтр оставил</text><text x="760.0" y="22" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">Фильтр отбросил</text><text x="200" y="88.0" font-family="Georgia, Iowan Old Style, serif" font-size="20" text-anchor="end" fill="#1c1915" font-weight="400">Релевантный</text><text x="200" y="184.0" font-family="Georgia, Iowan Old Style, serif" font-size="20" text-anchor="end" fill="#1c1915" font-weight="400">Шум</text><rect x="220" y="34" width="360" height="96" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="400.0" y="76" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Верно</text><text x="400.0" y="104" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">фрагмент дошёл до генератора</text><rect x="580" y="34" width="360" height="96" rx="0" fill="#1c1915" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="760.0" y="76" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#f7f4ee" font-weight="400">Потеря</text><text x="760.0" y="104" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#f7f4ee" font-weight="400">рекомендация не дошла до врача</text><rect x="220" y="130" width="360" height="96" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="400.0" y="172" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Лишнее</text><text x="400.0" y="200" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">токены и риск подмены цитаты</text><rect x="580" y="130" width="360" height="96" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="760.0" y="172" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Верно</text><text x="760.0" y="200" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">шум отсечён</text><text x="1000" y="70" font-family="Georgia, Iowan Old Style, serif" font-size="28" text-anchor="start" fill="#1c1915" font-weight="400">Потеря дороже лишнего</text><text x="1000" y="104" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#5e6872" font-weight="400">Порог выбирают по полноте (recall)</text><text x="1000" y="132" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#5e6872" font-weight="400">на релевантных фрагментах, а не по</text><text x="1000" y="160" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#5e6872" font-weight="400">красивому числу 0,85</text></svg><div class="frames " style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Пусто после фильтра</h2><p>Генератор не пишет ответ по памяти. Ответ: «в источниках нет данных», и запрос уходит врачу.</p></div><div class="frame"><span class="num">02</span><h2>Трасса</h2><p>Каждый отброшенный фрагмент пишется с p и порогом. Потерю находят по журналу, а не по жалобе.</p></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

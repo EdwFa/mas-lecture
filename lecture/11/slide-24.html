@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 24. К практикуму</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>24</span></div>
+    <h1>К практикуму</h1>
+    <p class="lead">Индекс протоколов по болезни Фабри и проверка поиска.</p><div class="frames tight" style="--n:1;margin-top:32px"><div class="frame"><span class="num">01</span><h2>Чанки</h2><p>Структурная нарезка учебных PDF. Тест падает, если чанк длиннее 512 токенов.</p></div><div class="frame"><span class="num">02</span><h2>Индекс</h2><p>Коллекция с dense-вектором e5, payload по слайду 17, ID через uuid5.</p></div><div class="frame"><span class="num">03</span><h2>Вопросы</h2><p>40 вопросов врача с номерами нужных чанков.</p></div><div class="frame"><span class="num">04</span><h2>Сравнение</h2><p>recall@10 для двух вариантов нарезки. Победитель идёт в конвейер лекции 10.</p></div></div><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 90" width="1744" height="90" style="display:block;margin-top:28px;overflow:visible;margin-top:40px"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><path d="M0 0 H48 L70 22 V86 H0 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M48 0 V22 H70" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="16" y1="34" x2="52" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="16" y1="50" x2="32" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="16" y1="66" x2="52" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="86" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">chunks.jsonl</text><text x="86" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">чанки и метаданные</text><path d="M353 0 H401 L423 22 V86 H353 Z" fill="#ece6da" stroke="#1c1915" stroke-width="1.5"/><path d="M401 0 V22 H423" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="369" y1="34" x2="405" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="369" y1="50" x2="385" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="369" y1="66" x2="405" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="439" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">index.py</text><text x="439" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">encode + upsert</text><path d="M706 0 H754 L776 22 V86 H706 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M754 0 V22 H776" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="722" y1="34" x2="758" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="722" y1="50" x2="738" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="722" y1="66" x2="758" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="792" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">questions.csv</text><text x="792" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">40 вопросов и gold</text><path d="M1059 0 H1107 L1129 22 V86 H1059 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M1107 0 V22 H1129" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="1075" y1="34" x2="1111" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="1075" y1="50" x2="1091" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="1075" y1="66" x2="1111" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="1145" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">eval.py</text><text x="1145" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">recall@10</text><path d="M1412 0 H1460 L1482 22 V86 H1412 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M1460 0 V22 H1482" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="1428" y1="34" x2="1464" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="1428" y1="50" x2="1444" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="1428" y1="66" x2="1464" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="1498" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">report.md</text><text x="1498" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">два варианта чанкинга</text></svg><p class="coda">Сдают код, таблицу recall@10 и два примера вопросов, где варианты нарезки разошлись.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

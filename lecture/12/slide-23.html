@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Как сравнить методы</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 12. Альтернативы чанкингу</span><span>23</span></div>
+    <h1>Как сравнить методы</h1>
+    <table><colgroup><col style="width:28%"><col style="width:46%"><col style="width:26%"></colgroup><thead><tr><th>Что меряем</th><th>Как</th><th>Для каких методов</th></tr></thead><tbody><tr><td><strong>Нашёлся ли нужный текст</strong></td><td>recall@k на 40 вопросах с разметкой</td><td>нарезка, граф, OKF</td></tr><tr><td><strong>Верен ли ответ</strong></td><td>врач оценивает ответы вслепую, без названия метода</td><td>все</td></tr><tr><td><strong>Ссылка на источник</strong></td><td>каждое утверждение — на пункт рекомендации</td><td>все</td></tr><tr><td><strong>Время и память</strong></td><td>секунды до ответа и ГБ видеопамяти на сервере</td><td>длинный контекст, граф</td></tr><tr><td><strong>Цена индексации</strong></td><td>часы и вызовы модели на 1000 PDF</td><td>контекстные чанки, граф, RAPTOR</td></tr></tbody></table><p class="coda">Один набор вопросов на все методы. Новый метод входит в конвейер, когда выигрывает на нём, а не в статье.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

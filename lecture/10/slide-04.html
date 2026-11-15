@@ -2,34 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 4. Три примитива</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    td { font-size: 22px; padding-top: 14px; padding-bottom: 14px; }
-  </style>
+  <title>Слайд 4. System One и System Two</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>04</span></div>
-    
-    <h1>Три примитива</h1>
-    <p class="lead">Один вызов содержит state и список вопросов. Вопросы считаются параллельно и изолированно по одному state.</p>
-    <table>
-      <thead><tr><th>Тип</th><th>Поля ответа</th><th>Что задаёт вопрос</th></tr></thead>
-      <tbody>
-        <tr><td><strong>choice</strong></td><td>choice, probabilities, confidence</td><td>один вариант из списка</td></tr>
-        <tr><td><strong>score</strong></td><td>score, probabilities, confidence</td><td>одна ось, не больше 10 уровней</td></tr>
-        <tr><td><strong>noul</strong></td><td>число от 0 до 1</td><td>отдельной уверенности нет; около 0,5 вопрос не решён</td></tr>
-      </tbody>
-    </table>
-    <p class="coda">Новый вопрос почти не меняет задержку и не размывает соседний: у каждого вопроса своё скрытое состояние.</p>
-    
+    <h1>System One и System Two</h1>
+    <p class="lead">Термины Канемана: быстрое суждение и медленное рассуждение. TypeSafe назвала свою модель Jev «System One model» — сентябрь 2026.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 142" width="1744" height="142" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="30" width="300" height="80" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="150.0" y="66.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Гибридный поиск</text><text x="150.0" y="94.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">топ-K фрагментов</text><polyline points="304,70 380,70" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="386" y="0" width="520" height="140" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="406" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">SYSTEM ONE</text><text x="646" y="78" font-family="Georgia, Iowan Old Style, serif" font-size="28" text-anchor="middle" fill="#1c1915" font-weight="400">Быстрое суждение</text><text x="646" y="110" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">один проход · поле и вероятность · десятки мс</text><polyline points="910,70 986,70" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="948" y="58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="middle" fill="#5e6872" font-weight="400">оставил</text><rect x="992" y="0" width="520" height="140" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1012" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">SYSTEM TWO</text><text x="1252" y="78" font-family="Georgia, Iowan Old Style, serif" font-size="28" text-anchor="middle" fill="#1c1915" font-weight="400">Медленное рассуждение</text><text x="1252" y="110" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">генератор · токен за токеном · секунды</text><polyline points="1516,70 1590,70" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1596" y="30" width="148" height="80" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1670.0" y="78.4" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Врач</text></svg><div class="cols" style="--n:3;margin-top:44px"><article class="card "><div class="label">Закрытая</div><h2>Jev · TypeSafe</h2><p>Первая System One модель. Только API, веса не опубликованы.</p></article><article class="card "><div class="label">Открытые</div><h2>Laya, Von, Decider, Kev, d1</h2><p>Тот же контракт: state, типизированные вопросы, вероятности. Появились за 1–2 недели после Jev.</p></article><article class="card "><div class="label">Источники лекции</div><h2>Документация и карточки</h2><p>Документация Jev, cookbook TypeSafe, карточки моделей на Hugging Face, независимые замеры.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

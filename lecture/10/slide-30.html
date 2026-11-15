@@ -2,34 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 30. Фильтр и маршрут</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .card p { font-size: 22px; }
-  </style>
+  <title>Слайд 30. Выводы</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>30</span></div>
-    
-    <h1>Фильтр и маршрут</h1>
-    <div class="cols">
-      <article class="card">
-        <h2>Фрагменты перед MedGemma</h2>
-        <p>Топ-5–10 из Qdrant идут в локальные Von или Laya, не в генератор. State — текст фрагмента. Вопрос noul: есть ли в тексте прямые указания по дозировке при болезни Фабри. Ответ false или confidence ниже 0,85 — фрагмент отбрасывается. Порог по-прежнему в коде. В сценарии названо снижение токенов генератора на 60–80%. Это цель сценария, не замер cookbook.</p>
-      </article>
-      <article class="card">
-        <h2>Куда направить запрос</h2>
-        <p>Лёгкая Laya 150M. Вопрос choice: к какому модулю направить запрос. Варианты: поиск в базе знаний, статистический калькулятор, ручная проверка. В сценарии этот слой назван отвечающим за доли миллисекунды. Замера на нашей машине нет.</p>
-      </article>
-    </div>
-    
+    <h1>Выводы</h1>
+    <div class="frames tight" style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Контракт</h2><p>Decision-модель возвращает поле и вероятность. Порог, веса и маршрут — в коде.</p></div><div class="frame"><span class="num">02</span><h2>Постановка</h2><p>Один вопрос — один факт. Три исхода — choice. Лишний state мешает.</p></div><div class="frame"><span class="num">03</span><h2>Калибровка</h2><p>Вероятность — частота в группе. Проверяют Brier, ECE и полнотой на своём наборе.</p></div><div class="frame"><span class="num">04</span><h2>Сразу</h2><p>Реранкер и Platt. Косинус e5 вероятностью не становится.</p></div><div class="frame"><span class="num">05</span><h2>Потом</h2><p>Laya-multilingual или Decider локально, с дообучением и калибровкой.</p></div><div class="frame"><span class="num">06</span><h2>Клиника</h2><p>Потеря рекомендации дороже лишнего фрагмента. Пусто — «нет данных», и запрос врачу.</p></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

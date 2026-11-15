@@ -2,40 +2,36 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 6. Уверенность решает код</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .three { grid-template-columns: 1fr 1fr 1fr; } .formula { font-size: 36px; } .card h2 { font-size: 28px; } .card p { font-size: 20px; } .coda { font-size: 24px; }
-  </style>
+  <title>Слайд 6. Состояние и вопросы</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>06</span></div>
-    
-    <h1>Уверенность решает код</h1>
-    <p class="formula">choice: (p<sub>max</sub> − 1/n) / (1 − 1/n)</p>
-    <div class="cols three">
-      <article class="card">
-        <h2>choice</h2>
-        <p>Формула выше. n — число вариантов. Уверенность растёт, когда один вариант заметно выше остальных.</p>
-      </article>
-      <article class="card">
-        <h2>score</h2>
-        <p>Та же идея, с учётом расстояния от пика по оси. Одна ось — один score.</p>
-      </article>
-      <article class="card">
-        <h2>noul</h2>
-        <p>Отдельного confidence нет. Общий порог с другими типами собирают как |2p − 1|.</p>
-      </article>
-    </div>
-    <p class="coda">Высокая уверенность — код действует. Средняя — проверка. Низкая — код не действует. Среди ответов с вероятностью 0,8 около 80% верны. Один такой ответ этого не гарантирует.</p>
-    
+    <h1>Состояние и вопросы</h1>
+    <div class="split" style="--left:860px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Запрос</div><pre class="code" style="font-size:19px">POST /v1/systemone
+{
+  &quot;model&quot;: &quot;jev-1.14.0&quot;,
+  &quot;state&quot;: &quot;Фрагмент протокола: эмпаглифлозин …&quot;,
+  &quot;questions&quot;: {
+    &quot;direct_indication&quot;: {
+      &quot;type&quot;: &quot;noul&quot;,
+      &quot;instructions&quot;: &quot;Есть ли прямое показание
+                       к эмпаглифлозину?&quot; },
+    &quot;line&quot;: {
+      &quot;type&quot;: &quot;choice&quot;,
+      &quot;instructions&quot;: &quot;К какой линии терапии
+                       относится фрагмент?&quot;,
+      &quot;criteria&quot;: { &quot;first&quot;: &quot;…&quot;, &quot;second&quot;: &quot;…&quot;,
+                    &quot;not_stated&quot;: &quot;…&quot; } }
+  }
+}</pre></div><div class="stack"><article class="card "><div class="label">Версия</div><h2>Закрепляйте номер</h2><p>С октября 2026 текущий выпуск — jev-1.14.0, 1.13 доступна. Псевдоним jev-latest переезжает сам. Поле model в ответе называет версию.</p></article><article class="card "><div class="label">Лимиты</div><h2>64k на запрос, 32k на state</h2><p>32k — state вместе с самым длинным вопросом. Заголовок Danger-Zone-Long-Context даёт 262k: медленнее, точность ниже.</p></article><article class="card "><div class="label">Цена</div><h2>Платят за вход</h2><p>0,042 $ за 1 млн входных токенов. Выходные токены бесплатны.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

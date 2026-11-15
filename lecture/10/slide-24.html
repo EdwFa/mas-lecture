@@ -2,34 +2,34 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 24. Граница контракта</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .card p { font-size: 22px; }
-  </style>
+  <title>Слайд 24. Кейс. Поля из выписки</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>24</span></div>
-    
-    <h1>Граница контракта</h1>
-    <div class="cols">
-      <article class="card">
-        <h2>Граница контракта</h2>
-        <p>Проза, арифметика, даты, фильтр по квартилю, проверка существования PMID, картинки. Один вопрос «оцени статью» набор полей не заменяет. Один score — одна ось. Лишний контекст в state снижает точность. Jev 1.13 плохо считает и плохо сравнивает даты. Инструкции в карточке — на английском.</p>
-      </article>
-      <article class="card">
-        <h2>Локальный запуск</h2>
-        <p>Текст пациента остаётся на машине учреждения: этого требует 152-ФЗ. Фильтр на multilingual-e5-large-instruct считается локально. Модели того же класса, которые называют Laya 421M и Von, запускают через vLLM или Unsloth. Их веса и задержка в этот слайд не входят: здесь нет их замера.</p>
-      </article>
-    </div>
-    
+    <h1>Кейс. Поля из выписки</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Форма ответа · учебный пример</div><pre class="code" style="font-size:20px">{
+  &quot;model&quot;: &quot;jev-1.14.0&quot;,
+  &quot;answers&quot;: {
+    &quot;fabry_diagnosis_documented&quot;: {
+      &quot;type&quot;: &quot;noul&quot;, &quot;noul&quot;: 0.94 },
+    &quot;transplant_type&quot;: {
+      &quot;type&quot;: &quot;choice&quot;, &quot;choice&quot;: &quot;sequential&quot;,
+      &quot;confidence&quot;: 0.88,
+      &quot;probabilities&quot;: { &quot;sequential&quot;: 0.93,
+                         &quot;simultaneous&quot;: 0.05,
+                         &quot;not_stated&quot;: 0.02 } },
+    &quot;tnm_stage_complete&quot;: {
+      &quot;type&quot;: &quot;noul&quot;, &quot;noul&quot;: 0.99 }
+  }
+}</pre></div><div class="stack"><article class="card "><div class="label">Имя поля</div><h2>Записан, а не подтверждён</h2><p>fabry_diagnosis_documented: диагноз есть в тексте. Ставит его врач, модель только находит запись.</p></article><article class="card "><div class="label">noul</div><h2>Без confidence</h2><p>В контракте Jev у noul только p. Уверенность код считает сам как |2p − 1|.</p></article><article class="card "><div class="label">Чего нет</div><h2>Абзаца</h2><p>Модель не пишет текст, поэтому не переписывает цифры. Неверная метка остаётся меткой — её отсекает порог.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>
