@@ -1,232 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<title>Слайд 7. Гибридная маршрутизация</title>
-<link rel="stylesheet" href="../vendor/katex/katex.min.css">
-<style>
-html, body {
-  margin: 0;
-  width: 1920px;
-  height: 1080px;
-  background: #f3efe6;
-}
-.slide {
-  width: 1920px;
-  height: 1080px;
-  box-sizing: border-box;
-  padding: 56px 88px 96px;
-  display: flex;
-  flex-direction: column;
-  background: #f7f4ee;
-  color: #1c1915;
-  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
-  overflow: hidden;
-}
-.kicker {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #5e6872;
-}
-h1 {
-  margin: 28px 0 0;
-  font-size: 64px;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-h1.long { font-size: 52px; }
-.slide.title h1 {
-  margin-top: 180px;
-  font-size: 108px;
-  line-height: 0.98;
-}
-.sub {
-  margin: 28px 0 0;
-  max-width: 1400px;
-  font-size: 40px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-.line {
-  margin-top: 48px;
-  width: 720px;
-  border-top: 2px solid #1c1915;
-}
-.cite {
-  margin: 36px 0 0;
-  max-width: 1280px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  line-height: 1.45;
-  color: #3e4650;
-}
-.body {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 28px;
-}
-.body > * { flex: 0 0 auto; }
-.body p {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.38;
-  color: #243038;
-}
-.frames { display: flex; flex-direction: column; gap: 0; }
-.frame {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 4px 16px;
-  align-items: baseline;
-  padding: 12px 0;
-  border-bottom: 1px solid #e4dfd4;
-}
-.frame .num {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: #5e6872;
-}
-.frame p {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #243038;
-}
-.bullets { display: flex; flex-direction: column; gap: 12px; }
-.bullet {
-  margin: 0;
-  padding: 2px 0 2px 24px;
-  border-left: 2px solid #1c1915;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #243038;
-}
-.formula {
-  margin: 4px 0;
-  overflow: visible;
-  font-size: 30px;
-}
-.formula .katex-display { margin: 0.35em 0; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  line-height: 1.35;
-}
-th {
-  text-align: left;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 18px;
-  color: #5e6872;
-  padding: 8px 18px 10px 0;
-  border-bottom: 1px solid #1c1915;
-}
-td {
-  padding: 8px 18px 8px 0;
-  border-bottom: 1px solid #e4dfd4;
-  color: #243038;
-  vertical-align: baseline;
-}
-figure {
-  margin: 0;
-  flex: 0 0 auto;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-figure img {
-  max-width: 100%;
-  max-height: 250px;
-  object-fit: contain;
-}
-.figure-only figure { flex: 1 1 auto; }
-.figure-only figure img { max-height: 100%; }
-code {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.92em;
-}
-.spacer { flex: 1; }
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 18px;
-  border-top: 1px solid #d9d3c7;
-  padding-top: 16px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  line-height: 1.35;
-  color: #3e4650;
-}
-.compact .body { gap: 8px; margin-top: 14px; }
-.compact h1 { font-size: 46px; margin-top: 12px; }
-.compact .body p,
-.compact .frame p,
-.compact .bullet { font-size: 22px; line-height: 1.28; }
-.compact .frame { padding: 5px 0; }
-.compact .formula { font-size: 24px; }
-.compact table { font-size: 22px; }
-.compact td, .compact th { padding-top: 5px; padding-bottom: 5px; }
-.compact figure img { max-height: 200px; }
-.slide.split .body { flex-direction: row; align-items: stretch; justify-content: stretch; gap: 28px; }
-.slide.split .copy { flex: 1 1 46%; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
-.slide.split .body > figure { flex: 1 1 54%; height: auto; min-height: 0; }
-.slide.split.fitfig .body > figure { height: 100%; min-width: 0; }
-.slide.split.fitfig figure img { width: 100%; height: 100%; max-height: 100%; object-fit: contain; }
-.slide.hybfig.split .copy { gap: 12px; justify-content: center; }
-.slide.hybfig.split .body p { font-size: 22px; line-height: 1.32; }
-.slide.hybfig.split .gloss { font-size: 18px; line-height: 1.3; color: #3e4650; }
-.slide.hybfig.split .formula { font-size: 18px; }
-</style>
+  <meta charset="utf-8" />
+  <title>Слайд 7. Код: маршрут по сложности</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
-<body data-total="39" data-lecture="9" data-title="Лекция 9. Технологии оркестрации в модульном RAG">
-<main class="slide hybfig split fitfig">
-<div class="kicker"><span>Лекция 9</span><span>07</span></div>
-<h1 class="">Гибридная маршрутизация</h1>
-<div class="body">
-<div class="copy">
-<p>Гибридная маршрутизация (Hybrid Routing) может быть реализована для улучшения маршрутизации запросов путём интеграции как семантического анализа, так и подходов на основе метаданных, что может быть определено следующим образом:</p>
-<div class="formula">\[\alpha_i = a \cdot \mathrm{score}_{key}(q, F_j) + (1-\alpha) \cdot \max_{\theta_j \in \Theta} \mathrm{score}_{\mathrm{semantic}}(q, F_j)\]</div>
-<p class="gloss">\(\alpha_i\) — гибридная оценка. \(q\) — запрос, \(F_j\) — поток. \(\mathrm{score}_{key}\) — оценка по ключевым словам, \(\mathrm{score}_{\mathrm{semantic}}\) — семантическая оценка. \(a\) умножает оценку по ключам, \((1-\alpha)\) умножает максимум семантической оценки по намерениям \(\theta_j\) из набора \(\Theta\). Формула складывает эти две взвешенные оценки.</p>
-<p>\(a\) — весовой коэффициент, который балансирует вклад оценки на основе ключей и семантической оценки.</p>
-</div>
-<figure><img src="../../figures/slide52-hybrid.png" alt="Гибридная оценка α_i складывает оценку по ключевым словам score_key с весом a и максимум семантической оценки score_semantic по намерениям из Θ с весом 1−α"></figure>
-</div>
-<footer><span>Лекция 9. Технологии оркестрации в модульном RAG</span><span>осень 2026 · © E. Fartushny · MIT</span></footer>
-</main>
-<script src="../vendor/katex/katex.min.js"></script>
-<script src="../vendor/katex/contrib/auto-render.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  renderMathInElement(document.body, {
-    delimiters: [
-      {left: "\\[", right: "\\]", display: true},
-      {left: "\\(", right: "\\)", display: false}
-    ],
-    throwOnError: false
-  });
-});
-</script>
-<script src="deck.js?v=2"></script>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 9. Оркестрация RAG</span><span>07</span></div>
+    <h1>Код: маршрут по сложности</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">import json
+from jsonschema import validate, ValidationError
+
+ROUTE = {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;kind&quot;, &quot;confidence&quot;],
+         &quot;properties&quot;: {
+             &quot;kind&quot;: {&quot;enum&quot;: [&quot;chart_fact&quot;, &quot;single&quot;, &quot;multi&quot;]},
+             &quot;confidence&quot;: {&quot;type&quot;: &quot;number&quot;,
+                            &quot;minimum&quot;: 0, &quot;maximum&quot;: 1}},
+         &quot;additionalProperties&quot;: False}
+SAFER = {&quot;chart_fact&quot;: &quot;single&quot;, &quot;single&quot;: &quot;multi&quot;, &quot;multi&quot;: &quot;multi&quot;}
+
+def route_question(question, llm, threshold=0.8):
+    &quot;&quot;&quot;Путь по сложности; при сомнении — на ступень тщательнее.&quot;&quot;&quot;
+    try:
+        out = json.loads(llm(CLASSIFY.format(question=question)))
+        validate(out, ROUTE)
+    except (ValueError, ValidationError):
+        return &quot;multi&quot;                 # не разобрали — самый полный путь
+    if out[&quot;confidence&quot;] &lt; threshold:
+        return SAFER[out[&quot;kind&quot;]]
+    return out[&quot;kind&quot;]</pre></div><div class="stack"><article class="card "><div class="label">Схема</div><h2>Три пути и уверенность</h2><p>Модель не может придумать четвёртый путь. Ответ вне схемы — самый полный путь, а не ошибка.</p></article><article class="card "><div class="label">SAFER</div><h2>Ступень вверх</h2><p>Неуверенность сдвигает вопрос на более тщательный путь, никогда — на более простой.</p></article><article class="card "><div class="label">В трассу</div><h2>Маршрут и уверенность</h2><p>Потом по трассе видно, какие вопросы маршрутизатор путает.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=20"></script>
 </body>
 </html>
