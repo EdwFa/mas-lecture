@@ -90,7 +90,7 @@
   <div class="layout">
     <nav>
       <p class="brand">Глоссарий</p>
-      <p class="brand-note">Лекции 1–2, 10–15</p>
+      <p class="brand-note">Лекции 1–2, 10–16</p>
       <label class="seek" for="q">Найти слово</label>
       <input id="q" type="search" placeholder="Слово со слайда" autocomplete="off" />
       <ol>
@@ -107,6 +107,7 @@
         <li><a href="#harness">Лекция 13. Harness</a></li>
         <li><a href="#skills">Лекция 14. Скиллы</a></li>
         <li><a href="#handoff">Лекция 15. Передача</a></li>
+        <li><a href="#a2a">Лекция 16. A2A</a></li>
       </ol>
     </nav>
     <main>
@@ -1249,6 +1250,54 @@
             <p class="where">Лекция 15, слайд 27</p>
           </article>
         </section>
+
+        <section class="group" id="a2a">
+          <h2>Лекция 16. A2A и надёжное исполнение</h2>
+          <p class="range">Чужой агент и работа длиной в неделю</p>
+
+          <article class="term">
+            <h3>A2A</h3>
+            <p>Agent2Agent — открытый протокол «агент — агент» для работы с чужим агентом: задача внутрь, артефакт наружу, внутренние шаги не видны. Версия 1.0 — 12 марта 2026; с 17 августа 2026 — проект Agentic AI Foundation рядом с MCP.</p>
+            <p class="where">Лекция 16, слайды 3, 5</p>
+          </article>
+
+          <article class="term">
+            <h3>Agent Card</h3>
+            <p>Карточка агента по адресу /.well-known/agent-card.json: имя, интерфейсы (JSONRPC, GRPC, HTTP+JSON), возможности, навыки. Непроверенный вход: в курсе карточка лаборатории хранится в репозитории, её описание не идёт в промпт.</p>
+            <p class="where">Лекция 16, слайды 7–8</p>
+          </article>
+
+          <article class="term">
+            <h3>Задача A2A</h3>
+            <p>Единица работы на стороне чужого агента с taskId и состоянием. Восемь состояний: два активных, два прерванных (INPUT_REQUIRED, AUTH_REQUIRED), четыре конечных.</p>
+            <p class="where">Лекция 16, слайды 9, 13</p>
+          </article>
+
+          <article class="term">
+            <h3>Push-уведомление</h3>
+            <p>Вызов нашего webhook агентом лаборатории при смене состояния задачи. Доставка хотя бы раз, дубли допустимы: приёмник идемпотентен, токен свой на задачу, состояние перечитывается через GetTask.</p>
+            <p class="where">Лекция 16, слайды 10, 20</p>
+          </article>
+
+          <article class="term">
+            <h3>Надёжное исполнение</h3>
+            <p>Durable execution: прогресс сохраняется в контрольных точках вне процесса, и после сбоя или паузы работа продолжается с последней. LangGraph — checkpointer, Temporal — история событий.</p>
+            <p class="where">Лекция 16, слайды 16–17</p>
+          </article>
+
+          <article class="term">
+            <h3>Идемпотентность</h3>
+            <p>Свойство действия: повтор даёт тот же эффект, что и одно выполнение. Для записи в карту — ключ «случай/шаг» в журнале и условное создание FHIR (If-None-Exist).</p>
+            <p class="where">Лекция 16, слайды 18–19, 21</p>
+          </article>
+
+          <article class="term">
+            <h3>Компенсация</h3>
+            <p>Исправление уже записанного: ошибочную запись помечают entered-in-error и создают новую с подписью врача. Паттерн «сага»: шаг назад — новое действие.</p>
+            <p class="where">Лекция 16, слайд 23</p>
+          </article>
+        </section>
+
 
 
 

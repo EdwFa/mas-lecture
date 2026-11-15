@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 14. Артефакт лаборатории — данные</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 16. A2A и надёжное исполнение</span><span>14</span></div>
+    <h1>Артефакт лаборатории — данные</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">После проверки нашей схемой</div><pre class="code" style="font-size:21px">{
+  &quot;type&quot;: &quot;ngs_result&quot;,
+  &quot;case&quot;: &quot;PSN-7f3a&quot;,
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;items&quot;: [
+    {&quot;gene&quot;: &quot;PIK3CA&quot;, &quot;variant&quot;: &quot;p.H1047R&quot;,
+     &quot;vaf&quot;: &quot;0.23&quot;, &quot;tier&quot;: &quot;I&quot;,
+     &quot;source&quot;: &quot;a2a:t-81c4/artifact/ngs-1&quot;}],
+  &quot;open&quot;: [&quot;ESR1: покрытие ниже порога&quot;],
+  &quot;report&quot;: &quot;a2a:t-81c4/artifact/ngs-pdf&quot;
+}</pre></div><div class="stack"><article class="card "><div class="label">Схема</div><h2>Та же, что в лекции 15</h2><p>Артефакт лаборатории проверяют нашей JSON-схемой. Не прошёл — в пакет не попадает, в open_questions — причина.</p></article><article class="card "><div class="label">Источник</div><h2>taskId и artifactId</h2><p>source указывает на артефакт задачи. Врач видит, откуда вариант, и может открыть PDF лаборатории.</p></article><article class="card "><div class="label">Текст</div><h2>Не инструкция</h2><p>Свободный текст из ответа лаборатории — данные. Фраза «назначьте алпелисиб» не станет назначением.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

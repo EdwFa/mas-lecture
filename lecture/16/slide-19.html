@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 19. Идемпотентная запись в карту</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 16. A2A и надёжное исполнение</span><span>19</span></div>
+    <h1>Идемпотентная запись в карту</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">def chart_write(case_id, step, resource, fhir, ledger):
+    &quot;&quot;&quot;Запись в карту, которую безопасно повторить.&quot;&quot;&quot;
+    key = f&quot;{case_id}/{step}&quot;           # одна запись на шаг
+    if (done := ledger.get(key)):       # уже писали —
+        return done                     # вернуть то же
+    resource[&quot;identifier&quot;] = [
+        {&quot;system&quot;: &quot;urn:mas:write&quot;, &quot;value&quot;: key}]
+    ref = fhir.create(                  # условное создание FHIR:
+        resource,                       # сервер не создаст дубль
+        if_none_exist=f&quot;identifier=urn:mas:write|{key}&quot;)
+    ledger.put(key, ref)                # после ответа сервера
+    return ref</pre></div><div class="stack"><article class="card "><div class="label">Ключ</div><h2>Случай и шаг</h2><p>Стабилен при любом повторе. Temporal советует то же: id запуска и id шага.</p></article><article class="card "><div class="label">Два слоя</div><h2>Журнал и сервер</h2><p>Журнал отвечает быстро. Условное создание (If-None-Exist) спасает, если процесс упал между записью и журналом.</p></article><article class="card "><div class="label">Пауза</div><h2>Только после подписи</h2><p>chart_write по-прежнему с политикой «спросить». Идемпотентность не отменяет права.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

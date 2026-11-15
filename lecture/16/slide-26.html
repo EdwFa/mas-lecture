@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 26. Тест: убить и продолжить</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 16. A2A и надёжное исполнение</span><span>26</span></div>
+    <h1>Тест: убить и продолжить</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">def test_survives_restart(store, lab, fhir):
+    run = start_case(&quot;P-0042&quot;, store=store, lab=lab, fhir=fhir)
+    run.until(&quot;wait_lab&quot;)
+    run.kill()                                 # деплой во вторник
+
+    lab.complete(&quot;fixtures/ngs.json&quot;)
+    lab.push(times=2)                          # уведомление дважды
+
+    run = resume_case(&quot;P-0042&quot;, store=store, lab=lab, fhir=fhir)
+    run.until(&quot;paused_for_doctor&quot;)
+    run.approve(doctor=&quot;dr-17&quot;)
+    run.until(&quot;done&quot;)
+
+    assert lab.sent_tasks(&quot;P-0042&quot;) == 1       # задачу не отправили снова
+    assert len(fhir.search(identifier=
+        &quot;urn:mas:write|P-0042/ngs-result&quot;)) == 1   # одна запись
+    assert run.trace.has(&quot;push.duplicate&quot;)</pre></div><div class="stack"><article class="card "><div class="label">Заглушка</div><h2>Лаборатория в тесте</h2><p>Фикстура отвечает состояниями и артефактом по команде теста. Сети и модели нет.</p></article><article class="card "><div class="label">Сбой</div><h2>Убить посреди задачи</h2><p>AAIF советует так проверять доставку уведомлений: убить клиента и посмотреть, дойдёт ли.</p></article><article class="card "><div class="label">Что проверяем</div><h2>Ровно один эффект</h2><p>Одна задача у лаборатории, одна запись в карте, дубль виден в трассе.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

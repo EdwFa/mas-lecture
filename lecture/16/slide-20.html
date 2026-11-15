@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 20. Приём уведомления</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 16. A2A и надёжное исполнение</span><span>20</span></div>
+    <h1>Приём уведомления</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">def on_push(req, store, seen):
+    task_id, stamp = parse_push(req)    # формат — по спецификации
+    case = store.case_by_task(task_id)
+    if case is None or not hmac.compare_digest(
+            req.token, case.push_token):
+        return 404                      # одинаково для «нет» и «нельзя»
+    event = (task_id, stamp)
+    if event in seen:                   # дубль — норма
+        return 200
+    seen.add(event)
+    task = a2a_get_task(task_id)        # тело не принимаем на веру
+    store.save(case.with_lab(task))     # сначала сохранить
+    schedule(advance, case.id)          # потом шагать
+    return 200</pre></div><div class="stack"><article class="card "><div class="label">Токен</div><h2>Свой на каждую задачу</h2><p>Сравнение за постоянное время. Один общий секрет на все задачи — нельзя.</p></article><article class="card "><div class="label">Дубли</div><h2>Ожидаемы</h2><p>Спецификация требует доставки хотя бы раз и разрешает повторы. Отвечаем 2xx и ничего не делаем.</p></article><article class="card "><div class="label">Перепроверка</div><h2>GetTask</h2><p>Уведомление — повод спросить, а не источник правды. Состояние берём у лаборатории сами.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
