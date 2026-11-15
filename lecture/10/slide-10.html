@@ -2,28 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 10. Гипотеза. Параллельный сэмплер</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; } .lead { font-size: 20px; } figure { margin: 8px 0 0; } figure img { width: 1680px; height: auto; display: block; background: #f7f4ee; }
-  </style>
+  <title>Слайд 10. Что подтверждено о Jev</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>10</span></div>
-    
-    <h1>Гипотеза. Параллельный сэмплер</h1>
-    <p class="lead">Один проход. Скрытое состояние берут у токена SEP или CLS каждого вопроса и пропускают через MLP-голову, которая знает только варианты этого вопроса. Логиты всех вопросов выходят сразу. Время в этой гипотезе зависит от длины входа.</p>
-    <figure>
-      <img src="img/sampler.png?v=2" alt="Вход STATE, SEP, Q1, SEP, Q2. Один проход энкодера. Скрытое состояние SEP или CLS идёт в MLP-голову и даёт логиты всех вопросов." />
-    </figure>
-    
+    <h1>Что подтверждено о Jev</h1>
+    <p class="lead">Полной спецификации, весов и статьи нет. Ниже — только то, что TypeSafe говорит сама.</p><div class="cols" style="--n:3;margin-top:44px"><article class="card "><div class="label">Подтверждено</div><h2>Неавторегрессивная модель</h2><p>Нет декодера свободного текста. Вероятности всех вариантов — за один проход, «параллельный сэмплер».</p></article><article class="card "><div class="label">Подтверждено</div><h2>Своё обучение</h2><p>RLCD — Reinforcement Learning for Calibrated Decisions. Цель — вероятность, равная частоте.</p></article><article class="card muted"><div class="label">Не раскрыто</div><h2>Всё остальное</h2><p>Архитектура, число параметров, данные, функция потерь. Сторонние оценки расходятся: от энкодера до MoE.</p></article></div><p class="coda">Заявленные числа: 70–500 мс на вызов. Это слова компании, не замер.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

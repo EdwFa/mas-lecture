@@ -2,38 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 28. Von, Decider, Kev</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .three { grid-template-columns: 1fr 1fr 1fr; } .card h2 { font-size: 28px; } .card p { font-size: 20px; }
-  </style>
+  <title>Слайд 28. Фильтр и маршрут</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>28</span></div>
-    
-    <h1>Von, Decider, Kev</h1>
-    <div class="cols three">
-      <article class="card">
-        <h2>Von</h2>
-        <p>Открытый код, заявлен как замена Jev без смены вызова. Compact bidirectional ModernBERT, около 395M. В обзоре отклик короче 15 мс: нет авторегрессии и инференс сильно ужат. Место: фильтр тысяч фрагментов.</p>
-      </article>
-      <article class="card">
-        <h2>Decider</h2>
-        <p>Mapika. Тот же контракт System One. Основа — дообучение семейства Qwen, в обзоре назван Qwen2.5-3B. Модель изменена так, чтобы за один проход вернуть калиброванные вероятности.</p>
-      </article>
-      <article class="card">
-        <h2>Kev</h2>
-        <p>Совместимая замена Jev: тот же API и та же структура запроса. Считает на открытых весах.</p>
-      </article>
-    </div>
-    
+    <h1>Фильтр и маршрут</h1>
+    <div class="cols" style="--n:2;margin-top:56px"><article class="card "><div class="label">Фрагменты перед MedGemma</div><h2>noul по каждому фрагменту</h2><p>Топ-5–10 из Qdrant идут в локальную Laya-multilingual. Вопрос: есть ли в тексте прямые указания по дозировке при болезни Фабри. p после Platt ниже порога — фрагмент не идёт в генератор.</p></article><article class="card "><div class="label">Куда направить запрос</div><h2>choice по запросу</h2><p>Варианты: поиск в базе знаний, статистический калькулятор, ручная проверка. Около 33 мс на решение на T4 по карточке Laya — проверьте на своей машине.</p></article></div><div class="frames " style="--n:1;margin-top:40px"><div class="frame"><span class="num">01</span><h2>Порог</h2><p>Из threshold_for_recall на валидации, а не 0,85 по умолчанию.</p></div><div class="frame"><span class="num">02</span><h2>Цель</h2><p>Снизить токены генератора на 60–80% без потери полноты. Это цель, не замер.</p></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

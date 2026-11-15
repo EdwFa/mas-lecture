@@ -2,51 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 15. Сходство и softmax</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; } .lead { font-size: 20px; margin-top: 8px; } pre { margin: 10px 0 0; padding: 12px 16px; background: #fffdf8; border-top: 1px solid #1c1915; font-family: Consolas, 'Courier New', monospace; font-size: 16px; line-height: 1.28; color: #1c1915; } .coda { margin-top: 10px; font-size: 22px; }
-  </style>
+  <title>Слайд 15. Куда ставим модуль</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>15</span></div>
-    
-    <h1>Сходство и softmax</h1>
-    <p class="lead">Путь без обучения головы. У multilingual-e5-large-instruct вопрос начинается с Instruct и Query, фрагмент кодируется отдельно. Softmax на паре «сходство / минус сходство» даёт число от 0 до 1.</p>
-    <pre>import numpy as np
-from sentence_transformers import SentenceTransformer
-
-model = SentenceTransformer(
-    &quot;intfloat/multilingual-e5-large-instruct&quot;
-)
-
-def query_text(task, question):
-    return f&quot;Instruct: {task}\nQuery: {question}&quot;
-
-def softmax(scores, temperature):
-    z = np.asarray(scores, dtype=float) / temperature
-    z = z - z.max()
-    e = np.exp(z)
-    return e / e.sum()
-
-def yes_probability(question, passage, temperature=1.0):
-    task = &quot;Ответь, относится ли фрагмент к вопросу врача&quot;
-    vectors = model.encode(
-        [query_text(task, question), passage],
-        normalize_embeddings=True,
-    )
-    similarity = float(vectors[0] @ vectors[1])
-    p = softmax([similarity, -similarity], temperature)
-    return float(p[0])</pre>
-    <p class="coda">Префикс query: / passage: у этой модели другой. Его подмена меняет вектор.</p>
-    
+    <h1>Куда ставим модуль</h1>
+    <div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Фильтр</div><h2>Перед генератором</h2><p>Топ-K из Qdrant. Вопрос: есть ли прямая рекомендация по запросу. Ниже порога фрагмент в генератор не идёт.</p></article><article class="card "><div class="label">Маршрут к врачу</div><h2>Средняя уверенность</h2><p>Код ставит requires_human_review, когда confidence между порогами. Высокая — действует код, низкая — стоп.</p></article><article class="card "><div class="label">Страж</div><h2>Хук после чтения</h2><p>noul: «Есть ли во фрагменте инструкция для ИИ?» Найденное пишется в трассу, фрагмент не идёт в окно.</p></article></div><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 176" width="1744" height="176" style="display:block;margin-top:28px;overflow:visible;margin-top:44px"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="50" width="230" height="74" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="115.0" y="83.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Поиск</text><text x="115.0" y="111.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">топ-K</text><polyline points="234,87 290,87" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="296" y="50" width="300" height="74" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="446.0" y="83.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Страж</text><text x="446.0" y="111.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">хук после чтения</text><polyline points="600,87 656,87" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="662" y="50" width="300" height="74" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="812.0" y="83.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Фильтр</text><text x="812.0" y="111.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">сборка окна</text><polyline points="966,87 1022,87" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1028" y="50" width="280" height="74" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1168.0" y="83.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Генератор</text><text x="1168.0" y="111.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">черновик</text><polyline points="1312,87 1368,87" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1374" y="50" width="370" height="74" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1559.0" y="83.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Маршрут</text><text x="1559.0" y="111.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">политика: код или врач</text><polyline points="446,128 446,170" fill="none" stroke="#5e6872" stroke-width="1.6" stroke-dasharray="7 6" marker-end="url(#ahg)"/><text x="462" y="162" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="start" fill="#5e6872" font-weight="400">инструкция для ИИ → в трассу</text><polyline points="812,128 812,170" fill="none" stroke="#5e6872" stroke-width="1.6" stroke-dasharray="7 6" marker-end="url(#ahg)"/><text x="828" y="162" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="start" fill="#5e6872" font-weight="400">ниже порога → не в окно</text><polyline points="1559,128 1559,170" fill="none" stroke="#5e6872" stroke-width="1.6" stroke-dasharray="7 6" marker-end="url(#ahg)"/><text x="1544" y="162" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="end" fill="#5e6872" font-weight="400">средняя уверенность → врачу</text><text x="0" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ТРИ МЕСТА ОДНОГО ВЫЗОВА В HARNESS</text></svg><p class="coda">Один и тот же вызов decision-модели — три разных места в harness: фильтр окна, политика, хук.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

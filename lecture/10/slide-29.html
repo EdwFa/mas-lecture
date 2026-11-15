@@ -2,34 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 29. Сводка обзора</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; } td { font-size: 18px; padding-top: 12px; padding-bottom: 12px; line-height: 1.28; } th { font-size: 14px; } table { margin-top: 16px; } .coda { font-size: 22px; margin-top: 14px; }
-  </style>
+  <title>Слайд 29. Своя модель на своём сервере</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>29</span></div>
-    
-    <h1>Сводка обзора</h1>
-    <table>
-      <thead><tr><th>Модель</th><th>Размер</th><th>Вход</th><th>Скорость в обзоре</th><th>Куда</th></tr></thead>
-      <tbody>
-        <tr><td>Jev, API</td><td>не раскрыт</td><td>текст, изображения экспериментально</td><td>70–500 мс</td><td>старт без своей установки</td></tr>
-        <tr><td>Laya, открытый код</td><td>150–421M</td><td>текст, JSON</td><td>около 33 мс на T4</td><td>локальный RAG, дообучение</td></tr>
-        <tr><td>Liquid d1, открытые веса</td><td>600M–3B+</td><td>текст, изображения, аудио, видео</td><td>короче 50 мс</td><td>снимок и текст, edge</td></tr>
-        <tr><td>Von, открытый код</td><td>около 395M</td><td>текст, JSON</td><td>короче 15 мс</td><td>фильтр фрагментов перед генератором</td></tr>
-      </tbody>
-    </table>
-    <p class="coda">Экспериментальные изображения у Jev не отменяют границу контракта: в клинический конвейер снимок через Jev не ставим. Снимок в этом обзоре отдан d1.</p>
-    
+    <h1>Своя модель на своём сервере</h1>
+    <div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Запуск</div><h2>Локально</h2><p>Laya-multilingual или Decider на сервере учреждения. Текст пациента не покидает машину: 152-ФЗ.</p></article><article class="card "><div class="label">Дообучение</div><h2>1000–2000 примеров</h2><p>State, вопрос, верный типизированный ответ. Потом калибровка на отдельных 300–1000.</p></article><article class="card "><div class="label">Пока разметки нет</div><h2>Реранкер и Platt</h2><p>bge-reranker-v2-m3 со слайда 17. Decision-модель заменяет его, когда побеждает на вашей валидации.</p></article></div><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 192" width="1744" height="192" style="display:block;margin-top:28px;overflow:visible;margin-top:44px"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="1380" height="190" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="2" stroke-dasharray="7 6" opacity="1"/><text x="20" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">СЕРВЕР УЧРЕЖДЕНИЯ</text><path d="M30 62 V158 A90.0 12 0 0 0 210 158 V62" fill="#ece6da" stroke="#1c1915" stroke-width="1.5"/><ellipse cx="120.0" cy="62" rx="90.0" ry="12" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.5"/><text x="120.0" y="122.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Qdrant</text><polyline points="214,110 270,110" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="276" y="72" width="330" height="76" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="441.0" y="106.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Laya-multilingual</text><text x="441.0" y="134.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">или Decider · фильтр</text><polyline points="610,110 666,110" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="672" y="72" width="290" height="76" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="817.0" y="106.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">MedGemma</text><text x="817.0" y="134.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">абзац</text><polyline points="966,110 1022,110" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1028" y="72" width="320" height="76" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1188.0" y="106.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Трасса</text><text x="1188.0" y="134.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">решения и p</text><line x1="1380" y1="0" x2="1380" y2="190" stroke="#1c1915" stroke-width="3"/><polyline points="1340,40 1530,40" fill="none" stroke="#5e6872" stroke-width="1.6" stroke-dasharray="7 6"/><line x1="1368" y1="28" x2="1392" y2="52" stroke="#1c1915" stroke-width="3"/><line x1="1368" y1="52" x2="1392" y2="28" stroke="#1c1915" stroke-width="3"/><rect x="1536" y="10" width="208" height="60" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" stroke-dasharray="7 6" opacity="1"/><text x="1640.0" y="47.35" font-family="Georgia, Iowan Old Style, serif" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">Облачный API</text><text x="1640" y="100" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">текст пациента</text><text x="1640" y="122" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">сюда не уходит</text></svg><p class="coda">Замена модели — это новый прогон проверки со слайда 18, а не новая вера в чужие числа.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>
