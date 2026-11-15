@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 16. Кейс: скилл в трассе</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>16</span></div>
+    <h1>Кейс: скилл в трассе</h1>
+    <div class="split" style="--left:980px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">{&quot;turn&quot;:1,&quot;window&quot;:&quot;rules+catalog(3 skills)&quot;,&quot;tokens&quot;:3120}
+{&quot;turn&quot;:1,&quot;model&quot;:&quot;call&quot;,&quot;tool&quot;:&quot;read_skill&quot;,
+ &quot;args&quot;:{&quot;name&quot;:&quot;package-check&quot;},&quot;policy&quot;:&quot;allow&quot;}
+{&quot;turn&quot;:2,&quot;model&quot;:&quot;call&quot;,&quot;tool&quot;:&quot;run_script&quot;,
+ &quot;args&quot;:{&quot;skill&quot;:&quot;package-check&quot;,
+         &quot;script&quot;:&quot;scripts/check.py&quot;,
+         &quot;file&quot;:&quot;work/package.json&quot;},
+ &quot;policy&quot;:&quot;allow&quot;,&quot;sandbox&quot;:&quot;cases/P-0042/&quot;}
+{&quot;turn&quot;:2,&quot;result&quot;:{&quot;ok&quot;:false,
+ &quot;problems&quot;:[&quot;нет поля histology_ref&quot;]}}
+{&quot;turn&quot;:3,&quot;model&quot;:&quot;answer&quot;,&quot;text&quot;:&quot;В пакете нет ссылки
+ на гистологию …&quot;}</pre></div><div class="stack"><article class="card "><div class="label">Видно</div><h2>Какой скилл и когда</h2><p>Журнал отвечает: почему модель сказала «нет гистологии» — потому что так вернул скрипт.</p></article><article class="card "><div class="label">Видно</div><h2>Скрипт в песочнице</h2><p>Путь к файлу — внутри папки случая. Политика run_script та же, что для любого кода.</p></article><article class="card "><div class="label">Не видно</div><h2>Если скилл не сработал</h2><p>Пустая трасса не скажет, что скилл был нужен. Для этого — тесты срабатывания.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 10. Скиллы в мини-harness</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>10</span></div>
+    <h1>Скиллы в мини-harness</h1>
+    <div class="split" style="--left:1080px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:18px">import pathlib, yaml
+def scan(root=&quot;skills&quot;):
+    skills = {}
+    for p in pathlib.Path(root).glob(&quot;*/SKILL.md&quot;):
+        _, front, body = p.read_text(encoding=&quot;utf-8&quot;).split(&quot;---&quot;, 2)
+        meta = yaml.safe_load(front)
+        assert meta[&quot;name&quot;] == p.parent.name, p
+        skills[meta[&quot;name&quot;]] = {&quot;desc&quot;: meta[&quot;description&quot;],
+                                &quot;dir&quot;: p.parent, &quot;body&quot;: body}
+    return skills
+def catalog(skills):                    # уровень 1: в системный промпт
+    return &quot;\n&quot;.join(f&quot;- {n}: {s[&#x27;desc&#x27;]}&quot; for n, s in skills.items())
+READ_SKILL = {
+    &quot;name&quot;: &quot;read_skill&quot;,
+    &quot;description&quot;: &quot;Загрузить инструкцию скилла по имени из списка.&quot;,
+    &quot;input_schema&quot;: {&quot;type&quot;: &quot;object&quot;,
+                     &quot;properties&quot;: {&quot;name&quot;: {&quot;type&quot;: &quot;string&quot;}},
+                     &quot;required&quot;: [&quot;name&quot;],
+                     &quot;additionalProperties&quot;: False}}
+def read_skill(skills, name):           # уровень 2: результат вызова
+    s = skills.get(name)
+    return s[&quot;body&quot;] if s else f&quot;нет скилла {name}&quot;</pre></div><div class="stack"><article class="card "><div class="label">Уровень 1</div><h2>catalog()</h2><p>Строка на скилл. Добавляется к правилам в начале окна — в стабильный префикс.</p></article><article class="card "><div class="label">Уровень 2</div><h2>read_skill</h2><p>Обычный инструмент реестра. Политика: разрешить. В трассе видно, какой скилл и когда прочитан.</p></article><article class="card "><div class="label">Уровень 3</div><h2>Уже есть</h2><p>read_file и run_script из лекции 13. Скрипт исполняется в песочнице, путь — внутри папки скилла.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
