@@ -30,7 +30,7 @@
   <main>
     <p class="kicker">Практикум</p>
     <h1>Каркас P-0042</h1>
-    <p class="lead">Сквозной каркас курса: агент готовит справку к онкологическому консилиуму по вымышленной пациентке P-0042. Каждая лекция добавляет или заменяет одну деталь, остальное продолжает работать. Всё на Python; 37 тестов идут без сети и без модели.</p>
+    <p class="lead">Сквозной каркас курса: агент готовит справку к онкологическому консилиуму по вымышленной пациентке P-0042. Каждая лекция добавляет или заменяет одну деталь, остальное продолжает работать. Всё на Python; 40 тестов идут без сети и без модели.</p>
     <p class="repo"><a href="https://github.com/EdwFa/MAS/tree/main/P-0042">github.com/EdwFa/MAS/tree/main/P-0042</a></p>
 
     <h2>Запуск</h2>
@@ -39,7 +39,9 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python check_env.py          # Python, пакеты, данные, тесты, локальная модель
 python run.py "Посчитай СКФ и найди, что рекомендации говорят о дозах"
-python run_eval.py           # прогон на наборах оценки</pre>
+python run_eval.py           # прогон на наборах оценки
+pip install -r requirements-ui.txt
+streamlit run ui/app.py      # интерфейс врача, работает без модели</pre>
     <p>Адрес и имя локальной модели — в переменных <code>P0042_BASE_URL</code> и <code>P0042_MODEL</code>. Адрес может быть только локальным.</p>
 
     <h2>Случай</h2>
@@ -58,6 +60,7 @@ python run_eval.py           # прогон на наборах оценки</pr
       <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/orchestrate.py">orchestrate.py</a></td><td>9</td><td>маршрут, ветви, цикл с бюджетом</td></tr>
       <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/harness.py">harness.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/trace.py">trace.py</a></td><td>13, 17</td><td>цикл агента, пауза врача, трасса, проверка источников</td></tr>
       <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/ops.py">ops.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/release.yaml">release.yaml</a></td><td>18</td><td>релиз, проверка релиза, тихий режим, метрики</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/package.py">package.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/ui/app.py">ui/app.py</a></td><td>13, 18</td><td>базовый пакет без модели и интерфейс врача</td></tr>
       <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/evaluate.py">evaluate.py</a>, <a href="https://github.com/EdwFa/MAS/tree/main/P-0042/eval">eval/</a></td><td>8, 9, 17, 18</td><td>вопросы с эталонами, атаки, пакеты врача</td></tr>
       </tbody>
     </table>
