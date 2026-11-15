@@ -2,22 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 6. Контур обработки информации</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    html, body { overflow: hidden; }
-    .frame {
-      position: fixed;
-      inset: 0;
-      width: 1920px;
-      height: 1080px;
-      border: 0;
-      background: #f7f4ee;
-    }
-  </style>
+  <title>Слайд 6. Схема на стыке</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
-  <iframe class="frame" src="diagr/contour.html" title="Контур обработки информации"></iframe>
-<script src="deck.js?v=12"></script>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>06</span></div>
+    <h1>Схема на стыке</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Выход шага «Извлечь»</div><pre class="code" style="font-size:21px">FIELDS = {
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;case_id&quot;, &quot;diagnosis_ref&quot;,
+               &quot;board_date&quot;, &quot;questions&quot;],
+  &quot;additionalProperties&quot;: False,
+  &quot;properties&quot;: {
+    &quot;case_id&quot;:       {&quot;type&quot;: &quot;string&quot;},
+    &quot;diagnosis_ref&quot;: {&quot;type&quot;: &quot;string&quot;,
+                      &quot;pattern&quot;: &quot;^Condition/&quot;},
+    &quot;board_date&quot;:    {&quot;type&quot;: &quot;string&quot;},
+    &quot;questions&quot;:     {&quot;type&quot;: &quot;array&quot;,
+                      &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}}}}</pre></div><div class="stack"><article class="card "><div class="label">Свободный текст</div><h2>Читается заново</h2><p>Следующий промпт перечитывает пересказ и может понять его иначе. Ошибка шага незаметно уходит дальше.</p></article><article class="card "><div class="label">JSON по схеме</div><h2>Проверяется кодом</h2><p>required — что не может пропасть, pattern — что ссылка на запись, а не слово «диагноз».</p></article><article class="card "><div class="label">board_date</div><h2>«не назначена» — допустимо</h2><p>Пустое поле и честное «не назначена» — разные вещи. Схема требует поле, а не выдуманную дату.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

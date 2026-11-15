@@ -2,103 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 3. Новые знания, как передать агенту?</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1760px; font-size: 22px; line-height: 1.32; }
-    .blocks {
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: 0.92fr 1.08fr 1.12fr;
-      gap: 32px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 2px 0 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 8px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    .block strong {
-      font-weight: 500;
-      color: #1c1915;
-    }
-    .src {
-      margin-top: 10px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.3;
-      color: #5e6872;
-    }
-    figure { margin: 8px 0 0; display: flex; flex-direction: column; align-items: center; }
-    figure img { display: block; width: 1680px; height: auto; background: #f7f4ee; }
-    figcaption {
-      margin-top: 4px;
-      text-align: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.3;
-      color: #243038;
-    }
-    .coda { max-width: 1720px; margin-top: 8px; font-size: 22px; }
-  </style>
+  <title>Слайд 3. Как передать агенту новое знание</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>03</span></div>
-    <h1>Новые знания, как передать агенту?</h1>
-    <p class="lead">Сегодняшний анализ, локальный протокол и новая инструкция в веса сами не попадают. Записать их в модель можно предобучением или дообучением: оба пути считают ошибку и обновляют веса.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>Предобучение</h2>
-        <p>Прогон Llama 3 405B: 15,6 трлн токенов после чистки.</p>
-        <p>До 16 384 карт H100 по 80 ГБ.</p>
-        <p>Состояние около 6,5 ТБ, по 16 байт на параметр.</p>
-        <p>3,8 × 10<sup>25</sup> операций.</p>
-        <p class="src">Отчёт Llama 3, Grattafiori et al., 2024. 6,5 ТБ — это 405 млрд параметров × 16 байт.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Дообучение</h2>
-        <p>Тот же прямой проход, та же функция потерь и то же обновление весов, на другой коллекции. Чистого документа мало: нужны задача, ответ, границы ролей и основание считать ответ годным.</p>
-        <p>Состояние обучения — около 16 байт на параметр. У модели на 7 млрд это около 107 ГБ. На карту в 80 ГБ влезают веса, не состояние.</p>
-      </article>
-      <article class="block">
-        <div class="n">03</div>
-        <h2>Приём под задачу</h2>
-        <p><strong>Метки классов.</strong> Классификатор — другая голова на той же базовой модели.</p>
-        <p><strong>Инструкции.</strong> Дообучение с учителем: задача, годный ответ, границы ролей. В курсе — передача на консилиум в двух предложениях, без новых фактов.</p>
-        <p><strong>Предпочтения.</strong> Модель награды и PPO либо DPO по парам относительно опоры. Это конвейеры, не обязательная стадия каждого ассистента.</p>
-        <p><strong>Клиническое правило.</strong> LoRA дообучает модель и сверяет факт с правилом.</p>
-      </article>
-    </div>
-    <figure>
-      <img src="img/knowledge-paths.png?v=1" alt="Новые знания — сегодняшний анализ, локальный протокол и новая инструкция — сами в веса не попадают. Веса обновляет прогон предобучения или дообучения. Предобучение: Llama 3 405B, 15,6 трлн токенов, 16 384 карт H100, состояние 6,5 ТБ, 3,8 × 10 в степени 25 операций. Дообучение: тот же проход, та же функция потерь, то же обновление весов, другая коллекция. Приёмы: метки классов — классификатор, инструкции — с учителем, предпочтения — PPO или DPO, правило — LoRA. Между прогонами веса статичны.">
-      <figcaption>Анализ, протокол и инструкция сами в веса не входят. Веса обновляет прогон предобучения или дообучения.</figcaption>
-    </figure>
-    <p class="coda">Между прогонами веса статичны. Сегодняшнего анализа и нового протокола в уже посчитанной модели нет.</p>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>03</span></div>
+    <h1>Как передать агенту новое знание</h1>
+    <p class="lead">Анализ, протокол и инструкция сами в веса не попадают. Записать их в модель можно предобучением или дообучением — оба пути обновляют веса.</p><img src="img/knowledge-paths.png?v=2" style="display:block;max-width:100%;margin-top:24px;width:100%" alt=""><div class="cols" style="--n:3;margin-top:28px"><article class="card "><div class="label">Предобучение</div><h2>Llama 3 405B</h2><p>15,6 трлн токенов, до 16 384 карт H100, состояние около 6,5 ТБ, 3,8 × 10²⁵ операций (Grattafiori и соавт., 2024).</p></article><article class="card "><div class="label">Дообучение</div><h2>Тот же проход, другая коллекция</h2><p>Около 16 байт на параметр: у модели на 7 млрд — порядка 107 ГБ состояния. На карту в 80 ГБ влезают веса, не состояние.</p></article><article class="card "><div class="label">Между прогонами</div><h2>Веса статичны</h2><p>Сегодняшнего анализа и протокола, вышедшего вчера, в уже посчитанной модели нет.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

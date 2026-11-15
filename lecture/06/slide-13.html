@@ -2,75 +2,30 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 13. Клиент и сервер MCP</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 46px; }
-    .lead { max-width: 1720px; }
-    .blocks {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px 48px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 12px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 4px 0 0;
-      font-size: 30px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 10px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 21px;
-      line-height: 1.34;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 22px; }
-  </style>
+  <title>Слайд 13. Ресурсы и заготовки</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>13</span></div>
-    <h1>Клиент и сервер MCP</h1>
-    <p class="lead">MCP ведёт обмен по схеме клиент–сервер. От того, кто за что отвечает, зависит, как агент доходит до внешнего действия.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>Модель</h2>
-        <p>Принимает запрос человека, намечает шаги и решает, когда нужны внешние данные или действие.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Клиент MCP</h2>
-        <p>Программа вокруг модели. Переводит её намерение в запрос по правилам MCP: находит серверы, подключается и ведёт с ними обмен.</p>
-      </article>
-      <article class="block">
-        <div class="n">03</div>
-        <h2>Сервер MCP</h2>
-        <p>Выход наружу. Отдаёт допущенному клиенту инструменты, данные и заготовки запросов. Обычно один сервер ведёт одну область: база организации, почта, открытый API.</p>
-      </article>
-      <article class="block">
-        <div class="n">04</div>
-        <h2>Внешняя служба</h2>
-        <p>То, к чему сервер выходит: закрытая база, чужая программа, открытый API. Запрошенное действие выполняет она.</p>
-      </article>
-    </div>
-    <p class="coda">Модель решает. Клиент оформляет запрос. Сервер открывает свою область. Действие выполняет внешняя служба.</p>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>13</span></div>
+    <h1>Ресурсы и заготовки</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">@mcp.resource(&quot;fhir://Observation/{obs_id}&quot;)
+def observation(obs_id: str) -&gt; dict:
+    &quot;&quot;&quot;Наблюдение из учебного FHIR. Только чтение.&quot;&quot;&quot;
+    return FHIR.read(&quot;Observation&quot;, obs_id)
+
+@mcp.prompt
+def renal_check(case_id: str) -&gt; str:
+    &quot;&quot;&quot;Проверка функции почек перед консилиумом.&quot;&quot;&quot;
+    return (f&quot;Для случая {case_id}: найди последний креатинин &quot;
+            &quot;в fhir://Observation, посчитай egfr и укажи &quot;
+            &quot;дату анализа и ссылку на запись.&quot;)</pre></div><div class="stack"><article class="card "><div class="label">Ресурс</div><h2>Адрес вместо копии</h2><p>Тот же принцип, что в лекции 5: агент получает ссылку на запись и читает её свежей.</p></article><article class="card "><div class="label">Заготовка</div><h2>Сценарий кафедры</h2><p>Порядок проверки почек пишет врач, а не модель. Заготовку выбирает человек в интерфейсе.</p></article><article class="card "><div class="label">Только чтение</div><h2>Ресурс ничего не меняет</h2><p>Всё, что меняет карту, — инструмент с политикой «спросить».</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

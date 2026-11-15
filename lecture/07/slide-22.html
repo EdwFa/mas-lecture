@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 22. Где RAG ломается</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>22</span></div>
+    <h1>Где RAG ломается</h1>
+    <table><colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup><thead><tr><th>Отказ</th><th>Как выглядит</th><th>Чем лечат</th></tr></thead><tbody><tr><td><strong>Не нашёл</strong></td><td>нужного фрагмента нет в top-k</td><td>нарезка, гибридный поиск — лекции 8, 11, 12</td></tr><tr><td><strong>Нашёл не то</strong></td><td>похожий раздел другого препарата</td><td>переранжирование — лекции 8, 10</td></tr><tr><td><strong>Нашёл устаревшее</strong></td><td>фрагмент прошлой редакции протокола</td><td>версия в метаданных, фильтр — слайд 15</td></tr><tr><td><strong>Не использовал</strong></td><td>ответ из памяти модели, без ссылки</td><td>инструкция и проверка ссылок — слайды 19, 21</td></tr><tr><td><strong>Исказил</strong></td><td>ссылка есть, пересказ неверный</td><td>оценка верности — лекция 17</td></tr></tbody></table><p class="coda">Первые три — отказы поиска, последние два — отказы генерации. Проверяют их разными метриками.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

@@ -2,80 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 10. Несколько шагов</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 48px; }
-    .lead { max-width: 1720px; }
-    .items { margin-top: 28px; }
-    .item {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 6px 28px;
-      padding: 16px 0 18px;
-      border-top: 1px solid #1c1915;
-    }
-    .item:last-child { border-bottom: 1px solid #1c1915; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      color: #5e6872;
-      padding-top: 8px;
-    }
-    .item h2 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .item p {
-      margin: 6px 0 0;
-      max-width: 1560px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 23px;
-      line-height: 1.35;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 16px; }
-  </style>
+  <title>Слайд 10. Вызов не исполняют</title>
+  <link rel="stylesheet" href="slide.css?v=51" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>10</span></div>
-    <h1>Несколько шагов</h1>
-    <p class="lead">Вопрос «Гемоглобин этого пациента ниже диапазона для взрослых?» одним вызовом не закрывается. Второй шаг видит наблюдение первого.</p>
-    <div class="items">
-      <article class="item">
-        <div class="n">01</div>
-        <div>
-          <h2>Справочник</h2>
-          <p>Аргумент: исследование — ОАК. Наблюдение: диапазон гемоглобина.</p>
-        </div>
-      </article>
-      <article class="item">
-        <div class="n">02</div>
-        <div>
-          <h2>Результат пациента</h2>
-          <p>Аргумент: случай и показатель — гемоглобин. Наблюдение: число этого человека.</p>
-        </div>
-      </article>
-      <article class="item">
-        <div class="n">03</div>
-        <div>
-          <h2>Ответ</h2>
-          <p>Модель сравнивает число и диапазон. Диагноз по этому сравнению она не ставит.</p>
-        </div>
-      </article>
-    </div>
-    <p class="coda">Порядок на каждом шаге выбирает модель. Оркестратор исполняет вызов и возвращает наблюдение.</p>
+    <div class="kicker"><span>Лекция 4. Инструменты, планирование, ансамбли</span><span>10</span></div>
+    <h1>Вызов не исполняют</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 326" width="1744" height="326" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="110" width="260" height="100" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="130.0" y="156.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Ответ модели</text><text x="130.0" y="184.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">имя + аргументы</text><polyline points="264,160 316,160" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="320" y="110" width="290" height="100" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="465.0" y="156.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Имя в реестре?</text><text x="465.0" y="184.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">иначе — отказ</text><polyline points="465,214 465,270" fill="none" stroke="#5e6872" stroke-width="1.1" stroke-dasharray="7 6" marker-end="url(#ahg)"/><polyline points="594,160 646,160" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="650" y="110" width="290" height="100" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="795.0" y="156.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Аргументы по схеме?</text><text x="795.0" y="184.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">иначе — отказ</text><polyline points="795,214 795,270" fill="none" stroke="#5e6872" stroke-width="1.1" stroke-dasharray="7 6" marker-end="url(#ahg)"/><polyline points="924,160 976,160" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="980" y="110" width="290" height="100" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1125.0" y="156.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Права?</text><text x="1125.0" y="184.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">запись — «спросить»</text><polyline points="1125,214 1125,270" fill="none" stroke="#5e6872" stroke-width="1.1" stroke-dasharray="7 6" marker-end="url(#ahg)"/><rect x="320" y="274" width="950" height="46" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1" stroke-dasharray="7 6" opacity="1"/><text x="795" y="304" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">наблюдение-отказ уходит модели: «нет такого инструмента», «нет аргумента study»</text><polyline points="1274,160 1340,160" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1344" y="110" width="400" height="100" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1544.0" y="156.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Вызов API</text><text x="1544.0" y="184.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">результат → наблюдение</text></svg><div class="cols" style="--n:3;margin-top:28px"><article class="card "><div class="label">Имени нет</div><h2>Чужой инструмент</h2><p>Модель назвала инструмент, которого агенту не давали. Вызов не уходит.</p></article><article class="card "><div class="label">Аргумент пуст</div><h2>Нет study</h2><p>Для справочника не названо исследование. В API ничего не отправляется.</p></article><article class="card "><div class="label">Отказ — наблюдение</div><h2>Модель узнаёт причину</h2><p>Не молчание и не исключение: в контекст уходит «нет такого инструмента» — и модель может исправиться.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=50"></script>
+<script src="deck.js?v=51"></script>
 </body>
 </html>

@@ -2,51 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 11. Автономные системы</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 46px; }
-    .lead { max-width: 1720px; }
-    figure {
-      margin: 10px 0 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    figure img {
-      display: block;
-      width: auto;
-      height: auto;
-      max-width: 1560px;
-      max-height: 560px;
-      background: #f7f4ee;
-    }
-    figcaption {
-      margin-top: 8px;
-      max-width: 1560px;
-      text-align: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 22px;
-      line-height: 1.35;
-      color: #243038;
-    }
-  </style>
+  <title>Слайд 11. Память задачи</title>
+  <link rel="stylesheet" href="slide.css?v=46" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>11</span></div>
-    <h1>Автономные системы</h1>
-    <p class="lead">Роботы и самоуправляемые доставщики лекарств требуют память для карт, маршрутов, местоположений объектов и изученного поведения.</p>
-    <figure>
-      <img src="img/autonomous-memory.png?v=1" alt="Слева робот с коробкой лекарства видит ближайший коридор. Справа план помещения: маршрут, места объектов и повторенные пути.">
-      <figcaption>Краткосрочная память — непосредственное окружение. Долгосрочная память — общие знания об окружающей среде.</figcaption>
-    </figure>
+    <div class="kicker"><span>Лекция 5. Агенты с памятью</span><span>11</span></div>
+    <h1>Память задачи</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><img src="img/task-memory.png?v=2" style="display:block;max-width:100%;width:100%" alt=""></div><div class="stack"><article class="card "><div class="label">Что хранить</div><h2>Где мы в работе</h2><p>Шаг графа, что уже собрано, чего ждём, открытые вопросы. Всё — со ссылками.</p></article><article class="card "><div class="label">Зачем</div><h2>Продолжить, а не начать заново</h2><p>Агент в среду продолжает с места, где остановился в понедельник.</p></article><article class="card "><div class="label">Подробнее</div><h2>Лекция 16</h2><p>Состояние случая вне процесса, контрольные точки и повтор без дубля записи.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=45"></script>
+<script src="deck.js?v=46"></script>
 </body>
 </html>

@@ -3,99 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <title>Слайд 2. Зачем RAG</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1760px; font-size: 22px; line-height: 1.32; }
-    .blocks {
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 32px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 2px 0 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    .why {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-    .why article { border-top: 1px solid #1c1915; padding-top: 8px; }
-    .why h2 {
-      margin: 2px 0 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .why p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 19px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    .coda { max-width: 1720px; margin-top: 16px; font-size: 22px; }
-  </style>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>02</span></div>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>02</span></div>
     <h1>Зачем RAG</h1>
-    <p class="lead">База знаний LLM обычно ограничена данными обучения. Это ограничивает доступ к информации в реальном времени, к специфическим данным больницы и к высокоспециализированным деталям. Retrieval-Augmented Generation даёт LLM доступ к внешней, актуальной и контекстно-специфической информации и интегрирует её в выходные данные: повышаются точность, релевантность и фактическая основа.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>В реальном времени</h2>
-        <p>Сегодняшнего анализа в данных обучения нет.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Данные больницы</h2>
-        <p>Локального протокола в данных обучения нет.</p>
-      </article>
-      <article class="block">
-        <div class="n">03</div>
-        <h2>Узкая деталь</h2>
-        <p>Новой инструкции в данных обучения нет.</p>
-      </article>
-    </div>
-    <div class="why">
-      <article>
-        <h2>Ответ по протоколу</h2>
-        <p>На конкретный вопрос агент берёт последнюю схему учреждения из базы знаний. Действующая схема коррекции дозы при низкой СКФ, а не память LLM.</p>
-      </article>
-      <article>
-        <h2>Проверка перед действием</h2>
-        <p>Перед действием, которое зависит от текущих данных, агент проверяет сегодняшний анализ. Этих данных в статическом обучении нет.</p>
-      </article>
-    </div>
-    <p class="coda">Действия и ответы опираются на данные реального времени, поддающиеся проверке, за рамками статического обучения. Внешние знания превращают агентов из простых собеседников в эффективные, управляемые данными инструменты, способные выполнять значимую работу.</p>
+    <p class="lead">Знания модели ограничены данными обучения. Сегодняшнего анализа, протокола больницы и новой инструкции в них нет.</p><div class="cols" style="--n:3;margin-top:40px"><article class="card "><div class="label">01</div><h2>В реальном времени</h2><p>Сегодняшнего анализа в данных обучения нет.</p></article><article class="card "><div class="label">02</div><h2>Данные больницы</h2><p>Локального протокола в данных обучения нет.</p></article><article class="card "><div class="label">03</div><h2>Узкая деталь</h2><p>Новой инструкции в данных обучения нет.</p></article></div><div class="cols" style="--n:2;margin-top:32px"><article class="card "><div class="label">Ответ по протоколу</div><h2>Действующая схема</h2><p>На вопрос о коррекции дозы при низкой СКФ агент берёт схему учреждения из базы знаний, а не из памяти модели.</p></article><article class="card "><div class="label">Проверка перед действием</div><h2>Сегодняшние данные</h2><p>Перед действием, которое зависит от текущих данных, агент читает сегодняшний анализ из карты.</p></article></div><p class="coda">RAG даёт модели внешнее, актуальное и проверяемое знание — и ответ, который ссылается на источник.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

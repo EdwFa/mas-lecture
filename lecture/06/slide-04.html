@@ -2,118 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 4. Задача для MCP</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; }
-    .lead { max-width: 1760px; font-size: 20px; }
-    .cols {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 680px;
-      gap: 36px;
-      align-items: start;
-    }
-    h2 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    figure { margin: 0; }
-    figure img {
-      display: block;
-      width: 680px;
-      height: auto;
-      border: 1px solid #d9d3c7;
-      background: #f7f4ee;
-    }
-    figcaption {
-      margin-top: 6px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.3;
-      color: #243038;
-    }
-    .cols h2 + p, .cols h2 + .formula { margin-top: 8px; }
-    .cols p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.28;
-      color: #243038;
-    }
-    .formula {
-      margin: 12px 0 0;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-      line-height: 1.35;
-    }
-    .formula sub, .formula sup {
-      font-size: 0.62em;
-    }
-    table { margin-top: 12px; width: auto; }
-    th { padding: 0 22px 8px 0; font-size: 14px; }
-    td {
-      padding: 5px 18px 5px 0;
-      font-size: 16px;
-      line-height: 1.25;
-    }
-    .right h2 { margin-bottom: 0; }
-    .right table { width: 100%; }
-    .note { margin-top: 10px; }
-  </style>
+  <title>Слайд 4. Что отдаёт сервер</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>04</span></div>
-    <h1>Задача для MCP</h1>
-    <p class="lead">Сервер MCP считает СКФ по уравнению CKD-EPI 2021 и возвращает категорию KDIGO. Модель передаёт пол, возраст и креатинин.</p>
-    <div class="cols">
-      <section>
-        <h2>Подготовка креатинина</h2>
-        <p>В уравнение креатинин входит в мг/дл. Если введено значение в мкмоль/л, оно делится на 88,4. Допустимый диапазон после перевода: 0,05–40 мг/дл. Уравнение считается для взрослых от 18 лет.</p>
-        <h2 style="margin-top: 16px;">Уравнение CKD-EPI 2021</h2>
-        <p>Расовый коэффициент не используется.</p>
-        <p class="formula">eGFR = 142 × min(S<sub>cr</sub>/κ, 1)<sup>α</sup> × max(S<sub>cr</sub>/κ, 1)<sup>−1,200</sup> × 0,9938<sup>возраст</sup> × 1,012</p>
-        <p>Множитель 1,012 применяется только для женщин.</p>
-        <table>
-          <thead>
-            <tr><th>Пол</th><th>κ</th><th>α</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>мужской</td><td>0,9</td><td>−0,302</td></tr>
-            <tr><td>женский</td><td>0,7</td><td>−0,241</td></tr>
-          </tbody>
-        </table>
-        <p class="note">S<sub>cr</sub> — креатинин в мг/дл. Результат округляется до одного знака, единица — мл/мин/1,73 м<sup>2</sup>. Категория выбирается по округлённому значению.</p>
-        <h2 style="margin-top: 14px;">Категории KDIGO</h2>
-        <table class="kdigo">
-          <thead>
-            <tr><th>СКФ</th><th>Категория</th><th>Смысл</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>≥ 90</td><td>G1</td><td>высокая или нормальная</td></tr>
-            <tr><td>60–89</td><td>G2</td><td>незначительно сниженная</td></tr>
-            <tr><td>45–59</td><td>G3a</td><td>сниженная от незначительно до умеренно</td></tr>
-            <tr><td>30–44</td><td>G3b</td><td>сниженная от умеренно до существенно</td></tr>
-            <tr><td>15–29</td><td>G4</td><td>существенно сниженная</td></tr>
-            <tr><td>&lt; 15</td><td>G5</td><td>диапазон почечной недостаточности</td></tr>
-          </tbody>
-        </table>
-        <p class="note">Категория описывает только величину расчётной СКФ.</p>
-      </section>
-      <figure>
-        <img src="img/egfr-mcp.png?v=1" alt="Экран вызова egfr_ckd_epi_2021: возраст 50 лет, мужской пол, креатинин 88 мкмоль/л. Ответ 92,2 мл/мин/1,73 м², категория G1.">
-        <figcaption>Вызов egfr_ckd_epi_2021: 50 лет, мужской пол, 88 мкмоль/л. Ответ сервера — 92,2 мл/мин/1,73 м², категория G1.</figcaption>
-      </figure>
-    </div>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>04</span></div>
+    <h1>Что отдаёт сервер</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 252" width="1744" height="252" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="560" height="250" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="24" y="44" font-family="Georgia, Iowan Old Style, serif" font-size="28" text-anchor="start" fill="#1c1915" font-weight="400">Инструмент</text><text x="24" y="76" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">делает или считает</text><text x="24" y="122" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">egfr(пол, возраст, креатинин)</text><text x="24" y="156" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">lab_reference(тест)</text><text x="24" y="190" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">chart_write(…) · «спросить»</text><line x1="24" y1="214" x2="536" y2="214" stroke="#b7b1a6" stroke-width="1"/><text x="24" y="238" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">КТО ВЫБИРАЕТ: РЕШАЕТ МОДЕЛЬ</text><rect x="592" y="0" width="560" height="250" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="616" y="44" font-family="Georgia, Iowan Old Style, serif" font-size="28" text-anchor="start" fill="#1c1915" font-weight="400">Ресурс</text><text x="616" y="76" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">данные для чтения</text><text x="616" y="122" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">fhir://Condition/c-17</text><text x="616" y="156" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">fhir://Observation/her2-77</text><text x="616" y="190" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">fhir://Encounter/enc-31</text><line x1="616" y1="214" x2="1128" y2="214" stroke="#b7b1a6" stroke-width="1"/><text x="616" y="238" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">КТО ВЫБИРАЕТ: РЕШАЕТ ПРИЛОЖЕНИЕ</text><rect x="1184" y="0" width="560" height="250" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="1208" y="44" font-family="Georgia, Iowan Old Style, serif" font-size="28" text-anchor="start" fill="#1c1915" font-weight="400">Заготовка запроса</text><text x="1208" y="76" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">готовый сценарий</text><text x="1208" y="122" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">board_summary(case_id)</text><text x="1208" y="156" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">renal_check(case_id)</text><line x1="1208" y1="214" x2="1720" y2="214" stroke="#b7b1a6" stroke-width="1"/><text x="1208" y="238" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">КТО ВЫБИРАЕТ: РЕШАЕТ ВРАЧ</text></svg><div class="cols" style="--n:3;margin-top:28px"><article class="card "><div class="label">Инструмент</div><h2>Действие</h2><p>Модель сама решает, вызвать ли его. Поэтому описание инструмента — это текст для модели.</p></article><article class="card "><div class="label">Ресурс</div><h2>Данные по адресу</h2><p>Запись карты по URI. Что положить в окно, решает приложение, а не модель.</p></article><article class="card "><div class="label">Заготовка</div><h2>Сценарий для человека</h2><p>Врач выбирает «Сводка к консилиуму» — и получает готовый запрос с нужными ресурсами.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

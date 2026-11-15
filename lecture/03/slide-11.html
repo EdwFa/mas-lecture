@@ -2,22 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 11. Параллелизация</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    html, body { overflow: hidden; }
-    .frame {
-      position: fixed;
-      inset: 0;
-      width: 1920px;
-      height: 1080px;
-      border: 0;
-      background: #f7f4ee;
-    }
-  </style>
+  <title>Слайд 11. Порог и цена ошибки</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
-  <iframe class="frame" src="diagr/parallel.html" title="Параллелизация"></iframe>
-<script src="deck.js?v=12"></script>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>11</span></div>
+    <h1>Порог и цена ошибки</h1>
+    <table><colgroup><col style="width:34%"><col style="width:46%"><col style="width:20%"></colgroup><thead><tr><th>Ошибка маршрута</th><th>Что случится</th><th>Цена</th></tr></thead><tbody><tr><td><strong>«ждать» вместо «врач сейчас»</strong></td><td>срочный случай уходит мимо врача</td><td>высокая</td></tr><tr><td><strong>«собрать пакет» при споре дат</strong></td><td>пакет без вопроса к консилиуму</td><td>высокая</td></tr><tr><td><strong>«врач сейчас» вместо «ждать»</strong></td><td>лишний вызов врача</td><td>низкая</td></tr></tbody></table><div class="cols" style="--n:3;margin-top:32px"><article class="card "><div class="label">Асимметрия</div><h2>Ошибки неравны</h2><p>Лишний вызов врача дешевле пропущенного срочного случая. Порог ставят так, чтобы ошибаться в дешёвую сторону.</p></article><article class="card "><div class="label">Порог</div><h2>Сомнение — к человеку</h2><p>Вероятность ниже порога — ветка «врач сейчас». Так лекция 1 называет порог, после которого зовут человека.</p></article><article class="card "><div class="label">Проверка</div><h2>Матрица ошибок</h2><p>На размеченных случаях считают, сколько срочных ушло мимо врача. Это число важнее общей точности.</p></article></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

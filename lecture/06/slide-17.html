@@ -2,75 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 17. Практические применения MCP</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 46px; }
-    .lead { max-width: 1720px; }
-    .blocks {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px 48px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 12px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 4px 0 0;
-      font-size: 30px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 10px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 21px;
-      line-height: 1.34;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 22px; }
-  </style>
+  <title>Слайд 17. Состояние — явный идентификатор</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>17</span></div>
-    <h1>Практические применения MCP</h1>
-    <p class="lead">Первые четыре случая из девяти. Модель подключается к базе, к программам картинки и звука, к чужим API и к точному месту в тексте.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>Базы данных</h2>
-        <p>Агент обращается к базе обычными словами: читает текущие записи, собирает отчёт, обновляет строку. Для Google BigQuery это делает MCP Toolbox.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Картинка, видео, голос</h2>
-        <p>Через MCP Tools для Genmedia агент собирает цепочку: Google Imagen рисует, Google Veo снимает видео, Chirp 3 HD говорит, Google Lyria пишет музыку.</p>
-      </article>
-      <article class="block">
-        <div class="n">03</div>
-        <h2>Внешние API</h2>
-        <p>Один порядок для любого внешнего API: погода сейчас, цена акции, письмо, учёт клиентов.</p>
-      </article>
-      <article class="block">
-        <div class="n">04</div>
-        <h2>Точный фрагмент</h2>
-        <p>Агент читает текст и достаёт фрагмент, цифру или утверждение под вопрос. Обычный поиск отдал бы документ целиком.</p>
-      </article>
-    </div>
-    <p class="coda">Подключение одно. Меняется служба: база, картинка и звук, чужой API, нужное место в тексте.</p>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>17</span></div>
+    <h1>Состояние — явный идентификатор</h1>
+    <p class="lead">Если серверу нужно помнить между вызовами, он выдаёт идентификатор, и модель передаёт его как обычный аргумент.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 172" width="1744" height="172" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="20" width="400" height="96" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.3" opacity="1"/><text x="18" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">TOOLS/CALL</text><text x="18" y="88" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="start" fill="#1c1915" font-weight="400">start_package(case_id=P-0042)</text><polyline points="404,68 444,68" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="448" y="20" width="400" height="96" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.3" opacity="1"/><text x="466" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ОТВЕТ</text><text x="466" y="88" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="start" fill="#1c1915" font-weight="400">package_handle = pkg-7f3a</text><polyline points="852,68 892,68" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="896" y="20" width="400" height="96" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.3" opacity="1"/><text x="914" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">TOOLS/CALL</text><text x="914" y="88" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="start" fill="#1c1915" font-weight="400">add_section(pkg-7f3a, «почки»)</text><polyline points="1300,68 1340,68" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1344" y="20" width="400" height="96" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.3" opacity="1"/><text x="1362" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ОТВЕТ</text><text x="1362" y="88" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="start" fill="#1c1915" font-weight="400">раздел добавлен · 3 из 6</text><text x="872" y="160" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">состояние живёт на сервере под идентификатором, а не в соединении</text></svg><div class="cols" style="--n:3;margin-top:28px"><article class="card "><div class="label">Почему так</div><h2>Состояние видно</h2><p>Идентификатор лежит в трассе и в аргументах. Нет скрытой сессии, которая потерялась при перезапуске.</p></article><article class="card "><div class="label">Где хранить</div><h2>На сервере, в базе</h2><p>Пакет с идентификатором pkg-7f3a лежит в базе сервера и переживает его перезапуск.</p></article><article class="card "><div class="label">Связь</div><h2>Лекция 16</h2><p>Тот же подход, что у состояния случая вне процесса: явный ключ, запись в базе, повтор без дублей.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

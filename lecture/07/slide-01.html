@@ -2,20 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 1. Извлечение знаний. Retrieval-Augmented Generation</title>
-  <link rel="stylesheet" href="slide.css" />
+  <title>Слайд 1. Извлечение знаний. RAG</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide title-slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>01</span></div>
-    <h1>Извлечение знаний.<br>Retrieval-Augmented Generation</h1>
-    <div class="line"></div>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>01</span></div>
+    
+    <h1>Извлечение знаний.<br>Retrieval-Augmented Generation</h1><p class="lead">Как дать агенту сегодняшний анализ и действующий протокол больницы, которых нет в весах модели</p><div class="line"></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 21. Код: предложение вместо записи</title>
+  <link rel="stylesheet" href="slide.css?v=46" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 5. Агенты с памятью</span><span>21</span></div>
+    <h1>Код: предложение вместо записи</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">from uuid import uuid4
+
+def propose_instruction(store, current, conversation, llm):
+    &quot;&quot;&quot;Агент предлагает правку, но не применяет её.&quot;&quot;&quot;
+    draft = llm(PROPOSE.format(instructions=current,
+                               conversation=conversation))
+    pid = f&quot;p-{uuid4().hex[:8]}&quot;
+    store.put((&quot;instructions&quot;, &quot;proposals&quot;), pid, {
+        &quot;old&quot;: current, &quot;new&quot;: draft, &quot;status&quot;: &quot;on_review&quot;})
+    return pid
+
+def active_instructions(store):
+    &quot;&quot;&quot;Агент читает только принятую версию.&quot;&quot;&quot;
+    item = store.get((&quot;instructions&quot;, &quot;active&quot;), &quot;agent&quot;)
+    return item.value[&quot;text&quot;]</pre></div><div class="stack"><article class="card "><div class="label">Разные папки</div><h2>proposals и active</h2><p>Предложения и действующие инструкции лежат отдельно. Агент пишет в первую, читает из второй.</p></article><article class="card "><div class="label">Кто переносит</div><h2>Человек</h2><p>Из proposals в active переносит ревью, а не агент. У агента нет права записи в active.</p></article><article class="card "><div class="label">Ошибка книги</div><h2>Разные пространства</h2><p>В исходном примере инструкции читались из одной папки, а писались в другую — следующий запуск правку не видел.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=46"></script>
+</body>
+</html>

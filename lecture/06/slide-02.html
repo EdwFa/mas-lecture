@@ -2,77 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 2. Model Context Protocol</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1760px; font-size: 22px; }
-    .blocks {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr 1.05fr 0.95fr;
-      gap: 32px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 2px 0 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.3;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 12px; font-size: 22px; }
-    figure { margin: 8px 0 0; display: flex; flex-direction: column; align-items: center; }
-    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
-    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
-  </style>
+  <title>Слайд 2. Зачем общий порядок</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>02</span></div>
-    <h1>Model Context Protocol</h1>
-    <p class="lead">Модели мало писать текст и картинки. Агенту нужны свежие данные, чужие программы и конкретные действия.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>Что не хватает</h2>
-        <p>Актуальные данные. Внешние программы. Задачи, которые надо выполнить, а не только описать.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Что даёт MCP</h2>
-        <p>Model Context Protocol задаёт один порядок, по которому модель обращается к внешним ресурсам: к данным, к программам и к действиям.</p>
-      </article>
-      <article class="block">
-        <div class="n">03</div>
-        <h2>Зачем один порядок</h2>
-        <p>Связь получается одинаковой от раза к разу. Новый источник подключают тем же способом, а не собирают связь заново.</p>
-      </article>
-    </div>
-    <p class="coda">MCP — общий способ, которым модель берёт данные и вызывает внешние программы.</p>
-    <figure>
-      <img src="img/mcp-one-order.png?v=1" alt="Модель через MCP одним порядком соединена с данными, программами, действиями и новым источником.">
-      <figcaption>Один порядок на данные, программы и действия. Новый источник подключают тем же способом.</figcaption>
-    </figure>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>02</span></div>
+    <h1>Зачем общий порядок</h1>
+    <p class="lead">В лекции 4 диспетчер вызывал наши инструменты. Но в больнице у каждой системы свой способ подключения.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 356" width="1744" height="356" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="0" y="22" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">БЕЗ ОБЩЕГО ПОРЯДКА: N × M ПЕРЕХОДНИКОВ</text><rect x="0" y="50" width="230" height="64" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="115.0" y="88.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">Агент пакета</text><rect x="0" y="140" width="230" height="64" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="115.0" y="178.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">Агент выписки</text><rect x="0" y="230" width="230" height="64" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="115.0" y="268.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">Агент лаборатории</text><rect x="560" y="40" width="200" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="660.0" y="74.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">МИС</text><rect x="560" y="112" width="200" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="660.0" y="146.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">ЛИС</text><rect x="560" y="184" width="200" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="660.0" y="218.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">PACS</text><rect x="560" y="256" width="200" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="660.0" y="290.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">Протоколы</text><line x1="232" y1="82" x2="558" y2="68" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="82" x2="558" y2="140" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="82" x2="558" y2="212" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="82" x2="558" y2="284" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="172" x2="558" y2="68" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="172" x2="558" y2="140" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="172" x2="558" y2="212" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="172" x2="558" y2="284" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="262" x2="558" y2="68" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="262" x2="558" y2="140" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="262" x2="558" y2="212" stroke="#b7b1a6" stroke-width="1.2"/><line x1="232" y1="262" x2="558" y2="284" stroke="#b7b1a6" stroke-width="1.2"/><text x="395" y="342" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">12 разных связей</text><text x="960" y="22" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">С MCP: N + M</text><rect x="960" y="50" width="230" height="64" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1075.0" y="88.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">Агент пакета</text><polyline points="1192,82 1298,182" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="960" y="140" width="230" height="64" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1075.0" y="178.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">Агент выписки</text><polyline points="1192,172 1298,182" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="960" y="230" width="230" height="64" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1075.0" y="268.65" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">Агент лаборатории</text><polyline points="1192,262 1298,182" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="1300" y="140" width="160" height="84" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1380.0" y="178.0" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">MCP</text><text x="1380.0" y="206.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">один порядок</text><polyline points="1462,182 1538,68" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="1540" y="40" width="200" height="56" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1640.0" y="73.95" font-family="Georgia, Iowan Old Style, serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">МИС · сервер</text><polyline points="1462,182 1538,140" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="1540" y="112" width="200" height="56" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1640.0" y="145.95" font-family="Georgia, Iowan Old Style, serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">ЛИС · сервер</text><polyline points="1462,182 1538,212" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="1540" y="184" width="200" height="56" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1640.0" y="217.95" font-family="Georgia, Iowan Old Style, serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">PACS · сервер</text><polyline points="1462,182 1538,284" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="1540" y="256" width="200" height="56" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1640.0" y="289.95" font-family="Georgia, Iowan Old Style, serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">Протоколы · сервер</text><text x="1380" y="342" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">каждая сторона подключается один раз</text></svg><p class="coda">MCP — общий переходник: систему один раз оформляют как сервер, и к ней подключается любой агент, который умеет говорить по MCP.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>
