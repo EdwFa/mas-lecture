@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Код: пустить только одобренное</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 6. MCP</span><span>23</span></div>
+    <h1>Код: пустить только одобренное</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">import hashlib, json
+
+def fingerprint(tool):
+    &quot;&quot;&quot;Отпечаток того, что читает модель.&quot;&quot;&quot;
+    seen = {k: tool.get(k) for k in
+            (&quot;name&quot;, &quot;description&quot;, &quot;inputSchema&quot;)}
+    raw = json.dumps(seen, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(raw.encode()).hexdigest()
+
+def admit(server, tools, approved, alert):
+    &quot;&quot;&quot;Хост пускает к модели только одобренные
+    и не изменённые после ревью инструменты.&quot;&quot;&quot;
+    ok = []
+    for t in tools:
+        key = f&quot;{server}/{t[&#x27;name&#x27;]}&quot;
+        if approved.get(key) != fingerprint(t):
+            alert(key, &quot;новый или изменённый инструмент&quot;)
+            continue
+        ok.append(t)
+    return ok</pre></div><div class="stack"><article class="card "><div class="label">approved</div><h2>Итог ревью</h2><p>Словарь «сервер/инструмент → отпечаток» хранится в репозитории и меняется через pull request.</p></article><article class="card "><div class="label">Что ловит</div><h2>Подмену и новинки</h2><p>Изменённое описание и новый инструмент без ревью до модели не доходят.</p></article><article class="card "><div class="label">Чего не ловит</div><h2>Плохой ответ</h2><p>Инъекция в ответе ресурса — другая граница: её проверяет код после вызова (лекция 17).</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=20"></script>
+</body>
+</html>
