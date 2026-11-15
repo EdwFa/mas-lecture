@@ -2,102 +2,32 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 14. П. 1.4. Инжиниринг контекста</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 42px; }
-    .lead { max-width: 1720px; }
-    .scheme {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: 1.35fr 64px 260px 64px 1fr;
-      align-items: center;
-    }
-    .sources { display: flex; flex-direction: column; gap: 12px; }
-    .src, .agent, .out {
-      border: 1.5px solid #1c1915;
-      padding: 12px 16px 14px;
-      background: #f7f4ee;
-    }
-    .src .k, .agent .k, .out .k {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #5e6872;
-    }
-    .src p, .agent p, .out p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 20px;
-      line-height: 1.3;
-      color: #1c1915;
-    }
-    .agent, .out {
-      min-height: 180px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .agent h2, .out h2 {
-      margin: 8px 0 0;
-      font-size: 36px;
-      font-weight: 400;
-      letter-spacing: -0.03em;
-    }
-    .arr {
-      text-align: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 32px;
-    }
-    .coda { max-width: 1720px; font-size: 26px; }
-  </style>
+  <title>Слайд 15. Код: параллельное чтение</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>14</span></div>
-    <h1>П. 1.4. Инжиниринг контекста</h1>
-    <p class="lead">Среда модели до генерации токенов. Инжиниринг промптов формулирует запрос. Инжиниринг контекста собирает среду.</p>
-    <div class="scheme">
-      <div class="sources">
-        <article class="src">
-          <div class="k">Системный промпт</div>
-          <p>«Вы — технический писатель; тон — официальный и точный».</p>
-        </article>
-        <article class="src">
-          <div class="k">Внешние данные</div>
-          <p>Выход инструмента: доступность из календаря.</p>
-        </article>
-        <article class="src">
-          <div class="k">Неявные данные</div>
-          <p>Характер отношений с адресатом письма.</p>
-        </article>
-        <article class="src">
-          <div class="k">Retrieval</div>
-          <p>Заметки прошлых встреч.</p>
-        </article>
-      </div>
-      <div class="arr">→</div>
-      <article class="agent">
-        <div class="k">До ответа</div>
-        <h2>Агент</h2>
-        <p>Собирает операционную картину.</p>
-      </article>
-      <div class="arr">→</div>
-      <article class="out">
-        <div class="k">После</div>
-        <h2>Ответ</h2>
-        <p>С учётом истории и среды.</p>
-      </article>
-    </div>
-    <p class="coda">Задача — не просто ответить, а сформировать операционную картину для агента.</p>
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>15</span></div>
+    <h1>Код: параллельное чтение</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:21px">import asyncio
+
+async def read_all(case, readers, timeout=60):
+    async def one(name, read):
+        try:
+            return name, await asyncio.wait_for(read(case),
+                                                timeout)
+        except asyncio.TimeoutError:
+            return name, {&quot;status&quot;: &quot;failed&quot;,
+                          &quot;reason&quot;: f&quot;таймаут {timeout} с&quot;}
+    pairs = await asyncio.gather(
+        *(one(n, r) for n, r in readers.items()))
+    return dict(pairs)      # ждём всех; упавший — с причиной</pre></div><div class="stack"><article class="card "><div class="label">gather</div><h2>Барьер</h2><p>Возвращает, когда закончились все части — успешно или по таймауту.</p></article><article class="card "><div class="label">wait_for</div><h2>Таймаут на каждую часть</h2><p>Один медленный источник не задерживает сводку дольше предела.</p></article><article class="card "><div class="label">Независимость</div><h2>Части не читают друг друга</h2><p>Параллельно идёт только то, что не зависит от результатов соседей. Иначе это цепочка.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

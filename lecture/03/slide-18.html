@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Код: цикл с пределом</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>18</span></div>
+    <h1>Код: цикл с пределом</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">def refine(draft, write, critic, checklist, max_rounds=2):
+    for _ in range(max_rounds):
+        remarks = critic(draft, checklist)   # только пакет и перечень
+        if not remarks:
+            return draft, []
+        draft = write(draft, remarks)
+    return draft, critic(draft, checklist)   # остаток — врачу
+
+CHECKLIST = [
+    &quot;у каждого утверждения есть ссылка на запись&quot;,
+    &quot;board_date — дата или «не назначена», не выдумка&quot;,
+    &quot;две даты в источниках — спор в open_questions&quot;,
+    &quot;есть вопросы к консилиуму&quot;,
+]</pre></div><div class="stack"><article class="card "><div class="label">max_rounds</div><h2>Предел в коде</h2><p>Два круга. После них цикл не продолжается, что бы ни сказал критик.</p></article><article class="card "><div class="label">Возврат</div><h2>Пакет и остаток</h2><p>Врач получает и черновик, и замечания, которые не сняты. Ничего не прячем.</p></article><article class="card "><div class="label">Перечень</div><h2>Четвёртый пункт — спор</h2><p>Спор дат — пункт перечня, а не стиль. Его критик обязан проверить.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

@@ -2,59 +2,30 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 12. П. 1.2. Сценарии</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 42px; }
-    .lead { max-width: 1720px; font-size: 22px; }
-    table { margin-top: 18px; }
-    th { font-size: 14px; }
-    td { padding: 10px 20px 10px 0; font-size: 20px; }
-    td strong { font-size: 24px; }
-  </style>
+  <title>Слайд 12. Код: маршрутизатор</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>12</span></div>
-    <h1>П. 1.2. Сценарии одного паттерна</h1>
-    <p class="lead">Цепочка промптов режет задачу на последовательные шаги. В главе семь сценариев.</p>
-    <table>
-      <tr><th>Сценарий</th><th>Цепочка</th></tr>
-      <tr>
-        <td><strong>Контур обработки информации</strong></td>
-        <td>Текст → суммаризация → сущности → база → отчёт</td>
-      </tr>
-      <tr>
-        <td><strong>Ответы на сложные вопросы</strong></td>
-        <td>Подзадачи → исследование каждой → синтез ответа</td>
-      </tr>
-      <tr>
-        <td><strong>Извлечение и трансформация данных</strong></td>
-        <td>Поля → проверка → условный промпт → внешний инструмент</td>
-      </tr>
-      <tr>
-        <td><strong>Генерация контента</strong></td>
-        <td>Идеи → план → разделы → редактура</td>
-      </tr>
-      <tr>
-        <td><strong>Разговорные агенты с состоянием</strong></td>
-        <td>Интент и сущности → состояние диалога → следующий промпт</td>
-      </tr>
-      <tr>
-        <td><strong>Генерация и улучшение кода</strong></td>
-        <td>Псевдокод → код → проверка → переписывание → тесты</td>
-      </tr>
-      <tr>
-        <td><strong>Мультимодальные рассуждения</strong></td>
-        <td>Текст изображения → подписи → таблица</td>
-      </tr>
-    </table>
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>12</span></div>
+    <h1>Код: маршрутизатор</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">ROUTES = {&quot;wait&quot;, &quot;assemble&quot;, &quot;doctor_now&quot;}
+
+def route(case, classify, threshold=0.8):
+    if case.get(&quot;red_flags&quot;):            # правило раньше модели
+        return &quot;doctor_now&quot;, &quot;правило: красный флаг&quot;
+    label, p = classify(case)            # классификатор или LLM
+    if label not in ROUTES:              # ветки нет в коде
+        return &quot;doctor_now&quot;, f&quot;неизвестная ветка {label}&quot;
+    if p &lt; threshold:                    # не уверен — к человеку
+        return &quot;doctor_now&quot;, f&quot;неуверенно: {label} {p:.2f}&quot;
+    return label, f&quot;{label} {p:.2f}&quot;</pre></div><div class="stack"><article class="card "><div class="label">Порядок</div><h2>Правило первым</h2><p>Красный флаг не должен зависеть от того, как модель поняла текст.</p></article><article class="card "><div class="label">Закрытый список</div><h2>ROUTES</h2><p>Модель может вернуть любую строку. Ветка, которой нет в коде, — тоже повод позвать врача.</p></article><article class="card "><div class="label">Причина</div><h2>Вторая строка ответа</h2><p>Маршрутизатор возвращает не только ветку, но и почему. Это строка трассы (лекция 13).</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>
