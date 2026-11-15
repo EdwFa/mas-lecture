@@ -63,13 +63,13 @@
     '<a href="../04/slide-01.html?v=51">Лекция 4. Взаимодействие агентов с внешними системами</a>',
     '<a href="../05/slide-01.html?v=46">Лекция 5. Агенты с памятью, управление памятью</a>',
     '<a href="../06/slide-01.html?v=20">Лекция 6. MCP: как агент подключается к системам</a>',
-    '<a href="../07/slide-01.html?v=20">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
+    '<a href="../07/slide-01.html?v=21">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
     '<a href="../08/slide-01.html?v=20">Лекция 8. RAG из модулей</a>',
     '<a href="../09/slide-01.html?v=20">Лекция 9. Оркестрация RAG</a>',
     '<a href="../10/slide-01.html?v=5">Лекция 10. Архитектура быстрых решений</a>',
     '<a href="../11/slide-01.html?v=3">Лекция 11. Эмбеддинг чанка</a>',
     '<a href="../12/slide-01.html?v=3">Лекция 12. Альтернативы чанкингу</a>',
-    '<a href="../13/slide-01.html?v=1">Лекция 13. Harness агента</a>',
+    '<a href="../13/slide-01.html?v=2">Лекция 13. Harness агента</a>',
     '<a href="../14/slide-01.html?v=1">Лекция 14. Скиллы агента</a>',
     '<a href="../15/slide-01.html?v=1">Лекция 15. Передача между агентами</a>',
     '<a href="../16/slide-01.html?v=1">Лекция 16. A2A и надёжное исполнение</a>',
@@ -105,7 +105,7 @@
   const practicumPop = document.querySelector("#deck-practicum-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=20";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=21";
   }
 
   count.textContent = n + " / " + TOTAL;
