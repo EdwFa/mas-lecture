@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Практикум</title>
+  <style>
+    body { margin: 0; background: #f3efe6; color: #1c1915; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    main { max-width: 1120px; margin: 0 auto; padding: 72px 48px 80px; }
+    .kicker { margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5e6872; }
+    h1 { margin: 18px 0 0; font-family: Georgia, "Iowan Old Style", serif; font-size: 56px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; }
+    h2 { margin: 56px 0 0; font-family: Georgia, "Iowan Old Style", serif; font-size: 32px; font-weight: 400; letter-spacing: -0.02em; }
+    .lead, p, li { font-size: 19px; line-height: 1.5; color: #243038; }
+    .lead { margin: 28px 0 0; font-size: 21px; }
+    p { margin: 16px 0 0; }
+    ul { margin: 12px 0 0; padding-left: 1.25em; } li { margin-top: 6px; }
+    a { color: #1c1915; }
+    code { font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; background: #e8e2d6; padding: 1px 5px; }
+    pre { background: #e8e2d6; padding: 16px 20px; font-size: 16px; line-height: 1.5; overflow-x: auto; border-left: 3px solid #1c1915; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th { text-align: left; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5e6872; font-weight: 500; padding: 8px 12px 8px 0; border-bottom: 1px solid #1c1915; }
+    td { font-size: 16px; line-height: 1.45; color: #243038; padding: 12px 12px 12px 0; border-bottom: 1px solid #d9d3c7; vertical-align: top; }
+    td.n { font-family: Georgia, serif; font-size: 22px; width: 44px; color: #1c1915; }
+    td.t { font-family: Georgia, serif; font-size: 19px; color: #1c1915; width: 24%; }
+    td.r { width: 22%; }
+    .note { font-size: 16px; color: #5e6872; }
+    footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid #d9d3c7; font-size: 16px; color: #3e4650; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="kicker">Программная инженерия МАС</p>
+    <h1>Практикум</h1>
+    <p class="lead">Практикум идёт за лекциями: на каждой лекции последний слайд — задание. Почти все задания строятся на одном учебном случае P-0042 — агент готовит пакет к онкологическому консилиуму — и на одном каркасе кода. К защите у команды складывается своя работающая система, а не набор отдельных упражнений.</p>
+
+    <h2>Как устроено</h2>
+    <ul>
+      <li><strong>Один репозиторий на команду</strong> — копия <a href="https://github.com/EdwFa/MAS/tree/main/P-0042">каркаса P-0042</a>. Каждое задание — отдельная ветка и pull request с тестами.</li>
+      <li><strong>Модель только локальная</strong> (Ollama, vLLM, llama.cpp): данные пациента не покидают контур. Для тестов модель заменяют заглушкой.</li>
+      <li><strong>Данные синтетические</strong>: пять вымышленных пациентов, документы, хронология по дням, учебные рекомендации. Описание случая и заложенных ловушек — в <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/data/README.md">data/README.md</a>.</li>
+      <li><strong>Проверка числом</strong>: <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/eval/README.md">наборы оценки</a> — 44 вопроса с эталонами, 9 атак, эталонные пакеты врача.</li>
+    </ul>
+    <p>Подробно о каркасе — <a href="p0042.html">Каркас P-0042</a>.</p>
+
+    <h2>Занятия</h2>
+    <table>
+      <thead><tr><th>№</th><th>Тема</th><th>Что делают</th><th>Что сдают</th><th>Код и данные</th></tr></thead>
+      <tbody>
+      <tr><td class="n">0</td><td class="t"><a href="../01/slide-01.html">Окружение и случай</a></td><td>Поставить Python и локальную модель, запустить каркас и тесты, прочитать случай P-0042. Записать назначение системы одной фразой и предел, нарисовать первый граф агентов.</td><td class="r">вывод <code>check_env.py</code>; README с назначением и пределом; граф</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/check_env.py">check_env.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/data/README.md">описание случая</a></td></tr>
+      <tr><td class="n">2</td><td class="t"><a href="../02/slide-01.html">Сборка модели</a></td><td>Пройти сборку трансформера по шагам и поработать с ассистентом: токены, внимание, блок, генерация.</td><td class="r">по заданиям на страницах сборки</td><td class="r"><a href="../../transformer/build/">Сборка модели</a>, <a href="../../transformer/assistant.html">Ассистент</a></td></tr>
+      <tr><td class="n">3</td><td class="t"><a href="../03/slide-25.html">Четыре паттерна</a></td><td>Цепочка с проверкой схемы, маршрут с правилом и порогом, параллельный сбор с таймаутом, доработка с пределом кругов. Модель можно заменить заглушкой.</td><td class="r"><code>chain.py</code>, <code>router.py</code>, <code>readers.py</code>, <code>refine.py</code>, 6 тестов</td><td class="r"><a href="patterns.html">Базовые паттерны</a>, <a href="routing.html">Маршрутизация</a></td></tr>
+      <tr><td class="n">4</td><td class="t"><a href="../04/slide-26.html">Инструменты и план</a></td><td>Агент с тремя инструментами и заглушкой МИС: описания, диспетчер (имя → схема → политика → вызов), план с перепланированием.</td><td class="r">код, тесты, трасса случая с перепланированием</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/tools.py">tools.py</a></td></tr>
+      <tr><td class="n">5</td><td class="t"><a href="../05/slide-25.html">Память</a></td><td>Ссылка, а не копия; пространство имён на случай; три дня работы над пакетом; правки инструкций только через ревью.</td><td class="r">код, тесты, пространства имён со сроками хранения</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/memory.py">memory.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/data/timeline_P-0042.jsonl">хронология</a></td></tr>
+      <tr><td class="n">6</td><td class="t"><a href="../06/slide-26.html">MCP-сервер</a></td><td>Свой сервер p0042-fhir: ресурсы карты, расчёт СКФ, заготовка; отпечатки инструментов на стороне хоста; запись через подтверждение врача.</td><td class="r">код, тесты, <code>SECURITY.md</code></td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/server.py">server.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/admit.py">admit.py</a>, <a href="mcp.html">калькуляторы MCP</a></td></tr>
+      <tr><td class="n">7</td><td class="t"><a href="../07/slide-30.html">Минимальный RAG</a></td><td>База фрагментов учебных рекомендаций с id, источником и версией; поиск; промпт со ссылками; проверка ссылок.</td><td class="r">код, recall@4, доля ответов с корректными ссылками</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/data/guidelines.md">учебные рекомендации</a></td></tr>
+      <tr><td class="n">8</td><td class="t"><a href="../08/slide-23.html">RAG из модулей</a></td><td>Нарезка по пунктам с УУР/УДД, гибридный поиск с RRF и фильтром версий, отбор по бюджету, метрика каждого модуля.</td><td class="r">код, таблица метрик, страница «какой модуль добавили и почему»</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/rag.py">rag.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/eval/README.md">наборы оценки</a></td></tr>
+      <tr><td class="n">9</td><td class="t"><a href="../09/slide-24.html">Оркестрация RAG</a></td><td>Маршрут по сложности, параллельные ветви, оценка найденного, цикл с бюджетом; сравнение с прямой цепью по видам вопросов.</td><td class="r">код, таблица сравнения, трассы трёх самых долгих вопросов</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/orchestrate.py">orchestrate.py</a></td></tr>
+      <tr><td class="n">10</td><td class="t"><a href="../10/slide-31.html">Быстрый фильтр</a></td><td>Фильтр «вопрос — фрагмент» с калиброванной уверенностью для конвейера по болезни Фабри.</td><td class="r">код, три числа, трасса отброшенного запроса</td><td class="r">учебные PDF по болезни Фабри — у преподавателя</td></tr>
+      <tr><td class="n">11</td><td class="t"><a href="../11/slide-24.html">Эмбеддинг чанка</a></td><td>Индекс протоколов по болезни Фабри: нарезка, векторы, проверка поиска.</td><td class="r">код, recall@10, два примера расхождения нарезок</td><td class="r">те же PDF</td></tr>
+      <tr><td class="n">12</td><td class="t"><a href="../12/slide-26.html">Альтернативы чанкингу</a></td><td>Улучшить нарезку индекса лекции 11 и доказать это числом.</td><td class="r">таблица из трёх строк, код, пять прочитанных справок</td><td class="r">те же PDF</td></tr>
+      <tr><td class="n">13</td><td class="t"><a href="../13/slide-37.html">Мини-harness</a></td><td>Около 150 строк: цикл с лимитом шагов, реестр инструментов с правами, пауза врача, трасса.</td><td class="r">код, таблица прав, трасса прогона</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/harness.py">harness.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/trace.py">trace.py</a></td></tr>
+      <tr><td class="n">14</td><td class="t"><a href="../14/slide-26.html">Скилл</a></td><td>Скилл package-check для мини-harness: SKILL.md, скрипт проверки, загрузка по уровням.</td><td class="r">папка скилла, две таблицы, трасса со сработавшим скиллом</td><td class="r">мини-harness лекции 13</td></tr>
+      <tr><td class="n">15</td><td class="t"><a href="../15/slide-32.html">Передача между агентами</a></td><td>Оркестратор с четырьмя читателями и критиком; контракты артефактов; тест потери поля.</td><td class="r">код, тесты, замер, трасса-дерево</td><td class="r">мини-harness лекций 13–14</td></tr>
+      <tr><td class="n">16</td><td class="t"><a href="../16/slide-30.html">A2A и надёжность</a></td><td>Внешняя лаборатория по A2A: задача, статусы, уведомления; перезапуск и повтор без дубля записи.</td><td class="r">код, тесты, трасса с перезапуском и дублем уведомления</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/data/timeline_P-0042.jsonl">уведомление BRCA в среду (дважды)</a></td></tr>
+      <tr><td class="n">17</td><td class="t"><a href="../17/slide-29.html">Безопасность</a></td><td>Опасности, правило двух, пять уровней проверки, атаки, матрица прослеживаемости.</td><td class="r">пять файлов; матрица без ссылки на тест не принимается</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/eval/attacks.jsonl">набор атак</a></td></tr>
+      <tr><td class="n">18</td><td class="t"><a href="../18/slide-24.html">Готовность к пилоту</a></td><td>Релиз как набор версий, проверка релиза, тихий режим против пакета врача, дневные метрики, RUNBOOK.</td><td class="r"><code>release.yaml</code>, проверка, тихий режим, метрики, RUNBOOK</td><td class="r"><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/ops.py">ops.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/eval/doctor_packages.jsonl">пакеты врача</a></td></tr>
+      <tr><td class="n">19</td><td class="t"><a href="../19/slide-01.html">Защита</a></td><td>Показывают готовность к пилоту на своём репозитории: граф, права, контракты, трасса, тесты, матрица, остаточный риск.</td><td class="r">репозиторий команды за три дня до защиты</td><td class="r"><a href="../19/slide-02.html">что сдают</a></td></tr>
+      </tbody>
+    </table>
+    <p class="note">Номер — лекция, к которой относится задание. Название темы ведёт на слайд с заданием. Занятия 10–12 идут на отдельном корпусе по болезни Фабри: там учатся поиску на больших PDF.</p>
+
+    <footer><span>Программная инженерия мультиагентных систем в клинической медицине</span><span>осень 2026 · © E. Fartushny · MIT</span></footer>
+  </main>
+</body>
+</html>
