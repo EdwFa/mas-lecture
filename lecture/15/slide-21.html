@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 21. Отказ субагента</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 15. Передача между агентами</span><span>21</span></div>
+    <h1>Отказ субагента</h1>
+    <p class="lead">Лекция 13: ошибка — тоже наблюдение. Для субагента то же правило: оркестратор получает отказ как данные.</p><table><colgroup><col style="width:24%"><col style="width:38%"><col style="width:38%"></colgroup><thead><tr><th>Что случилось</th><th>Что видит оркестратор</th><th>Что делает</th></tr></thead><tbody><tr><td><strong>Таймаут</strong></td><td>status: failed, reason</td><td>в пакет — «лаборатория не ответила», в open_questions</td></tr><tr><td><strong>Ответ не по схеме</strong></td><td>замечание внутри субагента, затем failed</td><td>один повтор задачи, не больше</td></tr><tr><td><strong>Ничего не найдено</strong></td><td>status: ok, items: [], open: [«Ki-67 не найден»]</td><td>это факт, не ошибка — в пакет</td></tr><tr><td><strong>Исчерпан бюджет</strong></td><td>status: partial</td><td>берёт что есть, помечает неполноту</td></tr><tr><td><strong>Нужно уточнение</strong></td><td>вопрос в open</td><td>спрашивает врача сам — на паузе</td></tr></tbody></table><p class="coda">Повторять чтение безопасно — оно ничего не меняет. Повтор записи — другая история: лекция 16.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Код: spawn_subagent</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 15. Передача между агентами</span><span>18</span></div>
+    <h1>Код: spawn_subagent</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:18px">import json, jsonschema
+
+def spawn_subagent(task, contract, tools, model, max_turns=8):
+    &quot;&quot;&quot;Своё окно, свои инструменты, ответ — только по схеме.&quot;&quot;&quot;
+    window = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: brief(task, contract)}]
+    for _ in range(max_turns):
+        reply = model(window, tools)          # цикл лекции 13
+        if reply.tool_calls:                  # права, хуки, трасса —
+            window += run_tools(reply.tool_calls, tools)   # как у главного
+            continue
+        try:
+            art = json.loads(reply.text)
+            jsonschema.validate(art, contract)
+            return art                        # наверх — только артефакт
+        except (ValueError, jsonschema.ValidationError) as e:
+            window.append({&quot;role&quot;: &quot;user&quot;,
+                           &quot;content&quot;: f&quot;Ответ не по схеме: {e}. Верни JSON.&quot;})
+    return {&quot;status&quot;: &quot;failed&quot;,
+            &quot;reason&quot;: f&quot;нет ответа по схеме за {max_turns} оборотов&quot;}
+
+def brief(task, contract):
+    return json.dumps({**task, &quot;output_schema&quot;: contract},
+                      ensure_ascii=False)</pre></div><div class="stack"><article class="card "><div class="label">Окно</div><h2>Новый список</h2><p>Субагент не получает окно оркестратора. Только задачу и схему ответа.</p></article><article class="card "><div class="label">Проверка</div><h2>jsonschema</h2><p>Ответ не по схеме — замечание в окно субагента. Наверх неправильный артефакт не уходит.</p></article><article class="card "><div class="label">Предел</div><h2>max_turns</h2><p>Исчерпан — status: failed с причиной. Оркестратор решает, что с этим делать (слайд 21).</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
