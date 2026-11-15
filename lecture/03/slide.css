@@ -9,17 +9,19 @@ html, body {
   width: 1920px;
   height: 1080px;
   box-sizing: border-box;
-  padding: 40px 72px 108px;
+  padding: 48px 88px 104px;
   display: flex;
   flex-direction: column;
   background: #f7f4ee;
   color: #1c1915;
   font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  overflow: hidden;
 }
 
 .kicker {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: 500;
@@ -29,39 +31,149 @@ html, body {
 }
 
 h1 {
-  margin: 14px 0 0;
-  font-size: 54px;
+  margin: 22px 0 0;
+  font-size: 60px;
   font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.02;
+  line-height: 1.04;
 }
 
 .lead {
-  margin: 14px 0 0;
-  max-width: 1680px;
+  margin: 18px 0 0;
+  max-width: 1600px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  line-height: 1.35;
+  font-size: 26px;
+  line-height: 1.38;
   color: #243038;
 }
 
+.label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5e6872;
+}
+
 .line {
-  margin-top: 36px;
-  width: 280px;
+  margin-top: 40px;
+  width: 520px;
   border-top: 2px solid #1c1915;
 }
 
+/* Колонки с карточками */
+.cols {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 2), 1fr);
+  gap: 48px;
+}
+
+.card {
+  border-top: 1px solid #1c1915;
+  padding-top: 16px;
+}
+
+.card .label { margin-bottom: 10px; }
+
+.card h2 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.card p, .note {
+  margin: 12px 0 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #3e4650;
+}
+
+.card ul {
+  margin: 12px 0 0;
+  padding-left: 26px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #3e4650;
+}
+
+.card ul li + li { margin-top: 6px; }
+
+.card .result {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #e4dfd4;
+  font-family: Georgia, "Iowan Old Style", serif;
+  font-size: 28px;
+  color: #1c1915;
+}
+
+.card.muted h2, .card.muted p, .card.muted li { color: #7a8088; }
+.card.muted { border-top-color: #b7b1a6; }
+
+/* Нумерованные строки, как на слайде 3 лекции 1 */
+.frames {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 1), 1fr);
+  column-gap: 72px;
+}
+
+.frame {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 6px 18px;
+  align-items: baseline;
+  padding: 16px 0 18px;
+  border-bottom: 1px solid #e4dfd4;
+}
+
+.num {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #5e6872;
+}
+
+.frame h2 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.frame p {
+  grid-column: 2;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 23px;
+  line-height: 1.38;
+  color: #3e4650;
+}
+
+.frames.tight .frame { padding: 11px 0 13px; }
+.frames.tight .frame h2 { font-size: 30px; }
+.frames.tight .frame p { font-size: 22px; }
+
+/* Таблица */
 table {
   width: 100%;
-  margin-top: 28px;
+  margin-top: 32px;
   border-collapse: collapse;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 th {
-  padding: 0 24px 12px 0;
+  padding: 0 28px 12px 0;
   border-bottom: 1px solid #1c1915;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -70,10 +182,10 @@ th {
 }
 
 td {
-  padding: 16px 24px 16px 0;
+  padding: 15px 28px 15px 0;
   border-bottom: 1px solid #e4dfd4;
   font-size: 24px;
-  line-height: 1.3;
+  line-height: 1.32;
   color: #243038;
   vertical-align: top;
 }
@@ -86,46 +198,219 @@ td strong {
   color: #1c1915;
 }
 
-.formula {
-  margin: 28px 0 0;
-  font-size: 32px;
-  letter-spacing: -0.02em;
+.tag {
+  display: inline-block;
+  padding: 3px 12px 4px;
+  border: 1px solid #1c1915;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1c1915;
+  white-space: nowrap;
 }
 
-.cols {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+.tag.ask { background: #ece6da; }
+.tag.deny { background: #1c1915; color: #f7f4ee; }
+
+/* Поток слева направо */
+.flow {
+  margin-top: 44px;
+  display: flex;
+  align-items: stretch;
 }
 
-.card {
-  border-top: 1px solid #1c1915;
-  padding-top: 14px;
+.step {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 16px 0 0;
+  border-top: 2px solid #1c1915;
 }
 
-.card h2 {
-  margin: 0;
+.step.soft { border-top: 1px solid #b7b1a6; }
+
+.step h2 {
+  margin: 8px 0 0;
   font-size: 32px;
   font-weight: 400;
   letter-spacing: -0.02em;
+  line-height: 1.14;
 }
 
-.card p, .note {
+.step p {
   margin: 10px 0 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;
-  line-height: 1.35;
+  line-height: 1.38;
   color: #3e4650;
 }
 
+.arrow {
+  flex: 0 0 64px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 44px;
+}
+
+/* Код */
+pre.code {
+  margin: 0;
+  padding: 26px 30px;
+  background: #ece6da;
+  border-left: 2px solid #1c1915;
+  font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 21px;
+  line-height: 1.5;
+  color: #1c1915;
+  white-space: pre;
+  overflow: hidden;
+}
+
+pre.code .c { color: #7a8088; }
+pre.code .k { color: #5e6872; }
+
+.split {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: var(--left, 1fr) var(--right, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.split > .stack { display: flex; flex-direction: column; gap: 28px; }
+
+/* Крупная формула */
+.formula {
+  margin: 56px 0 0;
+  font-size: 104px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.formula span { color: #7a8088; }
+
+/* Столбик окна */
+.budget {
+  margin-top: 56px;
+  display: flex;
+  height: 120px;
+  border: 1px solid #1c1915;
+}
+
+.budget > div {
+  box-sizing: border-box;
+  padding: 12px 8px 0;
+  border-right: 1px solid #1c1915;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.25;
+  color: #1c1915;
+  overflow: hidden;
+}
+
+.budget > div:last-child { border-right: 0; }
+.budget .b1 { background: #ddd5c6; }
+.budget .b2 { background: #e6dfd2; }
+.budget .b3 { background: #ece6da; }
+.budget .b4 { background: #f1ece3; }
+.budget .b5 { background: #f7f4ee; }
+.budget .free {
+  background: repeating-linear-gradient(135deg, #f7f4ee 0 10px, #ece6da 10px 11px);
+  color: #5e6872;
+}
+
+.budget-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #5e6872;
+}
+
+/* Стопка слоёв окна */
+.layers { display: flex; flex-direction: column; gap: 10px; }
+
+.layer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 16px 24px;
+  border: 1px solid #1c1915;
+  font-size: 30px;
+  letter-spacing: -0.01em;
+}
+
+.layer small {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5e6872;
+}
+
+.layer.s1 { background: #ddd5c6; }
+.layer.s2 { background: #e6dfd2; }
+.layer.s3 { background: #ece6da; }
+.layer.s4 { background: #f3efe6; }
+.layer.s5 { background: #f7f4ee; border-style: dashed; }
+
+/* Ось оборотов */
+.turns {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 12px;
+}
+
+.turn {
+  height: 110px;
+  border: 1px solid #1c1915;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #3e4650;
+}
+
+.turn b {
+  font-family: Georgia, "Iowan Old Style", serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: #1c1915;
+}
+
+.turn.done { background: #ece6da; }
+.turn.snap { background: #ddd5c6; border-width: 2px; }
+.turn.fail { background: #1c1915; color: #f7f4ee; }
+.turn.fail b { color: #f7f4ee; }
+.turn.todo { border-style: dashed; color: #7a8088; }
+
+blockquote.carta {
+  margin: 0;
+  padding: 26px 30px;
+  background: #ece6da;
+  border-left: 2px solid #1c1915;
+  font-size: 30px;
+  line-height: 1.4;
+}
+
+blockquote.carta .label { display: block; margin-bottom: 14px; }
+blockquote.carta mark { background: #1c1915; color: #f7f4ee; padding: 0 6px; }
+
 .coda {
-  margin-top: 22px;
-  padding-top: 14px;
+  margin-top: 30px;
+  padding-top: 16px;
   border-top: 1px solid #d9d3c7;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 .spacer { flex: 1; }
@@ -142,13 +427,14 @@ footer {
 }
 
 .title-slide h1 {
-  margin-top: 180px;
-  font-size: 84px;
+  margin-top: 200px;
+  font-size: 120px;
+  line-height: 0.98;
   max-width: 1500px;
 }
 
 .title-slide .lead {
-  margin-top: 28px;
-  font-size: 28px;
-  max-width: 1400px;
+  margin-top: 36px;
+  font-size: 32px;
+  max-width: 1300px;
 }

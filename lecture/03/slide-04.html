@@ -2,66 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 3. Линейная цепочка</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 48px; }
-    .scheme { margin-top: 28px; width: 100%; height: 620px; }
-    .scheme text { font-family: Georgia, "Iowan Old Style", serif; }
-    .lbl {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 22px;
-      fill: #5e6872;
-    }
-  </style>
+  <title>Слайд 4. Четыре паттерна</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>03</span></div>
-    <h1>Линейная цепочка</h1>
-    <p class="lead">Выход шага становится входом следующего.</p>
-    <svg class="scheme" viewBox="0 0 1776 620" role="img" aria-label="Линейная цепочка: промпт, агент, выход, проверка, внешняя система, следующий промпт">
-      <defs>
-        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c1915"/>
-        </marker>
-      </defs>
-      <rect x="8" y="16" width="340" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-      <text x="178" y="86" text-anchor="middle" font-size="34">Промпт</text>
-      <path d="M 348 76 H 400" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
-
-      <rect x="408" y="16" width="340" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-      <text x="578" y="86" text-anchor="middle" font-size="34">Агент</text>
-      <path d="M 748 76 H 800" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
-
-      <rect x="808" y="16" width="340" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-      <text x="978" y="86" text-anchor="middle" font-size="34">Выход</text>
-      <path d="M 1148 76 H 1200" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
-
-      <rect x="1208" y="16" width="520" height="120" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-      <text x="1468" y="86" text-anchor="middle" font-size="34">Проверка</text>
-
-      <path d="M 1468 136 V 196 H 578 V 136" fill="none" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
-      <text class="lbl" x="1023" y="186" text-anchor="middle">отвергает выход и просит снова выполнить работу</text>
-
-      <path d="M 1468 196 V 292 H 458 V 360" fill="none" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
-      <text class="lbl" x="960" y="278" text-anchor="middle">валидированный выход</text>
-
-      <rect x="48" y="360" width="820" height="140" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-      <text x="458" y="422" text-anchor="middle" font-size="32">Агент считает</text>
-      <text x="458" y="464" text-anchor="middle" font-size="32">или ходит во внешнюю систему</text>
-
-      <path d="M 868 430 H 940" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"/>
-
-      <rect x="948" y="360" width="780" height="140" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/>
-      <text x="1338" y="444" text-anchor="middle" font-size="34">Следующий промпт</text>
-    </svg>
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>04</span></div>
+    <h1>Четыре паттерна</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 232" width="1744" height="232" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="412" height="230" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="206" y="40" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Цепочка</text><text x="206" y="66" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">шаг за шагом</text><rect x="40" y="120" width="90" height="50" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><polyline points="132,145 158,145" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="160" y="120" width="90" height="50" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><polyline points="252,145 278,145" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="280" y="120" width="90" height="50" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><rect x="444" y="0" width="412" height="230" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="650" y="40" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Маршрутизация</text><text x="650" y="66" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">выбор ветки</text><rect x="474" y="125" width="90" height="50" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><polyline points="566,150 680,90" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><rect x="684" y="72" width="130" height="36" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><polyline points="566,150 680,145" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><rect x="684" y="127" width="130" height="36" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1" opacity="1"/><polyline points="566,150 680,200" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><rect x="684" y="182" width="130" height="36" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><rect x="888" y="0" width="412" height="230" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="1094" y="40" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Параллельность</text><text x="1094" y="66" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">одновременно</text><polyline points="958,140 1024,95" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><rect x="1028" y="80" width="110" height="30" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><polyline points="1140,95 1204,140" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><polyline points="958,140 1024,135" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><rect x="1028" y="120" width="110" height="30" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><polyline points="1140,135 1204,140" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><polyline points="958,140 1024,175" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><rect x="1028" y="160" width="110" height="30" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><polyline points="1140,175 1204,140" fill="none" stroke="#5e6872" stroke-width="1.2" marker-end="url(#ahg)"/><rect x="908" y="120" width="50" height="40" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><rect x="1208" y="120" width="60" height="40" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.2" opacity="1"/><rect x="1332" y="0" width="412" height="230" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="1538" y="40" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Рефлексия</text><text x="1538" y="66" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">автор и критик</text><rect x="1372" y="120" width="130" height="56" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="1437" y="154" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">автор</text><rect x="1572" y="120" width="130" height="56" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="1637" y="154" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">критик</text><polyline points="1504,136 1570,136" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><polyline points="1570,162 1504,162" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="1538" y="210" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">≤ 2 круга</text></svg><div class="cols" style="--n:3;margin-top:32px"><article class="card "><div class="label">Общее</div><h2>Путь записан заранее</h2><p>Модель заполняет шаг, но не выбирает устройство пути. Порядок, ветки и число кругов — в коде.</p></article><article class="card "><div class="label">Источник</div><h2>Каталог паттернов</h2><p>Названия и сценарии — по книге А. Гулли «Agentic Design Patterns» и обзору Anthropic «Building effective agents».</p></article><article class="card "><div class="label">Отличие курса</div><h2>Клиника</h2><p>На каждом шаге спрашиваем: где здесь проверка, где порог человека и что увидит врач.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

@@ -2,64 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 3. 01. Цепочки агентов</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1720px; }
-    .pts {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px 40px;
-    }
-    .pt { border-top: 1px solid #1c1915; padding-top: 12px; }
-    .pt h2 {
-      margin: 0;
-      font-size: 30px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .pt p {
-      margin: 8px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 22px;
-      line-height: 1.35;
-      color: #243038;
-    }
-    .coda { max-width: 1720px; font-size: 26px; }
-  </style>
+  <title>Слайд 3. Кейс курса</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>03</span></div>
-    <h1>01. Цепочки агентов</h1>
-    <p class="lead">Второе имя паттерна — конвейер, pipeline. Стратегия «разделяй и властвуй»: сложная задача делится на подзадачи.</p>
-    <div class="pts">
-      <article class="pt">
-        <h2>Шаг</h2>
-        <p>У каждой подзадачи свой промпт. Выход шага подаётся на вход следующего. Это цепь зависимостей.</p>
-      </article>
-      <article class="pt">
-        <h2>Структурированный выход</h2>
-        <p>Между шагами задают JSON или XML. Свободный текст следующий промпт читает заново и может сломать цепочку.</p>
-      </article>
-      <article class="pt">
-        <h2>Роль и инструмент</h2>
-        <p>В промпт шага можно записать роль. На шаге модель может обратиться к внешней системе, API или базе.</p>
-      </article>
-      <article class="pt">
-        <h2>Один промпт</h2>
-        <p>Пропуск инструкций, дрейф контекста, накопление ошибок, галлюцинация из‑за когнитивной нагрузки.</p>
-      </article>
-    </div>
-    <p class="coda">Паттерн применяют, когда стадий несколько, между ними нужны схема или инструмент, или ход состоит из многих шагов.</p>
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>03</span></div>
+    <h1>Кейс курса</h1>
+    <p class="lead">Пакет к онкологическому консилиуму по учебной карте P-0042. Данные учебные, маршрут и перечень проверок даёт кафедра.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 302" width="1744" height="302" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="640" height="300" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="20" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ВХОД · УЧЕБНАЯ КАРТА P-0042</text><text x="20" y="74" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">Condition · диагноз</text><text x="20" y="118" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">Observation · маркеры</text><text x="20" y="162" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">ImagingStudy · КТ</text><text x="20" y="206" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">MedicationRequest · терапия</text><text x="20" y="250" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19" text-anchor="start" fill="#5e6872" font-weight="400">Encounter · две даты консилиума</text><polyline points="644,150 780,150" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/><text x="712" y="136" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">система</text><rect x="784" y="0" width="560" height="300" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="804" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ВЫХОД · ПАКЕТ К КОНСИЛИУМУ</text><text x="804" y="74" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">диагноз со ссылкой</text><text x="804" y="118" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">маркеры со ссылками</text><text x="804" y="162" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">снимок со ссылкой</text><text x="804" y="206" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">board_date: не назначена</text><text x="804" y="250" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" text-anchor="start" fill="#1c1915" font-weight="400">open_questions: спор дат</text><polyline points="1348,150 1460,150" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/><rect x="1464" y="100" width="280" height="100" rx="0" fill="#1c1915" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1604.0" y="146.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#f7f4ee" font-weight="400">Врач</text><text x="1604.0" y="174.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">подписывает</text></svg><p class="coda">Система готовит пакет, где у каждой фразы есть ссылка на запись, а спор дат не стёрт. Диагноз и назначение остаются у врача.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>
