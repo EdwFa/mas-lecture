@@ -74,7 +74,7 @@
     '<button type="button" id="deck-practicum-btn" aria-expanded="false" aria-haspopup="true">Практикум</button>',
     '<div class="deck-pop end" id="deck-practicum-pop" hidden>',
     '<a href="../practicum/index.html?v=4">Все занятия</a>',
-    '<a href="../practicum/p0042.html?v=2">Каркас P-0042</a>',
+    '<a href="../practicum/p0042.html?v=3">Каркас P-0042</a>',
     '<a href="../practicum/patterns.html?v=2">Базовые паттерны МАС</a>',
     '<a href="../practicum/mcp.html?v=1">Реализация MCP</a>',
     '<a href="../practicum/routing.html?v=2">Маршрутизация агентов</a>',
