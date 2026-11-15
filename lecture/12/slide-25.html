@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 25. Вопросы</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 12. Альтернативы чанкингу</span><span>25</span></div>
+    <h1>Вопросы</h1>
+    <div class="frames " style="--n:1;margin-top:36px"><div class="frame"><span class="num">01</span><h2>Нарезка</h2><p>Чем поздняя нарезка отличается от контекстных чанков и что нужно каждой?</p></div><div class="frame"><span class="num">02</span><h2>Контекст</h2><p>Что меняет FlashAttention, а что нет? Почему середина длинного промпта опасна?</p></div><div class="frame"><span class="num">03</span><h2>Граф</h2><p>Чем GraphRAG отличается от LightRAG и где граф выигрывает у векторного поиска?</p></div><div class="frame"><span class="num">04</span><h2>Дообучение</h2><p>Что задаёт ранг r и почему дообучение — плохой способ добавить факты?</p></div><div class="frame"><span class="num">05</span><h2>OKF</h2><p>Что хранит OKF, кто его правит и почему он не заменяет поиск?</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>
