@@ -2,14 +2,22 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 10. Окно — это бюджет</title>
+  <title>Слайд 10. Ошибка — тоже наблюдение</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 13. Harness агента</span><span>10</span></div>
-    <h1>Окно — это бюджет</h1>
-    <p class="lead">Пример раскладки окна на шаге черновика. Окно 128 тысяч токенов.</p><div class="budget"><div class="b1" style="width:3.1%">4k</div><div class="b2" style="width:2.3%">3k</div><div class="b3" style="width:4.7%">6k</div><div class="b4" style="width:18%">23k<br>история оборотов</div><div class="b5" style="width:46.9%">60k<br>результаты вызовов</div><div class="free" style="width:25%">32k<br>запас на ответ</div></div><div class="budget-scale"><span>0</span><span>128 000 токенов</span></div><table><colgroup><col style="width:30%"><col style="width:30%"><col style="width:40%"></colgroup><thead><tr><th>Слой</th><th>Кто кладёт</th><th>Чем опасен</th></tr></thead><tbody><tr><td><strong>Правила и роль · 4k</strong></td><td>harness, один раз</td><td>длинные правила вытесняют данные</td></tr><tr><td><strong>Инструкции проекта · 3k</strong></td><td>harness из файла</td><td>устаревают незаметно</td></tr><tr><td><strong>Описания инструментов · 6k</strong></td><td>реестр</td><td>сорок описаний — уже десятки тысяч токенов</td></tr><tr><td><strong>Результаты вызовов</strong></td><td>harness после каждого вызова</td><td>одна выписка съедает всё окно</td></tr></tbody></table><p class="coda">Каждый токен окна кто-то положил. Отвечает за каждый harness.</p>
+    <h1>Ошибка — тоже наблюдение</h1>
+    <div class="split" style="--left:760px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Результат, который вернётся в окно</div><pre class="code" style="">{
+  &quot;tool&quot;: &quot;fhir_read&quot;,
+  &quot;call_id&quot;: &quot;c-0412&quot;,
+  &quot;status&quot;: &quot;error&quot;,
+  &quot;code&quot;: 404,
+  &quot;message&quot;: &quot;DiagnosticReport/ct-118
+              не найден&quot;,
+  &quot;retryable&quot;: false
+}</pre></div><div class="stack"><article class="card "><div class="label">Harness делает</div><h2>Кладёт отказ в окно</h2><p>Модель видит причину и выбирает другой ход: поискать отчёт по дате, спросить врача.</p></article><article class="card "><div class="label">Повтор</div><h2>Только временные ошибки</h2><p>Таймаут и 503 — повтор с паузой, не больше трёх раз. 404 и 403 не повторяют.</p></article><article class="card "><div class="label">Harness не делает</div><h2>Не роняет и не скрывает</h2><p>Цикл не падает. Модели не оставляют пустое место, которое она заполнит догадкой.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
