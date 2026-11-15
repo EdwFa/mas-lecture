@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 20. Таблица прав пакета</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 13. Harness агента</span><span>20</span></div>
+    <h1>Таблица прав пакета</h1>
+    <table><colgroup><col style="width:32%"><col style="width:20%"><col style="width:18%"><col style="width:30%"></colgroup><thead><tr><th>Действие</th><th>Инструмент</th><th>Решение</th><th>Кто снимает «спросить»</th></tr></thead><tbody><tr><td><strong>Чтение ресурсов случая</strong></td><td>fhir_read</td><td><span class="tag allow">Разрешить</span></td><td>—</td></tr><tr><td><strong>Черновик пакета</strong></td><td>draft_write</td><td><span class="tag allow">Разрешить</span></td><td>—</td></tr><tr><td><strong>Запись в карту</strong></td><td>chart_write</td><td><span class="tag ask">Спросить</span></td><td>лечащий врач, подписью</td></tr><tr><td><strong>Дата консилиума</strong></td><td>schedule_set</td><td><span class="tag ask">Спросить</span></td><td>секретарь консилиума</td></tr><tr><td><strong>Внешняя сеть</strong></td><td>любой</td><td><span class="tag deny">Запретить</span></td><td>никто в рамках курса</td></tr><tr><td><strong>Другой пациент</strong></td><td>fhir_read</td><td><span class="tag deny">Запретить</span></td><td>никто</td></tr></tbody></table><p class="coda">Эту таблицу приносят на защиту. Её читает harness, а не модель.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
