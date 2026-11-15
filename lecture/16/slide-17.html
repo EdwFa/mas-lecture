@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 17. Надёжное исполнение</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 16. A2A и надёжное исполнение</span><span>17</span></div>
+    <h1>Надёжное исполнение</h1>
+    <p class="lead">Durable execution: прогресс сохраняется в контрольных точках, и после сбоя работа продолжается с последней из них.</p><table><colgroup><col style="width:28%"><col style="width:36%"><col style="width:36%"></colgroup><thead><tr><th></th><th>LangGraph</th><th>Temporal</th></tr></thead><tbody><tr><td><strong>Где состояние</strong></td><td>checkpointer по thread_id</td><td>история событий workflow</td></tr><tr><td><strong>Что повторяется</strong></td><td>узел после паузы — с начала</td><td>activity — пока не успех</td></tr><tr><td><strong>Где побочные эффекты</strong></td><td>в отдельных задачах (task)</td><td>в activity</td></tr><tr><td><strong>Требование к ним</strong></td><td>идемпотентность</td><td>идемпотентность</td></tr></tbody></table><p class="coda">Разные слова, одна идея: управляющий код детерминирован, побочные эффекты — отдельными шагами, и каждый такой шаг можно повторить.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

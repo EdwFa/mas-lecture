@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Тесты работы</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>18</span></div>
+    <h1>Тесты работы</h1>
+    <p class="lead">Скилл сработал — а сделал ли он то, что нужно? Набор случаев с известным ответом.</p><table><colgroup><col style="width:32%"><col style="width:28%"><col style="width:20%"><col style="width:20%"></colgroup><thead><tr><th>Пакет</th><th>Ожидаемо</th><th>Без скилла</th><th>Со скиллом</th></tr></thead><tbody><tr><td><strong>Полный</strong></td><td>ok</td><td>✓</td><td>✓</td></tr><tr><td><strong>Нет гистологии</strong></td><td>нет поля histology_ref</td><td>✓</td><td>✓</td></tr><tr><td><strong>Две даты консилиума</strong></td><td>спор в open_questions</td><td>✗ выбрал одну</td><td>✓</td></tr><tr><td><strong>Ссылка «ct-117» без типа</strong></td><td>не ссылка FHIR</td><td>✗</td><td>✓</td></tr><tr><td><strong>board_date: «не назначена»</strong></td><td>ok</td><td>✗ потребовал дату</td><td>✓</td></tr></tbody></table><p class="coda">Сравнивают с тем же агентом без скилла. Если разницы нет — скилл не нужен. Таблица — учебная, свою собирают на 10 пакетах.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 6. SKILL.md: frontmatter</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>06</span></div>
+    <h1>SKILL.md: frontmatter</h1>
+    <div class="split" style="--left:860px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Начало файла</div><pre class="code" style="font-size:21px">---
+name: package-check
+description: &gt;-
+  Проверяет пакет к онкологическому консилиуму:
+  обязательные поля, ссылки FHIR, спор дат.
+  Use when the user asks to check, validate or
+  review a board package («проверь пакет»,
+  «всё ли заполнено», «готов ли пакет»).
+license: Apache-2.0
+metadata:
+  owner: кафедра онкологии
+  version: &quot;1.2&quot;
+---</pre></div><div class="stack"><div class="frames " style="--n:1;margin-top:0"><div class="frame"><span class="num">01</span><h2>name</h2><p>Строчные буквы, цифры и дефис, до 64 символов. Совпадает с именем папки.</p></div><div class="frame"><span class="num">02</span><h2>description</h2><p>До 1024 символов. Что делает и когда звать. Это единственное, что модель видит до решения.</p></div><div class="frame"><span class="num">03</span><h2>Необязательные</h2><p>license, compatibility, metadata, allowed-tools. Чужие поля клиент проигнорирует.</p></div></div></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
