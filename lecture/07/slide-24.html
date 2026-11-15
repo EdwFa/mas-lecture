@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 24. RAG в агенте</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>24</span></div>
+    <h1>RAG в агенте</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Поиск как инструмент</div><pre class="code" style="font-size:20px">SEARCH = {
+  &quot;name&quot;: &quot;search_protocols&quot;,
+  &quot;description&quot;: &quot;Поиск по действующим протоколам кафедры. &quot;
+                 &quot;Возвращает фрагменты с id и версией.&quot;,
+  &quot;input_schema&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;query&quot;: {&quot;type&quot;: &quot;string&quot;},
+      &quot;k&quot;: {&quot;type&quot;: &quot;integer&quot;, &quot;minimum&quot;: 1, &quot;maximum&quot;: 8}},
+    &quot;required&quot;: [&quot;query&quot;],
+    &quot;additionalProperties&quot;: False}}</pre></div><div class="stack"><article class="card "><div class="label">Решение</div><h2>Агент сам решает, искать ли</h2><p>Может переформулировать запрос и искать повторно. Такой поиск называют агентным RAG.</p></article><article class="card "><div class="label">Права</div><h2>Только чтение</h2><p>Политика «разрешить», предел вызовов на оборот. Фильтр «только действующие» задаёт код, не модель.</p></article><article class="card "><div class="label">Доверие</div><h2>Фрагмент — данные</h2><p>Текст фрагмента — недоверенный вход. Инструкция внутри протокола не исполняется (лекции 13, 17).</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

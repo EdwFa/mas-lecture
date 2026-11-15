@@ -2,82 +2,33 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 12. Реализация MCP</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 42px; }
-    .lead { max-width: 1720px; }
-    .rows { margin-top: 18px; }
-    .row {
-      display: grid;
-      grid-template-columns: 56px 250px 1fr;
-      column-gap: 22px;
-      align-items: baseline;
-      border-top: 1px solid #1c1915;
-      padding: 13px 0 12px;
-    }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .row h2 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .row p {
-      margin: 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 21px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 18px; }
-  </style>
+  <title>Слайд 12. Ошибка — тоже ответ</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>12</span></div>
-    <h1>Реализация MCP</h1>
-    <p class="lead">Открытый порядок задаёт правила. Собрать сервер, вернуть ошибку и выбрать, где он стоит и как с ним говорят, — отдельная работа.</p>
-    <div class="rows">
-      <article class="row">
-        <div class="n">01</div>
-        <h2>Сборка</h2>
-        <p>Собрать клиент и сервер руками долго. Anthropic и FastMCP дают готовые библиотеки: однообразный код соединения берут они, остаётся описать данные и инструменты.</p>
-      </article>
-      <article class="row">
-        <div class="n">02</div>
-        <h2>Ошибки</h2>
-        <p>Сбой инструмента, молчащий сервер, неверный запрос — модель должна получить ясное сообщение. Тогда она видит, что сломалось, и может пойти другим путём.</p>
-      </article>
-      <article class="row">
-        <div class="n">03</div>
-        <h2>Где стоит сервер</h2>
-        <p>На одной машине с агентом — быстрее, и закрытые данные не уходят наружу. На другой машине одни и те же инструменты доступны многим в организации.</p>
-      </article>
-      <article class="row">
-        <div class="n">04</div>
-        <h2>Сразу или пакетом</h2>
-        <p>Живой разговор ждёт инструмент сразу. Разбор большого набора записей идёт пачками. Порядок тот же, режим выбирают под задачу.</p>
-      </article>
-      <article class="row">
-        <div class="n">05</div>
-        <h2>Как передают</h2>
-        <p>На одной машине — JSON-RPC через стандартный ввод и вывод. Между машинами — потоковый HTTP и события сервера (SSE): канал остаётся открытым, ответы приходят по мере готовности.</p>
-      </article>
-    </div>
-    <p class="coda">Библиотека ускоряет сборку. Ошибку видит модель. Место сервера, режим и способ передачи выбирают под задачу.</p>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>12</span></div>
+    <h1>Ошибка — тоже ответ</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px"># запрос модели
+{&quot;name&quot;: &quot;egfr&quot;,
+ &quot;arguments&quot;: {&quot;sex&quot;: &quot;female&quot;, &quot;age&quot;: 67,
+               &quot;creatinine&quot;: 1.1, &quot;unit&quot;: &quot;umol/L&quot;}}
+
+# ответ сервера: результат с isError
+{&quot;isError&quot;: true,
+ &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;,
+   &quot;text&quot;: &quot;креатинин 0.01 мг/дл вне 0,05–40&quot;}]}
+
+# следующий шаг модели
+{&quot;name&quot;: &quot;egfr&quot;,
+ &quot;arguments&quot;: {&quot;sex&quot;: &quot;female&quot;, &quot;age&quot;: 67,
+               &quot;creatinine&quot;: 1.1, &quot;unit&quot;: &quot;mg/dL&quot;}}</pre></div><div class="stack"><article class="card "><div class="label">Что случилось</div><h2>Перепутаны единицы</h2><p>1,1 — это мг/дл, а модель указала мкмоль/л. Сервер не упал и не посчитал чушь.</p></article><article class="card "><div class="label">Два вида ошибок</div><h2>Ошибка инструмента и ошибка протокола</h2><p>Неверные аргументы возвращаются как результат с isError — модель видит причину и исправляется. Сломанный запрос — ошибка протокола, её видит клиент.</p></article><article class="card "><div class="label">Чего не делать</div><h2>Не прятать причину</h2><p>«Ошибка 500» модели не поможет. Но и стек вызовов с путями сервера ей показывать не нужно.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

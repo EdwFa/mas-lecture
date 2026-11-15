@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Как проверить RAG</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>23</span></div>
+    <h1>Как проверить RAG</h1>
+    <table><colgroup><col style="width:18%"><col style="width:34%"><col style="width:48%"></colgroup><thead><tr><th>Что проверяем</th><th>Метрика</th><th>Как считают</th></tr></thead><tbody><tr><td><strong>Поиск</strong></td><td>recall@k</td><td>20 вопросов с известным нужным фрагментом: в какой доле он попал в top-k</td></tr><tr><td><strong>Ссылки</strong></td><td>доля ответов без unknown и uncited</td><td>кодом, слайд 21</td></tr><tr><td><strong>Верность</strong></td><td>доля фраз, подтверждённых фрагментом</td><td>врач или откалиброванный судья, лекция 17</td></tr><tr><td><strong>Отказ</strong></td><td>доля «нет в базе» на вопросах вне базы</td><td>5 вопросов, ответа на которые в протоколе нет</td></tr></tbody></table><p class="coda">Поиск проверяют отдельно от генерации. Если recall@k низкий, модель ни при чём — ей просто не дали нужный фрагмент.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

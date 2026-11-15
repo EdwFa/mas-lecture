@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 26. RAG, дообучение или длинный контекст</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>26</span></div>
+    <h1>RAG, дообучение или длинный контекст</h1>
+    <table><colgroup><col style="width:40%"><col style="width:20%"><col style="width:40%"></colgroup><thead><tr><th>Задача</th><th>Что выбрать</th><th>Почему</th></tr></thead><tbody><tr><td><strong>Знание меняется — протоколы, анализы</strong></td><td>RAG</td><td>обновляют базу, а не веса; есть ссылка на источник</td></tr><tr><td><strong>Нужна форма ответа — стиль, структура</strong></td><td>дообучение</td><td>учит форме, а не фактам (лекция 12)</td></tr><tr><td><strong>Один длинный документ целиком</strong></td><td>длинный контекст</td><td>если влезает в окно и середина не теряется (лекция 12)</td></tr><tr><td><strong>Решение «да/нет» за миллисекунды</strong></td><td>свой классификатор</td><td>лекция 10</td></tr></tbody></table><p class="coda">Это не конкуренты: агент на консилиуме использует RAG для протоколов, дообученную форму пакета и классификатор фильтра одновременно.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

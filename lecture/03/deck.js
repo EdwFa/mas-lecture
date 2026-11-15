@@ -1,10 +1,12 @@
 (function () {
-  const TOTAL = 16;
+  const TOTAL = 25;
   const match = location.pathname.match(/slide-(\d+)\.html$/);
   const n = match ? Number(match[1]) : 1;
 
   const style = document.createElement("style");
   style.textContent = [
+    "html,body{width:100%!important;height:100%!important;overflow:hidden!important;background:#f3efe6;}",
+    ".slide{transform-origin:top left;}",
     ".deck-nav{position:fixed;left:0;right:0;bottom:0;z-index:20;min-height:64px;",
     "display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;",
     "column-gap:24px;padding:10px 28px;background:#f7f4ee;border-top:1px solid #d9d3c7;",
@@ -29,6 +31,18 @@
   ].join("");
   document.head.appendChild(style);
 
+  function fit() {
+    const slide = document.querySelector(".slide");
+    const w = document.documentElement.clientWidth || window.innerWidth;
+    const h = document.documentElement.clientHeight || window.innerHeight;
+    if (!slide || w < 40 || h < 40) return;
+    const scale = Math.min(w / 1920, Math.max(h - 72, 40) / 1080);
+    slide.style.transform = "scale(" + scale + ")";
+    slide.style.marginLeft = Math.max(0, (w - 1920 * scale) / 2) + "px";
+  }
+  fit();
+  window.addEventListener("resize", fit);
+
   const nav = document.createElement("nav");
   nav.className = "deck-nav";
   nav.innerHTML = [
@@ -45,13 +59,13 @@
     '<div class="deck-pop wide" id="deck-lectures-pop" hidden>',
     '<a href="../01/slide-01.html?v=17">Лекция 1. Вводная</a>',
     '<a href="../02/slide-01.html?v=12">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
-    '<a href="../03/slide-01.html?v=12">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
-    '<a href="../04/slide-01.html?v=50">Лекция 4. Взаимодействие агентов с внешними системами</a>',
-    '<a href="../05/slide-01.html?v=45">Лекция 5. Агенты с памятью, управление памятью</a>',
-    '<a href="../06/slide-01.html?v=12">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
-    '<a href="../07/slide-01.html?v=19">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
-    '<a href="../08/slide-01.html?v=2">Лекция 8. Компоненты / модули RAG</a>',
-    '<a href="../09/slide-01.html?v=2">Лекция 9. Технологии оркестрации в модульном RAG</a>',
+    '<a href="../03/slide-01.html?v=20">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
+    '<a href="../04/slide-01.html?v=51">Лекция 4. Взаимодействие агентов с внешними системами</a>',
+    '<a href="../05/slide-01.html?v=46">Лекция 5. Агенты с памятью, управление памятью</a>',
+    '<a href="../06/slide-01.html?v=20">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
+    '<a href="../07/slide-01.html?v=20">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
+    '<a href="../08/slide-01.html?v=20">Лекция 8. Компоненты / модули RAG</a>',
+    '<a href="../09/slide-01.html?v=20">Лекция 9. Технологии оркестрации в модульном RAG</a>',
     '<a href="../10/slide-01.html?v=5">Лекция 10. Архитектура быстрых решений</a>',
     '<a href="../11/slide-01.html?v=3">Лекция 11. Эмбеддинг чанка</a>',
     '<a href="../12/slide-01.html?v=3">Лекция 12. Альтернативы чанкингу</a>',
@@ -61,7 +75,6 @@
     '<a href="../16/slide-01.html?v=1">Лекция 16. A2A и надёжное исполнение</a>',
     '<a href="../17/slide-01.html?v=1">Лекция 17. Опасности и безопасность системы</a>',
     '<a href="../18/slide-01.html?v=1">Защита проекта</a>',
-    
     "</div></div></div>",
     '<div class="deck-pager">',
     '<button type="button" id="deck-prev">Предыдущий</button>',
@@ -91,13 +104,13 @@
   const practicumPop = document.querySelector("#deck-practicum-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=12";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=20";
   }
 
   count.textContent = n + " / " + TOTAL;
   prev.disabled = n <= 1;
   next.disabled = n >= TOTAL;
-  document.title = "Слайд " + n + " · Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение";
+  document.title = "Слайд " + n + " · Лекция 3. Цепочки, маршрутизация, параллельность";
 
   function go(i) {
     if (i < 1 || i > TOTAL || i === n) return;

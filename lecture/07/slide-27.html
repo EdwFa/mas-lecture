@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 27. Пример: поиск по доказательной медицине</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>27</span></div>
+    <h1>Пример: поиск по доказательной медицине</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><img src="img/evidence-search.png?v=2" style="display:block;max-width:100%;width:100%" alt=""></div><div class="stack"><article class="card "><div class="label">Что делает</div><h2>Факты из биомедицинских текстов</h2><p>Система ищет в публикациях факты и знания доказательной медицины. Сходство векторное, ранжирование — как в хранилище RAG.</p></article><article class="card "><div class="label">Запрос на экране</div><h2>Руксолитиниб при миелофиброзе</h2><p>Факторы эффективности терапии. По запросу найдено 5 источников: PMID, заголовок, дата.</p></article><article class="card "><div class="label">История</div><h2>Сделана и запущена</h2><p>Систему разработали, запустили и докладывали на ИТ-конференциях. Публикуйте свои работы.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

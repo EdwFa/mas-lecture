@@ -2,80 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 8. Наблюдение</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 48px; }
-    .lead { max-width: 1720px; }
-    .items { margin-top: 36px; }
-    .item {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 8px 28px;
-      padding: 22px 0 24px;
-      border-top: 1px solid #1c1915;
-    }
-    .item:last-child { border-bottom: 1px solid #1c1915; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      color: #5e6872;
-      padding-top: 8px;
-    }
-    .item h2 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .item p {
-      margin: 8px 0 0;
-      max-width: 1560px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 24px;
-      line-height: 1.35;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; }
-  </style>
+  <title>Слайд 8. Несколько инструментов</title>
+  <link rel="stylesheet" href="slide.css?v=51" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>08</span></div>
-    <h1>Наблюдение</h1>
-    <p class="lead">Ответ API — не память модели. Оркестратор кладёт его в контекст, и следующий шаг пишет фразу уже по этим строкам.</p>
-    <div class="items">
-      <article class="item">
-        <div class="n">01</div>
-        <div>
-          <h2>Пришло</h2>
-          <p>Гемоглобин, взрослые: мужчины 130–160 г/л, женщины 120–140 г/л.</p>
-        </div>
-      </article>
-      <article class="item">
-        <div class="n">02</div>
-        <div>
-          <h2>Ответ</h2>
-          <p>Модель может назвать этот диапазон. Число в фразе берётся из строки наблюдения.</p>
-        </div>
-      </article>
-      <article class="item">
-        <div class="n">03</div>
-        <div>
-          <h2>Пустая строка</h2>
-          <p>Если гемоглобина в ответе нет, модель не дописывает диапазон сама.</p>
-        </div>
-      </article>
-    </div>
-    <p class="coda">Нет строки — нет числа в ответе.</p>
+    <div class="kicker"><span>Лекция 4. Инструменты, планирование, ансамбли</span><span>08</span></div>
+    <h1>Несколько инструментов</h1>
+    <table><colgroup><col style="width:24%"><col style="width:42%"><col style="width:34%"></colgroup><thead><tr><th>Инструмент</th><th>Вход → выход</th><th>Вопрос врача</th></tr></thead><tbody><tr><td><strong>lab_reference</strong></td><td>код исследования → состав и референсы</td><td>«Что входит в ОАК?»</td></tr><tr><td><strong>lab_result</strong></td><td>случай и показатель → число пациента</td><td>«Какой гемоглобин у P-0042?»</td></tr><tr><td><strong>chart_write</strong></td><td>текст → изменённая запись</td><td>«Запиши вывод в карту»</td></tr></tbody></table><p class="coda">Модель выбирает инструмент по вопросу. Соседний сам не вызывается: запись не подменяется чтением справочника.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=50"></script>
+<script src="deck.js?v=51"></script>
 </body>
 </html>

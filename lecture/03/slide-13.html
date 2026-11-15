@@ -2,91 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 13. П. 1.3. Пример цепочки</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1720px; }
-    .ex {
-      margin-top: 22px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 22px;
-      line-height: 1.4;
-      color: #243038;
-    }
-    .pipe {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: 1fr 56px 1fr 56px 1fr;
-      align-items: stretch;
-    }
-    .box {
-      border: 1.5px solid #1c1915;
-      padding: 18px 20px 20px;
-    }
-    .box .k {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #5e6872;
-    }
-    .box h2 {
-      margin: 10px 0 0;
-      font-size: 30px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .box p {
-      margin: 10px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 20px;
-      line-height: 1.35;
-      color: #243038;
-    }
-    .arr {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 32px;
-    }
-    .coda { max-width: 1720px; font-size: 26px; }
-  </style>
+  <title>Слайд 13. Параллельность: два разных приёма</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</span><span>13</span></div>
-    <h1>П. 1.3. Два шага</h1>
-    <p class="lead">Пример главы: из неструктурированного текста извлекают характеристики, затем превращают их в JSON.</p>
-    <p class="ex">«The new laptop model features a 3.5 GHz octa-core processor, 16GB of RAM, and a 1TB NVMe SSD.»</p>
-    <div class="pipe">
-      <article class="box">
-        <div class="k">Промпт 1</div>
-        <h2>Извлечь</h2>
-        <p>Технические характеристики из текста.</p>
-      </article>
-      <div class="arr">→</div>
-      <article class="box">
-        <div class="k">Промпт 2</div>
-        <h2>Преобразовать</h2>
-        <p>JSON с ключами cpu, memory, storage.</p>
-      </article>
-      <div class="arr">→</div>
-      <article class="box">
-        <div class="k">Выход</div>
-        <h2>Строка JSON</h2>
-        <p>Парсер приводит ответ модели к строке. Её читает следующий шаг.</p>
-      </article>
-    </div>
-    <p class="coda">В главе эта связка записана как промпт, модель, парсер, следующий промпт. Имя библиотеки к паттерну не привязано.</p>
+    <div class="kicker"><span>Лекция 3. Цепочки, маршрутизация, параллельность</span><span>13</span></div>
+    <h1>Параллельность: два разных приёма</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 302" width="1744" height="302" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="840" height="300" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="20" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">РАЗБОР ПО ЧАСТЯМ · РАЗНЫЕ ИСТОЧНИКИ</text><rect x="30" y="56" width="220" height="44" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="140" y="85" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">проблемы</text><polyline points="254,78 520,150" fill="none" stroke="#5e6872" stroke-width="1.1" marker-end="url(#ahg)"/><rect x="30" y="112" width="220" height="44" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="140" y="141" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">лекарства</text><polyline points="254,134 520,150" fill="none" stroke="#5e6872" stroke-width="1.1" marker-end="url(#ahg)"/><rect x="30" y="168" width="220" height="44" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="140" y="197" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">лаборатория</text><polyline points="254,190 520,150" fill="none" stroke="#5e6872" stroke-width="1.1" marker-end="url(#ahg)"/><rect x="30" y="224" width="220" height="44" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="140" y="253" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">снимок</text><polyline points="254,246 520,150" fill="none" stroke="#5e6872" stroke-width="1.1" marker-end="url(#ahg)"/><rect x="524" y="110" width="290" height="80" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="669.0" y="146.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Сводка</text><text x="669.0" y="174.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">у каждой фразы — ссылка</text><rect x="904" y="0" width="840" height="300" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.4" stroke-dasharray="7 6" opacity="1"/><text x="924" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ГОЛОСОВАНИЕ · ОДИН ВОПРОС, НЕСКОЛЬКО ОТВЕТОВ</text><rect x="934" y="70" width="240" height="48" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="1054" y="101" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">ответ модели 1</text><polyline points="1178,94 1430,150" fill="none" stroke="#5e6872" stroke-width="1.1" marker-end="url(#ahg)"/><rect x="934" y="140" width="240" height="48" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="1054" y="171" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">ответ модели 2</text><polyline points="1178,164 1430,150" fill="none" stroke="#5e6872" stroke-width="1.1" marker-end="url(#ahg)"/><rect x="934" y="210" width="240" height="48" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="1054" y="241" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">ответ модели 3</text><polyline points="1178,234 1430,150" fill="none" stroke="#5e6872" stroke-width="1.1" marker-end="url(#ahg)"/><rect x="1434" y="110" width="290" height="80" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1579.0" y="146.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Большинство</text><text x="1579.0" y="174.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">не источник</text></svg><div class="cols" style="--n:3;margin-top:28px"><article class="card "><div class="label">Разбор по частям</div><h2>Разные источники</h2><p>Проблемы, лекарства, лаборатория, снимок читаются одновременно и сводятся. У каждой фразы сводки остаётся ссылка.</p></article><article class="card "><div class="label">Голосование</div><h2>Один вопрос несколько раз</h2><p>Повторные ответы модели сводят большинством. Это способ уменьшить случайность, а не источник фактов.</p></article><article class="card "><div class="label">Правило курса</div><h2>Ссылка сильнее голоса</h2><p>На консилиуме совпадение трёх ответов модели не заменяет записи в карте (лекция 1).</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

@@ -2,82 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 18. Практические применения MCP</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 46px; }
-    .lead { max-width: 1720px; }
-    .rows { margin-top: 16px; }
-    .row {
-      display: grid;
-      grid-template-columns: 56px 280px 1fr;
-      column-gap: 22px;
-      align-items: baseline;
-      border-top: 1px solid #1c1915;
-      padding: 11px 0 10px;
-    }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .row h2 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .row p {
-      margin: 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 21px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 16px; }
-  </style>
+  <title>Слайд 18. Сервер просит уточнение</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>18</span></div>
-    <h1>Практические применения MCP</h1>
-    <p class="lead">Случаи с пятого по девятый. Свой инструмент, общий обмен, цепочка шагов, устройство и финансовая служба.</p>
-    <div class="rows">
-      <article class="row">
-        <div class="n">05</div>
-        <h2>Свой инструмент</h2>
-        <p>Разработчик описывает инструмент и отдаёт его через сервер MCP, например на FastMCP. Своя функция или закрытая система становится доступна модели. Модель при этом остаётся как есть.</p>
-      </article>
-      <article class="row">
-        <div class="n">06</div>
-        <h2>Общий обмен</h2>
-        <p>Модель и программа говорят одним способом. Подключение короче, разные модели понимают одни и те же серверы, сложного агента собирать проще.</p>
-      </article>
-      <article class="row">
-        <div class="n">07</div>
-        <h2>Цепочка шагов</h2>
-        <p>Агент берёт данные клиента из базы, делает картинку под него, пишет письмо и отправляет. Каждый шаг идёт через свой сервер MCP.</p>
-      </article>
-      <article class="row">
-        <div class="n">08</div>
-        <h2>Устройства</h2>
-        <p>Обычными словами агент отдаёт команды приборам дома, датчикам на производстве или роботу.</p>
-      </article>
-      <article class="row">
-        <div class="n">09</div>
-        <h2>Финансы</h2>
-        <p>Агент читает данные рынка, проводит сделку, готовит совет под человека или обязательный отчёт. Обмен общий, доступ проверяют.</p>
-      </article>
-    </div>
-    <p class="coda">Тот же порядок MCP. Меняется служба: свой код, чужая программа, цепочка, прибор, финансовая система.</p>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>18</span></div>
+    <h1>Сервер просит уточнение</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 306" width="1744" height="306" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="30" width="300" height="100" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="150.0" y="76.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Агент</text><text x="150.0" y="104.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">tools/call chart_write</text><polyline points="302,60 700,60" fill="none" stroke="#1c1915" stroke-width="1.8" marker-end="url(#ah)"/><text x="500" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">1 · запрос</text><rect x="702" y="30" width="300" height="100" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="852.0" y="76.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">FHIR-сервер</text><text x="852.0" y="104.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">нужно подтверждение</text><polyline points="702,108 302,108" fill="none" stroke="#1c1915" stroke-width="1.6" stroke-dasharray="7 6" marker-end="url(#ah)"/><text x="500" y="134" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">2 · resultType: input_required</text><polyline points="150,132 150,210" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="0" y="212" width="300" height="90" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="150.0" y="253.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Врач</text><text x="150.0" y="281.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">«записать в карту?» → да</text><polyline points="302,257 850,257 850,132" fill="none" stroke="#1c1915" stroke-width="1.8" marker-end="url(#ah)"/><text x="560" y="244" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">3 · повтор запроса + inputResponses</text><rect x="1100" y="30" width="300" height="100" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1250.0" y="76.0" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Карта P-0042</text><text x="1250.0" y="104.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">запись выполнена</text><polyline points="1004,80 1098,80" fill="none" stroke="#1c1915" stroke-width="1.8" marker-end="url(#ah)"/><text x="1052" y="66" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">4</text><text x="1100" y="200" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">сервер не держит соединение открытым:</text><text x="1100" y="228" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">клиент сам повторяет запрос с ответом</text><text x="1100" y="256" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">(Multi Round-Trip Requests)</text></svg><div class="cols" style="--n:3;margin-top:24px"><article class="card "><div class="label">Раньше</div><h2>Встречный запрос</h2><p>Сервер сам слал клиенту запрос на уточнение и ждал на открытом соединении.</p></article><article class="card "><div class="label">Теперь</div><h2>InputRequiredResult</h2><p>Сервер отвечает: нужен ввод, вот что именно. Клиент спрашивает врача и повторяет исходный запрос с ответом.</p></article><article class="card "><div class="label">В кейсе</div><h2>Подтверждение записи</h2><p>chart_write не пишет в карту, пока врач не ответил «да». Пауза врача — не ошибка (лекция 4).</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
-      <span>осень 2026</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

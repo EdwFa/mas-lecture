@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 20. Код: минимальный RAG</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>20</span></div>
+    <h1>Код: минимальный RAG</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:18px">import numpy as np
+
+def build_index(chunks, embed):
+    &quot;&quot;&quot;chunks: [{&quot;id&quot;, &quot;text&quot;, &quot;source&quot;, &quot;version&quot;}]&quot;&quot;&quot;
+    X = np.array([embed(c[&quot;text&quot;]) for c in chunks], dtype=float)
+    return X / np.linalg.norm(X, axis=1, keepdims=True)
+
+def search(query, chunks, X, embed, k=4, min_score=0.6):
+    q = np.asarray(embed(query), dtype=float)
+    scores = X @ (q / np.linalg.norm(q))   # косинус = скалярное
+    top = np.argsort(-scores)[:k]
+    return [(chunks[i], float(scores[i]))
+            for i in top if scores[i] &gt;= min_score]
+
+def build_prompt(question, hits):
+    ctx = &quot;\n\n&quot;.join(
+        f&quot;[{c[&#x27;id&#x27;]}] ({c[&#x27;source&#x27;]}, {c[&#x27;version&#x27;]})\n{c[&#x27;text&#x27;]}&quot;
+        for c, _ in hits)
+    return (&quot;Отвечай только по фрагментам ниже. &quot;
+            &quot;После каждой фразы — [id].\n&quot;
+            &quot;Если ответа во фрагментах нет — так и скажи.\n\n&quot;
+            f&quot;{ctx}\n\nВопрос: {question}&quot;)</pre></div><div class="stack"><article class="card "><div class="label">Индекс</div><h2>Нормируем один раз</h2><p>После нормировки косинус — это скалярное произведение. Для 30 фрагментов хватает numpy; для миллиона — векторная база (лекция 11).</p></article><article class="card "><div class="label">Поиск</div><h2>k и порог</h2><p>Берём не больше k и не ниже порога. Пустой список — повод ответить «нет в базе».</p></article><article class="card "><div class="label">embed</div><h2>Любой энкодер</h2><p>Функцию передают снаружи: один и тот же энкодер для базы и для вопроса.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>
