@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 20. Тест на потерю поля</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 15. Передача между агентами</span><span>20</span></div>
+    <h1>Тест на потерю поля</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:18px">def stub(name):                       # заглушка вместо модели
+    art = json.load(open(f&quot;fixtures/{name}.json&quot;))
+    return lambda window, tools: Reply(text=json.dumps(art))
+
+def test_board_date_survives_handoff():
+    arts = {n: spawn_subagent(TASKS[n], CONTRACTS[n], [], stub(n))
+            for n in READERS}
+    pkg = assemble(arts)
+    assert pkg[&quot;board_date&quot;] is not None, &quot;дата потеряна&quot;
+    assert any(&quot;две даты&quot; in q for q in pkg[&quot;open_questions&quot;])
+
+def test_bad_artifact_is_rejected():
+    bad = stub(&quot;lab_without_source&quot;)
+    art = spawn_subagent(TASKS[&quot;lab&quot;], CONTRACTS[&quot;lab&quot;], [], bad)
+    assert art[&quot;status&quot;] == &quot;failed&quot;
+
+def test_only_orchestrator_writes():
+    assert all(&quot;chart_write&quot; not in TOOLS[n] for n in READERS)</pre></div><div class="stack"><article class="card "><div class="label">Заглушки</div><h2>Без модели</h2><p>Фикстуры — готовые ответы субагентов. Тест детерминирован и идёт за секунды при каждом коммите.</p></article><article class="card "><div class="label">Что ловит</div><h2>Дыру в передаче</h2><p>Поле было в источнике и пропало в сборке. Это обещание недели 8 из лекции 1.</p></article><article class="card "><div class="label">Не путать</div><h2>С тестами работы</h2><p>Качество ответов модели проверяют тесты лекции 14. Здесь проверяется код между агентами.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

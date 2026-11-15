@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Спор — на доску</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 15. Передача между агентами</span><span>23</span></div>
+    <h1>Спор — на доску</h1>
+    <div class="split" style="--left:920px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Пакет после сборщика</div><pre class="code" style="font-size:21px">{
+  &quot;case&quot;: &quot;P-0042&quot;,
+  &quot;board_date&quot;: &quot;не назначена&quot;,
+  &quot;open_questions&quot;: [
+    &quot;две даты консилиума: 20.11 (Encounter/enc-31)
+     и 27.11 (DocumentReference/ct-117)&quot;,
+    &quot;Ki-67 не найден&quot;
+  ],
+  &quot;lab&quot;: {&quot;status&quot;: &quot;ok&quot;, &quot;items&quot;: [&quot;…&quot;]},
+  &quot;imaging&quot;: {&quot;status&quot;: &quot;partial&quot;, &quot;items&quot;: [&quot;…&quot;]}
+}</pre></div><div class="stack"><article class="card "><div class="label">Правило</div><h2>Сборщик не выбирает</h2><p>Две даты с двумя источниками — это спор. Он идёт в open_questions с обеими ссылками.</p></article><article class="card "><div class="label">Почему</div><h2>Выбор — решение</h2><p>Выбрать дату — неявное решение. Неявные решения принимает тот, у кого есть право: врач.</p></article><article class="card "><div class="label">Статусы</div><h2>Неполнота видна</h2><p>partial у снимка остаётся в пакете. Врач видит, что читатель не дочитал.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
