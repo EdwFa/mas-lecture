@@ -56,6 +56,7 @@
     '<a href="../11/slide-01.html?v=3">Лекция 11. Эмбеддинг чанка</a>',
     '<a href="../12/slide-01.html?v=3">Лекция 12. Альтернативы чанкингу</a>',
     '<a href="../13/slide-01.html?v=1">Лекция 13. Harness агента</a>',
+    '<a href="../14/slide-01.html?v=1">Лекция 14. Скиллы агента</a>',
     
     "</div></div></div>",
     '<div class="deck-pager">',
