@@ -1,13 +1,75 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <title>Лекция 1. Вводная</title>
-  <script>
-    location.replace("01/" + location.hash);
-  </script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Программная инженерия мультиагентных систем в клинической медицине</title>
+<script>if (location.hash) location.replace("01/" + location.hash);</script>
+<style>
+html,body{margin:0;height:100%;background:#f3efe6;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center}
+a:hover{color:#3e4650}
+</style>
 </head>
 <body>
-  <p><a href="01/">Лекция 1</a></p>
+<div id="stage">
+<div style="width: 1920px; height: 1080px; box-sizing: border-box; padding: 84px 96px 72px; background: #f7f4ee; color: #1c1915; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: #5e6872">
+<span>Курс лекций и практикум</span>
+<span>Осень 2026</span>
+</div>
+<div style="margin-top: 80px; display: grid; grid-template-columns: 1fr 620px; gap: 80px; align-items: start">
+<div>
+<h1 style="margin: 0; font-family: Georgia, 'Iowan Old Style', serif; font-weight: 400; font-size: 92px; line-height: 1.04; letter-spacing: -0.035em">Программная инженерия мультиагентных систем</h1>
+<p style="margin: 18px 0 0; font-family: Georgia, 'Iowan Old Style', serif; font-style: italic; font-size: 56px; line-height: 1.1; letter-spacing: -0.02em; color: #3e4650">в клинической медицине</p>
+<div style="margin-top: 48px; width: 480px; height: 2px; background: #1c1915"></div>
+<p style="margin: 40px 0 0; font-size: 26px; line-height: 1.5; color: #3e4650; max-width: 820px">18 лекций и практикум на одном учебном случае: агенты готовят пакет к онкологическому консилиуму, врач подписывает. Локальные модели, синтетические данные.</p>
+</div>
+<svg width="620" height="655" viewBox="0 0 720 760" role="img" aria-label="Схема: оркестратор, четыре читателя, критик, пауза врача и запись в карту" style="display: block">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1c1915"></path></marker></defs>
+<rect x="40" y="330" width="220" height="84" fill="#1c1915" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="150.0" y="381.1" text-anchor="middle" style="font-family: Georgia, serif; font-size: 26px; fill: #f7f4ee">оркестратор</text>
+<rect x="420" y="150" width="240" height="60" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="540.0" y="187.7" text-anchor="middle" style="font-family: Georgia, serif; font-size: 22px; fill: #1c1915">проблемы</text>
+<path d="M260 372 C340 372, 340 180, 420 180" fill="none" stroke="#1c1915" stroke-width="1.5"></path>
+<rect x="420" y="270" width="240" height="60" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="540.0" y="307.7" text-anchor="middle" style="font-family: Georgia, serif; font-size: 22px; fill: #1c1915">лекарства</text>
+<path d="M260 372 C340 372, 340 300, 420 300" fill="none" stroke="#1c1915" stroke-width="1.5"></path>
+<rect x="420" y="390" width="240" height="60" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="540.0" y="427.7" text-anchor="middle" style="font-family: Georgia, serif; font-size: 22px; fill: #1c1915">лаборатория</text>
+<path d="M260 372 C340 372, 340 420, 420 420" fill="none" stroke="#1c1915" stroke-width="1.5"></path>
+<rect x="420" y="510" width="240" height="60" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="540.0" y="547.7" text-anchor="middle" style="font-family: Georgia, serif; font-size: 22px; fill: #1c1915">снимок</text>
+<path d="M260 372 C340 372, 340 540, 420 540" fill="none" stroke="#1c1915" stroke-width="1.5"></path>
+<text x="540" y="120" text-anchor="middle" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 16px; letter-spacing: 0.14em; fill: #5e6872">ЧИТАЮТ МНОГИЕ</text>
+<rect x="40" y="560" width="220" height="64" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="150.0" y="599.7" text-anchor="middle" style="font-family: Georgia, serif; font-size: 22px; fill: #1c1915">критик</text>
+<line x1="150" y1="414" x2="150" y2="560" stroke="#1c1915" stroke-width="1.5"></line>
+<rect x="40" y="676" width="220" height="64" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="150.0" y="715.7" text-anchor="middle" style="font-style: italic; font-family: Georgia, serif; font-size: 22px; fill: #1c1915">пауза врача</text>
+<line x1="150" y1="624" x2="150" y2="676" stroke="#1c1915" stroke-width="1.5" stroke-dasharray="6 6"></line>
+<rect x="420" y="676" width="240" height="64" fill="#ece6da" stroke="#1c1915" stroke-width="1.5"></rect>
+<text x="540.0" y="715.7" text-anchor="middle" style="font-family: Georgia, serif; font-size: 22px; fill: #1c1915">chart_write</text>
+<line x1="260" y1="708" x2="414" y2="708" stroke="#1c1915" stroke-width="1.5" marker-end="url(#ah)"></line>
+<text x="540" y="660" text-anchor="middle" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 16px; letter-spacing: 0.14em; fill: #5e6872">ПИШЕТ ОДИН</text>
+</svg>
+</div>
+<div style="margin-top: auto; padding-bottom: 28px"><nav aria-label="Разделы курса" style="display: flex; gap: 40px; font-size: 24px">
+<a href="01/slide-01.html" style="color: #1c1915; font-weight: 500">Лекция 1 →</a>
+<a href="practicum/index.html" style="color: #1c1915">Практикум</a>
+<a href="glossary.html" style="color: #1c1915">Глоссарий</a>
+<a href="exam.html" style="color: #1c1915">Вопросы к экзамену</a>
+</nav></div>
+<div style="border-top: 1px solid #ddd5c6; padding-top: 22px; display: flex; justify-content: space-between; font-size: 24px; color: #3e4650">
+<span>Сеченовский Университет · Институт цифровой медицины</span>
+<span>E. Fartushny · MIT</span>
+</div>
+</div>
+
+</div>
+<script>
+function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);document.getElementById("stage").style.transform="translate(-50%,-50%) scale("+s+")";}
+addEventListener("resize",fit);fit();
+</script>
 </body>
 </html>
