@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 24. Выводы</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 12. Альтернативы чанкингу</span><span>24</span></div>
+    <h1>Выводы</h1>
+    <div class="frames tight" style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Нарезка</h2><p>Её чинят, а не выбрасывают: поздняя нарезка, контекст, родитель и ребёнок, RAPTOR.</p></div><div class="frame"><span class="num">02</span><h2>Длинный контекст</h2><p>Для одного случая целиком, локально. Важное — по краям.</p></div><div class="frame"><span class="num">03</span><h2>Ускорение</h2><p>FlashAttention, Ring и PagedAttention экономят память и время, но внимание остаётся квадратичным.</p></div><div class="frame"><span class="num">04</span><h2>Граф</h2><p>Для цепочек связей. Сообщества и отчёты — GraphRAG; два уровня ключей — LightRAG.</p></div><div class="frame"><span class="num">05</span><h2>Дообучение</h2><p>Учит форме. Факты — в поиске и OKF.</p></div><div class="frame"><span class="num">06</span><h2>Выбор</h2><p>Один набор вопросов врача и одинаковая проверка для всех методов.</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

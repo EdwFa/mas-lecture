@@ -1,247 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<title>Слайд 8. Длинный контекст вместо разреза</title>
-<link rel="stylesheet" href="../vendor/katex/katex.min.css">
-<style>
-
-html, body {
-  margin: 0;
-  width: 1920px;
-  height: 1080px;
-  background: #f3efe6;
-}
-.slide {
-  width: 1920px;
-  height: 1080px;
-  box-sizing: border-box;
-  padding: 56px 88px 96px;
-  display: flex;
-  flex-direction: column;
-  background: #f7f4ee;
-  color: #1c1915;
-  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
-  overflow: hidden;
-}
-.kicker {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #5e6872;
-}
-h1 {
-  margin: 28px 0 0;
-  font-size: 64px;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-h1.long { font-size: 52px; }
-.slide.title h1 {
-  margin-top: 180px;
-  font-size: 108px;
-  line-height: 0.98;
-}
-.sub {
-  margin: 28px 0 0;
-  max-width: 1400px;
-  font-size: 40px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-.line {
-  margin-top: 48px;
-  width: 720px;
-  border-top: 2px solid #1c1915;
-}
-.cite {
-  margin: 36px 0 0;
-  max-width: 1280px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  line-height: 1.45;
-  color: #3e4650;
-}
-.body {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 28px;
-}
-.body > * { flex: 0 0 auto; }
-.body p {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.38;
-  color: #243038;
-}
-.frames { display: flex; flex-direction: column; gap: 0; }
-.frame {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 4px 16px;
-  align-items: baseline;
-  padding: 12px 0;
-  border-bottom: 1px solid #e4dfd4;
-}
-.frame .num {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: #5e6872;
-}
-.frame p {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #243038;
-}
-.bullets { display: flex; flex-direction: column; gap: 12px; }
-.bullet {
-  margin: 0;
-  padding: 2px 0 2px 24px;
-  border-left: 2px solid #1c1915;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #243038;
-}
-.formula {
-  margin: 4px 0;
-  overflow: visible;
-  font-size: 30px;
-}
-.formula .katex-display { margin: 0.35em 0; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  line-height: 1.35;
-}
-th {
-  text-align: left;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 18px;
-  color: #5e6872;
-  padding: 8px 18px 10px 0;
-  border-bottom: 1px solid #1c1915;
-}
-td {
-  padding: 8px 18px 8px 0;
-  border-bottom: 1px solid #e4dfd4;
-  color: #243038;
-  vertical-align: baseline;
-}
-figure {
-  margin: 0;
-  flex: 0 0 auto;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-figure img {
-  max-width: 100%;
-  max-height: 250px;
-  object-fit: contain;
-}
-.figure-only figure { flex: 1 1 auto; }
-.figure-only figure img { max-height: 100%; }
-code {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.92em;
-}
-.spacer { flex: 1; }
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 18px;
-  border-top: 1px solid #d9d3c7;
-  padding-top: 16px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  line-height: 1.35;
-  color: #3e4650;
-}
-.compact .body { gap: 8px; margin-top: 14px; }
-.compact h1 { font-size: 46px; margin-top: 12px; }
-.compact .body p,
-.compact .frame p,
-.compact .bullet { font-size: 22px; line-height: 1.28; }
-.compact .frame { padding: 5px 0; }
-.compact .formula { font-size: 24px; }
-.compact table { font-size: 22px; }
-.compact td, .compact th { padding-top: 5px; padding-bottom: 5px; }
-.compact figure img { max-height: 200px; }
-
-.slide.split .body {
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: stretch;
-  gap: 28px;
-}
-.slide.split .copy {
-  flex: 1 1 46%;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-}
-.slide.split .body > figure { flex: 1 1 54%; height: auto; min-height: 0; }
-.slide.split.fitfig .body > figure { height: 100%; min-width: 0; }
-.slide.split.fitfig figure img,
-.slide .body > figure img {
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-.body > figure { flex: 1 1 0; min-height: 0; overflow: hidden; }
-
-</style>
+  <meta charset="utf-8" />
+  <title>Слайд 8. Четыре способа рядом</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
-<body data-total="21" data-lecture="12" data-title="Лекция 12. Альтернативы чанкингу">
-<main data-lecture="12" data-n="8" class="slide compact">
-<div class="kicker"><span>Лекция 12</span><span>08</span></div>
-<h1 class="long">Длинный контекст вместо разреза</h1>
-<div class="body">
-<p>Альтернатива чанкингу, когда в окно входят целиком 1–5 протоколов или полная история болезни.</p>
-<div class="bullets"><p class="bullet">RoPE scaling, в том числе NTK-aware interpolation. Позиции экстраполируют за длину, на которой модель учили.</p>
-<p class="bullet">Ring Attention и FlashAttention-2. Внимание режут на блоки между GPU. Сложность с \(O(N^{2})\) становится ближе к \(O(N)\).</p>
-<p class="bullet">KV cache. Paged attention, как в vLLM, не держит все токены сразу.</p></div>
-</div>
-<footer><span>Лекция 12. Альтернативы чанкингу</span></footer>
-</main>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 12. Альтернативы чанкингу</span><span>08</span></div>
+    <h1>Четыре способа рядом</h1>
+    <table><colgroup><col style="width:22%"><col style="width:28%"><col style="width:24%"><col style="width:26%"></colgroup><thead><tr><th>Способ</th><th>Что чинит</th><th>Цена</th><th>Когда брать</th></tr></thead><tbody><tr><td><strong>Поздняя нарезка</strong></td><td>потерянные ссылки между чанками</td><td>длинная модель эмбеддингов</td><td>документы до 8k токенов</td></tr><tr><td><strong>Контекстные чанки</strong></td><td>чанк без «о чём это»</td><td>вызов LLM на чанк</td><td>много коротких похожих чанков</td></tr><tr><td><strong>Родитель и ребёнок</strong></td><td>мало контекста у генератора</td><td>второе хранилище</td><td>структурированные протоколы</td></tr><tr><td><strong>RAPTOR</strong></td><td>общие вопросы по документу</td><td>кластеризация и резюме</td><td>обзорные вопросы</td></tr></tbody></table><p class="coda">Все четыре проверяют одним recall@k на вопросах врача из лекции 11. Сначала самый дешёвый.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
 <script src="../vendor/katex/katex.min.js"></script>
 <script src="../vendor/katex/contrib/auto-render.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  renderMathInElement(document.body, {
-    delimiters: [
-      {left: "\\[", right: "\\]", display: true},
-      {left: "\\(", right: "\\)", display: false}
-    ],
-    throwOnError: false
-  });
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
 });
 </script>
-<script src="deck.js?v=2"></script>
+<script src="deck.js?v=3"></script>
 </body>
 </html>

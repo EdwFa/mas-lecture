@@ -1,5 +1,5 @@
 (function () {
-  const TOTAL = 21;
+  const TOTAL = 26;
   const match = location.pathname.match(/slide-(\d+)\.html$/);
   const n = match ? Number(match[1]) : 1;
 
@@ -68,7 +68,7 @@
     '<a href="../09/slide-01.html?v=2">Лекция 9. Технологии оркестрации в модульном RAG</a>',
     '<a href="../10/slide-01.html?v=5">Лекция 10. Архитектура быстрых решений</a>',
     '<a href="../11/slide-01.html?v=3">Лекция 11. Эмбеддинг чанка</a>',
-    '<a href="../12/slide-01.html?v=2">Лекция 12. Альтернативы чанкингу</a>',
+    '<a href="../12/slide-01.html?v=3">Лекция 12. Альтернативы чанкингу</a>',
     '<a href="../13/slide-01.html?v=1">Лекция 13. Harness агента</a>',
     "</div></div></div>",
     '<div class="deck-pager">',
@@ -99,7 +99,7 @@
   const practicumPop = document.querySelector("#deck-practicum-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=2";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=3";
   }
 
   count.textContent = n + " / " + TOTAL;
