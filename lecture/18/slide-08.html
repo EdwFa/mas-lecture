@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 8. Перед сдачей</title>
+  <title>Слайд 8. Критерии перехода</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Защита проекта</span><span>08</span></div>
-    <h1>Перед сдачей</h1>
-    <div class="cols" style="--n:3;margin-top:48px"><article class="card "><div class="label">Код</div><h2>Запускается с нуля</h2><ul><li>git clone и одна команда</li><li>тесты зелёные без сети</li><li>версия модели закреплена</li></ul></article><article class="card "><div class="label">Документы</div><h2>Читаются без вас</h2><ul><li>README: назначение и предел</li><li>hazards.md и trace_matrix.csv</li><li>rule_of_two.csv</li></ul></article><article class="card "><div class="label">Доказательства</div><h2>Есть в репозитории</h2><ul><li>трасса P-0042 с подписью</li><li>bench.csv с токенами</li><li>доля успешных атак</li></ul></article></div><p class="coda">Полный чек-лист — в файле Защита.md рядом с лекциями.</p>
+    <div class="kicker"><span>Лекция 18. От пилота к эксплуатации</span><span>08</span></div>
+    <h1>Критерии перехода</h1>
+    <table><colgroup><col style="width:22%"><col style="width:44%"><col style="width:34%"></colgroup><thead><tr><th>Переход</th><th>Условие «дальше»</th><th>Условие «стоп»</th></tr></thead><tbody><tr><td><strong>Офлайн → тихий</strong></td><td>пороги набора пройдены; атаки ниже предела</td><td>любая критическая ошибка в наборе</td></tr><tr><td><strong>Тихий → пилот</strong></td><td>агент не пропускает ключевые источники в ≥ N% пакетов; споры показаны</td><td>пропуск, который мог изменить решение консилиума</td></tr><tr><td><strong>Пилот → расширение</strong></td><td>время врача не выросло; правки осмысленные; нет инцидентов</td><td>инцидент с потенциальным вредом</td></tr><tr><td><strong>Расширение → эксплуатация</strong></td><td>метрики стабильны по отделениям; дежурство и откат проверены</td><td>откат не сработал на учениях</td></tr></tbody></table><p class="coda">Числа N и пороги каждая больница задаёт сама — до того, как увидела результаты. Решение о переходе подписывает клинический ответственный, а не команда разработки.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>

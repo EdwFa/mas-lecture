@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 16. Код: дневные метрики из трассы</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 18. От пилота к эксплуатации</span><span>16</span></div>
+    <h1>Код: дневные метрики из трассы</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">from collections import Counter
+
+def daily(events):
+    &quot;&quot;&quot;Сводка за день по событиям трассы harness.&quot;&quot;&quot;
+    finals = [e for e in events if e[&quot;kind&quot;] == &quot;final&quot;]
+    status = Counter(e[&quot;status&quot;] for e in finals)
+    fb = Counter(e[&quot;verdict&quot;] for e in events
+                 if e[&quot;kind&quot;] == &quot;feedback&quot;)
+    n, m = max(len(finals), 1), max(sum(fb.values()), 1)
+    steps = sorted(e[&quot;step&quot;] for e in finals) or [0]
+    return {
+        &quot;runs&quot;: len(finals),
+        &quot;needs_review&quot;: status[&quot;needs_review&quot;] / n,
+        &quot;accepted_as_is&quot;: fb[&quot;accepted&quot;] / m,
+        &quot;edited&quot;: fb[&quot;edited&quot;] / m,
+        &quot;rejected&quot;: fb[&quot;rejected&quot;] / m,
+        &quot;steps_p95&quot;: steps[int(0.95 * (len(steps) - 1))],
+    }</pre></div><div class="stack"><article class="card "><div class="label">feedback</div><h2>Новое событие</h2><p>Врач принял, исправил или отклонил пакет — одна кнопка в интерфейсе, одна строка в трассе.</p></article><article class="card "><div class="label">accepted_as_is</div><h2>Смотреть с двух сторон</h2><p>Низкая — агент бесполезен. Почти 100% — возможно, врач перестал проверять.</p></article><article class="card "><div class="label">Каждый день</div><h2>Рядом с прошлой неделей</h2><p>Важно не значение, а изменение. Тревога — на скачок, а не на порог.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
