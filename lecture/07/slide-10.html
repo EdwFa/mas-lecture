@@ -2,83 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 10. WordPiece и Unigram</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; }
-    .lead { max-width: 1760px; font-size: 20px; line-height: 1.3; }
-    .formula {
-      margin: 10px 0 0;
-      font-size: 28px;
-      letter-spacing: -0.02em;
-    }
-    .cols {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 36px;
-      align-items: start;
-    }
-    table { margin-top: 8px; }
-    th { padding: 0 18px 6px 0; font-size: 14px; }
-    td { padding: 6px 18px 6px 0; font-size: 20px; line-height: 1.25; }
-    .col h2 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .col p {
-      margin: 8px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    .who {
-      margin-top: 14px;
-      border-top: 1px solid #1c1915;
-      padding-top: 8px;
-    }
-    .coda { max-width: 1720px; margin-top: 14px; font-size: 20px; }
-  </style>
+  <title>Слайд 10. BPE</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>10</span></div>
-    <h1>WordPiece и Unigram</h1>
-    <p class="lead">Тот же учебный корпус: «креатинин» 4 раза, «креатин» 2 раза. BPE сливает самую частую пару. WordPiece сливает пару с наибольшим счётом.</p>
-    <p class="formula">счёт(a, b) = частота(ab) / (частота(a) × частота(b))</p>
-    <div class="cols">
-      <article class="col">
-        <table>
-          <thead>
-            <tr><th>Пара</th><th>Сколько раз</th><th>Счёт</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>ин</td><td>10</td><td>10 / (10 × 10) = 0,1</td></tr>
-            <tr><td>кр, ре, еа, ат</td><td>6</td><td>6 / (6 × 6) = 1/6</td></tr>
-          </tbody>
-        </table>
-        <p>BPE берёт «ин»: 10 — единственный максимум. WordPiece её не берёт первой. «И» и «н» и так часты, счёт пары 0,1. Четыре пары имеют счёт 1/6, и он выше. Какую из четырёх сливать первой, равенство не назначает.</p>
-        <p>На тексте WordPiece берёт самое длинное подслово словаря от начала слова, затем остаток. Schuster, Nakajima, 2012. В BERT продолжение помечено ##, словарь около 30&nbsp;000. Devlin et al., 2018.</p>
-      </article>
-      <article class="col">
-        <div class="who">
-          <h2>Unigram</h2>
-          <p>Начинают с большого словаря. Выбрасывают токены, без которых правдоподобие корпуса падает меньше всего. Базовые символы оставляют. Kudo, 2018.</p>
-          <p>Фразу режут на нарезку с наибольшей вероятностью. Вероятность нарезки — произведение вероятностей её токенов. У одного слова нарезок несколько, BPE такого выбора не делает.</p>
-          <p>SentencePiece держит и BPE, и Unigram. Пробел — обычный символ, разбор обратим. Kudo, Richardson, 2018.</p>
-        </div>
-      </article>
-    </div>
-    <p class="coda">Единица токена задаёт длину последовательности, размер KV-cache и горизонт multi-token prediction.</p>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>10</span></div>
+    <h1>BPE</h1>
+    <p class="lead">Кодирование пар байтов (Sennrich, Haddow, Birch, 2015): начинают с символов, считают соседние пары, самую частую сливают — и так, пока словарь не набран.</p><div class="split" style="--left:1fr;--right:1fr;margin-top:28px"><div class="stack"><div class="frames tight" style="--n:1;margin-top:0"><div class="frame"><span class="num">01</span><h2>Символы</h2><p>Слово разбирают на символы; конец слова в учебном разборе отмечают знаком _.</p></div><div class="frame"><span class="num">02</span><h2>Пара</h2><p>Считают соседние пары и берут самую частую.</p></div><div class="frame"><span class="num">03</span><h2>Слияние</h2><p>Пару заменяют новым символом и кладут в словарь.</p></div><div class="frame"><span class="num">04</span><h2>Повтор</h2><p>Снова считают пары — уже по новым символам.</p></div></div></div><div class="stack"><article class="card "><div class="label">Учебный корпус</div><h2>«ин» сливается первой</h2><p>«креатинин» 4 раза, «креатин» 2 раза. Пара «ин»: 4 × 2 + 2 × 1 = 10 — единственный максимум.</p></article><article class="card "><div class="label">Размер словаря</div><h2>От 40 тысяч до 128 тысяч</h2><p>GPT-1 — 40 тысяч слияний, GPT-2 — 50 257, Llama 3 — 128 000. Новое МНН режут уже выученными слияниями.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

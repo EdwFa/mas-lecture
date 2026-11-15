@@ -2,127 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 7. Токенизация</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1760px; font-size: 20px; line-height: 1.3; }
-    .demo {
-      margin-top: 12px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .src {
-      font-family: Georgia, "Iowan Old Style", serif;
-      font-size: 26px;
-    }
-    .tok {
-      min-height: 42px;
-      padding: 6px 12px;
-      border: 1.5px solid #1c1915;
-      background: #fcfaf6;
-      font-family: Georgia, "Iowan Old Style", serif;
-      font-size: 22px;
-    }
-    .tok small {
-      display: block;
-      margin-top: 1px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #5e6872;
-    }
-    .arr { font-family: Georgia, serif; font-size: 26px; }
-    .hint {
-      margin: 8px 0 0;
-      max-width: 1760px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.3;
-      color: #5e6872;
-    }
-    .blocks {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr 1.15fr 0.9fr;
-      gap: 28px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 8px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 2px 0 0;
-      font-size: 24px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 17px;
-      line-height: 1.3;
-      color: #243038;
-    }
-    .unit { margin-top: 8px; }
-    .unit b {
-      font-family: Georgia, "Iowan Old Style", serif;
-      font-weight: 400;
-      font-size: 18px;
-      color: #1c1915;
-    }
-    .coda { max-width: 1720px; margin-top: 12px; font-size: 20px; }
-  </style>
+  <title>Слайд 7. Косинусная близость</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>07</span></div>
-    <h1>Токенизация</h1>
-    <p class="lead">Токенизация режет текст на токены до эмбеддинга. BPE начинает с символов, считает соседние пары и сливает самую частую. Так дальше. Редкое слово собирается из нескольких токенов.</p>
-    <div class="demo">
-      <span class="src">Креатинин 130</span>
-      <span class="arr">→</span>
-      <span class="tok">Креатинин<small>часто один токен</small></span>
-      <span class="tok">1<small>цифра</small></span>
-      <span class="tok">3<small>цифра</small></span>
-      <span class="tok">0<small>цифра</small></span>
-    </div>
-    <p class="hint">В примерах курса слово часто один токен. Числа режут по цифрам, неизвестный символ сваливают в байт. Пробел в SentencePiece — обычный символ, разбор обратим.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>Эмбеддинг токена</h2>
-        <p>Токен хранится как номер в словаре. Эмбеддинг — строка таблицы по этому номеру, список чисел. В базовой модели 2017 года их 512.</p>
-        <p>Таблицу строят под словарь токенизатора. Токенизатор обучают на образце смеси и замораживают. Поменять словарь позже — учить модель заново.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Слово, предложение, абзац</h2>
-        <p class="unit"><b>Слово.</b> Если оно один токен, эмбеддинг — одна строка таблицы. Если токенов несколько, это уже последовательность.</p>
-        <p class="unit"><b>Предложение и абзац.</b> В LLM фраза не читается одним вектором: у каждого токена свой.</p>
-        <p class="unit"><b>База RAG.</b> Эмбеддинг может быть у слова, фразы или целого документа. В базу кладут один вектор выбранной единицы.</p>
-      </article>
-      <article class="block">
-        <div class="n">03</div>
-        <h2>Что задаёт единица</h2>
-        <p>Длину последовательности, размер KV-cache и горизонт multi-token prediction.</p>
-        <p>Крупнее словарь — меньше токенов на тот же текст и больше таблица. У Llama 3 словарь 128 000.</p>
-      </article>
-    </div>
-    <p class="coda">Сначала токены, потом эмбеддинг. Предложение и абзац в модели — последовательность векторов, а единица базы знаний может храниться одним.</p>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>07</span></div>
+    <h1>Косинусная близость</h1>
+    <div class="split" style="--left:700px;--right:1fr;"><div class="stack"><img src="img/cosine-vectors.png?v=2" style="display:block;max-width:100%;width:100%;max-width:640px" alt=""></div><div class="stack"><div class="fx" style="font-size:34px">\[\cos(\mathbf d_j,\mathbf q)=\frac{\mathbf d_j\cdot\mathbf q}{\lVert\mathbf d_j\rVert\,\lVert\mathbf q\rVert}=\frac{\sum_{i=1}^{N} w_{i,j}\,w_{i,q}}{\sqrt{\sum_{i=1}^{N} w_{i,j}^2}\,\sqrt{\sum_{i=1}^{N} w_{i,q}^2}}\]</div><article class="card "><div class="label">Обозначения</div><h2>Координаты и нормы</h2><p>i — координата от 1 до N, j — номер документа, q — запрос. Норма — корень из суммы квадратов координат.</p></article><article class="card "><div class="label">Чтение</div><h2>Меньше угол — ближе</h2><p>На [0, π] косинус убывает от 1 до −1. При α < θ документ d₁ ближе к запросу, чем d₂. Для векторов длины 1 косинус равен скалярному произведению.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>
