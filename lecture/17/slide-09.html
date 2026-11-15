@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 9. Шесть паттернов защиты</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 17. Опасности и безопасность системы</span><span>09</span></div>
+    <h1>Шесть паттернов защиты</h1>
+    <p class="lead">Beurer-Kellner и соавт., 2025: паттерны, которые изолируют недоверенные данные от управления агентом.</p><table><colgroup><col style="width:30%"><col style="width:70%"></colgroup><thead><tr><th>Паттерн</th><th>Суть</th></tr></thead><tbody><tr><td><strong>Выбор действия</strong></td><td>модель переводит запрос в заранее заданные вызовы и не видит их результат</td></tr><tr><td><strong>План, затем исполнение</strong></td><td>план фиксируют до чтения недоверенных данных</td></tr><tr><td><strong>LLM map-reduce</strong></td><td>каждый кусок недоверенных данных — в изолированный вызов, свод — по схеме</td></tr><tr><td><strong>Двойной LLM</strong></td><td>привилегированная модель не видит недоверенный текст, карантинная — не действует</td></tr><tr><td><strong>Код, затем исполнение</strong></td><td>модель пишет программу, программа работает с данными (CaMeL)</td></tr><tr><td><strong>Минимизация контекста</strong></td><td>лишнее, включая исходный запрос, убирают из окна</td></tr></tbody></table>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 11. Чего паттерны не закрывают</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 17. Опасности и безопасность системы</span><span>11</span></div>
+    <h1>Чего паттерны не закрывают</h1>
+    <div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Закрыто</div><h2>Выбор действия</h2><p>Инъекция не заставит вызвать инструмент вне плана: chart_write не появится там, где его нет.</p></article><article class="card "><div class="label">Открыто</div><h2>Содержимое действия</h2><p>Вариант из отчёта лаборатории всё равно попадёт в запись — это и есть задача. Если отчёт неверен, запись неверна.</p></article><article class="card "><div class="label">Чем закрываем</div><h2>Человек и тест</h2><p>Подпись врача с видимым источником, сверка артефакта со схемой, тесты на искажение при переносе (Н4).</p></article></div><p class="coda">Паттерны отвечают на вопрос «что агент может сделать». На вопрос «верно ли то, что он делает» отвечают оценка и врач.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
