@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 17. Что класть в payload</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>17</span></div>
+    <h1>Что класть в payload</h1>
+    <table><colgroup><col style="width:32%"><col style="width:68%"></colgroup><thead><tr><th>Поле</th><th>Зачем</th></tr></thead><tbody><tr><td><strong>text</strong></td><td>отдать фрагмент генератору и показать врачу</td></tr><tr><td><strong>source_pdf, pages</strong></td><td>ссылка на источник в ответе</td></tr><tr><td><strong>section</strong></td><td>заголовок раздела: фильтр и контекст для генератора</td></tr><tr><td><strong>protocol_version, date</strong></td><td>отсечь устаревшую редакцию протокола</td></tr><tr><td><strong>embed_model</strong></td><td>какой моделью получен вектор — без этого смену модели не отследить</td></tr><tr><td><strong>chunk_index</strong></td><td>соседние чанки для расширения контекста</td></tr></tbody></table><p class="coda">Поля, по которым фильтруют, индексируют в Qdrant отдельно: payload index. Иначе фильтр читает всю коллекцию.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 21. Смена модели — переиндексация</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>21</span></div>
+    <h1>Смена модели — переиндексация</h1>
+    <p class="lead">Векторы двух разных моделей живут в разных пространствах. Сравнивать их между собой бессмысленно, даже при одной размерности.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 256" width="1744" height="256" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="640" height="180" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="20" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">PROTOCOLS_E5_V1</text><text x="320" y="96" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">векторы модели A</text><text x="320" y="128" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">1024 · своё пространство</text><rect x="1104" y="0" width="640" height="180" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1124" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">PROTOCOLS_E5_V2</text><text x="1424" y="96" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">векторы модели B</text><text x="1424" y="128" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">все чанки заново</text><polyline points="644,90 1100,90" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="872" y="78" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">переиндексация</text><rect x="722" y="130" width="300" height="60" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="872.0" y="167.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">алиас protocols</text><polyline points="1024,160 1100,160" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><line x1="860" y1="224" x2="884" y2="248" stroke="#1c1915" stroke-width="3"/><line x1="860" y1="248" x2="884" y2="224" stroke="#1c1915" stroke-width="3"/><text x="898" y="244" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">запрос модели B к векторам модели A</text></svg><div class="frames tight" style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Новая коллекция</h2><p>Все чанки кодируются заново новой моделью.</p></div><div class="frame"><span class="num">02</span><h2>Алиас</h2><p>Приложение обращается к алиасу protocols. Переключение — одна операция, без простоя.</p></div><div class="frame"><span class="num">03</span><h2>Проверка до переключения</h2><p>recall@k новой коллекции на том же наборе вопросов не хуже старой.</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

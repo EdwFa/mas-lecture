@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 19. Код: от чанка до точки</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>19</span></div>
+    <h1>Код: от чанка до точки</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:18px">import uuid                        # chunks: [{key, text, meta}]
+from sentence_transformers import SentenceTransformer
+from qdrant_client import QdrantClient, models
+
+model = SentenceTransformer(&quot;intfloat/multilingual-e5-large-instruct&quot;)
+client = QdrantClient(url=&quot;http://localhost:6333&quot;)
+
+client.create_collection(&quot;protocols&quot;, vectors_config={
+    &quot;dense&quot;: models.VectorParams(size=1024,
+                                 distance=models.Distance.COSINE)})
+
+vecs = model.encode([c[&quot;text&quot;] for c in chunks],      # без префикса
+                    normalize_embeddings=True, batch_size=32)
+client.upsert(&quot;protocols&quot;, points=[
+    models.PointStruct(
+        id=str(uuid.uuid5(uuid.NAMESPACE_URL, c[&quot;key&quot;])),
+        vector={&quot;dense&quot;: v.tolist()},
+        payload={**c[&quot;meta&quot;], &quot;text&quot;: c[&quot;text&quot;],
+                 &quot;embed_model&quot;: &quot;multilingual-e5-large-instruct&quot;})
+    for c, v in zip(chunks, vecs)])
+
+q = model.encode(f&quot;Instruct: {TASK}\nQuery: {question}&quot;,
+                 normalize_embeddings=True)
+hits = client.query_points(&quot;protocols&quot;, query=q.tolist(),
+                           using=&quot;dense&quot;, limit=10).points</pre></div><div class="stack"><article class="card "><div class="label">Документ</div><h2>Как есть</h2><p>Чанк кодируется без префикса. Запрос — с Instruct и Query.</p></article><article class="card "><div class="label">ID</div><h2>Повторяемый</h2><p>uuid5 от ключа «файл + номер чанка»: повторная индексация обновит точку, а не создаст дубль.</p></article><article class="card "><div class="label">Не показано</div><h2>Разреженный вектор</h2><p>BM25 добавляется вторым именованным вектором, как на слайде 16, и запрос — через prefetch и RRF.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>
