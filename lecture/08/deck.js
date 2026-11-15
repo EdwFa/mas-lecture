@@ -1,5 +1,5 @@
 (function () {
-  const TOTAL = 45;
+  const TOTAL = 23;
   const match = location.pathname.match(/slide-(\d+)\.html$/);
   const n = match ? Number(match[1]) : 1;
 
@@ -64,7 +64,7 @@
     '<a href="../05/slide-01.html?v=46">Лекция 5. Агенты с памятью, управление памятью</a>',
     '<a href="../06/slide-01.html?v=20">Лекция 6. MCP, подключение ИИ-приложений к внешним системам</a>',
     '<a href="../07/slide-01.html?v=20">Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</a>',
-    '<a href="../08/slide-01.html?v=2">Лекция 8. Компоненты / модули RAG</a>',
+    '<a href="../08/slide-01.html?v=20">Лекция 8. Компоненты / модули RAG</a>',
     '<a href="../09/slide-01.html?v=2">Лекция 9. Технологии оркестрации в модульном RAG</a>',
     '<a href="../10/slide-01.html?v=5">Лекция 10. Архитектура быстрых решений</a>',
     '<a href="../11/slide-01.html?v=3">Лекция 11. Эмбеддинг чанка</a>',
@@ -104,13 +104,13 @@
   const practicumPop = document.querySelector("#deck-practicum-pop");
 
   function href(i) {
-    return "slide-" + String(i).padStart(2, "0") + ".html?v=2";
+    return "slide-" + String(i).padStart(2, "0") + ".html?v=20";
   }
 
   count.textContent = n + " / " + TOTAL;
   prev.disabled = n <= 1;
   next.disabled = n >= TOTAL;
-  document.title = "Слайд " + n + " · Лекция 8. Компоненты / модули RAG";
+  document.title = "Слайд " + n + " · Лекция 8. RAG из модулей";
 
   function go(i) {
     if (i < 1 || i > TOTAL || i === n) return;
