@@ -4,30 +4,57 @@
   <meta charset="utf-8" />
   <title>Маршрутизация агентов</title>
   <style>
-    body {
-      margin: 0; background: #f3efe6; color: #1c1915;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    main { max-width: 920px; margin: 0 auto; padding: 72px 48px 80px; }
-    .kicker {
-      margin: 0; font-size: 13px; letter-spacing: 0.16em;
-      text-transform: uppercase; color: #5e6872;
-    }
-    h1 {
-      margin: 18px 0 0; font-family: Georgia, "Iowan Old Style", serif;
-      font-size: 56px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05;
-    }
-    footer {
-      margin-top: 64px; padding-top: 16px; border-top: 1px solid #d9d3c7;
-      font-size: 16px; color: #3e4650;
-    }
+    body { margin: 0; background: #f3efe6; color: #1c1915; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    main { max-width: 1120px; margin: 0 auto; padding: 72px 48px 80px; }
+    .kicker { margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5e6872; }
+    h1 { margin: 18px 0 0; font-family: Georgia, "Iowan Old Style", serif; font-size: 56px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; }
+    h2 { margin: 56px 0 0; font-family: Georgia, "Iowan Old Style", serif; font-size: 32px; font-weight: 400; letter-spacing: -0.02em; }
+    .lead, p, li { font-size: 19px; line-height: 1.5; color: #243038; }
+    .lead { margin: 28px 0 0; font-size: 21px; }
+    p { margin: 16px 0 0; }
+    ul { margin: 12px 0 0; padding-left: 1.25em; } li { margin-top: 6px; }
+    a { color: #1c1915; }
+    code { font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; background: #e8e2d6; padding: 1px 5px; }
+    pre { background: #e8e2d6; padding: 16px 20px; font-size: 16px; line-height: 1.5; overflow-x: auto; border-left: 3px solid #1c1915; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th { text-align: left; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5e6872; font-weight: 500; padding: 8px 12px 8px 0; border-bottom: 1px solid #1c1915; }
+    td { font-size: 16px; line-height: 1.45; color: #243038; padding: 12px 12px 12px 0; border-bottom: 1px solid #d9d3c7; vertical-align: top; }
+    td.n { font-family: Georgia, serif; font-size: 22px; width: 44px; color: #1c1915; }
+    td.t { font-family: Georgia, serif; font-size: 19px; color: #1c1915; width: 24%; }
+    td.r { width: 22%; }
+    .note { font-size: 16px; color: #5e6872; }
+    footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid #d9d3c7; font-size: 16px; color: #3e4650; display: flex; justify-content: space-between; }
   </style>
 </head>
 <body>
   <main>
-    <p class="kicker">Практикум</p>
+    <p class="kicker">Практикум · лекция 3</p>
     <h1>Маршрутизация агентов</h1>
-    <footer>Программная инженерия мультиагентных систем в клинической медицине</footer>
+    <p class="lead">Маршрутизатор решает, куда пойдёт случай дальше: ждать, собирать пакет или сразу к врачу. Задание проверяет устройство, а не качество модели: классификатор можно заменить заглушкой.</p>
+
+    <h2>Что сделать</h2>
+<pre>ROUTES = {"wait", "assemble", "doctor_now"}
+
+def route(case, classify, threshold=0.8):
+    if case.get("red_flags"):            # правило раньше модели
+        return "doctor_now", "правило: красный флаг"
+    label, p = classify(case)            # классификатор или LLM
+    if label not in ROUTES:              # ветки нет в коде
+        return "doctor_now", f"неизвестная ветка {label}"
+    if p < threshold:                    # не уверен — к человеку
+        return "doctor_now", f"неуверенно: {label} {p:.2f}"
+    return label, f"{label} {p:.2f}"</pre>
+    <ul>
+      <li>Реализовать <code>route</code> по слайду 12 лекции 3 в файле <code>router.py</code>.</li>
+      <li>Тесты: случай с красным флагом уходит к врачу до вызова классификатора; ветка, которой нет в коде, уходит к врачу; уверенность 0,6 при пороге 0,8 уходит к врачу; уверенная ветка проходит.</li>
+      <li>Каждое решение возвращает причину — она идёт в трассу.</li>
+    </ul>
+
+    <h2>Дальше</h2>
+    <p>В лекции 9 та же идея работает для вопросов врача: маршрут по сложности, при сомнении — путь тщательнее. Готовый вариант — <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/orchestrate.py">orchestrate.py</a> в <a href="p0042.html">каркасе P-0042</a>.</p>
+    <p>Сдают: <code>router.py</code>, тесты и трассу четырёх случаев.</p>
+
+    <footer><span>Программная инженерия мультиагентных систем в клинической медицине</span><span>осень 2026 · © E. Fartushny · MIT</span></footer>
   </main>
 </body>
 </html>

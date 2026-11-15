@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Каркас P-0042</title>
+  <style>
+    body { margin: 0; background: #f3efe6; color: #1c1915; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    main { max-width: 1120px; margin: 0 auto; padding: 72px 48px 80px; }
+    .kicker { margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5e6872; }
+    h1 { margin: 18px 0 0; font-family: Georgia, "Iowan Old Style", serif; font-size: 56px; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; }
+    h2 { margin: 56px 0 0; font-family: Georgia, "Iowan Old Style", serif; font-size: 32px; font-weight: 400; letter-spacing: -0.02em; }
+    .lead, p, li { font-size: 19px; line-height: 1.5; color: #243038; }
+    .lead { margin: 28px 0 0; font-size: 21px; }
+    p { margin: 16px 0 0; }
+    ul { margin: 12px 0 0; padding-left: 1.25em; } li { margin-top: 6px; }
+    a { color: #1c1915; }
+    code { font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em; background: #e8e2d6; padding: 1px 5px; }
+    pre { background: #e8e2d6; padding: 16px 20px; font-size: 16px; line-height: 1.5; overflow-x: auto; border-left: 3px solid #1c1915; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th { text-align: left; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5e6872; font-weight: 500; padding: 8px 12px 8px 0; border-bottom: 1px solid #1c1915; }
+    td { font-size: 16px; line-height: 1.45; color: #243038; padding: 12px 12px 12px 0; border-bottom: 1px solid #d9d3c7; vertical-align: top; }
+    td.n { font-family: Georgia, serif; font-size: 22px; width: 44px; color: #1c1915; }
+    td.t { font-family: Georgia, serif; font-size: 19px; color: #1c1915; width: 24%; }
+    td.r { width: 22%; }
+    .note { font-size: 16px; color: #5e6872; }
+    footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid #d9d3c7; font-size: 16px; color: #3e4650; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="kicker">Практикум</p>
+    <h1>Каркас P-0042</h1>
+    <p class="lead">Сквозной каркас курса: агент готовит справку к онкологическому консилиуму по вымышленной пациентке P-0042. Каждая лекция добавляет или заменяет одну деталь, остальное продолжает работать. Всё на Python; 37 тестов идут без сети и без модели.</p>
+    <p class="repo"><a href="https://github.com/EdwFa/MAS/tree/main/P-0042">github.com/EdwFa/MAS/tree/main/P-0042</a></p>
+
+    <h2>Запуск</h2>
+<pre>git clone https://github.com/EdwFa/MAS && cd MAS/P-0042
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python check_env.py          # Python, пакеты, данные, тесты, локальная модель
+python run.py "Посчитай СКФ и найди, что рекомендации говорят о дозах"
+python run_eval.py           # прогон на наборах оценки</pre>
+    <p>Адрес и имя локальной модели — в переменных <code>P0042_BASE_URL</code> и <code>P0042_MODEL</code>. Адрес может быть только локальным.</p>
+
+    <h2>Случай</h2>
+    <p>Женщина 67 лет, рак левой молочной железы, HER2 3+, ER и PR отрицательные, Ki-67 не выполнен; cT2N1M0. Сахарный диабет и гипертензия, метформин и лизиноприл, аллергия на йодконтраст. Креатинин 124 мкмоль/л, СКФ 41. Консилиум в пятницу 20.11; агент собирает пакет с понедельника. Ещё четыре пациента — для краевых случаев: другой диагноз, нет креатинина, 17 лет, однофамилица.</p>
+    <p>В данные заложены ловушки: спор дат консилиума, устаревшая запись, креатинин в другой единице, дубль анализа, инъекция в скане выписки, повтор уведомления лаборатории. Полная таблица — <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/data/README.md">data/README.md</a>.</p>
+
+    <h2>Что внутри</h2>
+    <table>
+      <thead><tr><th>Файл</th><th>Лекции</th><th>Что делает</th></tr></thead>
+      <tbody>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/fhir.py">fhir.py</a></td><td>5, 6, 16</td><td>чтение карты, документы, карта на дату</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/tools.py">tools.py</a></td><td>4, 9, 16</td><td>инструменты и диспетчер: имя → схема → лимит → политика</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/memory.py">memory.py</a></td><td>5</td><td>память: ссылка, а не копия; пространства имён</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/server.py">server.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/admit.py">admit.py</a></td><td>6</td><td>MCP-сервер и отпечатки инструментов</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/rag.py">rag.py</a></td><td>7, 8</td><td>нарезка, гибридный поиск, RRF, отбор</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/orchestrate.py">orchestrate.py</a></td><td>9</td><td>маршрут, ветви, цикл с бюджетом</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/harness.py">harness.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/trace.py">trace.py</a></td><td>13, 17</td><td>цикл агента, пауза врача, трасса, проверка источников</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/ops.py">ops.py</a>, <a href="https://github.com/EdwFa/MAS/blob/main/P-0042/release.yaml">release.yaml</a></td><td>18</td><td>релиз, проверка релиза, тихий режим, метрики</td></tr>
+      <tr><td><a href="https://github.com/EdwFa/MAS/blob/main/P-0042/p0042/evaluate.py">evaluate.py</a>, <a href="https://github.com/EdwFa/MAS/tree/main/P-0042/eval">eval/</a></td><td>8, 9, 17, 18</td><td>вопросы с эталонами, атаки, пакеты врача</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Все данные вымышленные. Это учебный материал, а не клинический пример для решений о лечении.</p>
+
+    <footer><span>Программная инженерия мультиагентных систем в клинической медицине</span><span>осень 2026 · © E. Fartushny · MIT</span></footer>
+  </main>
+</body>
+</html>

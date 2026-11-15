@@ -73,9 +73,11 @@
     '<div class="deck-menu" id="deck-practicum">',
     '<button type="button" id="deck-practicum-btn" aria-expanded="false" aria-haspopup="true">Практикум</button>',
     '<div class="deck-pop end" id="deck-practicum-pop" hidden>',
+    '<a href="../practicum/index.html?v=1">Все занятия</a>',
+    '<a href="../practicum/p0042.html?v=1">Каркас P-0042</a>',
     '<a href="../practicum/patterns.html?v=1">Базовые паттерны МАС</a>',
     '<a href="../practicum/mcp.html?v=1">Реализация MCP</a>',
-    '<a href="../practicum/routing.html">Маршрутизация агентов</a>',
+    '<a href="../practicum/routing.html?v=2">Маршрутизация агентов</a>',
     "</div></div>",
     '<a class="deck-quiet" href="../glossary.html">Глоссарий</a></div>'
   ].join("");
