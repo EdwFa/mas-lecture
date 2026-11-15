@@ -1,5 +1,5 @@
 (function () {
-  const TOTAL = 31;
+  const TOTAL = 32;
   const match = location.pathname.match(/slide-(\d+)\.html$/);
   const n = match ? Number(match[1]) : 1;
 
@@ -43,7 +43,7 @@
     '<div class="deck-menu" id="deck-lectures">',
     '<button type="button" id="deck-lectures-btn" aria-expanded="false" aria-haspopup="true">Лекции</button>',
     '<div class="deck-pop wide" id="deck-lectures-pop" hidden>',
-    '<a href="../01/slide-01.html?v=18">Лекция 1. Вводная</a>',
+    '<a href="../01/slide-01.html?v=19">Лекция 1. Вводная</a>',
     '<a href="../02/slide-01.html?v=12">Лекция 2. Эволюция трансформеров к современным LLM-архитектурам</a>',
     '<a href="../03/slide-01.html?v=20">Лекция 3. Агенты в цепочках, маршрутизация, параллельное выполнение</a>',
     '<a href="../04/slide-01.html?v=51">Лекция 4. Взаимодействие агентов с внешними системами</a>',
@@ -60,7 +60,7 @@
     '<a href="../15/slide-01.html?v=1">Лекция 15. Передача между агентами</a>',
     '<a href="../16/slide-01.html?v=1">Лекция 16. A2A и надёжное исполнение</a>',
     '<a href="../17/slide-01.html?v=1">Лекция 17. Опасности и безопасность системы</a>',
-    '<a href="../18/slide-01.html?v=1">Лекция 18. От пилота к эксплуатации</a>',
+    '<a href="../18/slide-01.html?v=2">Лекция 18. От пилота к эксплуатации</a>',
     '<a href="../19/slide-01.html?v=1">Защита проекта</a>',
     
     "</div></div></div>",
@@ -73,7 +73,7 @@
     '<div class="deck-menu" id="deck-practicum">',
     '<button type="button" id="deck-practicum-btn" aria-expanded="false" aria-haspopup="true">Практикум</button>',
     '<div class="deck-pop end" id="deck-practicum-pop" hidden>',
-    '<a href="../practicum/index.html?v=2">Все занятия</a>',
+    '<a href="../practicum/index.html?v=3">Все занятия</a>',
     '<a href="../practicum/p0042.html?v=2">Каркас P-0042</a>',
     '<a href="../practicum/patterns.html?v=1">Базовые паттерны МАС</a>',
     '<a href="../practicum/mcp.html?v=1">Реализация MCP</a>',
