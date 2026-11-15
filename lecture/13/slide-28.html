@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 28. Журнал одного случая</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 13. Harness агента</span><span>28</span></div>
+    <h1>Журнал одного случая</h1>
+    <div class="split" style="--left:1040px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">{&quot;turn&quot;:6,&quot;t&quot;:&quot;10:42:07&quot;,&quot;window&quot;:&quot;sha256:9f1c…&quot;,
+ &quot;model&quot;:&quot;call&quot;,&quot;tool&quot;:&quot;fhir_read&quot;,
+ &quot;args&quot;:{&quot;resourceType&quot;:&quot;Appointment&quot;,&quot;id&quot;:&quot;apt-31&quot;},
+ &quot;policy&quot;:&quot;allow&quot;,&quot;hook&quot;:[&quot;mask_phi&quot;],
+ &quot;result&quot;:&quot;ok&quot;,&quot;tokens&quot;:2140}
+{&quot;turn&quot;:7,&quot;t&quot;:&quot;10:42:15&quot;,&quot;window&quot;:&quot;sha256:a7e0…&quot;,
+ &quot;model&quot;:&quot;call&quot;,&quot;tool&quot;:&quot;chart_write&quot;,
+ &quot;policy&quot;:&quot;ask&quot;,&quot;state&quot;:&quot;paused&quot;,
+ &quot;snapshot&quot;:&quot;snap/P-0042/7.json&quot;}
+{&quot;turn&quot;:7,&quot;t&quot;:&quot;16:05:51&quot;,&quot;event&quot;:&quot;resume&quot;,
+ &quot;by&quot;:&quot;dr.petrova&quot;,&quot;decision&quot;:&quot;edit&quot;}</pre></div><div class="stack"><article class="card "><div class="label">Вопрос</div><h2>Почему в пакете эта дата?</h2><p>Ответ ищут в журнале: какой вызов принёс дату, что было в окне, кто подписал.</p></article><article class="card "><div class="label">Что пишут</div><h2>Каждый оборот</h2><p>Хеш окна, выбор модели, решение политики, сработавшие хуки, результат, время, токены.</p></article><article class="card "><div class="label">Чего не пишут</div><h2>ПДн и ключи</h2><p>Журнал читают разработчики. Маска действует и здесь.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

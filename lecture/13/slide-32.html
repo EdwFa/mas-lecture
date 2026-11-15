@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 32. Наружу — артефакт</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 13. Harness агента</span><span>32</span></div>
+    <h1>Наружу — артефакт</h1>
+    <div class="split" style="--left:760px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Возвращается главному агенту</div><pre class="code" style="">{
+  &quot;type&quot;: &quot;lab_summary&quot;,
+  &quot;case&quot;: &quot;P-0042&quot;,
+  &quot;items&quot;: [
+    {&quot;marker&quot;: &quot;HER2&quot;, &quot;value&quot;: &quot;3+&quot;,
+     &quot;source&quot;: &quot;Observation/her2-77&quot;},
+    {&quot;marker&quot;: &quot;ER&quot;, &quot;value&quot;: &quot;0%&quot;,
+     &quot;source&quot;: &quot;Observation/er-78&quot;},
+    {&quot;marker&quot;: &quot;PR&quot;, &quot;value&quot;: &quot;0%&quot;,
+     &quot;source&quot;: &quot;Observation/pr-79&quot;}
+  ],
+  &quot;open&quot;: [&quot;Ki-67 не найден&quot;]
+}</pre></div><div class="stack"><article class="card muted"><div class="label">Не возвращается</div><h2>Четырнадцать оборотов</h2><p>Поиски, ошибки, промежуточные выжимки. Они в трассе субагента, а не в окне главного.</p></article><article class="card "><div class="label">Почему</div><h2>Окно главного — его бюджет</h2><p>Артефакт по схеме занимает сотни токенов. Переписка — десятки тысяч.</p></article><article class="card "><div class="label">Проверка</div><h2>Схема артефакта</h2><p>Главный harness сверяет её так же, как аргументы вызова. Нет source — артефакт не принят.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
