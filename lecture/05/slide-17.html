@@ -2,109 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 17. Рефлексия процедурной памяти</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 46px; }
-    .lead { max-width: 1720px; }
-    .cols {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .col { border-top: 1px solid #1c1915; padding-top: 10px; min-width: 0; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .col h2 {
-      margin: 4px 0 0;
-      font-size: 28px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .role {
-      margin: 4px 0 10px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.3;
-      color: #243038;
-    }
-    pre {
-      margin: 0;
-      font-family: Consolas, "JetBrains Mono", "Cascadia Mono", "Courier New", monospace;
-      font-size: 16px;
-      line-height: 1.42;
-      color: #1c1915;
-      white-space: pre;
-      background: transparent;
-    }
-    .k { color: #0033b3; font-weight: 700; }
-    .s { color: #067d17; }
-    .num { color: #1750eb; }
-    .c { color: #808080; }
-    .fn { color: #00627a; }
-    .bi { color: #0033b3; }
-    .coda { max-width: 1680px; margin-top: 18px; font-size: 24px; }
-  </style>
+  <title>Слайд 17. Пространства имён</title>
+  <link rel="stylesheet" href="slide.css?v=46" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>17</span></div>
-    <h1>Рефлексия процедурной памяти</h1>
-    <p class="lead">Псевдокод: агент рефлексией обновляет процедурную память в LangGraph BaseStore.</p>
-    <div class="cols">
-      <article class="col">
-        <div class="n">01</div>
-        <h2>update_instructions</h2>
-        <p class="role">Узел обновляет инструкции агента.</p>
-<pre><span class="c"># Узел, который обновляет инструкции агента</span>
-<span class="k">def</span> <span class="fn">update_instructions</span>(state: State, store: BaseStore):
-    namespace = (<span class="s">"instructions"</span>,)
-    <span class="c"># Получение текущих инструкций из хранилища</span>
-    current_instructions = store.search(namespace)[<span class="num">0</span>]
-
-    <span class="c"># Создание промпта для запроса LLM рефлексировать над разговором</span>
-    <span class="c"># и генерировать новые, улучшенные инструкции</span>
-    prompt = prompt_template.format(
-        instructions=current_instructions.value[<span class="s">"instructions"</span>],
-        conversation=state[<span class="s">"messages"</span>]
-    )
-
-    <span class="c"># Получение новых инструкций от LLM</span>
-    output = llm.invoke(prompt)
-    new_instructions = output[<span class="s">'new_instructions'</span>]
-
-    <span class="c"># Сохранение обновленных инструкций обратно в хранилище</span>
-    store.put((<span class="s">"agent_instructions"</span>,), <span class="s">"agent_a"</span>, {<span class="s">"instructions"</span>: new_instructions})</pre>
-      </article>
-      <article class="col">
-        <div class="n">02</div>
-        <h2>call_model</h2>
-        <p class="role">Узел использует инструкции для ответа.</p>
-<pre><span class="c"># Узел, который использует инструкции для генерации ответа</span>
-<span class="k">def</span> <span class="fn">call_model</span>(state: State, store: BaseStore):
-    namespace = (<span class="s">"agent_instructions"</span>, )
-    <span class="c"># Извлечение последних инструкций из хранилища</span>
-    instructions = store.get(namespace, key=<span class="s">"agent_a"</span>)[<span class="num">0</span>]
-
-    <span class="c"># Использование извлеченных инструкций для форматирования промпта</span>
-    prompt = prompt_template.format(instructions=instructions.value[<span class="s">"instructions"</span>])
-    <span class="c"># ... логика приложения продолжается</span></pre>
-      </article>
-    </div>
-    <p class="coda">Первый узел записывает новые инструкции в хранилище. Второй читает их и собирает промпт.</p>
+    <div class="kicker"><span>Лекция 5. Агенты с памятью</span><span>17</span></div>
+    <h1>Пространства имён</h1>
+    <p class="lead">Хранилище похоже на папки: пространство имён — папка, ключ — имя файла. Граница папки — граница доступа.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 330" width="1744" height="330" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="0" y="30" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" text-anchor="start" fill="#1c1915" font-weight="600">store</text><line x1="30" y1="68" x2="64" y2="68" stroke="#b7b1a6" stroke-width="1.2"/><rect x="70" y="50" width="520" height="36" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="84" y="75" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">(&quot;case&quot;, &quot;P-0042&quot;)</text><text x="630" y="75" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">ссылки, состояние, вопросы</text><line x1="30" y1="114" x2="104" y2="114" stroke="#b7b1a6" stroke-width="1.2"/><rect x="110" y="96" width="520" height="36" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="124" y="121" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">key: diagnosis</text><text x="670" y="121" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">Condition/c-17</text><line x1="30" y1="160" x2="104" y2="160" stroke="#b7b1a6" stroke-width="1.2"/><rect x="110" y="142" width="520" height="36" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="124" y="167" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">key: board_date</text><text x="670" y="167" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">спор: Encounter/enc-31 и ct-117</text><line x1="30" y1="206" x2="64" y2="206" stroke="#b7b1a6" stroke-width="1.2"/><rect x="70" y="188" width="520" height="36" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="84" y="213" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">(&quot;case&quot;, &quot;P-0051&quot;)</text><text x="630" y="213" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">другой пациент — другая папка</text><line x1="30" y1="252" x2="64" y2="252" stroke="#b7b1a6" stroke-width="1.2"/><rect x="70" y="234" width="520" height="36" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="84" y="259" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">(&quot;doctor&quot;, &quot;dr-17&quot;)</text><text x="630" y="259" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">формат пакета, порядок разделов</text><line x1="30" y1="298" x2="64" y2="298" stroke="#b7b1a6" stroke-width="1.2"/><rect x="70" y="280" width="520" height="36" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.1" opacity="1"/><text x="84" y="305" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#1c1915" font-weight="400">(&quot;instructions&quot;, &quot;proposals&quot;)</text><text x="630" y="305" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">правки на ревью</text><line x1="30" y1="40" x2="30" y2="298" stroke="#b7b1a6" stroke-width="1.2"/></svg><p class="coda">Случай читает только свою папку. Предпочтения врача и правки инструкций лежат отдельно — у них другой владелец и другие права.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=45"></script>
+<script src="deck.js?v=46"></script>
 </body>
 </html>

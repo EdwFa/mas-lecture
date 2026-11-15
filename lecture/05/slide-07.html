@@ -2,72 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 7. Агенты, ориентированные на задачи</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; }
-    .lead { max-width: 1760px; font-size: 22px; }
-    .blocks {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 14px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 2px 0 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.3;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 10px; font-size: 22px; }
-    figure { margin: 2px 0 0; display: flex; flex-direction: column; align-items: center; }
-    figure img { display: block; width: auto; height: auto; max-width: 1680px; max-height: 380px; background: #f7f4ee; }
-    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 20px; line-height: 1.3; color: #243038; }
-  </style>
+  <title>Слайд 7. Цикл памяти</title>
+  <link rel="stylesheet" href="slide.css?v=46" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 5. Агенты с памятью, управление памятью</span><span>07</span></div>
-    <h1>Агенты, ориентированные на задачи</h1>
-    <p class="lead">Они управляют многошаговыми задачами.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>Краткосрочная память</h2>
-        <p>Нужна, чтобы следить за предыдущими шагами, текущим прогрессом и общими целями. Эти сведения могут находиться в контексте задачи или во временном хранилище.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Долгосрочная память</h2>
-        <p>Нужна для доступа к конкретным данным пользователя. Этих данных нет в непосредственном контексте.</p>
-      </article>
-    </div>
-    <p class="coda">Краткосрочная память следит за шагами, прогрессом и целями. Долгосрочная нужна для доступа к данным пользователя вне непосредственного контекста.</p>
-    <figure>
-      <img src="img/task-memory.png?v=1" alt="На столе карточки шагов, круг текущего шага и флажок целей. На отдельной полке папка и карточка пользователя.">
-      <figcaption>На столе предыдущие шаги, текущий прогресс и цели. Данные пользователя лежат отдельно, вне этого контекста.</figcaption>
-    </figure>
+    <div class="kicker"><span>Лекция 5. Агенты с памятью</span><span>07</span></div>
+    <h1>Цикл памяти</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 214" width="1744" height="214" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="20" width="380" height="100" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="190.0" y="66.0" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Записать</text><text x="190.0" y="94.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">что стоит помнить</text><polyline points="384,70 451,70" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/><rect x="455" y="20" width="380" height="100" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="645.0" y="66.0" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Хранить</text><text x="645.0" y="94.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">вне окна</text><polyline points="839,70 906,70" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/><rect x="910" y="20" width="380" height="100" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="1100.0" y="66.0" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Найти</text><text x="1100.0" y="94.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">по вопросу</text><polyline points="1294,70 1361,70" fill="none" stroke="#1c1915" stroke-width="2" marker-end="url(#ah)"/><rect x="1365" y="20" width="380" height="100" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1555.0" y="66.0" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Положить в окно</text><text x="1555.0" y="94.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">только нужное</text><polyline points="1550,124 1550,180 190,180 190,124" fill="none" stroke="#5e6872" stroke-width="1.3" stroke-dasharray="7 6" marker-end="url(#ahg)"/><text x="870" y="204" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#5e6872" font-weight="400">после ответа — снова решить, что записать</text></svg><div class="cols" style="--n:3;margin-top:32px"><article class="card "><div class="label">Записать</div><h2>Решает код</h2><p>Не всё подряд, а то, что пригодится: ссылку, решение, вопрос. Решение «что записать» — тоже правило.</p></article><article class="card "><div class="label">Найти</div><h2>По вопросу</h2><p>Ключом или поиском по смыслу. Только в своей области — случае, враче.</p></article><article class="card "><div class="label">Положить в окно</div><h2>Только нужное</h2><p>Найденное занимает окно. Лишнее вытеснит правила и данные пациента (лекция 13).</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=45"></script>
+<script src="deck.js?v=46"></script>
 </body>
 </html>
