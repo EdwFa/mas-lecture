@@ -2,46 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 16. Температура и порог</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; } .lead { font-size: 20px; margin-top: 8px; } pre { margin: 10px 0 0; padding: 12px 16px; background: #fffdf8; border-top: 1px solid #1c1915; font-family: Consolas, 'Courier New', monospace; font-size: 17px; line-height: 1.32; color: #1c1915; }
-  </style>
+  <title>Слайд 16. Почему не косинус</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>16</span></div>
-    
-    <h1>Температура и порог</h1>
-    <p class="lead">Температуру подбирают на размеченном наборе: вероятность должна совпасть с частотой верных ответов. Порог сравнивает уже калиброванную вероятность. Оба числа живут в коде. Ориентир набора для своего модуля: 500–1000 фрагментов.</p>
-    <pre>def brier(pairs, temperature):
-    loss = 0.0
-    for similarity, label in pairs:
-        p = float(softmax([similarity, -similarity], temperature)[0])
-        loss += (p - label) ** 2
-    return loss / len(pairs)
-
-def fit_temperature(pairs):
-    best_t, best = 1.0, 1e9
-    for t in (0.5, 0.7, 1.0, 1.5, 2.0, 3.0):
-        loss = brier(pairs, t)
-        if loss &lt; best:
-            best, best_t = loss, t
-    return best_t
-
-def keep(chunks, question, threshold, temperature):
-    kept = []
-    for chunk in chunks:
-        p = yes_probability(question, chunk, temperature)
-        if p &gt;= threshold:
-            kept.append((chunk, p))
-    return kept</pre>
+    <h1>Почему не косинус</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 204" width="1744" height="204" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="0" y="18" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">BI-ENCODER · E5</text><rect x="0" y="36" width="260" height="56" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="130.0" y="71.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Вопрос</text><rect x="0" y="112" width="260" height="56" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="130.0" y="147.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Фрагмент</text><polyline points="264,64 320,64" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><polyline points="264,140 320,140" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="326" y="36" width="200" height="56" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="426.0" y="71.0" font-family="Georgia, Iowan Old Style, serif" font-size="20" text-anchor="middle" fill="#1c1915" font-weight="400">энкодер</text><rect x="326" y="112" width="200" height="56" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="426.0" y="147.0" font-family="Georgia, Iowan Old Style, serif" font-size="20" text-anchor="middle" fill="#1c1915" font-weight="400">энкодер</text><polyline points="530,64 600,96" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><polyline points="530,140 600,108" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="606" y="72" width="170" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="691.0" y="108.4" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">cos</text><text x="0" y="198" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">сравнивает тему двух векторов</text><text x="930" y="18" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">CROSS-ENCODER · РЕРАНКЕР</text><rect x="930" y="74" width="380" height="56" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1120.0" y="109.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Вопрос [SEP] фрагмент</text><polyline points="1314,102 1370,102" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1376" y="74" width="200" height="56" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1476.0" y="109.0" font-family="Georgia, Iowan Old Style, serif" font-size="20" text-anchor="middle" fill="#1c1915" font-weight="400">энкодер</text><polyline points="1580,102 1630,102" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1636" y="74" width="108" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1690.0" y="109.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">логит</text><text x="930" y="198" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">читает вопрос и фрагмент вместе</text></svg><div class="split" style="--left:520px;--right:1fr;margin-top:28px"><div class="stack"><table><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th>Косинус s</th><th>σ(2s/T), T = 1</th></tr></thead><tbody><tr><td>0,70</td><td>0,80</td></tr><tr><td>0,80</td><td>0,83</td></tr><tr><td>0,87</td><td>0,85</td></tr><tr><td>1,00</td><td>0,88</td></tr></tbody></table></div><div class="stack"><article class="card "><div class="label">Проблема 1</div><h2>Всё выше 0,5</h2><p>Косинусы e5 лежат около 0,7–1,0: модель обучена с температурой 0,01. softmax([s, −s]) никогда не скажет «нет».</p></article><article class="card "><div class="label">Проблема 2</div><h2>Тема, а не утверждение</h2><p>Bi-encoder сравнивает тему. На вопрос «есть ли рекомендация» отвечает cross-encoder.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

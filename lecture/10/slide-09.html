@@ -2,39 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 9. Гипотеза. Энкодер</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .three { grid-template-columns: 1fr 1fr 1fr; } h1 { font-size: 44px; } .lead { font-size: 22px; } .card h2 { font-size: 26px; } .card p { font-size: 20px; }
-  </style>
+  <title>Слайд 9. Калибровка</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>09</span></div>
-    
-    <h1>Гипотеза. Энкодер</h1>
-    <p class="lead">Точные слои закрыты. Реконструкция опирается на отсутствие порождения текста, параллельный вывод, задержку 70–500 мс из описания прохода и ускорение, которое презентация называет 40–200 раз.</p>
-    <div class="cols three">
-      <article class="card">
-        <h2>База</h2>
-        <p>С высокой долей вероятности это энкодер современного трансформера. Ориентир размера: 1–3 млрд параметров. Аналоги класса: DeBERTa, RoBERTa, энкодерная часть Qwen2.5. Точное число параметров не опубликовано.</p>
-      </article>
-      <article class="card">
-        <h2>Почему энкодер</h2>
-        <p>Decoder-only, в разборе названы Llama и Qwen, считает следующий токен. State до 32k токенов энкодер читает целиком и отдаёт контекстные эмбеддинги.</p>
-      </article>
-      <article class="card">
-        <h2>Что гипотеза не закрывает</h2>
-        <p>Имена аналогов — ориентир класса, не опознанные веса Jev. Один физический проход на сложном запросе компания не подтверждает отдельно от формулы «все варианты за один проход».</p>
-      </article>
-    </div>
-    
+    <h1>Калибровка</h1>
+    <div class="split" style="--left:480px;--right:1fr;margin-top:28px"><div class="stack"><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 360" width="380" height="360" style="display:block;margin-top:28px;overflow:visible;margin-top:0;width:480px;height:auto"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="60" y="10" width="300" height="300" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.2" opacity="1"/><line x1="60" y1="310" x2="360" y2="10" stroke="#5e6872" stroke-width="1.5" stroke-dasharray="7 6"/><polyline points="90.0,295.0 150.0,250.0 210.0,196.0 270.0,154.0 330.0,112.0" fill="none" stroke="#1c1915" stroke-width="2.4"/><circle cx="90.0" cy="295.0" r="5" fill="#1c1915"/><circle cx="150.0" cy="250.0" r="5" fill="#1c1915"/><circle cx="210.0" cy="196.0" r="5" fill="#1c1915"/><circle cx="270.0" cy="154.0" r="5" fill="#1c1915"/><circle cx="330.0" cy="112.0" r="5" fill="#1c1915"/><text x="210.0" y="344" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">заявленная вероятность</text><text x="30" y="160.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" fill="#5e6872" text-anchor="middle" transform="rotate(-90 30 160.0)">доля верных</text><text x="300" y="70" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="end" fill="#5e6872" font-weight="400">идеал</text><text x="352" y="240" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="end" fill="#1c1915" font-weight="400">самоуверенная</text></svg></div><div class="stack"><article class="card "><div class="label">Что значит 0,8</div><h2>Частота в группе</h2><p>Среди ответов с p = 0,8 верны около 80%. Один такой ответ ничего не гарантирует.</p></article><article class="card "><div class="label">Brier score</div><h2>Средний квадрат ошибки</h2><p>mean((p − y)²). Ноль — идеально. Штрафует и самоуверенность, и робость.</p></article><article class="card "><div class="label">ECE</div><h2>Разрыв по корзинам</h2><p>Делим ответы на корзины по p и сравниваем среднее p с долей верных в каждой. Это и есть кривая слева.</p></article><p class="coda">Калибровку проверяют на своём наборе. Чужая калибровка на ваши PDF не переносится.</p></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

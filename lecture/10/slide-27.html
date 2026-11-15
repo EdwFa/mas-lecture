@@ -2,36 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 27. Liquid d1</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .coda { font-size: 24px; }
-  </style>
+  <title>Слайд 27. Выбор для русского текста</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>27</span></div>
-    
-    <h1>Liquid d1</h1>
-    <p class="lead">Семейство decision-моделей Liquid AI на Liquid Foundation Models, LFM3. Рядом названы d1-ultra и d1-omni. Формат близок к Jev, упор на несколько модальностей и на устройства у края сети.</p>
-    <div class="cols">
-      <article class="card">
-        <h2>Веса</h2>
-        <p>Открытые. В обзоре названы d1-3B для сложных задач и d1-omni-600M как сверхлёгкая версия. Диапазон таблицы: 600M–3B+.</p>
-      </article>
-      <article class="card">
-        <h2>Вход</h2>
-        <p>Текст и JSON, а также изображения, видео и аудио. Пример формы ответа, не замер снимка: severity_score: 4, confidence: 0.91.</p>
-      </article>
-    </div>
-    <p class="coda">В обзоре время названо миллисекундами, в таблице — короче 50 мс. Развёртывание: от NVIDIA DGX до edge-сервера в клинике, данные остаются на месте.</p>
-    
+    <h1>Выбор для русского текста</h1>
+    <p class="lead">Корпус курса русскоязычный. Это первый фильтр, ещё до скорости и точности.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 306" width="1744" height="306" style="display:block;margin-top:28px;overflow:visible;margin-top:40px"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="80" width="260" height="70" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="130.0" y="123.4" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Русский текст?</text><polyline points="264,115 330,115 330,40 380,40" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="300" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">нет</text><rect x="386" y="8" width="420" height="64" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="596.0" y="47.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Von 395M · Laya-en 421M</text><text x="826" y="46" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">английский; Von — контекст 8192</text><polyline points="330,115 330,200 380,200" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="300" y="190" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">да</text><rect x="386" y="166" width="300" height="70" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="536.0" y="209.4" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">State длиннее 1k?</text><polyline points="690,201 760,201 760,130 810,130" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="730" y="120" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">нет</text><rect x="816" y="98" width="460" height="64" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1046.0" y="137.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Laya-multilingual 322M</text><text x="1296" y="136" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">mmBERT · 100+ языков · контекст 1024</text><polyline points="760,201 760,270 810,270" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="730" y="260" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">да</text><rect x="816" y="238" width="460" height="64" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1046.0" y="277.7" font-family="Georgia, Iowan Old Style, serif" font-size="22" text-anchor="middle" fill="#1c1915" font-weight="400">Decider · Qwen3.5</text><text x="1296" y="276" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">2B: контекст 32K · Kev — тот же API Jev</text></svg><p class="coda">Любую открытую модель калибруют на своих фрагментах и проверяют по полноте, как на слайдах 17–19.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

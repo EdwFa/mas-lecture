@@ -3,33 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <title>Слайд 14. Четыре шаблона сборки</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    td { font-size: 22px; padding-top: 12px; padding-bottom: 12px; } .coda { font-size: 24px; }
-  </style>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>14</span></div>
-    
     <h1>Четыре шаблона сборки</h1>
-    <table>
-      <thead><tr><th>Шаблон</th><th>Как собран</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Веер</strong></td><td>Несколько вопросов к одному state в одном вызове. Вопросы изолированы.</td></tr>
-        <tr><td><strong>Маршрут по уверенности</strong></td><td>Высокая — код действует. Средняя — человек или второй проход. Низкая — код останавливается.</td></tr>
-        <tr><td><strong>Составной балл</strong></td><td>Несколько осей. Веса записаны в коде, не в тексте вопроса.</td></tr>
-        <tr><td><strong>Маршрут по намерению</strong></td><td>choice выбирает ветку. Следующий шаг — уже другой набор вопросов или генератор.</td></tr>
-      </tbody>
-    </table>
-    <p class="coda">Fact Search отбрасывает фрагмент при P(нет) ≥ 0,8. Автоприём цитаты — от уверенности 0,8. Для клиники порог свой.</p>
-    
+    <table><colgroup><col style="width:26%"><col style="width:46%"><col style="width:28%"></colgroup><thead><tr><th>Шаблон</th><th>Как собран</th><th>Пример</th></tr></thead><tbody><tr><td><strong>Веер</strong></td><td>Несколько вопросов к одному state в одном вызове</td><td>триггеры Фабри по выписке</td></tr><tr><td><strong>Маршрут по уверенности</strong></td><td>Высокая — действует код. Средняя — человек. Низкая — стоп</td><td>автоприём цитаты</td></tr><tr><td><strong>Составной балл</strong></td><td>Несколько осей, веса записаны в коде, не в вопросе</td><td>сила подозрения</td></tr><tr><td><strong>Маршрут по намерению</strong></td><td>choice выбирает ветку и следующий набор вопросов</td><td>к какому модулю запрос</td></tr></tbody></table><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 200" width="1744" height="200" style="display:block;margin-top:28px;overflow:visible;margin-top:44px"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="872.0" height="76" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="436.0" y="34" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Низкая</text><text x="436.0" y="58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">стоп или другой путь</text><polyline points="436.0,80 436.0,116" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="326.0" y="120" width="220" height="50" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="436.0" y="152" font-family="Georgia, Iowan Old Style, serif" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">Запретить</text><rect x="872.0" y="0" width="610.4" height="76" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="1177.2" y="34" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Средняя</text><text x="1177.2" y="58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">человек или второй проход</text><polyline points="1177.2,80 1177.2,116" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1067.2" y="120" width="220" height="50" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1177.2" y="152" font-family="Georgia, Iowan Old Style, serif" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">Спросить</text><rect x="1482.3999999999999" y="0" width="261.6" height="76" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.4" opacity="1"/><text x="1613.1999999999998" y="34" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Высокая</text><text x="1613.1999999999998" y="58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">код действует</text><polyline points="1613.1999999999998,80 1613.1999999999998,116" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1503.1999999999998" y="120" width="220" height="50" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1613.1999999999998" y="152" font-family="Georgia, Iowan Old Style, serif" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">Разрешить</text><text x="0" y="196" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">УВЕРЕННОСТЬ DECISION-МОДЕЛИ → РЕШЕНИЕ ПОЛИТИКИ HARNESS (ЛЕКЦИЯ 13)</text></svg><p class="coda">Маршрут по уверенности — те же «разрешить, спросить, запретить» из лекции 13. Decision-модель отвечает, harness исполняет.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

@@ -2,40 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 11. Три ветки обучения</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .three { grid-template-columns: 1fr 1fr 1fr; } .card p { font-size: 20px; } .coda { font-size: 22px; }
-  </style>
+  <title>Слайд 11. Гипотеза: энкодер и головы</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>11</span></div>
-    
-    <h1>Три ветки обучения</h1>
-    <div class="cols three">
-      <article class="card">
-        <h2>RLHF</h2>
-        <p>Ветка диалога. Модель учат ответам, которые людям нравятся как текст.</p>
-      </article>
-      <article class="card">
-        <h2>RLVR</h2>
-        <p>Ветка задач с проверяемым ответом. Обучение дольше и дороже.</p>
-      </article>
-      <article class="card">
-        <h2>RLCD</h2>
-        <p>Штраф за несоответствие заявленной уверенности и фактической точности. Так RLCD описан в заявлении. Jev обучена на этой ветке.</p>
-      </article>
-    </div>
-    <p class="lead" style="margin-top:22px">Калибровку проверяют на группе. Вероятность 0,8 означает: в этой группе около 80% ответов верны.</p>
-    <p class="coda">Brier score — средний квадрат разности вероятности и метки. ECE смотрит то же по корзинам уверенности. Этими величинами сверяют заявленную уверенность с частотой. Имя функции потерь компания не называет. Реконструкция, со словом «скорее всего»: дистилляция с медленной модели, в разборе названы GPT-4o или o1, затем cross-entropy и Brier score или ECE. Была ли дистилляция на самом деле, компания не сообщает.</p>
-    
+    <h1>Гипотеза: энкодер и головы</h1>
+    <p class="lead">Реконструкция, не опубликованная схема. Её правдоподобие подтверждают открытые модели: Laya и Von собраны именно так, на ModernBERT.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 352" width="1744" height="352" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="0" y="16" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ВХОД: ОДНА ПОСЛЕДОВАТЕЛЬНОСТЬ</text><rect x="0" y="28" width="330" height="58" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="165.0" y="58" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">STATE</text><text x="165.0" y="78" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="middle" fill="#5e6872" font-weight="400">текст фрагмента</text><rect x="342" y="28" width="110" height="58" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="397.0" y="64" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">SEP</text><rect x="464" y="28" width="200" height="58" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="564.0" y="58" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">Q1</text><text x="564.0" y="78" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="middle" fill="#5e6872" font-weight="400">noul</text><rect x="676" y="28" width="110" height="58" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="731.0" y="64" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">SEP</text><rect x="798" y="28" width="200" height="58" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="898.0" y="58" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">Q2</text><text x="898.0" y="78" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="middle" fill="#5e6872" font-weight="400">choice</text><rect x="1010" y="28" width="110" height="58" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1065.0" y="64" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">SEP</text><rect x="1132" y="28" width="200" height="58" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1232.0" y="58" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">Q3</text><text x="1232.0" y="78" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="middle" fill="#5e6872" font-weight="400">score</text><polyline points="630,90 630,122" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="0" y="126" width="1332" height="64" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="666.0" y="166" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Двунаправленный энкодер · один проход</text><polyline points="397.0,194 397.0,236" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="327.0" y="240" width="140" height="50" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="397.0" y="271" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">голова</text><polyline points="397.0,294 397.0,326" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="397.0" y="346" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">p(вариантов)</text><polyline points="731.0,194 731.0,236" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="661.0" y="240" width="140" height="50" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="731.0" y="271" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">голова</text><polyline points="731.0,294 731.0,326" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="731.0" y="346" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">p(вариантов)</text><polyline points="1065.0,194 1065.0,236" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="995.0" y="240" width="140" height="50" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1065.0" y="271" font-family="Georgia, Iowan Old Style, serif" font-size="19" text-anchor="middle" fill="#1c1915" font-weight="400">голова</text><polyline points="1065.0,294 1065.0,326" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><text x="1065.0" y="346" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#5e6872" font-weight="400">p(вариантов)</text><text x="1300" y="268" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">у каждого вопроса своя голова</text><text x="1300" y="294" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">вопросы не видят ответы друг друга</text></svg><p class="coda">Время зависит от длины входа, почти не от числа вопросов. Новый вопрос не размывает соседний: у него своя голова.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>
