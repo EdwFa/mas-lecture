@@ -74,6 +74,7 @@
     '<a href="../15/slide-01.html?v=1">Лекция 15. Передача между агентами</a>',
     '<a href="../16/slide-01.html?v=1">Лекция 16. A2A и надёжное исполнение</a>',
     '<a href="../17/slide-01.html?v=1">Лекция 17. Опасности и безопасность системы</a>',
+    '<a href="../18/slide-01.html?v=1">Защита проекта</a>',
     "</div></div></div>",
     '<div class="deck-pager">',
     '<button type="button" id="deck-prev">Предыдущий</button>',
