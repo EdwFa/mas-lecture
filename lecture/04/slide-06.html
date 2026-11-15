@@ -2,63 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 6. Пример — агент взаимодействия с МИС</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 48px; }
-    .lead { max-width: 1720px; }
-    .case, .tool {
-      margin: 14px 0 0;
-      max-width: 1680px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 24px;
-      line-height: 1.35;
-      color: #243038;
-    }
-    ol {
-      margin: 28px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-    li {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 8px 28px;
-      padding: 18px 0;
-      border-top: 1px solid #1c1915;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 24px;
-      line-height: 1.35;
-      color: #243038;
-    }
-    li:last-child { border-bottom: 1px solid #1c1915; }
-    .n {
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      color: #5e6872;
-      padding-top: 2px;
-    }
-  </style>
+  <title>Слайд 6. Справочник: вызов и наблюдение</title>
+  <link rel="stylesheet" href="slide.css?v=51" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>06</span></div>
-    <h1>Пример — агент взаимодействия с МИС</h1>
-    <p class="lead">Взаимодействие с базами данных и API — запросы, обновления и другие операции со структурированными данными.</p>
-    <p class="case">Агент извлекает лабораторные исследования из медицинской информационной системы (МИС).</p>
-    <p class="tool">Инструменты — API-вызовы, чтобы проверить исследование, узнать его статус или забрать результат.</p>
-    <ol>
-      <li><span class="n">01</span><span>Пользователь спрашивает: «ОАК Ивановой Ангелины Ивановны?»</span></li>
-      <li><span class="n">02</span><span>Модель вызывает API лабораторных исследований.</span></li>
-      <li><span class="n">03</span><span>Инструмент возвращает подробный результат ОАК пациента Ивановой А.И. (Иванова Ангелина Ивановна).</span></li>
-    </ol>
+    <div class="kicker"><span>Лекция 4. Инструменты, планирование, ансамбли</span><span>06</span></div>
+    <h1>Справочник: вызов и наблюдение</h1>
+    <div class="split" style="--left:900px;--right:1fr;margin-top:28px"><div class="stack"><table><colgroup><col style="width:46%"><col style="width:54%"></colgroup><thead><tr><th>Показатель</th><th>Референс, взрослые</th></tr></thead><tbody><tr><td>Гемоглобин, Hb</td><td>м 130–160, ж 120–140 г/л</td></tr><tr><td>Эритроциты, RBC</td><td>м 4,0–5,1, ж 3,7–4,7 × 10¹²/л</td></tr><tr><td>Гематокрит, Hct</td><td>м 40–48, ж 36–42 %</td></tr><tr><td>MCV</td><td>80–100 фл</td></tr><tr><td>MCH</td><td>27–31 пг</td></tr><tr><td>MCHC</td><td>320–360 г/л</td></tr></tbody></table></div><div class="stack"><article class="card "><div class="label">Вопрос</div><h2>«Что входит в ОАК?»</h2><p>Модель не подставляет числа из памяти. Она возвращает: lab_reference, study = «ОАК».</p></article><article class="card "><div class="label">Наблюдение</div><h2>Строки справочника</h2><p>Число в ответе берётся из строки наблюдения. Нет строки — нет числа.</p></article><article class="card "><div class="label">Оговорка</div><h2>Референсы — учебные</h2><p>У каждой лаборатории свои интервалы. В ответе — интервал той лаборатории, что сделала анализ.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=50"></script>
+<script src="deck.js?v=51"></script>
 </body>
 </html>

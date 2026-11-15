@@ -2,51 +2,34 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 20. Схемы ансамбля</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 46px; }
-    .lead { max-width: 1720px; }
-    figure {
-      margin: 8px 0 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    figure img {
-      display: block;
-      width: auto;
-      height: auto;
-      max-width: 1280px;
-      max-height: 700px;
-      background: #f7f4ee;
-    }
-    figcaption {
-      margin-top: 8px;
-      max-width: 1500px;
-      text-align: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 20px;
-      line-height: 1.3;
-      color: #243038;
-    }
-  </style>
+  <title>Слайд 20. Код: план из разрешённых шагов</title>
+  <link rel="stylesheet" href="slide.css?v=51" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>20</span></div>
-    <h1>Схемы ансамбля</h1>
-    <p class="lead">Одну цель можно собрать по-разному. На схеме шесть способов.</p>
-    <figure>
-      <img src="img/ensemble-kinds.png" alt="Шесть схем: один агент, сеть, руководитель, руководитель как инструмент, иерархия и свой порядок.">
-      <figcaption>Один агент. Сеть. Руководитель. Руководитель с инструментами. Иерархия. Свой порядок.</figcaption>
-    </figure>
+    <div class="kicker"><span>Лекция 4. Инструменты, планирование, ансамбли</span><span>20</span></div>
+    <h1>Код: план из разрешённых шагов</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">ALLOWED = {&quot;read_problems&quot;, &quot;read_meds&quot;, &quot;read_lab&quot;,
+           &quot;read_imaging&quot;, &quot;assemble&quot;, &quot;check&quot;, &quot;ask_doctor&quot;}
+
+def run_plan(plan, steps, state):
+    unknown = [s for s in plan if s not in ALLOWED]
+    if unknown:
+        raise ValueError(f&quot;шаги вне списка: {unknown}&quot;)
+    for name in plan:
+        result = steps[name](state)
+        state[&quot;trace&quot;].append((name, result.get(&quot;status&quot;)))
+        if result.get(&quot;status&quot;) == &quot;event&quot;:     # что-то изменилось
+            return {&quot;status&quot;: &quot;replan&quot;, &quot;after&quot;: name,
+                    &quot;reason&quot;: result[&quot;reason&quot;]}
+        state.update(result.get(&quot;data&quot;, {}))
+    return {&quot;status&quot;: &quot;done&quot;, &quot;state&quot;: state}</pre></div><div class="stack"><article class="card "><div class="label">ALLOWED</div><h2>Список кафедры</h2><p>Модель может предложить порядок, но только из разрешённых шагов. Шаг вне списка — ошибка до начала работы.</p></article><article class="card "><div class="label">event</div><h2>Повод перепланировать</h2><p>Исполнение останавливается и говорит, после какого шага и почему.</p></article><article class="card "><div class="label">trace</div><h2>Путь записан</h2><p>Каждый шаг — строка трассы. Так проверяют, что план исполнен, а не пересказан.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=50"></script>
+<script src="deck.js?v=51"></script>
 </body>
 </html>

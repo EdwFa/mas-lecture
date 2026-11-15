@@ -2,80 +2,36 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 11. Вызов не исполняют</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 48px; }
-    .lead { max-width: 1720px; }
-    .items { margin-top: 28px; }
-    .item {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 6px 28px;
-      padding: 16px 0 18px;
-      border-top: 1px solid #1c1915;
-    }
-    .item:last-child { border-bottom: 1px solid #1c1915; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      color: #5e6872;
-      padding-top: 8px;
-    }
-    .item h2 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .item p {
-      margin: 6px 0 0;
-      max-width: 1560px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 23px;
-      line-height: 1.35;
-      color: #243038;
-    }
-    .coda { max-width: 1680px; margin-top: 16px; }
-  </style>
+  <title>Слайд 11. Код: диспетчер</title>
+  <link rel="stylesheet" href="slide.css?v=51" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 4. Взаимодействие агентов с внешними системами</span><span>11</span></div>
-    <h1>Вызов не исполняют</h1>
-    <p class="lead">Оркестратор не подставляет число по смыслу. В контекст уходит то, что вернул инструмент, в том числе пустой ответ.</p>
-    <div class="items">
-      <article class="item">
-        <div class="n">01</div>
-        <div>
-          <h2>Имени нет в списке</h2>
-          <p>Модель назвала инструмент, которого агенту не давали.</p>
-        </div>
-      </article>
-      <article class="item">
-        <div class="n">02</div>
-        <div>
-          <h2>Аргумент пуст</h2>
-          <p>Для справочника не названо исследование. Вызов не уходит в API.</p>
-        </div>
-      </article>
-      <article class="item">
-        <div class="n">03</div>
-        <div>
-          <h2>Инструмент вернул пусто</h2>
-          <p>Случая нет или показатель не найден. Модель говорит, что данных нет.</p>
-        </div>
-      </article>
-    </div>
-    <p class="coda">Пустой ответ — тоже наблюдение. Пропуск не заполняют из памяти модели.</p>
+    <div class="kicker"><span>Лекция 4. Инструменты, планирование, ансамбли</span><span>11</span></div>
+    <h1>Код: диспетчер</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">import json, jsonschema
+
+def dispatch(call, tools, impl, policy):
+    spec = {t[&quot;name&quot;]: t for t in tools}.get(call[&quot;name&quot;])
+    if spec is None:
+        return {&quot;error&quot;: f&quot;нет инструмента {call[&#x27;name&#x27;]}&quot;}
+    try:
+        jsonschema.validate(call[&quot;args&quot;], spec[&quot;input_schema&quot;])
+    except jsonschema.ValidationError as e:
+        return {&quot;error&quot;: f&quot;аргументы: {e.message}&quot;}
+    if policy.get(call[&quot;name&quot;]) == &quot;ask&quot;:
+        return {&quot;status&quot;: &quot;paused&quot;,
+                &quot;reason&quot;: &quot;нужно подтверждение врача&quot;}
+    try:
+        return {&quot;result&quot;: impl[call[&quot;name&quot;]](**call[&quot;args&quot;])}
+    except TimeoutError:
+        return {&quot;error&quot;: &quot;МИС не ответила вовремя&quot;}</pre></div><div class="stack"><article class="card "><div class="label">Порядок</div><h2>Имя → аргументы → права</h2><p>Три проверки до вызова. Любая не прошла — наблюдение с причиной.</p></article><article class="card "><div class="label">policy</div><h2>Запись — «спросить»</h2><p>chart_write не исполняется, пока врач не подтвердил. Таблица прав целиком — лекция 13.</p></article><article class="card "><div class="label">Возврат</div><h2>Всегда словарь</h2><p>result или error. Модель получает его как наблюдение и решает, что дальше.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=50"></script>
+<script src="deck.js?v=51"></script>
 </body>
 </html>
