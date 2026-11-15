@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 11. Три идентификатора</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 16. A2A и надёжное исполнение</span><span>11</span></div>
+    <h1>Три идентификатора</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Отправка задачи · сокращённо</div><pre class="code" style="font-size:20px">{
+  &quot;message&quot;: {
+    &quot;messageId&quot;: &quot;P-0042/ngs/1&quot;,
+    &quot;contextId&quot;: &quot;ctx-P0042&quot;,
+    &quot;role&quot;: &quot;ROLE_USER&quot;,
+    &quot;parts&quot;: [{&quot;data&quot;: {
+       &quot;case&quot;: &quot;PSN-7f3a&quot;,
+       &quot;specimen&quot;: &quot;FFPE-2026-1187&quot;,
+       &quot;panel&quot;: &quot;ngs-solid-panel&quot;,
+       &quot;consent&quot;: &quot;DocumentReference/cons-12&quot;}}]
+  },
+  &quot;configuration&quot;: {
+    &quot;returnImmediately&quot;: true,
+    &quot;pushNotificationConfig&quot;: {
+      &quot;url&quot;: &quot;https://mas.clinic/a2a/push&quot;,
+      &quot;token&quot;: &quot;&lt;свой для каждой задачи&gt;&quot;}}
+}</pre></div><div class="stack"><article class="card "><div class="label">messageId</div><h2>Ставим мы</h2><p>Обязательное поле. Делаем его стабильным: случай, шаг, номер. Повтор отправки — тот же messageId.</p></article><article class="card "><div class="label">contextId</div><h2>Разговор</h2><p>Связывает сообщения одного случая. Повторно используем, чтобы лаборатория видела историю.</p></article><article class="card "><div class="label">taskId</div><h2>Работа</h2><p>Выдаёт лаборатория. Сохраняем сразу — до любого другого шага. Указываем, только когда продолжаем задачу.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

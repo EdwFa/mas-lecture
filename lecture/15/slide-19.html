@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 19. Контракт передачи</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 15. Передача между агентами</span><span>19</span></div>
+    <h1>Контракт передачи</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">contracts/lab_summary.json</div><pre class="code" style="font-size:18px">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;type&quot;, &quot;case&quot;, &quot;status&quot;, &quot;items&quot;, &quot;open&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;type&quot;:   {&quot;const&quot;: &quot;lab_summary&quot;},
+    &quot;case&quot;:   {&quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^P-[0-9]{4}$&quot;},
+    &quot;status&quot;: {&quot;enum&quot;: [&quot;ok&quot;, &quot;partial&quot;, &quot;failed&quot;]},
+    &quot;items&quot;:  {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [&quot;marker&quot;, &quot;value&quot;, &quot;source&quot;],
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;marker&quot;: {&quot;enum&quot;: [&quot;HER2&quot;, &quot;ER&quot;, &quot;PR&quot;, &quot;Ki-67&quot;]},
+        &quot;value&quot;:  {&quot;type&quot;: &quot;string&quot;, &quot;maxLength&quot;: 16},
+        &quot;source&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^Observation/&quot;}}}},
+    &quot;open&quot;:   {&quot;type&quot;: &quot;array&quot;,
+               &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;maxLength&quot;: 200}}
+  }
+}</pre></div><div class="stack"><article class="card "><div class="label">required</div><h2>Что не может пропасть</h2><p>Пять полей артефакта и три поля каждого значения. Пустой список — можно, отсутствующий — нельзя.</p></article><article class="card "><div class="label">additionalProperties</div><h2>Ничего лишнего</h2><p>Субагент не добавит поле «рекомендация». Схема — граница его полномочий.</p></article><article class="card "><div class="label">source</div><h2>Ссылка обязательна</h2><p>Значение без записи FHIR не принимается. Сборщик не сможет выдать реплику за факт.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

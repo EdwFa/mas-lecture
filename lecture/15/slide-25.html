@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 25. Права и модели по агентам</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 15. Передача между агентами</span><span>25</span></div>
+    <h1>Права и модели по агентам</h1>
+    <table><colgroup><col style="width:22%"><col style="width:30%"><col style="width:22%"><col style="width:26%"></colgroup><thead><tr><th>Агент</th><th>Инструменты</th><th>Политика</th><th>Модель</th></tr></thead><tbody><tr><td><strong>Читатель ×4</strong></td><td>fhir_read своего типа</td><td>разрешить</td><td>локальная, небольшая</td></tr><tr><td><strong>Сборщик</strong></td><td>нет</td><td>—</td><td>локальная</td></tr><tr><td><strong>Критик</strong></td><td>нет; перечень в окне</td><td>—</td><td>локальная, другая</td></tr><tr><td><strong>Оркестратор</strong></td><td>spawn_subagent, chart_write</td><td>разрешить · спросить</td><td>локальная, сильнее</td></tr></tbody></table><div class="cols" style="--n:3;margin-top:32px"><article class="card "><div class="label">Читатели</div><h2>Модель попроще</h2><p>Задача узкая, ответ по узкой схеме. Четыре копии на одном сервере — модель должна быть лёгкой.</p></article><article class="card "><div class="label">Критик</div><h2>Другая модель</h2><p>У двух копий одной модели общие слепые пятна. Другая модель реже соглашается с той же ошибкой.</p></article><article class="card "><div class="label">Оркестратор</div><h2>Самая сильная</h2><p>Решает, кого звать, сводит артефакты, говорит с врачом. Ошибка здесь стоит дороже всего.</p></article></div><p class="coda">Все четыре видят текст пациента — значит, по 152-ФЗ все модели локальные. Anthropic ставила сильную модель оркестратором и модель проще субагентами; у нас тот же приём, но внутри своего сервера.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

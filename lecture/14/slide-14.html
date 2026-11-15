@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 14. Скрипт вместо слов</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>14</span></div>
+    <h1>Скрипт вместо слов</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">scripts/check.py</div><pre class="code" style="font-size:18px">&quot;&quot;&quot;Проверка обязательных полей пакета к консилиуму.&quot;&quot;&quot;
+import json, sys
+
+REQUIRED = [&quot;case_id&quot;, &quot;diagnosis_ref&quot;, &quot;imaging_ref&quot;,
+            &quot;histology_ref&quot;, &quot;board_date&quot;, &quot;open_questions&quot;]
+
+def check(pkg):
+    problems = [f&quot;нет поля {f}&quot; for f in REQUIRED
+                if not pkg.get(f)]
+    for f in (&quot;diagnosis_ref&quot;, &quot;imaging_ref&quot;, &quot;histology_ref&quot;):
+        ref = pkg.get(f, &quot;&quot;)
+        if ref and &quot;/&quot; not in ref:
+            problems.append(f&quot;{f}: не ссылка FHIR вида Тип/id&quot;)
+    return problems
+
+if __name__ == &quot;__main__&quot;:
+    with open(sys.argv[1], encoding=&quot;utf-8&quot;) as fh:
+        problems = check(json.load(fh))
+    print(json.dumps({&quot;ok&quot;: not problems, &quot;problems&quot;: problems},
+                     ensure_ascii=False))
+    sys.exit(1 if problems else 0)</pre></div><div class="stack"><article class="card "><div class="label">Правило</div><h2>Проверяемое — в код</h2><p>Есть ли поле — вопрос для кода, а не для модели. Скрипт ответит одинаково тысячу раз.</p></article><article class="card "><div class="label">Выход</div><h2>JSON в stdout</h2><p>Модель читает результат как наблюдение. Код возврата 1 — тоже сигнал для harness.</p></article><article class="card "><div class="label">Связь с лекцией 13</div><h2>Скрипт или хук</h2><p>Если проверка нужна всегда — это хук перед ответом. Если по запросу врача — скилл со скриптом.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
