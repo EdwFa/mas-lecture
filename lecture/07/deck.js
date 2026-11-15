@@ -58,6 +58,7 @@
     '<a href="../13/slide-01.html?v=1">Лекция 13. Harness агента</a>',
     '<a href="../14/slide-01.html?v=1">Лекция 14. Скиллы агента</a>',
     '<a href="../15/slide-01.html?v=1">Лекция 15. Передача между агентами</a>',
+    '<a href="../16/slide-01.html?v=1">Лекция 16. A2A и надёжное исполнение</a>',
     
     "</div></div></div>",
     '<div class="deck-pager">',

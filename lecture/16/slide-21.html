@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 21. Пауза длиной в выходные</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 16. A2A и надёжное исполнение</span><span>21</span></div>
+    <h1>Пауза длиной в выходные</h1>
+    <div class="cols" style="--n:3;margin-top:48px"><article class="card "><div class="label">Остановка</div><h2>interrupt и контрольная точка</h2><p>Граф сохраняет состояние и выходит. Ни процесса, ни потока, ни открытого соединения на время ожидания.</p></article><article class="card "><div class="label">Возобновление</div><h2>С начала узла</h2><p>После ответа врача узел запускается заново. Всё, что в нём было до паузы, выполнится второй раз.</p></article><article class="card "><div class="label">Отсюда правило</div><h2>Эффект — после паузы</h2><p>Отправка в лабораторию, запись в карту — отдельными шагами, и каждый идемпотентен по своему ключу.</p></article></div><table><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr><th>Шаг графа</th><th>Ключ идемпотентности</th></tr></thead><tbody><tr><td>отправить задачу в лабораторию</td><td>messageId = P-0042/ngs/1</td></tr><tr><td>ответить на INPUT_REQUIRED</td><td>messageId = P-0042/ngs/consent</td></tr><tr><td>записать результат в карту</td><td>identifier = P-0042/ngs-result</td></tr></tbody></table>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
