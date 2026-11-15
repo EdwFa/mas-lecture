@@ -2,31 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 31. Поля из PDF</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; } .lead { font-size: 22px; } pre { margin: 14px 0 0; padding: 14px 18px; background: #fffdf8; border-top: 1px solid #1c1915; font-family: Consolas, 'Courier New', monospace; font-size: 20px; line-height: 1.35; color: #1c1915; } .coda { font-size: 22px; margin-top: 12px; }
-  </style>
+  <title>Слайд 31. К практикуму</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>31</span></div>
-    
-    <h1>Поля из PDF</h1>
-    <p class="lead">Каталог выписок и историй. Текст и, если есть, сканы таблиц идут в d1-omni-600M. Ниже пример формы ответа из обзора, не замер.</p>
-    <pre>{
-  "diagnosis_fabry_confirmed": {"choice": "yes", "confidence": 0.94},
-  "transplant_type": {"choice": "sequential", "confidence": 0.88},
-  "tnm_stage_complete": {"noul": true, "confidence": 0.99}
-}</pre>
-    <p class="coda">В контракте Jev у noul отдельного confidence нет. В этом примере обзора confidence стоит и у noul. Модель возвращает поле и не пишет абзац. Обзор называет это причиной, по которой она не сочиняет диагноз и не переписывает цифры. Неверная метка остаётся неверной меткой: её отсекает порог.</p>
-    
+    <h1>К практикуму</h1>
+    <p class="lead">Фильтр для конвейера болезни Фабри. Учебные PDF протоколов.</p><div class="frames tight" style="--n:1;margin-top:32px"><div class="frame"><span class="num">01</span><h2>Разметка</h2><p>300 пар «вопрос врача — фрагмент» с меткой 0 или 1. Две трети на калибровку, треть на проверку.</p></div><div class="frame"><span class="num">02</span><h2>Фильтр</h2><p>bge-reranker-v2-m3 и Platt, код со слайда 17.</p></div><div class="frame"><span class="num">03</span><h2>Отчёт</h2><p>Brier, ECE и полнота при пороге из threshold_for_recall с target = 0,95.</p></div><div class="frame"><span class="num">04</span><h2>Хук</h2><p>Подключить фильтр к мини-harness из лекции 13: решение и p — в трассу.</p></div></div><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 90" width="1744" height="90" style="display:block;margin-top:28px;overflow:visible;margin-top:40px"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><path d="M0 0 H48 L70 22 V86 H0 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M48 0 V22 H70" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="16" y1="34" x2="52" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="16" y1="50" x2="32" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="16" y1="66" x2="52" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="86" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">labels.csv</text><text x="86" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">300 пар</text><path d="M353 0 H401 L423 22 V86 H353 Z" fill="#ece6da" stroke="#1c1915" stroke-width="1.5"/><path d="M401 0 V22 H423" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="369" y1="34" x2="405" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="369" y1="50" x2="385" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="369" y1="66" x2="405" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="439" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">filter.py</text><text x="439" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">реранкер + Platt</text><path d="M706 0 H754 L776 22 V86 H706 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M754 0 V22 H776" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="722" y1="34" x2="758" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="722" y1="50" x2="738" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="722" y1="66" x2="758" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="792" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">platt.json</text><text x="792" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">a и b</text><path d="M1059 0 H1107 L1129 22 V86 H1059 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M1107 0 V22 H1129" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="1075" y1="34" x2="1111" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="1075" y1="50" x2="1091" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="1075" y1="66" x2="1111" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="1145" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">report.md</text><text x="1145" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">Brier, ECE, recall</text><path d="M1412 0 H1460 L1482 22 V86 H1412 Z" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5"/><path d="M1460 0 V22 H1482" fill="none" stroke="#1c1915" stroke-width="1.5"/><line x1="1428" y1="34" x2="1464" y2="34" stroke="#b7b1a6" stroke-width="3"/><line x1="1428" y1="50" x2="1444" y2="50" stroke="#b7b1a6" stroke-width="3"/><line x1="1428" y1="66" x2="1464" y2="66" stroke="#b7b1a6" stroke-width="3"/><text x="1498" y="36" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="20" text-anchor="start" fill="#1c1915" font-weight="400">trace.jsonl</text><text x="1498" y="64" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">решения и p</text></svg><p class="coda">Сдают код, таблицу с тремя числами и трассу одного запроса, где фильтр что-то отбросил.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

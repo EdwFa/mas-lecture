@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 26. К практикуму</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 12. Альтернативы чанкингу</span><span>26</span></div>
+    <h1>К практикуму</h1>
+    <p class="lead">Улучшить нарезку индекса из лекции 11 и доказать это числом.</p><div class="frames tight" style="--n:1;margin-top:32px"><div class="frame"><span class="num">01</span><h2>Базовый индекс</h2><p>Структурная нарезка из лекции 11 и её recall@10.</p></div><div class="frame"><span class="num">02</span><h2>Контекстные чанки</h2><p>Справка к каждому чанку от локальной модели. Справка — отдельным полем payload.</p></div><div class="frame"><span class="num">03</span><h2>Родитель и ребёнок</h2><p>Подпункт — ребёнок, раздел — родитель.</p></div><div class="frame"><span class="num">04</span><h2>Сравнение</h2><p>recall@10 трёх индексов на тех же 40 вопросах и время индексации.</p></div></div><p class="coda">Сдают таблицу из трёх строк, код и пять справок, которые вы прочитали и оценили глазами.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

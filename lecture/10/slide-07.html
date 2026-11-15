@@ -2,40 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 7. Что подтверждено</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .three { grid-template-columns: 1fr 1fr 1fr; } h1 { font-size: 44px; } .lead { font-size: 22px; } .card h2 { font-size: 26px; } .card p { font-size: 20px; } .coda { font-size: 22px; margin-top: 14px; }
-  </style>
+  <title>Слайд 7. Граница контракта</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>07</span></div>
-    
-    <h1>Что подтверждено</h1>
-    <p class="lead">Полной спецификации и исходных кодов Jev нет. TypeSafe держит внутреннюю архитектуру закрытой и называет это «close to the chest». Научную статью компания относит к будущему.</p>
-    <div class="cols three">
-      <article class="card">
-        <h2>Трансформер</h2>
-        <p>Компания подтверждает трансформерную основу.</p>
-      </article>
-      <article class="card">
-        <h2>Параллельный сэмплер</h2>
-        <p>Вероятности всех заданных вариантов считаются одновременно, за один проход. Механизм неавторегрессивный.</p>
-      </article>
-      <article class="card">
-        <h2>Дискриминативный вывод</h2>
-        <p>Декодера свободного текста нет. Вход: state до 32 000 токенов, вопросы noul, choice, score. Выход: распределение и confidence.</p>
-      </article>
-    </div>
-    <p class="coda">Это описание связывает один проход с задержкой 70–500 мс и стоимостью в сотни раз ниже, чем у большой языковой модели. Не опубликованы точное число параметров, состав синтетического набора и число физических проходов на сложном запросе.</p>
-    
+    <h1>Граница контракта</h1>
+    <p class="lead">Что decision-модель не делает. Это нужно знать до того, как ставить её в конвейер.</p><div class="cols" style="--n:3;margin-top:44px"><article class="card "><div class="label">Не умеет</div><h2>Писать и считать</h2><ul><li>прозу и объяснения</li><li>арифметику и сравнение дат</li><li>проверку существования PMID</li><li>фильтр по квартилю журнала</li></ul></article><article class="card "><div class="label">Ухудшает ответ</div><h2>Плохая постановка</h2><ul><li>два факта в одном noul</li><li>две оси в одном score</li><li>лишний текст в state</li><li>вопросы не на английском: в 1.14 лучше, но проверяйте</li></ul></article><article class="card "><div class="label">Не для клиники</div><h2>Экспериментальное</h2><ul><li>изображения — под заголовком Danger-Zone</li><li>длинный контекст 262k — там же</li><li>box — только 1.14</li><li>облачный API для текста пациента</li></ul></article></div><p class="coda">Текст пациента остаётся на машине учреждения: этого требует 152-ФЗ. Облачный Jev — только для учебных данных.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

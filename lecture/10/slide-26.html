@@ -2,34 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 26. Laya</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    thead { display: none; } td { font-size: 22px; } td:first-child { width: 280px; font-family: Georgia, 'Iowan Old Style', serif; font-size: 26px; color: #1c1915; }
-  </style>
+  <title>Слайд 26. Открытые модели того же контракта</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>26</span></div>
-    
-    <h1>Laya</h1>
-    <p class="lead">Открытая System One, собранная как ответ на закрытость Jev. В начале обзора она названа мультимодальной. В сравнительной таблице того же обзора у неё указаны текст и JSON.</p>
-    <table>
-      <thead><tr><th></th><th></th></tr></thead>
-      <tbody>
-        <tr><td>Архитектура</td><td>Семейство ModernBERT, 150–421M. Двунаправленный энкодер: читает контекст и не пишет следующий токен.</td></tr>
-        <tr><td>Контракт</td><td>State: текст, JSON, тикет. Вопросы choice, score, noul. На выходе вероятности вариантов.</td></tr>
-        <tr><td>Скорость в обзоре</td><td>Около 33 мс на GPU NVIDIA T4. Больше 100 языков. Может работать целиком локально.</td></tr>
-        <tr><td>Для клиники</td><td>Веса открыты, модель дообучают на своих текстах и клинических рекомендациях.</td></tr>
-      </tbody>
-    </table>
-    
+    <h1>Открытые модели того же контракта</h1>
+    <table><colgroup><col style="width:18%"><col style="width:30%"><col style="width:24%"><col style="width:28%"></colgroup><thead><tr><th>Модель</th><th>Основа и размер</th><th>Язык и контекст</th><th>Что важно</th></tr></thead><tbody><tr><td><strong>Laya</strong> · ConvAI</td><td>ModernBERT-large 421M; mmBERT-base 322M</td><td>en 512; 100+ языков 1024</td><td>Apache-2.0; калибровать на своих данных</td></tr><tr><td><strong>Von</strong> · wfzyx</td><td>ModernBERT-large 395M</td><td>английский, 8192</td><td>Apache-2.0; русский не поддерживает</td></tr><tr><td><strong>Decider</strong> · Mapika</td><td>Qwen3.5 от 0,8B до 35B-A3B</td><td>многоязычный; 2B — 32K</td><td>Apache-2.0; есть вариант с изображениями</td></tr><tr><td><strong>Kev</strong> · Jared Palmer</td><td>Qwen3.5 и 3.8, 0,8B–27B</td><td>многоязычный</td><td>API как у Jev; LoRA-дообучение</td></tr><tr><td><strong>d1</strong> · Liquid AI</td><td>d1-3B на LFM2.5-VL; d1-omni-600M</td><td>текст, изображения, звук</td><td>d1 в API закрыт; d1-3B и 600M открыты</td></tr></tbody></table><p class="coda">Изображения и звук есть у d1 и Decider-vision. В клинический конвейер снимок через decision-модель без отдельной проверки не ставим.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

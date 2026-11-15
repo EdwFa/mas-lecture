@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 23. Вопросы</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>23</span></div>
+    <h1>Вопросы</h1>
+    <div class="frames " style="--n:1;margin-top:36px"><div class="frame"><span class="num">01</span><h2>Чанк</h2><p>Что произойдёт с пунктом протокола в 800 токенов и как это заметить?</p></div><div class="frame"><span class="num">02</span><h2>Префиксы</h2><p>Чем подготовка запроса отличается от подготовки чанка у e5-instruct?</p></div><div class="frame"><span class="num">03</span><h2>Пулинг</h2><p>Что маска убирает из среднего и чему равен знаменатель?</p></div><div class="frame"><span class="num">04</span><h2>Косинус</h2><p>Когда косинус равен скалярному произведению и почему 0,86 — не вероятность?</p></div><div class="frame"><span class="num">05</span><h2>Хранилище</h2><p>Где в точке Qdrant живёт BM25 и что даёт поле embed_model?</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 11. Порядок склейки</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 13. Harness агента</span><span>11</span></div>
+    <h1>Порядок склейки</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><div class="label">Сверху вниз — от неизменного к новому</div><div class="layers"><div class="layer s1">Правила системы и роль<small>не меняется</small></div><div class="layer s2">Описания инструментов<small>не меняется в сессии</small></div><div class="layer s3">Инструкции кафедры<small>редко</small></div><div class="layer s4">История оборотов<small>растёт</small></div><div class="layer s5">Последний результат и вопрос<small>каждый оборот</small></div></div></div><div class="stack"><article class="card "><div class="label">Зачем</div><h2>Кеш префикса</h2><p>Поставщик кеширует начало окна, которое не изменилось. Повторный оборот дешевле и быстрее.</p></article><article class="card "><div class="label">Как сломать</div><h2>Время в первой строке</h2><p>Текущее время или случайный номер сессии в правилах — и кеш сбрасывается на каждом обороте.</p></article><article class="card "><div class="label">Правило</div><h2>Новое — вниз</h2><p>Меняющееся дописывают в конец. Середину окна не переписывают.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

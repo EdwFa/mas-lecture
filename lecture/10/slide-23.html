@@ -2,33 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 23. Три ряда чисел</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    td { font-size: 22px; } .coda { font-size: 24px; }
-  </style>
+  <title>Слайд 23. Кейс. Болезнь Фабри</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>23</span></div>
-    
-    <h1>Три ряда чисел</h1>
-    <table>
-      <thead><tr><th>Откуда</th><th>Что сказано</th></tr></thead>
-      <tbody>
-        <tr><td>Описание одного прохода</td><td>70–500 мс. Стоимость в сотни раз ниже, чем у большой языковой модели.</td></tr>
-        <tr><td>Формулировки презентации TypeSafe</td><td>около 150 мс, примерно в 100 раз дешевле, ускорение в 40–200 раз.</td></tr>
-        <tr><td>Цели нашего конвейера</td><td>короче 50 мс, дешевле в 100–400 раз, токенов генерации меньше на 60–80%. Проверка на вашем наборе.</td></tr>
-      </tbody>
-    </table>
-    <p class="coda">Замер cookbook, каждый ряд со своей выборкой, стоит на предыдущем слайде. Цена входа в карточке Jev: 0,042 $ за 1 млн токенов state, токены ответа без отдельной цены.</p>
-    
+    <h1>Кейс. Болезнь Фабри</h1>
+    <p class="lead">Неструктурированная выписка. Веер из noul по триггерам и один score по силе подозрения. Это карточка для человека, не диагноз.</p><table><colgroup><col style="width:80%"><col style="width:20%"></colgroup><thead><tr><th>Вопрос</th><th>Тип</th></tr></thead><tbody><tr><td><strong>Акропарестезии</strong></td><td>noul</td></tr><tr><td><strong>Ангиокератомы</strong></td><td>noul</td></tr><tr><td><strong>Гипогидроз</strong></td><td>noul</td></tr><tr><td><strong>Семейный анамнез болезни Фабри</strong></td><td>noul</td></tr><tr><td><strong>Снижена активность альфа-галактозидазы A</strong></td><td>noul</td></tr><tr><td><strong>Насколько прямо текст поддерживает подозрение</strong></td><td>score, одна ось</td></tr></tbody></table><p class="coda">Анамнез и фермент — два разных факта, значит два вопроса. Веса осей, если они складываются в балл, записаны в коде.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

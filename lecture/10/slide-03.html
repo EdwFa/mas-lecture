@@ -3,39 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <title>Слайд 3. Шум после гибридного поиска</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    .three { grid-template-columns: 1fr 1fr 1fr; } .card h2 { font-size: 28px; } .card p { font-size: 20px; }
-  </style>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>03</span></div>
-    
     <h1>Шум после гибридного поиска</h1>
-    <p class="lead">BM25 и векторный поиск уже стоят рядом. В топ-K всё равно попадают фрагменты, которые не отвечают на вопрос врача. Генератор кладёт их в контекст и собирает из них абзац.</p>
-    <div class="cols three">
-      <article class="card">
-        <h2>Время и цена</h2>
-        <p>Каждый следующий токен зависит от уже выданных. Длинный контекст и длинный ответ удлиняют и удорожают вызов.</p>
-      </article>
-      <article class="card">
-        <h2>Разбор ответа</h2>
-        <p>Коду нужно поле. Если вместо поля пришла оговорка, разбор строки ломается.</p>
-      </article>
-      <article class="card">
-        <h2>Факт</h2>
-        <p>Клиническое утверждение остаётся цитатой из фрагмента. Соседний абзац, попавший в топ-K, эту цитату не заменяет.</p>
-      </article>
-    </div>
-    <p class="coda">Слой решения стоит между поиском и генератором и возвращает вероятность. Порог задаёт код.</p>
-    
+    <p class="lead">BM25 и векторный поиск уже стоят рядом. В топ-K всё равно попадают фрагменты, которые не отвечают на вопрос врача.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 236" width="1744" height="236" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="0" y="18" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ТОП-8 ГИБРИДНОГО ПОИСКА ПО ЗАПРОСУ ВРАЧА</text><rect x="0" y="34" width="420" height="66" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="16" y="62" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#1</text><text x="16" y="86" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#1c1915" font-weight="400">Протокол: дозировка мигаластата</text><rect x="436" y="34" width="420" height="66" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" stroke-dasharray="7 6" opacity="1"/><text x="452" y="62" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#2</text><text x="452" y="86" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">Эпидемиология Фабри</text><rect x="872" y="34" width="420" height="66" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="888" y="62" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#3</text><text x="888" y="86" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#1c1915" font-weight="400">Ферментозаместительная терапия: показания</text><rect x="1308" y="34" width="420" height="66" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" stroke-dasharray="7 6" opacity="1"/><text x="1324" y="62" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#4</text><text x="1324" y="86" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">История открытия болезни</text><rect x="0" y="116" width="420" height="66" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" stroke-dasharray="7 6" opacity="1"/><text x="16" y="144" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#5</text><text x="16" y="168" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">Список сокращений</text><rect x="436" y="116" width="420" height="66" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="452" y="144" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#6</text><text x="452" y="168" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#1c1915" font-weight="400">Рекомендация: контроль функции почек</text><rect x="872" y="116" width="420" height="66" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" stroke-dasharray="7 6" opacity="1"/><text x="888" y="144" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#7</text><text x="888" y="168" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">Методология разработки протокола</text><rect x="1308" y="116" width="420" height="66" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" stroke-dasharray="7 6" opacity="1"/><text x="1324" y="144" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500">#8</text><text x="1324" y="168" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">Конфликт интересов авторов</text><rect x="0" y="214" width="26" height="20" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="38" y="230" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">отвечает на вопрос</text><rect x="240" y="214" width="26" height="20" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.1" stroke-dasharray="7 6" opacity="1"/><text x="278" y="230" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" text-anchor="start" fill="#5e6872" font-weight="400">шум: генератор всё равно его прочтёт</text></svg><div class="cols" style="--n:3;margin-top:32px"><article class="card "><div class="label">Время и цена</div><h2>Длинный контекст</h2><p>Каждый лишний фрагмент удлиняет и удорожает вызов генератора.</p></article><article class="card "><div class="label">Факт</div><h2>Подмена цитаты</h2><p>Соседний абзац из топ-K может занять место нужной рекомендации в ответе.</p></article><article class="card "><div class="label">Решение</div><h2>Слой между поиском и генератором</h2><p>Возвращает вероятность для каждого фрагмента. Порог задаёт код.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

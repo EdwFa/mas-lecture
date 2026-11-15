@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 16. Имя, описание, схема</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 13. Harness агента</span><span>16</span></div>
+    <h1>Имя, описание, схема</h1>
+    <div class="split" style="--left:820px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">{
+  &quot;name&quot;: &quot;fhir_read&quot;,
+  &quot;description&quot;: &quot;Читает один ресурс FHIR
+    учебного сервера по типу и id.
+    Только чтение.&quot;,
+  &quot;input_schema&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;resourceType&quot;: {
+        &quot;enum&quot;: [&quot;DiagnosticReport&quot;,
+                 &quot;Observation&quot;, &quot;Condition&quot;,
+                 &quot;Appointment&quot;] },
+      &quot;id&quot;: { &quot;type&quot;: &quot;string&quot; }
+    },
+    &quot;required&quot;: [&quot;resourceType&quot;, &quot;id&quot;],
+    &quot;additionalProperties&quot;: false
+  }
+}</pre></div><div class="stack"><div class="frames " style="--n:1;margin-top:0"><div class="frame"><span class="num">01</span><h2>Имя</h2><p>По нему модель зовёт инструмент. Одно имя — одно действие.</p></div><div class="frame"><span class="num">02</span><h2>Описание</h2><p>По нему модель решает, звать ли. Это промпт, и его пишут так же тщательно.</p></div><div class="frame"><span class="num">03</span><h2>Схема</h2><p>По ней harness сверяет аргументы до исполнения.</p></div></div><p class="coda">additionalProperties: false — поле, которого нет в схеме, не исполняется «по смыслу».</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>

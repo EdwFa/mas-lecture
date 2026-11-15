@@ -2,31 +2,41 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 17. Формат входа своего модуля</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; } .lead { font-size: 20px; } pre { margin: 12px 0 0; padding: 16px 18px; background: #fffdf8; border-top: 1px solid #1c1915; font-family: Consolas, 'Courier New', monospace; font-size: 20px; line-height: 1.35; color: #1c1915; } .coda { font-size: 22px; margin-top: 12px; }
-  </style>
+  <title>Слайд 17. Шаг 0: реранкер и Platt</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>17</span></div>
-    
-    <h1>Формат входа своего модуля</h1>
-    <p class="lead">Учебный фрагмент, не карта пациента. Так собирают state и вопросы для головы, которую учим. Варианты ответа живут рядом с вопросом, не в свободном абзаце.</p>
-    <pre>[STATE] Пациент 55 лет, аденокарцинома прямой кишки, T3N1M0.
-[Q1 noul] Рекомендована ли неоадъювантная химиотерапия согласно тексту?
-        варианты: да | нет | не указано
-[Q2 score] Полнота описания стадии TNM
-        уровни: 1 неполная | 2 полная</pre>
-    <p class="coda">У zero-shot multilingual-e5-large-instruct префикс другой: Instruct и Query. Префикс query: / passage: относится к e5 без instruct. Для скорости тот же каркас сажают на cointegrated/rubert-tiny2. Замера задержки здесь нет.</p>
-    
+    <h1>Шаг 0: реранкер и Platt</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">import numpy as np
+from sentence_transformers import CrossEncoder
+from sklearn.linear_model import LogisticRegression
+
+reranker = CrossEncoder(&quot;BAAI/bge-reranker-v2-m3&quot;,
+                        max_length=512)
+
+def raw_scores(question, passages):
+    p = reranker.predict([(question, x) for x in passages])
+    p = np.clip(p, 1e-6, 1 - 1e-6)
+    return np.log(p / (1 - p))          # логит пары
+
+def fit_platt(scores, labels):          # σ(a·s + b)
+    lr = LogisticRegression(C=1e6)
+    lr.fit(np.reshape(scores, (-1, 1)), labels)
+    return lr
+
+def keep(question, passages, platt, threshold):
+    s = raw_scores(question, passages).reshape(-1, 1)
+    p = platt.predict_proba(s)[:, 1]
+    return [(x, float(q)) for x, q in zip(passages, p)
+            if q &gt;= threshold]</pre></div><div class="stack"><article class="card "><div class="label">Модель</div><h2>Многоязычный реранкер</h2><p>bge-reranker-v2-m3 читает вопрос и фрагмент вместе и работает с русским текстом локально.</p></article><article class="card "><div class="label">Калибровка</div><h2>Сдвиг и наклон</h2><p>Platt подбирает a и b. Одной температуры мало: без сдвига b вероятность не сдвинуть к нулю.</p></article><article class="card "><div class="label">Данные</div><h2>300–1000 размеченных пар</h2><p>Вопрос врача, фрагмент ваших PDF, метка 0 или 1. Разметка вручную или сильной моделью с проверкой.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>

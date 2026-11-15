@@ -1,249 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<title>Слайд 7. Один вектор на чанк</title>
-<link rel="stylesheet" href="../vendor/katex/katex.min.css">
-<style>
-
-html, body {
-  margin: 0;
-  width: 1920px;
-  height: 1080px;
-  background: #f3efe6;
-}
-.slide {
-  width: 1920px;
-  height: 1080px;
-  box-sizing: border-box;
-  padding: 56px 88px 96px;
-  display: flex;
-  flex-direction: column;
-  background: #f7f4ee;
-  color: #1c1915;
-  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
-  overflow: hidden;
-}
-.kicker {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #5e6872;
-}
-h1 {
-  margin: 28px 0 0;
-  font-size: 64px;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-h1.long { font-size: 52px; }
-.slide.title h1 {
-  margin-top: 180px;
-  font-size: 108px;
-  line-height: 0.98;
-}
-.sub {
-  margin: 28px 0 0;
-  max-width: 1400px;
-  font-size: 40px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-.line {
-  margin-top: 48px;
-  width: 720px;
-  border-top: 2px solid #1c1915;
-}
-.cite {
-  margin: 36px 0 0;
-  max-width: 1280px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  line-height: 1.45;
-  color: #3e4650;
-}
-.body {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 28px;
-}
-.body > * { flex: 0 0 auto; }
-.body p {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.38;
-  color: #243038;
-}
-.frames { display: flex; flex-direction: column; gap: 0; }
-.frame {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 4px 16px;
-  align-items: baseline;
-  padding: 12px 0;
-  border-bottom: 1px solid #e4dfd4;
-}
-.frame .num {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: #5e6872;
-}
-.frame p {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #243038;
-}
-.bullets { display: flex; flex-direction: column; gap: 12px; }
-.bullet {
-  margin: 0;
-  padding: 2px 0 2px 24px;
-  border-left: 2px solid #1c1915;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #243038;
-}
-.formula {
-  margin: 4px 0;
-  overflow: visible;
-  font-size: 30px;
-}
-.formula .katex-display { margin: 0.35em 0; }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  line-height: 1.35;
-}
-th {
-  text-align: left;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 18px;
-  color: #5e6872;
-  padding: 8px 18px 10px 0;
-  border-bottom: 1px solid #1c1915;
-}
-td {
-  padding: 8px 18px 8px 0;
-  border-bottom: 1px solid #e4dfd4;
-  color: #243038;
-  vertical-align: baseline;
-}
-figure {
-  margin: 0;
-  flex: 0 0 auto;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-figure img {
-  max-width: 100%;
-  max-height: 250px;
-  object-fit: contain;
-}
-.figure-only figure { flex: 1 1 auto; }
-.figure-only figure img { max-height: 100%; }
-code {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.92em;
-}
-.spacer { flex: 1; }
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 18px;
-  border-top: 1px solid #d9d3c7;
-  padding-top: 16px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  line-height: 1.35;
-  color: #3e4650;
-}
-.compact .body { gap: 8px; margin-top: 14px; }
-.compact h1 { font-size: 46px; margin-top: 12px; }
-.compact .body p,
-.compact .frame p,
-.compact .bullet { font-size: 22px; line-height: 1.28; }
-.compact .frame { padding: 5px 0; }
-.compact .formula { font-size: 24px; }
-.compact table { font-size: 22px; }
-.compact td, .compact th { padding-top: 5px; padding-bottom: 5px; }
-.compact figure img { max-height: 200px; }
-
-.slide.split .body {
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: stretch;
-  gap: 28px;
-}
-.slide.split .copy {
-  flex: 1 1 46%;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-}
-.slide.split .body > figure { flex: 1 1 54%; height: auto; min-height: 0; }
-.slide.split.fitfig .body > figure { height: 100%; min-width: 0; }
-.slide.split.fitfig figure img,
-.slide .body > figure img {
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-.body > figure { flex: 1 1 0; min-height: 0; overflow: hidden; }
-
-</style>
+  <meta charset="utf-8" />
+  <title>Слайд 7. Токенизация</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
-<body data-total="16" data-lecture="11" data-title="Лекция 11. Эмбеддинг чанка">
-<main data-lecture="11" data-n="7" class="slide split fitfig">
-<div class="kicker"><span>Лекция 11</span><span>07</span></div>
-<h1>Один вектор на чанк</h1>
-<div class="body">
-<div class="copy">
-<p>Пулинг собирает токенные векторы в один.</p>
-<div class="bullets"><p class="bullet">Mean pooling. Среднее с маской внимания, без паддинга. Основной метод для E5.</p>
-<p class="bullet">CLS pooling. Только вектор [CLS]. Так у части других моделей, например BGE.</p></div>
-</div>
-<figure><img src="../../figures/l3-pool.png" alt="Mean усредняет токены без паддинга; CLS берёт только первый токен"></figure>
-</div>
-<footer><span>Эмбеддинг чанка</span><span>multilingual-e5-large-instruct</span></footer>
-</main>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>07</span></div>
+    <h1>Токенизация</h1>
+    <p class="lead">Текст превращается в номера кусков слов из словаря модели. У e5 словарь общий для ста языков.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 194" width="1744" height="194" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="0" y="18" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">УСЛОВНЫЙ ПРИМЕР РАЗБИЕНИЯ · У МОДЕЛИ СВОЙ СЛОВАРЬ</text><rect x="0" y="32" width="125" height="54" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="62.5" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">▁Анги</text><polyline points="62.5,90 62.5,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="62.5" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">91 482</text><rect x="137" y="32" width="90" height="54" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="182.0" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">ок</text><polyline points="182.0,90 182.0,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="182.0" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">1 433</text><rect x="239" y="32" width="106" height="54" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="292.0" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">ерат</text><polyline points="292.0,90 292.0,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="292.0" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">52 017</text><rect x="357" y="32" width="90" height="54" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="402.0" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">омы</text><polyline points="402.0,90 402.0,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="402.0" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">6 731</text><rect x="459" y="32" width="90" height="54" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="504.0" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">▁на</text><polyline points="504.0,90 504.0,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="504.0" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">47</text><rect x="561" y="32" width="125" height="54" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="623.5" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">▁коже</text><polyline points="623.5,90 623.5,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="623.5" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">21 064</text><rect x="698" y="32" width="201" height="54" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="798.5" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">▁туловища</text><polyline points="798.5,90 798.5,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="798.5" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">188 902</text><rect x="911" y="32" width="90" height="54" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="956.0" y="66" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="middle" fill="#1c1915" font-weight="400">.</text><polyline points="956.0,90 956.0,118" fill="none" stroke="#5e6872" stroke-width="1.6" marker-end="url(#ahg)"/><text x="956.0" y="142" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">5</text><text x="0" y="186" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">Один медицинский термин — несколько токенов. 512 токенов русского текста — заметно меньше 512 слов.</text></svg><div class="cols" style="--n:3;margin-top:36px"><article class="card "><div class="label">Служебные</div><h2>&lt;s&gt; и &lt;/s&gt;</h2><p>У e5 (основа XLM-R) это начало и конец; в BERT — [CLS] и [SEP]. Токенизатор ставит их сам, вписывать в текст не нужно.</p></article><article class="card "><div class="label">Паддинг</div><h2>Выравнивание пачки</h2><p>Короткие чанки в пачке добиваются пустыми токенами. Маска внимания помечает их нулём.</p></article><article class="card "><div class="label">Медицина</div><h2>Термины дробятся</h2><p>Латынь, сокращения, названия препаратов — на несколько кусков. Лимит в 512 токенов наступает раньше, чем кажется.</p></article></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
 <script src="../vendor/katex/katex.min.js"></script>
 <script src="../vendor/katex/contrib/auto-render.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  renderMathInElement(document.body, {
-    delimiters: [
-      {left: "\\[", right: "\\]", display: true},
-      {left: "\\(", right: "\\)", display: false}
-    ],
-    throwOnError: false
-  });
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
 });
 </script>
-<script src="deck.js?v=2"></script>
+<script src="deck.js?v=3"></script>
 </body>
 </html>

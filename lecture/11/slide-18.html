@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 18. Метрика и нормализация</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>18</span></div>
+    <h1>Метрика и нормализация</h1>
+    <div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Cosine</div><h2>Нормирует сам</h2><p>Qdrant хранит вектор уже нормированным. Прочитанный обратно вектор может отличаться от загруженного.</p></article><article class="card "><div class="label">Dot</div><h2>Нужна L2 до записи</h2><p>Скалярное произведение на ненормированных векторах предпочтёт длинные векторы, а не близкие.</p></article><article class="card "><div class="label">Для единичных</div><h2>Порядок одинаков</h2><p>Cosine, Dot и Euclid дают один и тот же порядок кандидатов. Отличаются только шкалы оценок.</p></article></div><div class="frames " style="--n:1;margin-top:40px"><div class="frame"><span class="num">01</span><h2>Наш выбор</h2><p>normalize_embeddings=True при кодировании и метрика Cosine в коллекции.</p></div><div class="frame"><span class="num">02</span><h2>Почему так</h2><p>Вектор единичный на всём пути: в кеше, в логах, в повторном сравнении вне Qdrant.</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>

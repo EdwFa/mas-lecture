@@ -2,36 +2,43 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 21. Болезнь Фабри</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    td { font-size: 22px; padding-top: 10px; padding-bottom: 10px; } .coda { font-size: 24px; }
-  </style>
+  <title>Слайд 21. Голова, которую учим</title>
+  <link rel="stylesheet" href="slide.css?v=5" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 10. Архитектура быстрых решений</span><span>21</span></div>
-    
-    <h1>Кейс. Болезнь Фабри</h1>
-    <p class="lead">Неструктурированная выписка. Несколько noul по триггерам и один score по силе подозрения. Это карточка для человека, не диагноз.</p>
-    <table>
-      <thead><tr><th>Вопрос</th><th>Тип</th></tr></thead>
-      <tbody>
-        <tr><td>Акропарестезии</td><td>noul</td></tr>
-        <tr><td>Ангиокератомы</td><td>noul</td></tr>
-        <tr><td>Гипогидроз</td><td>noul</td></tr>
-        <tr><td>Семейный анамнез, альфа-галактозидаза</td><td>noul</td></tr>
-        <tr><td>Насколько прямо текст поддерживает подозрение</td><td>score, одна ось</td></tr>
-      </tbody>
-    </table>
-    <p class="coda">confidence score решает, отдавать ли карточку человеку. Веса осей, если они складываются в один балл, записаны в коде.</p>
-    
+    <h1>Голова, которую учим</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:17px">import torch
+from torch import nn
+from transformers import AutoModel, AutoTokenizer
+name = &quot;intfloat/multilingual-e5-large-instruct&quot;
+tok = AutoTokenizer.from_pretrained(name)
+enc = AutoModel.from_pretrained(name).eval()
+def mean_pool(h, mask):                 # e5 обучена со средним
+    m = mask.unsqueeze(-1).float()
+    return (h * m).sum(1) / m.sum(1)
+head = nn.Sequential(nn.Linear(1024, 256), nn.GELU(),
+                     nn.Linear(256, 3))   # 3 варианта choice
+opt = torch.optim.AdamW(head.parameters(), lr=1e-3)
+def logits(states, questions):
+    batch = tok(states, questions, padding=True,
+                truncation=&quot;only_first&quot;, max_length=512,
+                return_tensors=&quot;pt&quot;)      # пара, а не &quot;[SEP]&quot;
+    with torch.no_grad():                 # энкодер заморожен
+        h = enc(**batch).last_hidden_state
+    return head(mean_pool(h, batch[&quot;attention_mask&quot;]))
+def train_step(states, questions, labels):
+    loss = nn.functional.cross_entropy(
+        logits(states, questions), labels)
+    opt.zero_grad(); loss.backward(); opt.step()
+    return loss.item()</pre></div><div class="stack"><article class="card "><div class="label">Что учим</div><h2>Только голову</h2><p>Энкодер заморожен. Следующий шаг — LoRA на верхних слоях энкодера.</p></article><article class="card "><div class="label">После обучения</div><h2>Калибровка</h2><p>Температура или Platt на валидации, как на слайде 18. Голова после cross-entropy обычно самоуверенна.</p></article><article class="card "><div class="label">Сколько данных</div><h2>1000–2000 примеров</h2><p>Для обучения головы. Для одной калибровки хватает 300–1000.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 </body>
 </html>
