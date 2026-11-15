@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 7. Пять причин остановиться</title>
+  <title>Слайд 7. Где кончается модель</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 13. Harness агента</span><span>07</span></div>
-    <h1>Пять причин остановиться</h1>
-    <p class="lead">Цикл без условий остановки — это не агент, а счёт за токены.</p><div class="frames " style="--n:1;"><div class="frame"><span class="num">01</span><h2>Готов ответ</h2><p>Модель не вызвала инструмент, и ответ прошёл проверку обязательных полей.</p></div><div class="frame"><span class="num">02</span><h2>Лимит шагов</h2><p>Например, 25 оборотов на один пакет. Дальше — человек.</p></div><div class="frame"><span class="num">03</span><h2>Бюджет</h2><p>Токены, время, деньги. Считает harness, а не модель.</p></div><div class="frame"><span class="num">04</span><h2>Ждём врача</h2><p>Вызов требует подтверждения. Оборот замирает со снимком.</p></div><div class="frame"><span class="num">05</span><h2>Неисправимая ошибка</h2><p>Сервер FHIR недоступен после разрешённых повторов.</p></div></div><p class="coda">Каждая остановка пишется в трассу со своей причиной.</p>
+    <h1>Где кончается модель</h1>
+    <table><colgroup><col style="width:26%"><col style="width:22%"><col style="width:52%"></colgroup><thead><tr><th>Вопрос</th><th>Модель</th><th>Harness</th></tr></thead><tbody><tr><td><strong>Какой инструмент</strong></td><td>выбирает</td><td>проверяет, есть ли он в реестре и разрешён ли</td></tr><tr><td><strong>Аргументы</strong></td><td>предлагает</td><td>сверяет со схемой, лишнее поле не исполняет</td></tr><tr><td><strong>Что в окне</strong></td><td>—</td><td>собирает, обрезает, сжимает</td></tr><tr><td><strong>Запись в карту</strong></td><td>просит</td><td>разрешает, спрашивает врача или запрещает</td></tr><tr><td><strong>Когда стоп</strong></td><td>говорит «готово»</td><td>ещё лимит шагов, бюджет, пауза, ошибка</td></tr><tr><td><strong>Что осталось</strong></td><td>—</td><td>журнал каждого оборота</td></tr></tbody></table><p class="coda">Модель предлагает. Всё, что касается мира, решает harness.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>

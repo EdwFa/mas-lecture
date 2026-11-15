@@ -1,5 +1,5 @@
 (function () {
-  const TOTAL = 37;
+  const TOTAL = 39;
   const match = location.pathname.match(/slide-(\d+)\.html$/);
   const n = match ? Number(match[1]) : 1;
 

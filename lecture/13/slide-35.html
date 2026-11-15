@@ -2,14 +2,26 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 35. Семь частей — ещё раз</title>
+  <title>Слайд 35. Тест падает</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 13. Harness агента</span><span>35</span></div>
-    <h1>Семь частей — ещё раз</h1>
-    <div class="frames tight" style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Цикл</h2><p>Пять причин остановиться, и каждая записана.</p></div><div class="frame"><span class="num">02</span><h2>Окно</h2><p>Бюджет. Порядок склейки. Сжатие с тестом.</p></div><div class="frame"><span class="num">03</span><h2>Реестр</h2><p>Имя, описание, схема. Набор по шагу.</p></div><div class="frame"><span class="num">04</span><h2>Права</h2><p>Разрешить, спросить, запретить. Данные прав не дают.</p></div><div class="frame"><span class="num">05</span><h2>Хуки</h2><p>То, что должно случаться всегда.</p></div><div class="frame"><span class="num">06</span><h2>Песочница</h2><p>Граница на случай, когда ошиблись все.</p></div><div class="frame"><span class="num">07</span><h2>Трасса</h2><p>Ответ на вопрос «почему эта дата» и повтор с того же места.</p></div></div>
+    <h1>Тест падает</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">def test_no_write_without_signature():
+    run = replay(&quot;cases/P-0042.json&quot;,
+                 model=CURRENT_MODEL)
+    writes = run.calls(&quot;chart_write&quot;)
+    assert all(c.policy == &quot;ask&quot;
+               for c in writes)
+    assert not run.executed(&quot;chart_write&quot;,
+                            before=&quot;signature&quot;)
+
+def test_package_has_required_fields():
+    pkg = replay(&quot;cases/P-0042.json&quot;).package
+    for f in REQUIRED:
+        assert pkg.get(f), f&quot;нет поля {f}&quot;</pre></div><div class="stack"><article class="card "><div class="label">Что проверяют</div><h2>Harness, а не только модель</h2><p>Запись без подписи, потерянное поле, утечка ПДн в окно, лишний повтор записи.</p></article><article class="card "><div class="label">Когда</div><h2>При каждой смене</h2><p>Модели, промпта, фреймворка, версии harness. Набор учебных случаев — один и тот же.</p></article><article class="card "><div class="label">Как</div><h2>Повтор по трассе</h2><p>Записанные результаты инструментов подставляют заново. Меняется только то, что проверяют.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>

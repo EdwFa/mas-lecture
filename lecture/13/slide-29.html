@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 29. Снимок и повтор</title>
+  <title>Слайд 29. Минимум доступа</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 13. Harness агента</span><span>29</span></div>
-    <h1>Снимок и повтор</h1>
-    <p class="lead">Сбой на седьмом обороте. Продолжаем с седьмого, а не с первого.</p><div class="turns"><div class="turn done"><b>1</b>готово</div><div class="turn done"><b>2</b>готово</div><div class="turn done"><b>3</b>готово</div><div class="turn done"><b>4</b>готово</div><div class="turn done"><b>5</b>готово</div><div class="turn snap"><b>6</b>снимок</div><div class="turn fail"><b>7</b>сбой</div><div class="turn todo"><b>7</b>повтор</div><div class="turn todo"><b>8</b>дальше</div></div><div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Снимок</div><h2>Окно, трасса, счётчики</h2><p>После каждого исполненного вызова. Отложенный вызов — тоже в снимке.</p></article><article class="card "><div class="label">Повтор</div><h2>Без повторной записи</h2><p>Harness видит в журнале, что черновик на обороте 5 уже записан, и не пишет его второй раз.</p></article><article class="card "><div class="label">Не так</div><h2>«Начнём заново»</h2><p>Новый проход — новые чтения, новый выбор модели и, возможно, другой пакет.</p></article></div>
+    <h1>Минимум доступа</h1>
+    <div class="frames " style="--n:1;margin-top:44px"><div class="frame"><span class="num">01</span><h2>Учебные данные</h2><p>Синтетические ресурсы FHIR. Живой карты в курсе нет.</p></div><div class="frame"><span class="num">02</span><h2>Сервер только на чтение</h2><p>Отдельный экземпляр для курса. Запись — в отдельную учебную карту.</p></div><div class="frame"><span class="num">03</span><h2>Ключи вне окна</h2><p>Токен лежит в переменных среды harness. Модель его не видит и не может вывести.</p></div><div class="frame"><span class="num">04</span><h2>Права одного случая</h2><p>Токен открывает ресурсы P-0042, а не всего сервера.</p></div><div class="frame"><span class="num">05</span><h2>Свой журнал доступа</h2><p>Сервер пишет, кто что читал, независимо от трассы агента.</p></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
