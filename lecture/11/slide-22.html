@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 22. Выводы</title>
+  <link rel="stylesheet" href="slide.css?v=3" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 11. Эмбеддинг чанка</span><span>22</span></div>
+    <h1>Выводы</h1>
+    <div class="frames tight" style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Лимит</h2><p>512 токенов. Длинный пункт режут сами, иначе его обрежет токенизатор.</p></div><div class="frame"><span class="num">02</span><h2>Роль текста</h2><p>У e5-instruct: запрос — Instruct и Query, документ — без префикса.</p></div><div class="frame"><span class="num">03</span><h2>Один вектор</h2><p>Mean pooling с маской, затем L2. Косинус становится скалярным произведением.</p></div><div class="frame"><span class="num">04</span><h2>Числа</h2><p>Косинус ранжирует, но не является вероятностью.</p></div><div class="frame"><span class="num">05</span><h2>Точка</h2><p>ID — целое или UUID; dense и sparse — именованные векторы; payload — метаданные.</p></div><div class="frame"><span class="num">06</span><h2>Проверка</h2><p>recall@k на своих вопросах. Смена модели — новая коллекция и алиас.</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=3"></script>
+</body>
+</html>
