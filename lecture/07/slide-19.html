@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Слайд 19. Сборка промпта</title>
-  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="slide.css?v=21" />
   <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
   <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
@@ -15,14 +15,14 @@
 После каждой фразы ставь [id] фрагмента.
 Если ответа во фрагментах нет — так и скажи.
 
-[prot-12/3.2] (Протокол ФГ-12, 2026-09)
-При СКФ 30–59 мл/мин/1,73 м² дозу препарата X
-снижают на 50 %.
+[kr-demo@2026#3.3.3] (учебные рекомендации, 2026)
+Препарат A: СКФ 45–59 — 75 % дозы;
+СКФ 30–44 — 50 % дозы; СКФ &lt; 30 — не применять.
 
-[prot-12/3.3] (Протокол ФГ-12, 2026-09)
-При СКФ ниже 30 препарат X не назначают.
+[kr-demo@2026#3.3.2] (учебные рекомендации, 2026)
+Не использовать креатинин без расчёта СКФ.
 
-Вопрос: какая доза препарата X при СКФ 40?</pre></div><div class="stack"><article class="card "><div class="label">Инструкция</div><h2>Только по фрагментам</h2><p>Модель не должна дополнять ответ своей памятью — она может помнить старую редакцию.</p></article><article class="card "><div class="label">Фрагменты</div><h2>С id и версией</h2><p>Без id ссылаться не на что. Без версии врач не поймёт, какую редакцию цитируют.</p></article><article class="card "><div class="label">Отказ</div><h2>Разрешён явно</h2><p>«Во фрагментах нет» — правильный ответ, если поиск ничего не нашёл. Иначе модель придумает.</p></article></div></div>
+Вопрос: какая доза препарата A при СКФ 41?</pre></div><div class="stack"><article class="card "><div class="label">Инструкция</div><h2>Только по фрагментам</h2><p>Модель не должна дополнять ответ своей памятью — она может помнить старую редакцию.</p></article><article class="card "><div class="label">Фрагменты</div><h2>С id и версией</h2><p>Без id ссылаться не на что. Без версии врач не поймёт, какую редакцию цитируют.</p></article><article class="card "><div class="label">Отказ</div><h2>Разрешён явно</h2><p>«Во фрагментах нет» — правильный ответ, если поиск ничего не нашёл. Иначе модель придумает.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
@@ -38,6 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
     {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
 });
 </script>
-<script src="deck.js?v=20"></script>
+<script src="deck.js?v=21"></script>
 </body>
 </html>
