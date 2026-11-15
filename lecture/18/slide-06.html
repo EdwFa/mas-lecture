@@ -2,14 +2,29 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 6. Оценка</title>
+  <title>Слайд 6. Код: сравнение с врачом</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Защита проекта</span><span>06</span></div>
-    <h1>Оценка</h1>
-    <table><colgroup><col style="width:80%"><col style="width:20%"></colgroup><thead><tr><th>Пункт</th><th>Баллы</th></tr></thead><tbody><tr><td>Граф, права, правило двух</td><td>20</td></tr><tr><td>Тесты пяти уровней и проверки вживую</td><td>25</td></tr><tr><td>Матрица прослеживаемости и опасности</td><td>20</td></tr><tr><td>Контракты передачи и трасса</td><td>20</td></tr><tr><td>Предел, остаточный риск, ответы на вопросы</td><td>15</td></tr></tbody></table><p class="coda">Обязательное условие зачёта — ни одной записи в карту до подписи врача ни в тестах, ни в живом прогоне. Нарушение — пересдача, независимо от баллов.</p>
+    <div class="kicker"><span>Лекция 18. От пилота к эксплуатации</span><span>06</span></div>
+    <h1>Код: сравнение с врачом</h1>
+    <div class="split" style="--left:1040px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">def silent_compare(agent_pkg, doctor_pkg):
+    &quot;&quot;&quot;Тихий режим: что агент нашёл, а врач нет, и наоборот.&quot;&quot;&quot;
+    a, d = set(agent_pkg[&quot;sources&quot;]), set(doctor_pkg[&quot;sources&quot;])
+    return {&quot;both&quot;: sorted(a &amp; d),
+            &quot;agent_only&quot;: sorted(a - d),     # лишнее или полезное?
+            &quot;doctor_only&quot;: sorted(d - a),    # что агент пропустил?
+            &quot;recall&quot;: len(a &amp; d) / len(d) if d else None,
+            &quot;open_questions&quot;: agent_pkg.get(&quot;open_questions&quot;, [])}
+
+def summarize(pairs):
+    &quot;&quot;&quot;Итог за период: доля пакетов, где агент ничего не пропустил.&quot;&quot;&quot;
+    reports = [silent_compare(a, d) for a, d in pairs]
+    complete = [r for r in reports if not r[&quot;doctor_only&quot;]]
+    return {&quot;cases&quot;: len(reports),
+            &quot;nothing_missed&quot;: len(complete) / max(len(reports), 1),
+            &quot;to_review&quot;: [r for r in reports if r[&quot;doctor_only&quot;]]}</pre></div><div class="stack"><article class="card "><div class="label">doctor_only</div><h2>Главная колонка</h2><p>Что врач счёл нужным, а агент не нашёл. Каждый такой случай разбирают вручную.</p></article><article class="card "><div class="label">agent_only</div><h2>Не всегда ошибка</h2><p>Агент мог найти то, что врач пропустил. Решает клинический ответственный, а не инженер.</p></article><article class="card "><div class="label">open_questions</div><h2>Споры</h2><p>Спор дат и расхождения редакций сравнивают отдельно: агент должен их показать, а не решить.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
