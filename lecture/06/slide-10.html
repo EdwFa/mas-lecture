@@ -2,76 +2,46 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 10. Таблица отличий</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1720px; font-size: 22px; }
-    table { margin-top: 14px; }
-    th { padding: 0 20px 8px 0; font-size: 14px; }
-    th:first-child, td:first-child { width: 260px; }
-    td {
-      padding: 10px 20px 10px 0;
-      font-size: 19px;
-      line-height: 1.28;
-    }
-    td strong { font-size: 22px; }
-    figure { margin: 10px 0 0; display: flex; flex-direction: column; align-items: center; }
-    figure img { display: block; width: 1560px; height: auto; background: #f7f4ee; }
-    figcaption { margin-top: 4px; max-width: 1680px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.25; color: #243038; }
-  </style>
+  <title>Слайд 10. Код: инструмент egfr</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>10</span></div>
-    <h1>Таблица отличий</h1>
-    <p class="lead">Вызов функции и MCP оба выводят модель за текст. Отличаются тем, насколько общий это способ.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Чем отличается</th>
-          <th>Вызов функции</th>
-          <th>MCP</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Стандарт</strong></td>
-          <td>Свой у каждого поставщика. Формат разный.</td>
-          <td>Открытый порядок. Им пользуются разные модели и инструменты.</td>
-        </tr>
-        <tr>
-          <td><strong>Область</strong></td>
-          <td>Модель просит выполнить одну заранее описанную функцию.</td>
-          <td>Более широкий порядок: модель и инструменты находят друг друга и работают вместе.</td>
-        </tr>
-        <tr>
-          <td><strong>Устройство</strong></td>
-          <td>Связь одна к одной: модель и программа, которая выполняет инструмент.</td>
-          <td>Клиент и сервер. Программа с моделью подключается к разным серверам.</td>
-        </tr>
-        <tr>
-          <td><strong>Как узнают</strong></td>
-          <td>Модели прямо говорят, какие инструменты есть в этом разговоре.</td>
-          <td>Клиент спрашивает сервер, какие возможности тот отдаёт.</td>
-        </tr>
-        <tr>
-          <td><strong>Повтор</strong></td>
-          <td>Связь часто привязана к одному приложению и одной модели.</td>
-          <td>Сервер живёт отдельно. К нему подключается любая совместимая программа.</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>10</span></div>
+    <h1>Код: инструмент egfr</h1>
+    <div class="split" style="--left:1060px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:16px">from typing import Literal
+from fastmcp import FastMCP
+from fastmcp.exceptions import ToolError
+
+mcp = FastMCP(&quot;p0042-fhir&quot;)
+
+KDIGO = ((90, &quot;G1&quot;), (60, &quot;G2&quot;), (45, &quot;G3a&quot;), (30, &quot;G3b&quot;), (15, &quot;G4&quot;))
+
+def kdigo(gfr):
+    return next((c for low, c in KDIGO if gfr &gt;= low), &quot;G5&quot;)
+
+@mcp.tool
+def egfr(sex: Literal[&quot;female&quot;, &quot;male&quot;], age: int,
+         creatinine: float,
+         unit: Literal[&quot;umol/L&quot;, &quot;mg/dL&quot;] = &quot;umol/L&quot;) -&gt; dict:
+    &quot;&quot;&quot;Расчётная СКФ по CKD-EPI 2021 и категория KDIGO.
+    Только взрослые (18+). Расчёт, а не диагноз.&quot;&quot;&quot;
+    if age &lt; 18:
+        raise ToolError(&quot;уравнение только для взрослых: age &gt;= 18&quot;)
+    scr = creatinine / 88.4 if unit == &quot;umol/L&quot; else creatinine
+    if not 0.05 &lt;= scr &lt;= 40:
+        raise ToolError(f&quot;креатинин {scr:.2f} мг/дл вне 0,05–40&quot;)
+    k, a = (0.7, -0.241) if sex == &quot;female&quot; else (0.9, -0.302)
+    gfr = (142 * min(scr / k, 1) ** a * max(scr / k, 1) ** -1.2
+           * 0.9938 ** age * (1.012 if sex == &quot;female&quot; else 1))
+    return {&quot;egfr&quot;: round(gfr), &quot;unit&quot;: &quot;мл/мин/1,73 м²&quot;,
+            &quot;kdigo&quot;: kdigo(gfr)}</pre></div><div class="stack"><article class="card "><div class="label">Типы</div><h2>Схема из подписи</h2><p>FastMCP строит JSON-схему из аннотаций. Literal превращается в список допустимых значений.</p></article><article class="card "><div class="label">Docstring</div><h2>Описание для модели</h2><p>Модель читает его, когда решает, вызывать ли инструмент. Пишем, что делает, для кого и чего не делает.</p></article><article class="card "><div class="label">Проверка</div><h2>Границы — в коде</h2><p>Ребёнок и невозможный креатинин отвергаются до расчёта, а не после.</p></article></div></div>
     <div class="spacer"></div>
-    <figure>
-      <img src="img/mcp-call-vs-shape.png?v=1" alt="Слева модель и программа на одну функцию. Справа два клиента спрашивают один сервер.">
-      <figcaption>Слева инструменты названы в этом разговоре, связь часто привязана к приложению и модели. Справа клиент спрашивает сервер: сервер живёт отдельно, к нему подключается совместимая программа.</figcaption>
-    </figure>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

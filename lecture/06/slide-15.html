@@ -2,77 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 15. Архитектура MCP</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; }
-    .lead { max-width: 1760px; font-size: 18px; }
-    .blocks {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 28px;
-    }
-    .block { border-top: 1px solid #1c1915; padding-top: 6px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .block h2 {
-      margin: 2px 0 0;
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .block p {
-      margin: 4px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.28;
-      color: #243038;
-    }
-    .coda { max-width: 1700px; margin-top: 8px; font-size: 18px; padding-top: 8px; }
-    figure { margin: 8px 0 0; display: flex; flex-direction: column; align-items: center; }
-    figure img { display: block; width: 1680px; height: auto; background: #f7f4ee; }
-    figcaption { margin-top: 4px; max-width: 1700px; text-align: center; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.25; color: #243038; }
-  </style>
+  <title>Слайд 15. Версия 2026-07-28: без состояния</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 6. MCP, подключение ИИ-приложений к внешним системам</span><span>15</span></div>
-    <h1>Архитектура MCP</h1>
-    <p class="lead">Одно приложение-хост ведёт несколько клиентов. Обмен идёт по JSON-RPC: каждый запрос самодостаточен и сам несёт версию и возможности. Стороны передают контекст и согласуют sampling — запрос сервера на ответ модели. Обзор версии 2026-07-28 помечает sampling как устаревший.</p>
-    <div class="blocks">
-      <article class="block">
-        <div class="n">01</div>
-        <h2>Приложение-хост</h2>
-        <p>Создаёт клиентов и управляет ими. Выдаёт разрешения на соединения и определяет срок каждого. Проводит правила безопасности и согласие, принимает решения о допуске пользователя. Согласует вызов модели и sampling. Собирает контекст от всех клиентов.</p>
-      </article>
-      <article class="block">
-        <div class="n">02</div>
-        <h2>Клиент</h2>
-        <p>Хост создаёт клиента, и тот ведёт отдельное соединение с сервером. У клиента ровно один сервер. К каждому запросу клиент прилагает версию протокола и свои возможности, передаёт сообщения в обе стороны, ведёт подписки и уведомления. Между серверами проводит границу безопасности.</p>
-      </article>
-      <article class="block">
-        <div class="n">03</div>
-        <h2>Сервер</h2>
-        <p>Отдаёт данные, инструменты и заготовки запросов. Работает самостоятельно и занят своей задачей. Sampling, уточнение у пользователя и корни — какие каталоги открыты — просит у клиента ответом InputRequiredResult. Обязан соблюдать ограничения безопасности. Это локальный процесс или удалённая служба.</p>
-      </article>
-    </div>
-    <p class="coda">У каждого клиента ровно один сервер. Пользователь подключает возможности модели в разных приложениях, а границы безопасности и зоны ответственности остаются раздельными.</p>
+    <div class="kicker"><span>Лекция 6. MCP</span><span>15</span></div>
+    <h1>Версия 2026-07-28: без состояния</h1>
+    <p class="lead">Самая большая правка протокола с запуска. Её надо знать, потому что старые примеры в сети написаны по-другому.</p><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 164" width="1744" height="164" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><text x="0" y="22" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ДО 2026-07-28: СНАЧАЛА РУКОПОЖАТИЕ, ПОТОМ РАБОТА</text><rect x="0" y="40" width="200" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="100" y="75" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">initialize</text><polyline points="202,68 218,68" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="220" y="40" width="200" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="320" y="75" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">initialized</text><polyline points="422,68 438,68" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="440" y="40" width="200" height="56" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="540" y="75" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">Mcp-Session-Id</text><polyline points="642,68 658,68" fill="none" stroke="#1c1915" stroke-width="1.4" marker-end="url(#ah)"/><rect x="660" y="40" width="200" height="56" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.2" opacity="1"/><text x="760" y="75" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" text-anchor="middle" fill="#1c1915" font-weight="400">tools/call</text><text x="0" y="154" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">сессия привязана к одному экземпляру сервера</text><text x="960" y="22" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">2026-07-28: КАЖДЫЙ ЗАПРОС САМ ПО СЕБЕ</text><rect x="960" y="40" width="360" height="56" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1140" y="75" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle" fill="#1c1915" font-weight="400">tools/call + _meta</text><polyline points="1322,68 1430,30" fill="none" stroke="#1c1915" stroke-width="1.3" marker-end="url(#ah)"/><rect x="1434" y="12" width="200" height="34" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><text x="1534" y="35" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1c1915" font-weight="400">экземпляр A</text><polyline points="1322,68 1430,70" fill="none" stroke="#1c1915" stroke-width="1.3" marker-end="url(#ah)"/><rect x="1434" y="52" width="200" height="34" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><text x="1534" y="75" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1c1915" font-weight="400">экземпляр B</text><polyline points="1322,68 1430,110" fill="none" stroke="#1c1915" stroke-width="1.3" marker-end="url(#ah)"/><rect x="1434" y="92" width="200" height="34" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1" opacity="1"/><text x="1534" y="115" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#1c1915" font-weight="400">экземпляр C</text><text x="960" y="154" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">ответит любой экземпляр; server/discover — по желанию</text></svg><div class="cols" style="--n:3;margin-top:28px"><article class="card "><div class="label">Убрали</div><h2>Рукопожатие и сессии</h2><p>Нет initialize и Mcp-Session-Id. Версия протокола и возможности клиента едут в каждом запросе.</p></article><article class="card "><div class="label">Добавили</div><h2>server/discover</h2><p>Сервер обязан отвечать, что он умеет. Клиент спрашивает, если хочет, — может и сразу вызвать инструмент.</p></article><article class="card "><div class="label">Что даёт</div><h2>Обычная HTTP-служба</h2><p>Сервер можно держать в нескольких экземплярах за балансировщиком — без «липких» соединений.</p></article></div>
     <div class="spacer"></div>
-    <figure>
-      <img src="img/mcp-architecture.png?v=1" alt="Приложение-хост содержит модель и двух клиентов. Клиент по STDIO идёт к локальному серверу, клиент по Streamable HTTP — к удалённой службе. У серверов двусторонние связи с ресурсами.">
-      <figcaption>Соединение открывает клиент. Локально это STDIO, удалённо — Streamable HTTP. Ресурс связан с сервером в обе стороны. У клиента один сервер, удалённая служба обычно принимает много клиентов.</figcaption>
-    </figure>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026 · © E. Fartushny · MIT</span>
     </footer>
   </main>
-<script src="deck.js?v=12"></script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>
