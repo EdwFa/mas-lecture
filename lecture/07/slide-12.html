@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 12. Токенизаторы онлайн</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>12</span></div>
+    <h1>Токенизаторы онлайн</h1>
+    <p class="lead">Вставьте строку «Какова скорость клубочковой фильтрации по креатинину?» и сравните число токенов.</p><table><colgroup><col style="width:24%"><col style="width:46%"><col style="width:30%"></colgroup><thead><tr><th>Инструмент</th><th>Адрес</th><th>Что показывает</th></tr></thead><tbody><tr><td><strong>OpenAI Tokenizer</strong></td><td>platform.openai.com/tokenizer</td><td>словари GPT, tiktoken</td></tr><tr><td><strong>Tiktokenizer</strong></td><td>tiktokenizer.vercel.app</td><td>тот же tiktoken в браузере</td></tr><tr><td><strong>Tokenizer Playground</strong></td><td>huggingface.co/spaces/Xenova/the-tokenizer-playground</td><td>словари Hugging Face, в том числе Llama 3</td></tr><tr><td><strong>LLM Tokenizer</strong></td><td>danieldemmel.me/tokenizer</td><td>несколько словарей на одной фразе</td></tr></tbody></table><p class="coda">Число токенов с одного экрана на другой не переносят: у каждой модели свой словарь.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

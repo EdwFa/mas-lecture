@@ -2,91 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 11. Токенизаторы онлайн</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 40px; }
-    .lead { max-width: 1760px; font-size: 20px; line-height: 1.3; }
-    .src {
-      margin-top: 12px;
-      font-size: 28px;
-    }
-    .links {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px 36px;
-    }
-    a.card {
-      display: block;
-      border-top: 1px solid #1c1915;
-      padding-top: 8px;
-      color: inherit;
-      text-decoration: none;
-    }
-    a.card h2 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    a.card p {
-      margin: 6px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    a.card .url {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      color: #5e6872;
-    }
-    .coda { max-width: 1720px; margin-top: 16px; font-size: 22px; }
-  </style>
+  <title>Слайд 11. WordPiece и Unigram</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>11</span></div>
-    <h1>Токенизаторы онлайн</h1>
-    <p class="lead">Один фрагмент клинической рекомендации разные словари режут по-разному. Вставьте строку и сравните число токенов. Число с одного экрана на другой не переносят.</p>
-    <p class="src">Какова скорость клубочковой фильтрации по креатинину?</p>
-    <div class="links">
-      <a class="card" href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">
-        <h2>OpenAI Tokenizer</h2>
-        <p class="url">platform.openai.com/tokenizer</p>
-        <p>Словари GPT, tiktoken.</p>
-      </a>
-      <a class="card" href="https://tiktokenizer.vercel.app" target="_blank" rel="noopener">
-        <h2>Tiktokenizer</h2>
-        <p class="url">tiktokenizer.vercel.app</p>
-        <p>Тот же tiktoken в браузере.</p>
-      </a>
-      <a class="card" href="https://huggingface.co/spaces/Xenova/the-tokenizer-playground?tokenizer=Xenova/llama-3-tokenizer" target="_blank" rel="noopener">
-        <h2>Tokenizer Playground</h2>
-        <p class="url">huggingface.co/spaces/Xenova/the-tokenizer-playground</p>
-        <p>Словари Hugging Face. По этой ссылке открывается Llama 3.</p>
-      </a>
-      <a class="card" href="https://www.danieldemmel.me/tokenizer/" target="_blank" rel="noopener">
-        <h2>LLM Tokenizer</h2>
-        <p class="url">danieldemmel.me/tokenizer</p>
-        <p>Несколько словарей на одной и той же фразе.</p>
-      </a>
-      <a class="card" href="../../transformer/llm/index.html#tokens" target="_blank" rel="noopener">
-        <h2>Учебный BPE этой главы</h2>
-        <p class="url">transformer/llm, раздел «Текст становится токенами»</p>
-        <p>Короткий корпус, слияния по шагам. Это не словарь Llama.</p>
-      </a>
-    </div>
-    <p class="coda">Крупнее словарь — меньше токенов на тот же текст и больше таблица эмбеддингов.</p>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>11</span></div>
+    <h1>WordPiece и Unigram</h1>
+    <div class="fx" style="font-size:34px">\[\text{счёт}(a,b)=\frac{\text{частота}(ab)}{\text{частота}(a)\cdot\text{частота}(b)}\]</div><table><colgroup><col style="width:30%"><col style="width:25%"><col style="width:45%"></colgroup><thead><tr><th>Пара</th><th>Сколько раз</th><th>Счёт WordPiece</th></tr></thead><tbody><tr><td>ин</td><td>10</td><td>10 / (10 × 10) = 0,1</td></tr><tr><td>кр, ре, еа, ат</td><td>6</td><td>6 / (6 × 6) = 1/6</td></tr></tbody></table><div class="cols" style="--n:3;margin-top:28px"><article class="card "><div class="label">WordPiece</div><h2>Пара с наибольшим счётом</h2><p>«ин» частая, но «и» и «н» и так часты — счёт 0,1. Четыре пары со счётом 1/6 идут раньше. В BERT словарь около 30 000, продолжение помечено ##.</p></article><article class="card "><div class="label">Unigram</div><h2>От большого словаря вниз</h2><p>Выбрасывают токены, без которых правдоподобие корпуса падает меньше всего. Фразу режут на самую вероятную нарезку (Kudo, 2018).</p></article><article class="card "><div class="label">SentencePiece</div><h2>Обе схемы</h2><p>Держит и BPE, и Unigram. Пробел — обычный символ, разбор обратим (Kudo, Richardson, 2018).</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

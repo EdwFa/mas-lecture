@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 21. Ответ со ссылками</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>21</span></div>
+    <h1>Ответ со ссылками</h1>
+    <div class="split" style="--left:960px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Проверка ответа кодом</div><pre class="code" style="font-size:20px">import re
+
+def check_citations(answer, hits):
+    allowed = {c[&quot;id&quot;] for c, _ in hits}
+    cited = set(re.findall(r&quot;\[([\w./-]+)\]&quot;, answer))
+    sentences = [s for s in re.split(r&quot;(?&lt;=[.!?])\s+&quot;,
+                                     answer.strip()) if s]
+    return {
+        &quot;unknown&quot;: sorted(cited - allowed),
+        &quot;uncited&quot;: [s for s in sentences
+                    if not re.search(r&quot;\[[^\]]+\]&quot;, s)],
+    }</pre></div><div class="stack"><article class="card "><div class="label">unknown</div><h2>Ссылка в никуда</h2><p>Модель сослалась на фрагмент, которого ей не давали. Такой ответ не показывают врачу.</p></article><article class="card "><div class="label">uncited</div><h2>Фраза без опоры</h2><p>Утверждение без ссылки — возможно, из памяти модели. Его помечают или убирают.</p></article><article class="card "><div class="label">Чего не ловит</div><h2>Неверный пересказ</h2><p>Ссылка есть, но фраза искажает фрагмент. Это проверяют судьёй или врачом (лекция 17).</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

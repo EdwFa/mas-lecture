@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 17. Поиск: по словам и по смыслу</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>17</span></div>
+    <h1>Поиск: по словам и по смыслу</h1>
+    <table><colgroup><col style="width:22%"><col style="width:39%"><col style="width:39%"></colgroup><thead><tr><th></th><th>Лексический (BM25)</th><th>Плотный (эмбеддинги)</th></tr></thead><tbody><tr><td><strong>Находит</strong></td><td>точное слово, код МКБ, МНН, число</td><td>перефразировку и синоним</td></tr><tr><td><strong>Промахивается</strong></td><td>«воспаление лёгких» при запросе «пневмония»</td><td>редкий код, номер, новое МНН</td></tr><tr><td><strong>Пример запроса</strong></td><td>«N18.3», «эналаприл»</td><td>«почки плохо фильтруют»</td></tr><tr><td><strong>Нужно для работы</strong></td><td>словарь слов и их частот</td><td>энкодер и векторный индекс</td></tr></tbody></table><p class="coda">В клинических текстах нужны оба: коды и дозы ищут словами, формулировки — смыслом. Их сочетание — гибридный поиск, лекции 8, 9 и 11.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

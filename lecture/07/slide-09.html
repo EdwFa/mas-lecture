@@ -2,109 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 9. BPE</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1760px; font-size: 20px; line-height: 1.3; }
-    .steps {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .step { border-top: 1px solid #1c1915; padding-top: 8px; }
-    .n {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      color: #5e6872;
-    }
-    .step h2 {
-      margin: 2px 0 0;
-      font-size: 24px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-    .step p, .col p {
-      margin: 8px 0 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.32;
-      color: #243038;
-    }
-    .cols {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-    }
-    .col { border-top: 1px solid #1c1915; padding-top: 8px; }
-    .col h2 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 400;
-    }
-    .pair {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 4px 12px;
-      border: 1.5px solid #1c1915;
-      background: #fcfaf6;
-      font-size: 28px;
-    }
-    .coda { max-width: 1720px; margin-top: 14px; font-size: 20px; }
-  </style>
+  <title>Слайд 9. Три способа резать текст</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>09</span></div>
-    <h1>BPE</h1>
-    <p class="lead">Кодирование пар байтов. Sennrich, Haddow, Birch, 2015. Начинают с символов. Считают соседние пары. Самую частую сливают в новый символ. И так дальше. У GPT-2 алфавит — сами байты.</p>
-    <div class="steps">
-      <article class="step">
-        <div class="n">01</div>
-        <h2>Символы</h2>
-        <p>Слово протокола разбирают на символы. Конец слова в учебном разборе курса отмечают знаком _.</p>
-      </article>
-      <article class="step">
-        <div class="n">02</div>
-        <h2>Пара</h2>
-        <p>Считают, какие два символа стоят рядом и как часто. Берут пару с наибольшим числом.</p>
-      </article>
-      <article class="step">
-        <div class="n">03</div>
-        <h2>Слияние</h2>
-        <p>Эту пару заменяют одним новым символом и кладут его в словарь.</p>
-      </article>
-      <article class="step">
-        <div class="n">04</div>
-        <h2>Повтор</h2>
-        <p>Снова считают пары уже по новым символам, пока словарь не набран.</p>
-      </article>
-    </div>
-    <div class="cols">
-      <article class="col">
-        <h2>Учебный корпус</h2>
-        <p>«Креатинин» 4 раза, «креатин» 2 раза. Пара «ин» встречается 10 раз: в «креатинине» дважды, 4 × 2, и в «креатине» один раз, 2 × 1. Это единственный максимум, её сливают первой.</p>
-        <p class="pair">и + н сливается в ин</p>
-        <p>Новое МНН режут уже выученными слияниями, а не заново по частоте одной строки.</p>
-      </article>
-      <article class="col">
-        <h2>Какого размера словарь</h2>
-        <p>GPT-1: 40 тысяч таких слияний. GPT-2: байтовый BPE, словарь 50&nbsp;257.</p>
-        <p>Llama 3: 128&nbsp;000. Английский сжался с 3,17 до 3,94 символа на токен относительно Llama 2. Таблица в fp16 при ширине 4096 — 0,26 ГБ и 1,05 ГБ.</p>
-        <p>Токенизатор учат на образце смеси и замораживают. Поменять словарь позже — учить модель заново.</p>
-      </article>
-    </div>
-    <p class="coda">Числа режут по цифрам, неизвестный символ сваливают в байт. Служебные токены метят конец документа и, позже, реплики диалога.</p>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>09</span></div>
+    <h1>Три способа резать текст</h1>
+    <p class="lead">Одна строка протокола: «сывороточный креатинин 130 мкмоль/л».</p><table><colgroup><col style="width:20%"><col style="width:42%"><col style="width:38%"></colgroup><thead><tr><th>Способ</th><th>Как режет</th><th>Плюс и минус</th></tr></thead><tbody><tr><td><strong>По словам</strong></td><td>сывороточный · креатинин · 130 · мкмоль/л</td><td>коротко; новое МНН и опечатка — неизвестное слово</td></tr><tr><td><strong>По символам</strong></td><td>к · р · е · а · т · и · н · и · н</td><td>нет неизвестных; последовательность слишком длинная</td></tr><tr><td><strong>По подсловам</strong></td><td>частое слово — один токен, редкое — несколько</td><td>компромисс; так режут все современные модели</td></tr></tbody></table><p class="coda">У байтового BPE алфавит начинается с байтов, и неизвестных символов нет. У GPT-2 словарь — 50 257 токенов.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>

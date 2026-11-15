@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 28. Выводы</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>28</span></div>
+    <h1>Выводы</h1>
+    <div class="frames tight" style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Зачем</h2><p>Сегодняшнего анализа и протокола больницы в весах нет. RAG приносит их в окно в момент вопроса.</p></div><div class="frame"><span class="num">02</span><h2>Векторы</h2><p>Токены → вектор фрагмента энкодером → косинус. Один энкодер для базы и вопроса.</p></div><div class="frame"><span class="num">03</span><h2>Индексация</h2><p>Фрагмент хранят с id, источником и версией. Без них нет ссылки и защиты от старой редакции.</p></div><div class="frame"><span class="num">04</span><h2>Поиск</h2><p>Слова и смысл нужны оба. k и порог — компромисс между полнотой и шумом.</p></div><div class="frame"><span class="num">05</span><h2>Ответ</h2><p>Только по фрагментам, со ссылками, с честным «нет в базе». Ссылки проверяет код.</p></div><div class="frame"><span class="num">06</span><h2>Проверка</h2><p>Поиск — recall@k, генерация — ссылки и верность. Отказы лечат в лекциях 8–12.</p></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026</span>
+    </footer>
+  </main>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
+</body>
+</html>

@@ -2,38 +2,31 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 4. Fine-Tuning</title>
-  <link rel="stylesheet" href="slide.css" />
-  <style>
-    h1 { font-size: 44px; }
-    .lead { max-width: 1760px; font-size: 22px; line-height: 1.32; }
-    figure { margin: 18px 0 0; display: flex; flex-direction: column; align-items: center; }
-    figure img { display: block; width: 1580px; height: auto; background: #f7f4ee; }
-    figcaption {
-      margin-top: 8px;
-      text-align: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.3;
-      color: #243038;
-    }
-  </style>
+  <title>Слайд 4. Дообучение</title>
+  <link rel="stylesheet" href="slide.css?v=20" />
+  <link rel="stylesheet" href="../vendor/katex/katex.min.css" />
+  <style>.fx { margin-top: 8px; } .fx .katex-display { margin: 0.2em 0; text-align: left; } .fx .katex-display > .katex { text-align: left; }</style>
 </head>
 <body>
   <main class="slide">
-    <div class="kicker"><span>Лекция 7. Извлечение знаний. Retrieval-Augmented Generation</span><span>04</span></div>
-    <h1>Fine-Tuning</h1>
-    <p class="lead">Full Fine Tuning — полное дообучение. Большой корпус проходит предобучение и даёт базовую LLM. Коллекция предметной области входит в дообучение и даёт дообученную LLM.</p>
-    <figure>
-      <img src="img/full-fine-tuning.png?v=3" alt="Большой корпус через предобучение даёт базовую LLM. Коллекция предметной области входит в дообучение и даёт дообученную LLM. Запрос идёт от пользователя к этой модели, ответ возвращается ему.">
-      <figcaption>Запрос идёт от пользователя к дообученной LLM, ответ возвращается ему.</figcaption>
-    </figure>
+    <div class="kicker"><span>Лекция 7. Извлечение знаний. RAG</span><span>04</span></div>
+    <h1>Дообучение</h1>
+    <img src="img/full-fine-tuning.png?v=2" style="display:block;max-width:100%;margin-top:8px;width:100%;max-height:340px;object-fit:contain" alt=""><div class="cols" style="--n:4;margin-top:24px"><article class="card "><div class="label">Метки классов</div><h2>Классификатор</h2><p>Другая голова на той же базовой модели (лекция 10).</p></article><article class="card "><div class="label">Инструкции</div><h2>Обучение с учителем</h2><p>Задача, годный ответ, границы ролей. Учит форме: передача на консилиум в двух предложениях.</p></article><article class="card "><div class="label">Предпочтения</div><h2>PPO или DPO</h2><p>Модель награды либо пары «лучше — хуже». Конвейеры, а не обязательная стадия.</p></article><article class="card "><div class="label">Правило</div><h2>LoRA</h2><p>Дешёвое дообучение малых матриц (лекция 12).</p></article></div><p class="coda">Дообучение учит форме, а не фактам. Факт, который меняется каждый день, через веса не передают.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
       <span>осень 2026</span>
     </footer>
   </main>
-<script src="deck.js?v=19"></script>
+<script src="../vendor/katex/katex.min.js"></script>
+<script src="../vendor/katex/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, { delimiters: [
+    {left: "\\[", right: "\\]", display: true},
+    {left: "\\(", right: "\\)", display: false} ], throwOnError: false });
+});
+</script>
+<script src="deck.js?v=20"></script>
 </body>
 </html>
