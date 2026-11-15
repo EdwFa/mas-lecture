@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 27. Минимум доступа</title>
+  <title>Слайд 27. Промпт просит, хук обязывает</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 13. Harness агента</span><span>27</span></div>
-    <h1>Минимум доступа</h1>
-    <div class="frames " style="--n:1;margin-top:44px"><div class="frame"><span class="num">01</span><h2>Учебные данные</h2><p>Синтетические ресурсы FHIR. Живой карты в курсе нет.</p></div><div class="frame"><span class="num">02</span><h2>Сервер только на чтение</h2><p>Отдельный экземпляр для курса. Запись — в отдельную учебную карту.</p></div><div class="frame"><span class="num">03</span><h2>Ключи вне окна</h2><p>Токен лежит в переменных среды harness. Модель его не видит и не может вывести.</p></div><div class="frame"><span class="num">04</span><h2>Права одного случая</h2><p>Токен открывает ресурсы P-0042, а не всего сервера.</p></div><div class="frame"><span class="num">05</span><h2>Свой журнал доступа</h2><p>Сервер пишет, кто что читал, независимо от трассы агента.</p></div></div>
+    <h1>Промпт просит, хук обязывает</h1>
+    <div class="cols" style="--n:2;margin-top:64px"><article class="card "><div class="label">В промпте</div><h2>«Не включай ФИО пациента»</h2><p>Модель почти всегда слушается. «Почти» — это несколько пакетов из тысячи.</p></article><article class="card "><div class="label">В хуке</div><h2>Маска на каждом результате</h2><p>Срабатывает всегда. ФИО не попадает в окно, и модели нечего включать.</p></article></div><div class="frames " style="--n:1;margin-top:44px"><div class="frame"><span class="num">01</span><h2>Промпт</h2><p>Для того, что модель должна понимать: стиль черновика, что считать спором дат.</p></div><div class="frame"><span class="num">02</span><h2>Хук</h2><p>Для того, что должно случиться всегда: маска, проверка полей, запись в трассу.</p></div><div class="frame"><span class="num">03</span><h2>Права</h2><p>Для того, что нельзя исполнить без человека.</p></div></div><p class="coda">Если нарушение недопустимо даже один раз из ста — это хук, а не промпт.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
