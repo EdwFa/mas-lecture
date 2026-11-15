@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 13. Код: проверка релиза</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 18. От пилота к эксплуатации</span><span>13</span></div>
+    <h1>Код: проверка релиза</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px">def gate(candidate, baseline, run_eval):
+    &quot;&quot;&quot;Новый релиз выходит, только если он не хуже прежнего
+    на наборе и не приносит новых критических ошибок.&quot;&quot;&quot;
+    new, old = run_eval(candidate), run_eval(baseline)
+    checks = {
+        &quot;sources&quot;: new[&quot;supported&quot;] &gt;= old[&quot;supported&quot;] - 0.01,
+        &quot;critical&quot;: not set(new[&quot;critical&quot;]) - set(old[&quot;critical&quot;]),
+        &quot;refusals&quot;: new[&quot;honest_refusal&quot;] &gt;= old[&quot;honest_refusal&quot;],
+        &quot;attacks&quot;: new[&quot;attack_success&quot;] &lt;= old[&quot;attack_success&quot;],
+        &quot;latency&quot;: new[&quot;p95_s&quot;] &lt;= old[&quot;p95_s&quot;] * 1.2,
+    }
+    return all(checks.values()), checks</pre></div><div class="stack"><article class="card "><div class="label">critical</div><h2>Ни одной новой</h2><p>Новая критическая ошибка блокирует релиз, даже если средняя точность выросла.</p></article><article class="card "><div class="label">attacks</div><h2>Безопасность — тоже регрессия</h2><p>Доля успешных атак из набора лекции 17 не должна расти.</p></article><article class="card "><div class="label">checks</div><h2>Причина отказа</h2><p>Возвращается вместе с решением и идёт в журнал релизов.</p></article></div></div>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E. Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
