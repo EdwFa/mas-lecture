@@ -2,14 +2,30 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 26. Где исполняется вызов</title>
+  <title>Слайд 26. Два хука пакета</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 13. Harness агента</span><span>26</span></div>
-    <h1>Где исполняется вызов</h1>
-    <p class="lead">Права решают, можно ли. Песочница ограничивает ущерб, если права ошиблись.</p><div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Файлы</div><h2>Только рабочая папка</h2><p>Чтение и запись — внутри папки случая. Выше по дереву harness не пускает.</p></article><article class="card "><div class="label">Сеть</div><h2>Только учебный сервер</h2><p>Один адрес FHIR. Остальной интернет закрыт на уровне контейнера.</p></article><article class="card "><div class="label">Процессы</div><h2>Без лишних прав</h2><p>Без root, с лимитом времени и памяти. Зависший скрипт снимают через 60 секунд.</p></article></div><svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 300" width="1744" height="300" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0" y="0" width="1100" height="300" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="2" stroke-dasharray="7 6" opacity="1"/><text x="24" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">КОНТЕЙНЕР</text><rect x="40" y="60" width="300" height="90" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="190.0" y="101.0" font-family="Georgia, Iowan Old Style, serif" font-size="26" text-anchor="middle" fill="#1c1915" font-weight="400">Harness</text><text x="190.0" y="129.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">без root · 60 с на вызов</text><rect x="420" y="84" width="640" height="166" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="440" y="112" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" fill="#5e6872" font-weight="500" letter-spacing="2.4">ФАЙЛЫ</text><text x="440" y="150" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="start" fill="#1c1915" font-weight="400">cases/P-0042/</text><polyline points="708,144 717,154 734,134" fill="none" stroke="#1c1915" stroke-width="3"/><text x="470" y="182" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">drafts/  progress/  trace/</text><text x="440" y="228" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" text-anchor="start" fill="#5e6872" font-weight="400">../  /etc  ~/</text><line x1="630" y1="210" x2="650" y2="230" stroke="#1c1915" stroke-width="2.4"/><line x1="630" y1="230" x2="650" y2="210" stroke="#1c1915" stroke-width="2.4"/><polyline points="342,110 416,130" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><polyline points="190,152 190,280 1290,280" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1296" y="226" width="448" height="74" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1520.0" y="259.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">FHIR · учебный</text><text x="1520.0" y="287.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">единственный открытый адрес</text><line x1="1100" y1="0" x2="1100" y2="300" stroke="#1c1915" stroke-width="3"/><polyline points="190,58 190,24 1290,24" fill="none" stroke="#5e6872" stroke-width="1.6" stroke-dasharray="7 6"/><line x1="1087" y1="11" x2="1113" y2="37" stroke="#1c1915" stroke-width="3"/><line x1="1087" y1="37" x2="1113" y2="11" stroke="#1c1915" stroke-width="3"/><rect x="1296" y="0" width="448" height="74" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" stroke-dasharray="7 6" opacity="1"/><text x="1520.0" y="33.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Интернет</text><text x="1520.0" y="61.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">закрыт на уровне сети</text></svg><p class="coda">Песочница — граница, которая держит и тогда, когда ошиблись и модель, и таблица прав.</p>
+    <h1>Два хука пакета</h1>
+    <div class="split" style="--left:1fr;--right:1fr;margin-top:48px"><div class="stack"><div class="label" style="margin-bottom:12px">После вызова · маскирование</div><pre class="code" style=""># после каждого вызова
+def mask_phi(result):
+    for field in (&quot;name&quot;, &quot;address&quot;,
+                  &quot;telecom&quot;, &quot;identifier&quot;):
+        result.drop(field)
+    result.text = PHI.sub(&quot;[скрыто]&quot;,
+                          result.text)
+    return result</pre></div><div class="stack"><div class="label" style="margin-bottom:12px">Перед ответом · обязательные поля</div><pre class="code" style=""># перед ответом
+REQUIRED = [&quot;case_id&quot;, &quot;diagnosis_ref&quot;,
+            &quot;imaging_ref&quot;, &quot;histology_ref&quot;,
+            &quot;board_date&quot;, &quot;open_questions&quot;]
+
+def check_package(pkg):
+    missing = [f for f in REQUIRED
+               if not pkg.get(f)]
+    if missing:
+        return Block(f&quot;нет полей: {missing}&quot;)</pre></div></div><p class="coda">board_date может быть «не назначена». Пустой она быть не может.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
