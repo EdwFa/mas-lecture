@@ -174,4 +174,7 @@
       go(TOTAL);
     }
   });
+  const audioScript = document.createElement("script");
+  audioScript.src = "../audio.js?v=1";
+  document.body.appendChild(audioScript);
 })();
