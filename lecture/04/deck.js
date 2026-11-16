@@ -175,6 +175,6 @@
     }
   });
   const audioScript = document.createElement("script");
-  audioScript.src = "../audio.js?v=1";
+  audioScript.src = "../audio.js?v=2";
   document.body.appendChild(audioScript);
 })();
