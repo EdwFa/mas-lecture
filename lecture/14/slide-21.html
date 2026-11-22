@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 21. Тесты работы</title>
+  <title>Слайд 21. Тесты срабатывания</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>21</span></div>
-    <h1>Тесты работы</h1>
-    <p class="lead">Скилл сработал — а сделал ли он то, что нужно? Набор случаев с известным ответом.</p><table><colgroup><col style="width:32%"><col style="width:28%"><col style="width:20%"><col style="width:20%"></colgroup><thead><tr><th>Пакет</th><th>Ожидаемо</th><th>Без скилла</th><th>Со скиллом</th></tr></thead><tbody><tr><td><strong>Полный</strong></td><td>ok</td><td>✓</td><td>✓</td></tr><tr><td><strong>Нет гистологии</strong></td><td>нет поля histology_ref</td><td>✓</td><td>✓</td></tr><tr><td><strong>Две даты консилиума</strong></td><td>спор в open_questions</td><td>✗ выбрал одну</td><td>✓</td></tr><tr><td><strong>Ссылка «ct-117» без типа</strong></td><td>не ссылка FHIR</td><td>✗</td><td>✓</td></tr><tr><td><strong>board_date: «не назначена»</strong></td><td>ok</td><td>✗ потребовал дату</td><td>✓</td></tr></tbody></table><p class="coda">Порядок Anthropic: сначала случаи и прогон без скилла, потом минимальный текст, закрывающий провалы. Нет разницы — скилл не нужен. Таблица учебная, своя — на 10 пакетах.</p>
+    <h1>Тесты срабатывания</h1>
+    <div class="split" style="--left:900px;--right:1fr;"><div class="stack"><table><colgroup><col style="width:68%"><col style="width:32%"></colgroup><thead><tr><th>Фраза врача</th><th>Должен сработать</th></tr></thead><tbody><tr><td>Проверь пакет P-0042</td><td>да</td></tr><tr><td>Всё ли заполнено к консилиуму?</td><td>да</td></tr><tr><td>Готов ли пакет к пятнице?</td><td>да</td></tr><tr><td>Собери пакет к консилиуму</td><td>нет — это сборка</td></tr><tr><td>Запиши дату консилиума</td><td>нет — это действие</td></tr><tr><td>Какие маркеры у P-0042?</td><td>нет — lab-summary</td></tr></tbody></table></div><div class="stack"><article class="card "><div class="label">Набор</div><h2>20 фраз: 10 да, 10 нет</h2><p>Пишут до скилла. «Нет» — самые похожие чужие запросы, а не случайные.</p></article><article class="card "><div class="label">Метрика</div><h2>Две доли</h2><p>Сколько «да» сработало и сколько «нет» не сработало. Каждую фразу прогоняют несколько раз: модель недетерминирована.</p></article><article class="card "><div class="label">Правка</div><h2>Меняем только описание</h2><p>Срабатывание чинят текстом description, а не телом скилла.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
