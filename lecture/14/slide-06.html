@@ -2,27 +2,22 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 6. SKILL.md: frontmatter</title>
+  <title>Слайд 6. Библиотека скиллов</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>06</span></div>
-    <h1>SKILL.md: frontmatter</h1>
-    <div class="split" style="--left:860px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Начало файла</div><pre class="code" style="font-size:21px">---
-name: package-check
-description: &gt;-
-  Проверяет пакет к онкологическому консилиуму:
-  обязательные поля, ссылки FHIR, спор дат.
-  Use when the user asks to check, validate or
-  review a board package («проверь пакет»,
-  «всё ли заполнено», «готов ли пакет»).
-  Не для сборки пакета и не для записи в карту.
-license: Apache-2.0
-metadata:
-  owner: кафедра онкологии
-  version: &quot;1.2&quot;
----</pre></div><div class="stack"><div class="frames " style="--n:1;margin-top:0"><div class="frame"><span class="num">01</span><h2>name</h2><p>До 64 символов: a-z, 0-9, дефис. Не с дефиса и не на дефис, без «--». Совпадает с папкой. В Claude нельзя XML-теги и слова anthropic, claude.</p></div><div class="frame"><span class="num">02</span><h2>description</h2><p>До 1024 символов, без XML-тегов, от третьего лица: «Проверяет…». Что делает и когда звать — единственное, что модель видит до решения.</p></div><div class="frame"><span class="num">03</span><h2>Необязательные</h2><p>license, metadata, compatibility (до 500 символов) и&nbsp;экспериментальное allowed-tools. Проверка формата: skills-ref validate.</p></div></div></div></div>
+    <h1>Библиотека скиллов</h1>
+    <p class="lead">Одна папка — один скилл. Все скиллы лежат рядом в общей папке skills/: у практикума их три.</p><div class="split" style="--left:900px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:21px">skills/
+├── package-check/           проверка пакета
+│   ├── SKILL.md             name: package-check
+│   ├── scripts/check.py
+│   └── references/fields.md
+├── package-build/           сборка пакета
+│   └── SKILL.md             name: package-build
+└── lab-summary/             анализы и маркеры
+    └── SKILL.md             name: lab-summary</pre></div><div class="stack"><div class="frames tight" style="--n:1;margin-top:0"><div class="frame"><span class="num">01</span><h2>Один SKILL.md на папку</h2><p>name совпадает с именем папки, поэтому два скилла в одной папке не уживутся.</p></div><div class="frame"><span class="num">02</span><h2>Имена уникальны</h2><p>Две папки с одним name — конфликт. Harness должен поймать его при старте.</p></div><div class="frame"><span class="num">03</span><h2>Без вложенности</h2><p>scan ищет skills/*/SKILL.md. Подпапки внутри скилла — его scripts/, references/, assets/.</p></div><div class="frame"><span class="num">04</span><h2>Без общих файлов</h2><p>Ссылки только внутри своей папки. Общий код — инструмент harness, а не чужой scripts/.</p></div></div></div></div><p class="coda">Модель видит каталог из трёх строк и выбирает один скилл. Тело читают только у него. Где лежит skills/ — решает клиент.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
