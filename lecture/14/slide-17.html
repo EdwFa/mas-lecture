@@ -2,25 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 17. Кейс: скилл в трассе</title>
+  <title>Слайд 17. Скилл, хук или инструмент</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>17</span></div>
-    <h1>Кейс: скилл в трассе</h1>
-    <div class="split" style="--left:980px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:19px">{&quot;turn&quot;:1,&quot;window&quot;:&quot;rules+catalog(3 skills)&quot;,&quot;tokens&quot;:3120}
-{&quot;turn&quot;:1,&quot;model&quot;:&quot;call&quot;,&quot;tool&quot;:&quot;read_skill&quot;,
- &quot;args&quot;:{&quot;name&quot;:&quot;package-check&quot;},&quot;policy&quot;:&quot;allow&quot;}
-{&quot;turn&quot;:2,&quot;model&quot;:&quot;call&quot;,&quot;tool&quot;:&quot;run_script&quot;,
- &quot;args&quot;:{&quot;skill&quot;:&quot;package-check&quot;,
-         &quot;script&quot;:&quot;scripts/check.py&quot;,
-         &quot;file&quot;:&quot;work/package.json&quot;},
- &quot;policy&quot;:&quot;allow&quot;,&quot;sandbox&quot;:&quot;cases/P-0042/&quot;}
-{&quot;turn&quot;:2,&quot;result&quot;:{&quot;ok&quot;:false,
- &quot;problems&quot;:[&quot;нет поля histology_ref&quot;]}}
-{&quot;turn&quot;:3,&quot;model&quot;:&quot;answer&quot;,&quot;text&quot;:&quot;В пакете нет ссылки
- на гистологию …&quot;}</pre></div><div class="stack"><article class="card "><div class="label">Видно</div><h2>Какой скилл и когда</h2><p>Журнал отвечает: почему модель сказала «нет гистологии» — потому что так вернул скрипт.</p></article><article class="card "><div class="label">Видно</div><h2>Скрипт в песочнице</h2><p>Путь к файлу — внутри папки случая. Политика run_script та же, что для любого кода.</p></article><article class="card "><div class="label">Не видно</div><h2>Если скилл не сработал</h2><p>Пустая трасса не скажет, что скилл был нужен. Для этого — тесты срабатывания.</p></article></div></div>
+    <h1>Скилл, хук или инструмент</h1>
+    <table><colgroup><col style="width:28%"><col style="width:24%"><col style="width:24%"><col style="width:24%"></colgroup><thead><tr><th>Свойство</th><th>Скилл</th><th>Хук</th><th>Инструмент</th></tr></thead><tbody><tr><td><strong>Кто решает, что сработает</strong></td><td>модель, по описанию</td><td>harness, всегда</td><td>модель, по схеме</td></tr><tr><td><strong>Что внутри</strong></td><td>инструкция и, может быть, код</td><td>код</td><td>код или внешний сервис</td></tr><tr><td><strong>Может не сработать</strong></td><td>да — модель не узнала задачу</td><td>нет</td><td>да — модель не вызвала</td></tr><tr><td><strong>Когда выбирать</strong></td><td>работа с суждением по шагам</td><td>то, что недопустимо пропустить</td><td>действие в мире</td></tr></tbody></table><p class="coda">«Промпт просит, хук обязывает» — по-прежнему. Скилл — это промпт, который подгружается по требованию. Он тоже просит.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
