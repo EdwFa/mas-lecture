@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 16. Уровень 2. Тесты работы</title>
+  <title>Слайд 16. Уровень 1. Тесты мер</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 17. Опасности и безопасность системы</span><span>16</span></div>
-    <h1>Уровень 2. Тесты работы</h1>
-    <div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Набор</div><h2>10 пакетов с ответом</h2><p>Полный пакет, нет гистологии, две даты, ссылка без типа, поздняя лаборатория — как в лекции 14, но для всей системы.</p></article><article class="card "><div class="label">Сравнение</div><h2>С прошлой версией</h2><p>Не «хорошо ли», а «не хуже ли, чем было». Таблица хранится в репозитории рядом с версией модели.</p></article><article class="card "><div class="label">Порог</div><h2>Записан заранее</h2><p>Например: не меньше 9 из 10 и ни одной потери спора. Порог придумывают до прогона, не после.</p></article></div><p class="coda">Тесты работы смотрят на ответ. Но правильный пакет мог получиться неправильным путём — это следующий уровень.</p>
+    <h1>Уровень 1. Тесты мер</h1>
+    <table><colgroup><col style="width:40%"><col style="width:28%"><col style="width:14%"><col style="width:18%"></colgroup><thead><tr><th>Тест</th><th>Мера</th><th>Опасность</th><th>Лекция</th></tr></thead><tbody><tr><td>test_no_write_without_signature</td><td>политика «спросить»</td><td>Н2</td><td>13</td></tr><tr><td>test_board_date_survives_handoff</td><td>контракт передачи</td><td>Н3</td><td>15</td></tr><tr><td>test_bad_artifact_is_rejected</td><td>схема артефакта</td><td>Н1, Н4</td><td>15</td></tr><tr><td>test_survives_restart</td><td>ключ записи, состояние</td><td>Н6</td><td>16</td></tr></tbody></table><p class="coda">Модели в этих тестах нет — есть заглушки. Они проверяют, что мера существует и работает, и идут при каждом коммите.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
