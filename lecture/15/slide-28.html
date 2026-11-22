@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 28. Замер: один против нескольких</title>
+  <title>Слайд 28. Вызов или передача хода</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 15. Передача между агентами</span><span>28</span></div>
-    <h1>Замер: один против нескольких</h1>
-    <table><colgroup><col style="width:40%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup><thead><tr><th>Устройство</th><th>Тесты работы</th><th>Токены, тыс.</th><th>Время, с</th></tr></thead><tbody><tr><td><strong>Один агент</strong></td><td>6 из 10</td><td>38</td><td>140</td></tr><tr><td><strong>Один агент, бюджет 70 тыс.</strong></td><td>7 из 10</td><td>70</td><td>190</td></tr><tr><td><strong>Оркестратор, 4 читателя, критик</strong></td><td>9 из 10</td><td>70</td><td>75</td></tr></tbody></table><div class="cols" style="--n:3;margin-top:36px"><article class="card "><div class="label">Сравнивать</div><h2>Строки 2 и 3</h2><p>Бюджет равный. Разница — от устройства, а не от расхода.</p></article><article class="card "><div class="label">Где выигрыш</div><h2>Проверка и время</h2><p>Чистый критик поймал две даты; параллельное чтение вдвое сократило ожидание.</p></article><article class="card "><div class="label">Числа</div><h2>Учебные</h2><p>Свои студенты получают на 10 пакетах практикума. Разницы нет — это тоже результат.</p></article></div>
+    <h1>Вызов или передача хода</h1>
+    <table><colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup><thead><tr><th></th><th>Вызов (agent as tool)</th><th>Передача хода (handoff)</th></tr></thead><tbody><tr><td><strong>Окно</strong></td><td>новое, только задача</td><td>разговор продолжается</td></tr><tr><td><strong>Кто отвечает врачу</strong></td><td>оркестратор</td><td>тот, кому передали ход</td></tr><tr><td><strong>Возврат</strong></td><td>артефакт по схеме</td><td>нет: ход ушёл</td></tr><tr><td><strong>Когда</strong></td><td>часть работы с понятным результатом</td><td>смена специалиста в диалоге с пользователем</td></tr><tr><td><strong>Во фреймворках</strong></td><td>субагенты Claude Agent SDK, AgentTool в ADK, супервизор LangGraph</td><td>handoffs в OpenAI Agents SDK, передача в swarm</td></tr></tbody></table><p class="coda">На консилиуме — вызов: ответ формирует оркестратор, и спорить с врачом читатель лаборатории не должен.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
