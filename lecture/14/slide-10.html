@@ -15,7 +15,8 @@ def scan(root=&quot;skills&quot;):
     for p in pathlib.Path(root).glob(&quot;*/SKILL.md&quot;):
         _, front, body = p.read_text(encoding=&quot;utf-8&quot;).split(&quot;---&quot;, 2)
         meta = yaml.safe_load(front)
-        assert meta[&quot;name&quot;] == p.parent.name, p
+        if errs := validate(meta, p.parent.name):  # правила спецификации
+            raise ValueError(f&quot;{p}: {errs}&quot;)
         skills[meta[&quot;name&quot;]] = {&quot;desc&quot;: meta[&quot;description&quot;],
                                 &quot;dir&quot;: p.parent, &quot;body&quot;: body}
     return skills
@@ -30,7 +31,7 @@ READ_SKILL = {
                      &quot;additionalProperties&quot;: False}}
 def read_skill(skills, name):           # уровень 2: результат вызова
     s = skills.get(name)
-    return s[&quot;body&quot;] if s else f&quot;нет скилла {name}&quot;</pre></div><div class="stack"><article class="card "><div class="label">Уровень 1</div><h2>catalog()</h2><p>Строка на скилл. Добавляется к правилам в начале окна — в стабильный префикс.</p></article><article class="card "><div class="label">Уровень 2</div><h2>read_skill</h2><p>Обычный инструмент реестра. Политика: разрешить. В трассе видно, какой скилл и когда прочитан.</p></article><article class="card "><div class="label">Уровень 3</div><h2>Уже есть</h2><p>read_file и run_script из лекции 13. Скрипт исполняется в песочнице, путь — внутри папки скилла.</p></article></div></div>
+    return s[&quot;body&quot;] if s else f&quot;нет скилла {name}&quot;</pre></div><div class="stack"><article class="card "><div class="label">Уровень 1</div><h2>scan() и catalog()</h2><p>scan проверяет name и description, как skills-ref validate. catalog — строка на скилл в стабильный префикс окна.</p></article><article class="card "><div class="label">Уровень 2</div><h2>read_skill</h2><p>Обычный инструмент реестра. Политика: разрешить. В трассе видно, какой скилл и когда прочитан.</p></article><article class="card "><div class="label">Уровень 3</div><h2>Уже есть</h2><p>read_file и run_script из лекции 13. Скрипт исполняется в песочнице, путь — внутри папки скилла.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
