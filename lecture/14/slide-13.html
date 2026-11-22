@@ -2,29 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 13. Тело SKILL.md</title>
+  <title>Слайд 13. Границы скилла</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>13</span></div>
-    <h1>Тело SKILL.md</h1>
-    <div class="split" style="--left:980px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px"># Проверка пакета к консилиуму
-
-## Шаги
-1. Сохрани пакет в work/package.json.
-2. Запусти: python scripts/check.py work/package.json
-3. Если ok = false — перечисли problems врачу.
-   Ничего не исправляй сам.
-   Если error — пакет не прочитан, вывода не делай.
-4. Если в пакете две даты консилиума — не выбирай,
-   вынеси спор в open_questions.
-
-## Нельзя
-- Записывать в карту: это chart_write, политика «спросить».
-- Придумывать board_date. «Не назначена» — допустимо.
-
-Скрипт исполняй, не читай. Поля — references/fields.md.</pre></div><div class="stack"><article class="card "><div class="label">Порядок</div><h2>Шаги, а не эссе</h2><p>Нумерованные действия. Чем хрупче операция, тем меньше свободы: точная команда, без вариантов.</p></article><article class="card "><div class="label">Запреты</div><h2>С причиной</h2><p>«Нельзя, потому что…» — модель реже ищет обходной путь.</p></article><article class="card "><div class="label">Ссылки</div><h2>Длинное — в references/</h2><p>Справка по 40 полям — отдельный файл с оглавлением, ссылка на один уровень, путь через «/».</p></article></div></div>
+    <h1>Границы скилла</h1>
+    <table><colgroup><col style="width:34%"><col style="width:34%"><col style="width:32%"></colgroup><thead><tr><th>Плохо</th><th>Почему</th><th>Лучше</th></tr></thead><tbody><tr><td><strong>oncology</strong> — всё про онкологию</td><td>срабатывает всегда, тело на 3000 строк</td><td>отдельные скиллы под отдельные работы</td></tr><tr><td><strong>check-tnm-t</strong>, <strong>check-tnm-n</strong>, <strong>check-tnm-m</strong></td><td>три описания почти одинаковы, модель путает</td><td>один tnm-check</td></tr><tr><td><strong>package-check</strong>, который ещё и пишет в карту</td><td>смешаны проверка и действие с последствиями</td><td>проверка — скилл; запись — инструмент с политикой «спросить»</td></tr></tbody></table><p class="coda">Один скилл — одна работа, которую врач назвал бы одним словом. Тело — до 500 строк; не помещается — значит, это два скилла или справка в references/.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
