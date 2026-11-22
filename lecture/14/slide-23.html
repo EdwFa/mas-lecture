@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 23. Правила для клиники</title>
+  <title>Слайд 23. Цепочка поставок скиллов</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>23</span></div>
-    <h1>Правила для клиники</h1>
-    <div class="frames " style="--n:1;margin-top:36px"><div class="frame"><span class="num">01</span><h2>Только свой репозиторий</h2><p>Скиллы курса и кафедры лежат в git. Публичные каталоги — для чтения и идей, не для установки.</p></div><div class="frame"><span class="num">02</span><h2>Ревью как код</h2><p>Скилл меняется через pull request. Читают тело, скрипты, description и allowed-tools: что скилл одобряет себе без вопроса.</p></div><div class="frame"><span class="num">03</span><h2>Права не меняются</h2><p>Таблица прав из лекции 13 действует на всё, что попросил скилл. chart_write — по-прежнему «спросить».</p></div><div class="frame"><span class="num">04</span><h2>Песочница</h2><p>Скрипты скилла — без сети и только внутри папки случая. Ключи — вне окна и вне песочницы.</p></div><div class="frame"><span class="num">05</span><h2>Версии</h2><p>metadata.version и коммит. В трассе — какая версия скилла сработала.</p></div></div>
+    <h1>Цепочка поставок скиллов</h1>
+    <table><colgroup><col style="width:34%"><col style="width:66%"></colgroup><thead><tr><th>Источник</th><th>Что нашли</th></tr></thead><tbody><tr><td><strong>Snyk, ToxicSkills, февраль 2026</strong></td><td>3984 скилла из ClawHub и skills.sh: у 13,4% — хотя бы одна критическая проблема</td></tr><tr><td><strong>ClawHavoc, январь–февраль 2026</strong></td><td>скоординированная кампания: сотни вредоносных скиллов в каталоге ClawHub</td></tr><tr><td><strong>Skill-Inject, февраль 2026</strong></td><td>бенчмарк инъекций через файлы скиллов: агенты уязвимы, фильтр на входе не спасает</td></tr></tbody></table><p class="coda">Это повторение истории npm и PyPI, только у пакета теперь есть доступ к рассуждению агента.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>

@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 26. Выводы</title>
+  <title>Слайд 26. Чек-лист перед публикацией</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>26</span></div>
-    <h1>Выводы</h1>
-    <div class="frames tight" style="--n:1;margin-top:28px"><div class="frame"><span class="num">01</span><h2>Что это</h2><p>Папка с SKILL.md: описание для выбора, инструкция для работы, скрипты и справка по требованию.</p></div><div class="frame"><span class="num">02</span><h2>Окно</h2><p>Три уровня раскрытия. Платим ≈100 токенов на скилл всегда, тело — только когда нужно.</p></div><div class="frame"><span class="num">03</span><h2>Проектирование</h2><p>Описание решает срабатывание. Одна работа — один скилл. Проверяемое — в скрипт.</p></div><div class="frame"><span class="num">04</span><h2>Проверка</h2><p>Проверки до скилла: срабатывание и работа, на каждой модели. Перед публикацией — чек-лист и skills-ref validate.</p></div><div class="frame"><span class="num">05</span><h2>Безопасность</h2><p>Скилл — доверенный промпт и код. Только свой репозиторий, ревью, права и песочница.</p></div><div class="frame"><span class="num">06</span><h2>Место</h2><p>Скилл — процедура, OKF — знание, инструмент — действие, хук — то, что всегда.</p></div></div>
+    <h1>Чек-лист перед публикацией</h1>
+    <p class="lead">Сводка рекомендаций Anthropic и спецификации agentskills.io. Скилл уходит на ревью, когда отмечены все пункты.</p><div class="cols" style="--n:3;margin-top:36px"><article class="card "><div class="label">Формат</div><h2>Frontmatter</h2><ul><li>skills-ref validate проходит</li><li>name совпадает с папкой, без «--» и дефиса по краям</li><li>description: что и когда, от третьего лица</li><li>граница «не для…», если рядом похожие скиллы</li><li>allowed-tools пуст или обоснован: без сети и записи</li><li>metadata.version поднята</li></ul></article><article class="card "><div class="label">Содержание</div><h2>Тело и файлы</h2><ul><li>SKILL.md короче 500 строк</li><li>ссылки на один уровень, пути через «/»</li><li>справка длиннее 100 строк — с&nbsp;оглавлением</li><li>каждый скрипт назван в теле: когда, аргументы, выход</li><li>ясно, что исполнять, а что читать</li><li>одни и те же термины, без дат «до августа»</li></ul></article><article class="card "><div class="label">Проверка</div><h2>Тесты и код</h2><ul><li>проверки написаны до скилла, есть прогон без&nbsp;него</li><li>срабатывание: 10 да и 10 похожих нет</li><li>скрипт сам обрабатывает ошибки, константы объяснены</li><li>зависимости перечислены</li><li>прогон на каждой модели стенда</li></ul></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
