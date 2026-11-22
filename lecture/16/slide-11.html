@@ -22,7 +22,7 @@
   },
   &quot;configuration&quot;: {
     &quot;returnImmediately&quot;: true,
-    &quot;pushNotificationConfig&quot;: {
+    &quot;taskPushNotificationConfig&quot;: {
       &quot;url&quot;: &quot;https://mas.clinic/a2a/push&quot;,
       &quot;token&quot;: &quot;&lt;свой для каждой задачи&gt;&quot;}}
 }</pre></div><div class="stack"><article class="card "><div class="label">messageId</div><h2>Ставим мы</h2><p>Обязательное поле. Делаем его стабильным: случай, шаг, номер. Повтор отправки — тот же messageId.</p></article><article class="card "><div class="label">contextId</div><h2>Разговор</h2><p>Связывает сообщения одного случая. Повторно используем, чтобы лаборатория видела историю.</p></article><article class="card "><div class="label">taskId</div><h2>Работа</h2><p>Выдаёт лаборатория. Сохраняем сразу — до любого другого шага. Указываем, только когда продолжаем задачу.</p></article></div></div>
