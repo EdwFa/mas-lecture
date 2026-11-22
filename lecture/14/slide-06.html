@@ -17,11 +17,12 @@ description: &gt;-
   Use when the user asks to check, validate or
   review a board package («проверь пакет»,
   «всё ли заполнено», «готов ли пакет»).
+  Не для сборки пакета и не для записи в карту.
 license: Apache-2.0
 metadata:
   owner: кафедра онкологии
   version: &quot;1.2&quot;
----</pre></div><div class="stack"><div class="frames " style="--n:1;margin-top:0"><div class="frame"><span class="num">01</span><h2>name</h2><p>Строчные буквы, цифры и дефис, до 64 символов. Совпадает с именем папки.</p></div><div class="frame"><span class="num">02</span><h2>description</h2><p>До 1024 символов. Что делает и когда звать. Это единственное, что модель видит до решения.</p></div><div class="frame"><span class="num">03</span><h2>Необязательные</h2><p>license, compatibility, metadata, allowed-tools. Чужие поля клиент проигнорирует.</p></div></div></div></div>
+---</pre></div><div class="stack"><div class="frames " style="--n:1;margin-top:0"><div class="frame"><span class="num">01</span><h2>name</h2><p>До 64 символов: a-z, 0-9, дефис. Не с дефиса и не на дефис, без «--». Совпадает с папкой. В Claude нельзя XML-теги и слова anthropic, claude.</p></div><div class="frame"><span class="num">02</span><h2>description</h2><p>До 1024 символов, без XML-тегов, от третьего лица: «Проверяет…». Что делает и когда звать — единственное, что модель видит до решения.</p></div><div class="frame"><span class="num">03</span><h2>Необязательные</h2><p>license, metadata, compatibility (до 500 символов) и&nbsp;экспериментальное allowed-tools. Проверка формата: skills-ref validate.</p></div></div></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
