@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 29. Вопросы</title>
+  <title>Слайд 29. Скиллы в мультиагентной системе</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>29</span></div>
-    <h1>Вопросы</h1>
-    <div class="frames " style="--n:1;margin-top:36px"><div class="frame"><span class="num">01</span><h2>Уровни</h2><p>Что модель видит о скилле до решения и что — после?</p></div><div class="frame"><span class="num">02</span><h2>Соседи</h2><p>Когда вместо скилла нужен хук, а когда — инструмент?</p></div><div class="frame"><span class="num">03</span><h2>Описание</h2><p>Почему скилл не срабатывает и что вы меняете, чтобы это исправить?</p></div><div class="frame"><span class="num">04</span><h2>Проверка</h2><p>Какие две группы тестов нужны скиллу и с чем сравнивают результат?</p></div><div class="frame"><span class="num">05</span><h2>Безопасность</h2><p>Почему чужой скилл опаснее чужого текста в карте пациента?</p></div></div>
+    <h1>Скиллы в мультиагентной системе</h1>
+    <p class="lead">У каждого агента свой каталог. Агент не видит скиллы, которые ему не нужны.</p><table><colgroup><col style="width:24%"><col style="width:30%"><col style="width:46%"></colgroup><thead><tr><th>Агент P-0042</th><th>Скиллы в каталоге</th><th>Почему так</th></tr></thead><tbody><tr><td><strong>Оркестратор</strong></td><td>нет процедурных</td><td>он распределяет задачи, а не делает их; лишний скилл — соблазн сделать самому</td></tr><tr><td><strong>Сборщик пакета</strong></td><td>package-build, lab-summary</td><td>собирает пакет и сводку анализов; проверять — не его работа</td></tr><tr><td><strong>Критик</strong></td><td>package-check</td><td>проверяет чужую работу в чистом окне; собирать сам не&nbsp;должен</td></tr><tr><td><strong>Лаборатория по A2A</strong></td><td>свои, нам не видны</td><td>чужой агент: доверяем артефакту по схеме, а не его&nbsp;процедурам</td></tr></tbody></table><div class="cols" style="--n:3;margin-top:32px"><article class="card "><div class="label">Минимум знания</div><h2>Как минимум прав</h2><p>Таблица прав ограничивает действия, каталог — процедуры. Меньше скиллов — меньше ложных срабатываний.</p></article><article class="card "><div class="label">Кто раздаёт</div><h2>Harness при запуске</h2><p>Постановка задачи субагенту и его каталог — одна запись в оркестраторе. Подробно — лекция 15.</p></article><article class="card "><div class="label">Одна библиотека</div><h2>Разные срезы</h2><p>Скиллы лежат в одном репозитории кафедры. Каждому агенту harness отдаёт свой список имён.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>

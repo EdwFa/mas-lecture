@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Слайд 31. Скилл в эксплуатации</title>
+  <link rel="stylesheet" href="slide.css?v=1" />
+</head>
+<body>
+  <main class="slide">
+    <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>31</span></div>
+    <h1>Скилл в эксплуатации</h1>
+    <p class="lead">Публикация — не конец. Скилл живёт в клинике, и его поведение видно только в трассах.</p><div class="flow" style="margin-top:36px"><div class="step"><h2>Черновик</h2><p>Два экземпляра модели, тесты до скилла.</p></div><div class="arrow" aria-hidden="true"><svg width="36" height="24" viewBox="0 0 36 24" fill="none"><path d="M0 12h28" stroke="#1c1915" stroke-width="2"/><path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/></svg></div><div class="step"><h2>Ревью</h2><p>Pull request, чек-лист, второй человек.</p></div><div class="arrow" aria-hidden="true"><svg width="36" height="24" viewBox="0 0 36 24" fill="none"><path d="M0 12h28" stroke="#1c1915" stroke-width="2"/><path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/></svg></div><div class="step"><h2>Версия</h2><p>metadata.version и коммит в трассе.</p></div><div class="arrow" aria-hidden="true"><svg width="36" height="24" viewBox="0 0 36 24" fill="none"><path d="M0 12h28" stroke="#1c1915" stroke-width="2"/><path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/></svg></div><div class="step"><h2>Выкатка</h2><p>Одно отделение, потом остальные.</p></div><div class="arrow" aria-hidden="true"><svg width="36" height="24" viewBox="0 0 36 24" fill="none"><path d="M0 12h28" stroke="#1c1915" stroke-width="2"/><path d="M22 4l10 8-10 8" fill="none" stroke="#1c1915" stroke-width="2"/></svg></div><div class="step soft"><h2>Наблюдение</h2><p>Трассы и правки врачей.</p></div></div><div class="cols" style="--n:3;margin-top:40px"><article class="card "><div class="label">Считаем по трассам</div><h2>Метрики</h2><ul><li>доля запросов, где скилл сработал</li><li>ложные срабатывания: прочитан, но не&nbsp;к&nbsp;месту</li><li>ответы со скиллом, которые врач поправил</li><li>ошибки скриптов: код 2</li></ul></article><article class="card "><div class="label">Петля</div><h2>Правка → тест</h2><ul><li>фраза, на которой скилл не сработал, —&nbsp;в&nbsp;тесты срабатывания</li><li>пакет, где врач поправил ответ, —&nbsp;в&nbsp;тесты работы</li><li>новая версия — только после прогона</li></ul></article><article class="card "><div class="label">Вывод из употребления</div><h2>Без потерь</h2><ul><li>убрать имя из каталогов агентов</li><li>папку оставить в git</li><li>старые трассы читаются по версии</li></ul></article></div><p class="coda">Как выкатывать релиз по отделениям и что смотреть каждый день — лекция 18.</p>
+    <div class="spacer"></div>
+    <footer>
+      <span>Программная инженерия мультиагентных систем в клинической медицине</span>
+      <span>осень 2026 · © E.Fartushny · MIT</span>
+    </footer>
+  </main>
+<script src="deck.js?v=1"></script>
+</body>
+</html>
