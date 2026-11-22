@@ -2,36 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 10. Скиллы в мини-harness</title>
+  <title>Слайд 10. Как harness подключает скилл</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>10</span></div>
-    <h1>Скиллы в мини-harness</h1>
-    <div class="split" style="--left:1080px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:18px">import pathlib, yaml
-def scan(root=&quot;skills&quot;):
-    skills = {}
-    for p in pathlib.Path(root).glob(&quot;*/SKILL.md&quot;):
-        _, front, body = p.read_text(encoding=&quot;utf-8&quot;).split(&quot;---&quot;, 2)
-        meta = yaml.safe_load(front)
-        if errs := validate(meta, p.parent.name):  # правила спецификации
-            raise ValueError(f&quot;{p}: {errs}&quot;)
-        skills[meta[&quot;name&quot;]] = {&quot;desc&quot;: meta[&quot;description&quot;],
-                                &quot;dir&quot;: p.parent, &quot;body&quot;: body}
-    return skills
-def catalog(skills):                    # уровень 1: в системный промпт
-    return &quot;\n&quot;.join(f&quot;- {n}: {s[&#x27;desc&#x27;]}&quot; for n, s in skills.items())
-READ_SKILL = {
-    &quot;name&quot;: &quot;read_skill&quot;,
-    &quot;description&quot;: &quot;Загрузить инструкцию скилла по имени из списка.&quot;,
-    &quot;input_schema&quot;: {&quot;type&quot;: &quot;object&quot;,
-                     &quot;properties&quot;: {&quot;name&quot;: {&quot;type&quot;: &quot;string&quot;}},
-                     &quot;required&quot;: [&quot;name&quot;],
-                     &quot;additionalProperties&quot;: False}}
-def read_skill(skills, name):           # уровень 2: результат вызова
-    s = skills.get(name)
-    return s[&quot;body&quot;] if s else f&quot;нет скилла {name}&quot;</pre></div><div class="stack"><article class="card "><div class="label">Уровень 1</div><h2>scan() и catalog()</h2><p>scan проверяет name и description, как skills-ref validate. catalog — строка на скилл в стабильный префикс окна.</p></article><article class="card "><div class="label">Уровень 2</div><h2>read_skill</h2><p>Обычный инструмент реестра. Политика: разрешить. В трассе видно, какой скилл и когда прочитан.</p></article><article class="card "><div class="label">Уровень 3</div><h2>Уже есть</h2><p>read_file и run_script из лекции 13. Скрипт исполняется в песочнице, путь — внутри папки скилла.</p></article></div></div>
+    <h1>Как harness подключает скилл</h1>
+    <svg class="ill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 160" width="1744" height="160" style="display:block;margin-top:28px;overflow:visible;"><defs><marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#1c1915" stroke-width="1.6"/></marker><marker id="ahg" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#5e6872" stroke-width="1.6"/></marker><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#f7f4ee"/><line x1="0" y1="0" x2="0" y2="10" stroke="#ddd5c6" stroke-width="3"/></pattern></defs><rect x="0.0" y="20" width="268" height="90" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="134.0" y="61.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Найти</text><text x="134.0" y="89.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">папки skills/</text><polyline points="270.0,65 293.0,65" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="295.2" y="20" width="268" height="90" rx="0" fill="#f7f4ee" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="429.2" y="61.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Разобрать</text><text x="429.2" y="89.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">frontmatter</text><polyline points="565.2,65 588.2,65" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="590.4" y="20" width="268" height="90" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="724.4" y="61.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Показать</text><text x="724.4" y="89.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">список в окне</text><polyline points="860.4,65 883.4,65" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="885.5999999999999" y="20" width="268" height="90" rx="0" fill="#f3efe6" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1019.5999999999999" y="61.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Модель</text><text x="1019.5999999999999" y="89.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">выбирает скилл</text><polyline points="1155.6,65 1178.6,65" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1180.8" y="20" width="268" height="90" rx="0" fill="#ddd5c6" stroke="#1c1915" stroke-width="2" opacity="1"/><text x="1314.8" y="61.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Раскрыть</text><text x="1314.8" y="89.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">read_skill(name)</text><polyline points="1450.8,65 1473.8,65" fill="none" stroke="#1c1915" stroke-width="1.6" marker-end="url(#ah)"/><rect x="1476.0" y="20" width="268" height="90" rx="0" fill="#ece6da" stroke="#1c1915" stroke-width="1.5" opacity="1"/><text x="1610.0" y="61.0" font-family="Georgia, Iowan Old Style, serif" font-size="24" text-anchor="middle" fill="#1c1915" font-weight="400">Исполнить</text><text x="1610.0" y="89.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#5e6872" font-weight="400">скрипты в песочнице</text><text x="0" y="150" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" text-anchor="start" fill="#5e6872" font-weight="400">Harness делает шаги 1–3 и 5–6. Модель — только шаг 4. Права и песочница из лекции 13 действуют и здесь.</text></svg><div class="cols" style="--n:3;margin-top:44px"><article class="card "><div class="label">Уровень 1</div><h2>Список в окне</h2><p>Harness при старте сканирует папки skills/ и кладёт имена с описаниями в системный промпт.</p></article><article class="card "><div class="label">Уровень 2</div><h2>Вызов чтения</h2><p>Модель просит тело скилла — обычным инструментом. Результат вызова и есть инструкция.</p></article><article class="card "><div class="label">Уровень 3</div><h2>Файлы и скрипты</h2><p>Чтение файла и запуск скрипта — те же инструменты, та же таблица прав, та же трасса.</p></article></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>

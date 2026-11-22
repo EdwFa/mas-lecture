@@ -2,14 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 21. Смена модели</title>
+  <title>Слайд 21. Тесты работы</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>21</span></div>
-    <h1>Смена модели</h1>
-    <div class="cols" style="--n:3;margin-top:56px"><article class="card "><div class="label">Описание</div><h2>Срабатывание меняется</h2><p>Новая модель иначе читает описания. Тесты срабатывания — первые, которые падают.</p></article><article class="card "><div class="label">Тело</div><h2>Исполнение меняется</h2><p>Модель может пропускать шаги или делать лишнее. Тесты работы ловят это на тех же пакетах.</p></article><article class="card "><div class="label">Скрипты</div><h2>Не меняются</h2><p>Код проверки от модели не зависит. Ещё одна причина переносить проверяемое в scripts/.</p></article></div><p class="coda">Скилл прогоняют на каждой модели, где он будет работать: у нас — на всех локальных моделях стенда. Это часть регрессии harness из лекции 13.</p>
+    <h1>Тесты работы</h1>
+    <p class="lead">Скилл сработал — а сделал ли он то, что нужно? Набор случаев с известным ответом.</p><table><colgroup><col style="width:32%"><col style="width:28%"><col style="width:20%"><col style="width:20%"></colgroup><thead><tr><th>Пакет</th><th>Ожидаемо</th><th>Без скилла</th><th>Со скиллом</th></tr></thead><tbody><tr><td><strong>Полный</strong></td><td>ok</td><td>✓</td><td>✓</td></tr><tr><td><strong>Нет гистологии</strong></td><td>нет поля histology_ref</td><td>✓</td><td>✓</td></tr><tr><td><strong>Две даты консилиума</strong></td><td>спор в open_questions</td><td>✗ выбрал одну</td><td>✓</td></tr><tr><td><strong>Ссылка «ct-117» без типа</strong></td><td>не ссылка FHIR</td><td>✗</td><td>✓</td></tr><tr><td><strong>board_date: «не назначена»</strong></td><td>ok</td><td>✗ потребовал дату</td><td>✓</td></tr></tbody></table><p class="coda">Порядок Anthropic: сначала случаи и прогон без скилла, потом минимальный текст, закрывающий провалы. Нет разницы — скилл не нужен. Таблица учебная, своя — на 10 пакетах.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
