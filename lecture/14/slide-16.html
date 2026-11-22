@@ -2,27 +2,37 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 16. Много скриптов: как выбирают</title>
+  <title>Слайд 16. Скрипт вместо слов</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>16</span></div>
-    <h1>Много скриптов: как выбирают</h1>
-    <div class="split" style="--left:960px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">Фрагмент SKILL.md</div><pre class="code" style="font-size:19px">## Скрипты
-| Скрипт      | Когда                   | Выход            |
-|-------------|-------------------------|------------------|
-| check.py    | всегда, шаг 2           | ok, problems     |
-| dates.py    | в problems — две даты   | даты и источники |
-| fhir_ref.py | ссылка не открылась     | тип, id, найдена |
+    <h1>Скрипт вместо слов</h1>
+    <div class="split" style="--left:1000px;--right:1fr;"><div class="stack"><div class="label" style="margin-bottom:12px">scripts/check.py</div><pre class="code" style="font-size:17px">import json, sys
+REQUIRED = [&quot;case_id&quot;, &quot;diagnosis_ref&quot;, &quot;imaging_ref&quot;,
+            &quot;histology_ref&quot;, &quot;board_date&quot;, &quot;open_questions&quot;]
 
-## Шаги
-2. Запусти scripts/check.py work/package.json
-3. Если в problems «две даты» —
-   запусти scripts/dates.py work/package.json
-   и вынеси обе даты в open_questions.
-4. Если ссылка не открылась —
-   запусти scripts/fhir_ref.py с этой ссылкой.</pre></div><div class="stack"><article class="card "><div class="label">Выбирает</div><h2>Модель — по телу</h2><p>Содержимое scripts/ в окно не попадает. Модель знает только те скрипты, что названы в SKILL.md.</p></article><article class="card "><div class="label">Решает</div><h2>Условие в шаге</h2><p>«Если… — запусти…»: модель не выбирает, а следует шагу. Много скриптов — одна точка входа run.py с&nbsp;подкомандами.</p></article><article class="card "><div class="label">Пускает</div><h2>Harness</h2><p>Только scripts/ этого скилла и файлы случая. Строже — список из SKILL.md: подложенный файл не запустится.</p></article></div></div><p class="coda">Скрипт, не названный в SKILL.md, для модели не существует. Десяток скриптов для разных задач — повод разделить скилл.</p>
+def check(pkg):
+    problems = [f&quot;нет поля {f}&quot; for f in REQUIRED
+                if pkg.get(f) in (None, "")]
+    for f in (&quot;diagnosis_ref&quot;, &quot;imaging_ref&quot;, &quot;histology_ref&quot;):
+        ref = pkg.get(f, &quot;&quot;)
+        if ref and &quot;/&quot; not in ref:
+            problems.append(f&quot;{f}: не ссылка FHIR вида Тип/id&quot;)
+    return problems
+
+if __name__ == &quot;__main__&quot;:
+    try:
+        with open(sys.argv[1], encoding=&quot;utf-8&quot;) as fh:
+            pkg = json.load(fh)
+    except (OSError, ValueError) as e:      # нет файла, не JSON
+        print(json.dumps({&quot;ok&quot;: False, &quot;error&quot;: str(e)}))
+        sys.exit(2)                          # 2 — пакет не прочитан
+    problems = check(pkg)
+    print(json.dumps({&quot;ok&quot;: not problems, &quot;problems&quot;: problems},
+                     ensure_ascii=False))
+    sys.exit(1 if problems else 0)           # 1 — есть problems</pre></div><div class="stack"><article class="card "><div class="label">Правило</div><h2>Проверяемое — в код</h2><p>Есть ли поле — вопрос для кода, а не для модели. Скрипт ответит одинаково тысячу раз.</p></article><article class="card "><div class="label">Выход</div><h2>JSON и код возврата</h2><p>0 — порядок, 1 — problems, 2 — пакет не прочитан. Ошибку решает скрипт, а не модель.</p></article><article class="card "><div class="label">Связь с лекцией 13</div><h2>Скрипт или хук</h2><p>Если проверка нужна всегда — это хук перед ответом. Если по запросу врача — скилл со скриптом.</p></article></div></div>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>

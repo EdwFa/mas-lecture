@@ -2,29 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Слайд 14. Тело SKILL.md</title>
+  <title>Слайд 14. Кто вызывает скилл: модель или врач</title>
   <link rel="stylesheet" href="slide.css?v=1" />
 </head>
 <body>
   <main class="slide">
     <div class="kicker"><span>Лекция 14. Скиллы агента</span><span>14</span></div>
-    <h1>Тело SKILL.md</h1>
-    <div class="split" style="--left:980px;--right:1fr;"><div class="stack"><pre class="code" style="font-size:20px"># Проверка пакета к консилиуму
-
-## Шаги
-1. Сохрани пакет в work/package.json.
-2. Запусти: python scripts/check.py work/package.json
-3. Если ok = false — перечисли problems врачу.
-   Ничего не исправляй сам.
-   Если error — пакет не прочитан, вывода не делай.
-4. Если в пакете две даты консилиума — не выбирай,
-   вынеси спор в open_questions.
-
-## Нельзя
-- Записывать в карту: это chart_write, политика «спросить».
-- Придумывать board_date. «Не назначена» — допустимо.
-
-Скрипт исполняй, не читай. Поля — references/fields.md.</pre></div><div class="stack"><article class="card "><div class="label">Порядок</div><h2>Шаги, а не эссе</h2><p>Нумерованные действия. Чем хрупче операция, тем меньше свободы: точная команда, без вариантов.</p></article><article class="card "><div class="label">Запреты</div><h2>С причиной</h2><p>«Нельзя, потому что…» — модель реже ищет обходной путь.</p></article><article class="card "><div class="label">Ссылки</div><h2>Длинное — в references/</h2><p>Справка по 40 полям — отдельный файл с оглавлением, ссылка на один уровень, путь через «/».</p></article></div></div>
+    <h1>Кто вызывает скилл: модель или врач</h1>
+    <p class="lead">По умолчанию скилл выбирает модель. Но вызов можно отдать врачу или спрятать скилл от меню.</p><table><colgroup><col style="width:27%"><col style="width:20%"><col style="width:17%"><col style="width:36%"></colgroup><thead><tr><th>Режим</th><th>Кто вызывает</th><th>Описание в окне</th><th>Для чего в клинике</th></tr></thead><tbody><tr><td><strong>По умолчанию</strong></td><td>модель и врач</td><td>всегда</td><td>проверки и сводки: package-check, lab-summary</td></tr><tr><td><strong>Только врач</strong><br><span class="note">disable-model-invocation: true</span></td><td>врач: команда или кнопка</td><td>нет</td><td>процедуры с последствиями: подготовка записи в&nbsp;карту, отправка в лабораторию</td></tr><tr><td><strong>Только модель</strong><br><span class="note">user-invocable: false</span></td><td>модель</td><td>всегда</td><td>фоновое знание: правила оформления выписки</td></tr></tbody></table><div class="cols" style="--n:3;margin-top:32px"><article class="card "><div class="label">Локальные модели</div><h2>Малая модель узнаёт хуже</h2><p>Тесты срабатывания у неё слабее. Для важной процедуры явный вызов надёжнее угадывания.</p></article><article class="card "><div class="label">Мини-harness</div><h2>Явный вызов — код</h2><p>Врач нажал кнопку — harness сам вызывает read_skill до первого оборота. Модель не решает.</p></article><article class="card "><div class="label">Тело</div><h2>Проверки остаются</h2><p>Врач тоже может вызвать не тот скилл. Шаги «если… — остановись» в теле не убирают.</p></article></div><p class="coda">Поля режимов — расширение Claude Code, не стандарта. Принцип общий: чем дороже ошибка, тем меньше решает модель.</p>
     <div class="spacer"></div>
     <footer>
       <span>Программная инженерия мультиагентных систем в клинической медицине</span>
